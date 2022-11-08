@@ -1,0 +1,44 @@
+
+.header{
+    width: 100vw;
+    height: 8.5vh;
+    display: flex;
+    background-color: #44B454;
+}
+header .logo, header .user{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .mainlogo{
+    height: 80%;
+}
+header .icon{
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+header .button{
+    margin-left: 0.5vw;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+header .button a{
+    text-decoration: none;
+    color: #0D3C99;
+    font-weight: 500;
+}
+header .title{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+

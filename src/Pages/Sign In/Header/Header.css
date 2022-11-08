@@ -1,0 +1,30 @@
+
+.header{
+    width: 100vw;
+    height: 8.5vh;
+    display: flex;
+    background-color: #44B454;
+}
+header .logo, header .user{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .mainlogo{
+    height: 80%;
+}
+header .user_icon{
+    height: 40%;
+    color: white;
+}
+header .title{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
