@@ -1,0 +1,76 @@
+Header{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.SignIn{
+    margin-top: 8.5vh;
+    background-color: #404144;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SignIn .Signbox{
+    width: 40%;
+    height: 70%;
+    background-color: #494A4E;
+}
+.SignIn .title{
+    height: 15%;
+    border-bottom: 1px solid #848484;
+    display: flex;
+    align-items: center;
+}
+.SignIn .content{
+    display: flex;
+    justify-content: center;
+}
+.SignIn form{
+    margin-top: 3vh;
+    width: 80%;
+}
+.SignIn .title h3{
+    margin-left: 3vw;
+    color: white;
+    font-weight: 400;
+}
+.SignIn .form_content{
+    display: block;
+    width: 100%;
+}
+.SignIn .form_content label{
+    display: block;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1vh;
+    transition: 0.4s;
+}
+.SignIn .form_content:focus-within label{
+    color: #fe4880;
+}
+.SignIn .form_content input{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 2px ;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 1vh;
+    border: none;
+    /* border-color: #f8f8f8; */
+}
+.SignIn .form_content input:focus{
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+.SignIn .content .signin_btn{
+    color: white;
+    display: inline-block;
+    width: 100%;
+    background-color: #44B454;
+    border-radius: 8px;
+    border: none;
+    margin-top: 4.5vh;
+    /* border-color: #44B454; */
+}
