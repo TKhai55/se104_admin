@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.RegisterClub_wrapper{
+    margin-top: 8.5vh;
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    background-color: #545861;
+}
+.RegisterClub_wrapper .form_wrapper{
+    width: 75%;
+    height: fit-content;
+    margin-top: 5vh;
+    margin-bottom: 25vh;
+    border-radius: 10px;
+    background-color: #666674;
+}
+.RegisterClub_wrapper .form_wrapper .title{
+    height: 15%;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    position: relative;
+    background-color: #7c7c8a;
+}
+.RegisterClub_wrapper .form_wrapper .title .logo{
+    position: absolute;
+    top: 1.8vh;
+    left: 5vh;
+}
+.RegisterClub_wrapper .form_wrapper .title .logo img{
+    width: 5vh;
+    height: 5vh;
+}
+.RegisterClub_wrapper .form_wrapper .title .name{
+    width: 100%;
+    font-size: 4vh;
+    font-weight: 500;
+    text-align: center; 
+    color: white;
+}
+.RegisterClub_wrapper .form_wrapper .title .name p{
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper{
+    height: 85%;
+    border-radius: 0 0 10px 10px;
+
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .table_wrapper {
+    width: 100%;
+    height: fit-content;
+    color: white;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .table_wrapper table{
+    margin-top: 5vh;
+    width: 100%;
+    background-color: #7c7c8a;
+    font-size: 2.5vh;
+
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .table_wrapper table th{
+    background-color: #CDC9C9;
+    color: #494747;
+    padding: 3px 0;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .logo{
+    width: 15%;
+    text-align: center;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .logo .logoClub{
+    width: 5vh;
+    height: 5vh;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .name{
+    width: 30%;
+    text-align: center;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .stadium{
+    width: 30%;
+    text-align: center;
+
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .year{
+    width: 25%;
+    text-align: center;
+
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper button{
+    font-size: 2.5vh;
+    padding: 5px 15px;
+    border-radius: 3px;
+    border: none;
+    background-color: #44B454;
+    color: white;
+    font-weight: bold;
+    margin: 3vh 0;
+    float: right;
+    margin-right: 3vh;
+}
+.RegisterClub_wrapper .form_wrapper  button:active{
+    background-color: #27a039;
+}
+.RegisterClub_wrapper .form_wrapper .done{
+    background-color: #44B454;
+    color: white;
+    width: fit-content;
+    font-size: 2vh;
+    padding: 10px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -5vh;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+}

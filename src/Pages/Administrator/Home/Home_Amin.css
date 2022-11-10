@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.Home_Admin_wrapper{
+    margin-top: 8.5vh;
+    height: 50vh;
+    background-color: #545861;
+    display: flex;
+    justify-content: center;
+}
+.Home_Admin_wrapper .menuWrapper{
+    margin-top: 10vh;
+    width: 60%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+.Home_Admin_wrapper .menuWrapper .row1{
+    width: 100%;
+    height: 50%;
+    margin: 0;
+}
+.Home_Admin_wrapper .menuWrapper .row1{
+    display: flex;
+    align-items: center;
+}
+.Home_Admin_wrapper .menuWrapper .row1 .createAccount,
+.Home_Admin_wrapper .menuWrapper .row1 .manageAccount,
+.Home_Admin_wrapper .menuWrapper .row1 .exit{
+    width: 21.5%;
+    height: 85%;
+}
+.Home_Admin_wrapper .menuWrapper .row1 .createAccount,
+.Home_Admin_wrapper .menuWrapper .row1 .exit{
+    margin-left: 11vh;
+    margin-right: 10vh;
+}
+
+.Home_Admin_wrapper .menuWrapper .button{
+    background-color: #666674;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+.Home_Admin_wrapper .menuWrapper .button img{
+    width: 10vw;
+    height: 15vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+.Home_Admin_wrapper .menuWrapper .button:active{
+    background-color: #292b2f;
+}

@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.Home_wrapper{
+    margin-top: 8.5vh;
+    height: 80vh;
+    background-color: #545861;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.Home_wrapper .clubNum{
+    border-radius: 2px;
+    color: white;
+    width: fit-content;
+    background-color: #44B454;
+    position: absolute;
+    top: 2vh;
+    left: 3vh;
+}
+.Home_wrapper .clubNum p{
+    margin: 0;
+    padding: 2px 5px;
+}
+.Home_wrapper .menuWrapper{
+    margin-top: 8vh;
+    width: 60%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+.Home_wrapper .menuWrapper .row1,
+.Home_wrapper .menuWrapper .row2{
+    width: 100%;
+    height: 50%;
+    margin: 0;
+}
+.Home_wrapper .menuWrapper .row1{
+    display: flex;
+    align-items: center;
+}
+.Home_wrapper .menuWrapper .row1 .createClub,
+.Home_wrapper .menuWrapper .row1 .createMatch,
+.Home_wrapper .menuWrapper .row1 .search{
+    width: 21.5%;
+    height: 80%;
+}
+.Home_wrapper .menuWrapper .row1 .createClub,
+.Home_wrapper .menuWrapper .row1 .search{
+    margin-left: 11vh;
+    margin-right: 10vh;
+}
+.Home_wrapper .menuWrapper .row2{
+    display: flex;
+    align-items: center;
+}
+.Home_wrapper .menuWrapper .row2 .createResult,
+.Home_wrapper .menuWrapper .row2 .createReport,
+.Home_wrapper .menuWrapper .row2 .exit{
+    width: 21.5%;
+    height: 85%;
+}
+.Home_wrapper .menuWrapper .row2 .createResult,
+.Home_wrapper .menuWrapper .row2 .exit{
+    margin-left: 11vh;
+    margin-right: 10vh;
+}
+.Home_wrapper .menuWrapper .button{
+    background-color: #666674;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+.Home_wrapper .menuWrapper .button img{
+    width: 10vw;
+    height: 15vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+.Home_wrapper .menuWrapper .button:active{
+    background-color: #292b2f;
+}

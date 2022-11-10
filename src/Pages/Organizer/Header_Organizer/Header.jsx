@@ -15,7 +15,7 @@ const Header = () => {
                     <img className='mainlogo' src={logo} alt="logo" />
                 </div>
                 <div className="title">
-                    <h2>QUẢN TỔ CHỨC</h2>
+                    <h2>BAN TỔ CHỨC</h2>
                 </div>
                 <div className="user">
                     <div className="icon">
