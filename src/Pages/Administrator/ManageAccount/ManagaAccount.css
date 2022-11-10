@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.ManagaAccount{
+    margin-top: 8.5vh;
+    min-height: 70vh;
+    background-color: #545861;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.ManagaAccount .content_wrapper{
+    height: 50vh;
+    width: 60%;
+    margin-bottom: 5vh;
+}
+.ManagaAccount .content_wrapper .title{
+    height: 15%;
+    width: 100%;
+    background-color: #7c7c8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    font-weight: 500;
+    color: white;
+    position: relative;
+    border-radius: 10px 10px 0 0 ;
+}
+.ManagaAccount .content_wrapper .title .icon_title{
+    position: absolute;
+    top: 1.7vh;
+    left: 5vh;
+}
+.ManagaAccount .content_wrapper .title img{
+    width: 5vh;
+    height: 5vh;
+}
+.ManagaAccount .content_wrapper .content{
+    height: 85%;
+    width: 100%;
+    background-color: #666674;
+    border-radius: 0px 0px 10px 10px ;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.ManagaAccount .content_wrapper .curAcc{
+    position: absolute;
+    background-color: #44B454;
+    color: white;
+    padding: 1px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
+    top: 3vh;
+    left: 10vh;
+}
+.ManagaAccount .content_wrapper .content  .delete{
+    height: fit-content;
+    padding: 10px 20px;
+    font-size: 2vh;
+    color: white;
+    background-color: #B44444;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    right: 45vh;
+    top: 1.3vh;
+    text-align: center;
+}
+.ManagaAccount .content_wrapper .content  .fix{
+    height: fit-content;
+    padding: 10px 20px;
+    font-size: 2vh;
+    color: white;
+    background-color: #2478C6;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    text-align: center;
+    top: 1.3vh;
+    right: 32vh;
+}
+.ManagaAccount .content_wrapper  .content  .pass{
+    height: fit-content;
+    padding: 10px 20px;
+    font-size: 2vh;
+    color: white;
+    background-color: #44B454;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    text-align: center;
+    top: 1.3vh;
+    right: 10vh;       
+
+}
+.ManagaAccount .content_wrapper  .content  .pass:active{
+    background-color: #35df4f;
+
+}
+.ManagaAccount .content_wrapper  .content  .delete:active{
+    background-color: #cf3535;
+
+}
+.ManagaAccount .content_wrapper  .content  .fix:active{
+    background-color: #1d88ec;
+
+}
+.ManagaAccount .content_wrapper  .content .table_content{
+    width: 80%;
+    height: 30%;
+    background-color: white;
+    margin-top: 10vh;
+    text-align: center;
+}
+.ManagaAccount .content_wrapper  .content table, 
+.ManagaAccount .content_wrapper  .content th, 
+.ManagaAccount .content_wrapper  .content td {
+    border: 1px solid blue;
+    border-collapse: collapse;
+}
+.ManagaAccount .content_wrapper  .content .table_content .stt{
+    width: 20%;
+}
+.ManagaAccount .content_wrapper  .content .table_content .tk{
+    width: 40%;
+}
+.ManagaAccount .content_wrapper  .content .table_content .mk{
+    width: 40%;
+}
+.ManagaAccount .content_wrapper  .content .table_content .hidetext{
+    -webkit-text-security: disc;
+}
