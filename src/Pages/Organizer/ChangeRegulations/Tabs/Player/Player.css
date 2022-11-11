@@ -1,0 +1,38 @@
+.main-player-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: end;
+    margin-right: 10vw;
+    padding-top: 5vh;
+    padding-bottom: 3vh;
+    position: relative;
+    height: 30vh;
+}
+
+.main-player-wrapper div input{
+    margin-left: 2vw;
+    width: 5vw;
+    height: 4vh;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+}
+
+.main-player-wrapper button {
+    position: absolute;
+    width: 7vw;
+    height: 4vh;
+    right: 3vw;
+    bottom: 2vh;
+    margin-bottom: 3vh;
+    background-color: #147695;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.main-player-wrapper button:hover {
+    cursor: pointer;
+    background-color: #10647e;
+}

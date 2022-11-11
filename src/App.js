@@ -1,5 +1,6 @@
 import './App.css';
 import Footer from './Common/Footer/Footer';
+import Header from './Pages/Organizer/Header_Organizer/Header';
 import SignIn from './Pages/Sign In/SignIn/SignIn';
 import HomeManagerTier1 from './Pages/Manager/Home_Manager_tier1/Home.Manager.Tier1';
 import HomeManagerTier2 from './Pages/Manager/Home_Manager_tier2/Home.Manager.Tier2';
@@ -11,9 +12,12 @@ import CreateNewLeague from './Pages/Organizer/CreateNewLeague/CreateNewLeague';
 import CreateAccount from './Pages/Administrator/CreateAccount/createAccount';
 import ManageAccount from './Pages/Administrator/ManageAccount/ManagaAccount';
 
+
 function App() {
   return (
     <div className="App">
+      <Header/>
+      <Footer />
     </div>
   );
 }

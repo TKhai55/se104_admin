@@ -1,0 +1,85 @@
+.goal-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.goal-main-container .left-column {
+    width: 50%;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    align-items: center;
+}
+
+.goal-main-container .left-column button {
+    width: 8vw;
+    height: 4vh;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(5, 242, 64, 1);
+    font-weight: bold;
+}
+
+.goal-main-container .left-column button:hover {
+    background-color: rgb(5, 226, 60);
+    cursor: pointer;
+}
+
+.goal-main-container .left-column table tr, td, th {
+    border: 1px solid black;
+    height: 4vh;
+}
+
+.goal-main-container .left-column table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.goal-main-container .right-column {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+.goal-main-container .right-column .time-input {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 1.3vw;
+}
+
+.goal-main-container .right-column .time-input input {
+    height: 4vh;
+    width: 7vw;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+}
+.goal-main-container .right-column .time-input label {
+    line-height: 4vh;
+}
+
+.goal-main-container .right-column button {
+    width: 8vw;
+    height: 4vh;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    background-color: #147695;
+    color: white;
+}
+
+.goal-main-container .right-column button:hover {
+    cursor: pointer;
+    background-color: #10647e;
+}
