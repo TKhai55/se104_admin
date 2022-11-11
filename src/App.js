@@ -16,7 +16,7 @@ import ManageAccount from './Pages/Administrator/ManageAccount/ManagaAccount';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Home />
       <Footer />
     </div>
   );
