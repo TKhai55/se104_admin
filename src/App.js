@@ -1,12 +1,13 @@
 import './App.css';
 import Footer from './Common/Footer/Footer';
-import SignIn from './Pages/Sign In/SignIn/SignIn';
-import Home from './Pages/Manager/Home_tier1/Home';
+import ChangeRegulations from './Pages/Organizer/ChangeRegulations/ChangeRegulations';
+import Header from './Pages/Organizer/Header_Organizer/Header';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Header/>
+      <ChangeRegulations/>
       <Footer />
     </div>
   );

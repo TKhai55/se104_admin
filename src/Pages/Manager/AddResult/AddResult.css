@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.add-fixtures-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2a2c30;
+}
+
+.add-fixtures-main-wrapper .add-fixtures-header {
+    background-color: #545861;
+    width: 80vw;
+    border-radius: 5px 5px 0 0;
+    margin-top: 8vh;
+    height: 7vh;
+    text-align: center;
+    line-height: 7vh;
+    color: white;
+}
+
+.add-fixtures-main-wrapper .add-fixtures-content {
+    background-color: #3f4249;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 5vh;
+    padding-bottom: 4vh;
+}
+
+.add-fixtures-main-wrapper .add-fixtures-content .round-chooser-wrapper {
+    width: 60vw;
+}
+
+.fixture-main-wrapper {
+    margin-top: 10vh;
+}
+
+#round-select-label {
+    color: white;
+    display: block;
+    margin-top: 5vh;
+
+}
+
+#round-select {
+    height: 4vh;
+    width: 8vw;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    background-image: url('https://cdn-user-icons.flaticon.com/83451/83451366/1667202098485.svg?token=exp=1667203041~hmac=885dcac96df7d4fa7b8be1b1b703fc12');
+    background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+    appearance: none;
+    background-color: #545861;
+    border: 2px solid #44b454;
+    border-radius: 7px;
+    margin-top: 1vh;
+
+}
+
+.round-table {
+    text-align: center;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 5vh;
+    color: white;
+    margin-bottom: 5vh;
+    box-shadow: 5px 10px 10px 5px #383A3F;
+}
+
+.round-table th {
+    width: 60vw;
+    height: 4vh;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    background-color: #37393f;
+    line-height: 4vh;
+    user-select: none;
+}
+
+.round-table .round-info{
+    background-color: #4d5058;
+}
+
+.round-table .round-info:hover{
+    cursor: pointer;
+    transform: scaleX(1.01);
+    border-left: 2px solid #44b454;
+    border-right: 2px solid #44b454;
+}
+
+.round-info .signature .club-logo {
+    width: 5vw;
+    height: 5vw;
+}
+
+.round-info .signature img {
+    object-fit: contain;
+}
+
+.round-table tr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 2px;
+}
+
+.round-table .round-info:last-child {
+    border-bottom: none;
+}
+
+.round-table .signature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5vh;
+    line-height: 100%;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+}
+
+.round-table #time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+} 
+
+.round-table #time h4 {
+    font-weight: 700;
+}
+
+.round-table #time #date {
+    font-weight: 300;
+    color: #c1c2c5;
+    margin-top: 5px;
+}
