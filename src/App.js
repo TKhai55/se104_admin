@@ -6,7 +6,7 @@ import Home from './Pages/Manager/Home_tier1/Home';
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Home/>
       <Footer />
     </div>
   );

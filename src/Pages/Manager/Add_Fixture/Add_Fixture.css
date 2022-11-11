@@ -1,0 +1,111 @@
+.add_fixture_container {
+    margin-top: 85px;
+}
+
+.add_fixture_table {
+    width: 85%;
+    margin-left: 7.5%;
+    background-color: #3f4249;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.add_fixture_table .title_container {
+    display: flex;
+    background-color: #545861;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.add_fixture_table img {
+    margin-left: 15px;
+}
+
+.add_fixture_table .title {
+    font-size: 32px;
+    color: #ffffff;
+    margin-left: 490px;
+    margin-top: 7px;
+}
+
+.add_fixture_table .round_container{
+    margin-top: 20px;
+    margin-left: 15%;
+    color: #ffffff;
+}
+
+.add_fixture_table .label{
+    font-size: 18px;
+    color: #ffffff;
+    width: 80px;
+}
+
+.add_fixture_table .dropdown_round {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #4f525d;
+    width: 88px;
+}
+
+.add_fixture_table .dropdown_img{
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+}
+
+.add_fixture_table .input_flex{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 4%;
+    justify-content: space-around;
+}
+
+.add_fixture_table .input_cotainer{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.add_fixture_table .input{
+    display: flex;
+    width: 400px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.add_fixture_table .input_text {
+    width: 360px;
+}
+
+.add_fixture_table .dropdown_img1 {
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+}
+
+.add_fixture_table input{
+    width: 395px;
+    height: 30px;
+    border-radius: 10px;
+    border-color: transparent;
+    margin-left: 20px;
+}
+
+.add_fixture_table .add_schedule_btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #44B454;
+    color: #ffffff;
+    font-size: 18px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 80%;
+}
