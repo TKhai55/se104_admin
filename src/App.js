@@ -11,7 +11,6 @@ import RegisterClub from './Pages/Manager/RegisterClub/RegisterClub';
 import CreateNewLeague from './Pages/Organizer/CreateNewLeague/CreateNewLeague';
 import CreateAccount from './Pages/Administrator/CreateAccount/createAccount';
 import ManageAccount from './Pages/Administrator/ManageAccount/ManagaAccount';
-import Home from './Pages/Manager/Home_tier1/Home';
 import SearchManager from './Pages/Manager/Search/SearchManager';
 import SearchOrganizer from './Pages/Organizer/Search/SearchOrganizer';
 import { Routes, Route } from 'react-router-dom';
@@ -20,8 +19,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Home/>
-      <SearchManager/>
+      <Header/>
       <Footer />
     </div>
   );
