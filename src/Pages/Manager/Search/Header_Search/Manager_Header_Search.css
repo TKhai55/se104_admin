@@ -1,0 +1,87 @@
+.Manager_Header_Search_title{
+    height: 8vh;
+    background-color: #545861;
+    border-radius: 10px 10px 0px 0px;
+    width: auto;
+    margin: 0 12vh;
+    display: flex;
+}
+.Manager_Header_title_icon{
+    padding: 1.3vh 3.6vh;
+    flex:0.5;
+}
+.Manager_Header_title_text{
+    flex: 12;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+.Manager_Header_Search_filter{
+    height: 10vh;
+    background-color: rgba(84, 88, 97, 0.5);
+    width: auto;
+    margin: 0 12vh;
+    display: flex;
+    padding-left: 20px;
+}
+.Manager_txt_header_filter{
+    flex:0.5;
+    margin:20px;
+    padding-top: 5px;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+.Manager_input_header_filter1{
+    flex:2;
+    margin: 20px;
+    border-radius: 10px;
+}
+.Manager_dropdown_select_object{
+    flex:1;
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.Manager_dropdown_select_object:hover .Manager_drop-list{
+    opacity: 1;
+    visibility: visible;
+}
+.Manager_input_header_select_object{
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    min-width: fit-content;
+    width: 200px;
+}
+.Manager_input_header_select_object_icon{
+   float: right;
+}
+.Manager_drop-list{
+    border-radius: 10px;
+    border-color: #44B454;
+    border-style: solid;
+    border-width: 1px;
+    width: fit-content;
+    background-color: #ffffff;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+    display: flex;
+    flex-direction: column;
+}
+.Manager_drop-list__item{
+    padding-left: 10px;
+    font-size: 1rem;
+    width: 200px;
+}
+.Manager_Header_Search .Manager_Header_Search_filter .Manager_dropdown_select_object .Manager_drop-list a{
+    text-decoration: none;
+    color: #000000;
+}
+.Manager_Header_Search .Manager_Header_Search_filter .Manager_dropdown_select_object .Manager_drop-list a:hover{
+    color: #44B454;
+}
