@@ -45,7 +45,10 @@
     padding-top: 2px;
     min-width: 100px;
 }
-.Organizer_information{
+.Organizer_titleContent_searchCoach_item+ .Organizer_titleContent_searchCoach_item{
+    margin-top: 3vh;
+}
+.Organizer_informationCoach{
     border: 1px;
     border-style: solid;
     border-color: #44B454;
@@ -53,6 +56,9 @@
     width: fit-content;
     min-width: 500px;
     text-align: center;
+}
+.Organizer_informationCoach+ .Organizer_informationCoach{
+    margin-top: 3vh;
 }
 .Organizer_typeCoach{
     border-style: solid;

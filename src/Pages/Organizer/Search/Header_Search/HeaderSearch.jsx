@@ -23,9 +23,7 @@ export default function HeaderSearch() {
             <Link to='/SearchOrganizer/club' className='drop-list__item'>Câu lạc bộ</Link>
           </div>
         </div>   
-        <i></i>
       </div>
     </div>
-    
   )
 }

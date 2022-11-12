@@ -15,9 +15,9 @@ export default function SearchClub() {
                 <p className='Manager_titleContent_searchClub_item'>Sân vận động:</p>
             </div>
             <div className='Manager_content_middle_searchClub'>
-                <p className='Manager_information'>Hoàng Anh Gia Lai</p>
-                <p className='Manager_information'>2000</p>
-                <p className='Manager_information'>Hoàng Anh Gia Lai</p>
+                <p className='Manager_informationClub'>Hoàng Anh Gia Lai</p>
+                <p className='Manager_informationClub'>2000</p>
+                <p className='Manager_informationClub'>Hoàng Anh Gia Lai</p>
                 
             </div>
             <div className='Manager_content_right_searchClub'>

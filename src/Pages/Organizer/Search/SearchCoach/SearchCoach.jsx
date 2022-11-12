@@ -15,17 +15,11 @@ export default function SearchCoach() {
                 <p className='Organizer_titleContent_searchCoach_item'>Loại:</p>
             </div>
             <div className='Organizer_content_middle_searchCoach'>
-                <p className='Organizer_information'>Kiatisuk</p>
-                <p className='Organizer_information'>19/08/2002</p>
-                <p className='Organizer_information'>19/08/2002</p>
-                <p className='Organizer_information'>Thái Lan</p>
-                <div className='Organizer_dropdown_select_object'>
-                    <p className='Organizer_typeCoach'>Loại <AiFillCaretDown className='Organizer_icon_dropdown'/></p>
-                        <div className='Organizer_typeCoach--dropList'>
-                            <div className='Organizer_typeCoach--dropList__item'>HLV Trưởng</div>
-                            <div className='Organizer_typeCoach--dropList__item'>Trợ lý HLV</div>
-                        </div>
-                </div>      
+                <p className='Organizer_informationCoach'>Kiatisuk</p>
+                <p className='Organizer_informationCoach'>19/08/2002</p>
+                <p className='Organizer_informationCoach'>19/08/2002</p>
+                <p className='Organizer_informationCoach'>Thái Lan</p>
+                <p className='Organizer_informationCoach'>HLV Trưởng</p>
             </div>
             <div className='Organizer_content_right_searchCoach'>
                 <img className='Organizer_searchCoach--image' src={cp} alt='a'/>

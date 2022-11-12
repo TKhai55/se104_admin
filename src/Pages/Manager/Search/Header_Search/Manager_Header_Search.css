@@ -35,14 +35,15 @@
 }
 .Manager_input_header_filter1{
     flex:2;
-    margin: 20px;
+    margin-top: 3vh;
+    height: 3.5vh;
     border-radius: 10px;
 }
 .Manager_dropdown_select_object{
     flex:1;
-    padding: 5px;
     cursor: pointer;
     position: relative;
+    padding-top: 3vh;
 }
 .Manager_dropdown_select_object:hover .Manager_drop-list{
     opacity: 1;

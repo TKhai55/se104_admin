@@ -12,9 +12,9 @@ export default function SearchClub() {
                 <p className='Organizer_titleContent_searchClub_item'>Sân vận động:</p>
             </div>
             <div className='Organizer_content_middle_searchClub'>
-                <p className='Organizer_information'>Hoàng Anh Gia Lai</p>
-                <p className='Organizer_information'>2000</p>
-                <p className='Organizer_information'>Hoàng Anh Gia Lai</p>
+                <p className='Organizer_informationClub'>Hoàng Anh Gia Lai</p>
+                <p className='Organizer_informationClub'>2000</p>
+                <p className='Organizer_informationClub'>Hoàng Anh Gia Lai</p>
                 
             </div>
             <div className='Organizer_content_right_searchClub'>

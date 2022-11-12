@@ -45,7 +45,11 @@
     padding-top: 2px;
     min-width: 100px;
 }
-.Organizer_information{
+.Organizer_titleContent_searchClub_item+ .Organizer_titleContent_searchClub_item{
+    margin-top: 3vh;
+}
+
+.Organizer_informationClub{
     border: 1px;
     border-style: solid;
     border-color: #44B454;
@@ -53,4 +57,7 @@
     width: fit-content;
     min-width: 500px;
     text-align: center;
+}
+.Organizer_informationClub+ .Organizer_informationClub{
+    margin-top: 3vh;
 }

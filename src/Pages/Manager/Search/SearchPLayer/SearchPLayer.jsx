@@ -19,12 +19,12 @@ export default function SearchPLayer() {
                 <p className='Manager_titleContent_searchPlayer_item'>Loại:</p>
             </div>
             <div className='Manager_content_middle_searchPlayer'>
-                <p className='Manager_information'>Nguyễn Công Phượng</p>
-                <p className='Manager_information'>19/08/2002</p>
-                <p className='Manager_information'>1.80m</p>
-                <p className='Manager_information'>Việt Nam</p>
-                <p className='Manager_information'>10</p>
-                <p className='Manager_information'>Tiền đạo</p>
+                <p className='Manager_informationPlayer'>Nguyễn Công Phượng</p>
+                <p className='Manager_informationPlayer'>19/08/2002</p>
+                <p className='Manager_informationPlayer'>1.80m</p>
+                <p className='Manager_informationPlayer'>Việt Nam</p>
+                <p className='Manager_informationPlayer'>10</p>
+                <p className='Manager_informationPlayer'>Tiền đạo</p>
             </div>
             <div className='Manager_content_right_searchPlayer'>
                 <img className='Manager_searchPLayer--image' src={cp} alt='a'/>

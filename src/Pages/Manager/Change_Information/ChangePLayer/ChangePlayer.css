@@ -47,7 +47,9 @@
     flex:3;
     display: flex;
     flex-direction: column;
-    padding-top: 1.8vh;
+
+    height: fit-content;
+
 }
 .searchPLayer--image_Change{
     border-style: solid;
@@ -74,6 +76,9 @@
     padding-top: 2px;
     min-width: 120px;
 }
+.titleContent_searchPlayer_item_Change+ .titleContent_searchPlayer_item_Change{
+    margin-top: 3vh;
+}
 .Player_information_Change{
     border: 1px;
     border-style: solid;
@@ -83,10 +88,8 @@
     min-width: 500px;
     text-align: center;
     
-    height: 10%;
-}
-.Player_information_Change+.Player_information_Change{
-    margin-top: 3.8vh;
+    height: 3vh;
+    margin-bottom: 2.8vh;
 }
 
 .searchPLayer_button_change_Change{
@@ -123,6 +126,7 @@
     text-align: center;
     min-width: fit-content;
     width: 200px;
+
 }
 .icon_dropdown_Change{
     float: right;

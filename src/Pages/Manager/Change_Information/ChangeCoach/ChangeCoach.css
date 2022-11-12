@@ -47,7 +47,6 @@
     flex:3;
     display: flex;
     flex-direction: column;
-    padding-top: 1.8vh;
 }
 .searchCoach--image_Change{
     border-style: solid;
@@ -74,6 +73,9 @@
     padding-top: 2px;
     min-width: 120px;
 }
+.titleContent_searchCoach_item_Change+ .titleContent_searchCoach_item_Change{
+    margin-top: 3vh;
+}
 .Coach_information_Change{
     border: 1px;
     border-style: solid;
@@ -83,10 +85,8 @@
     min-width: 500px;
     text-align: center;
     
-    height: 10%;
-}
-.Coach_information_Change+.Coach_information_Change{
-    margin-top: 3.8vh;
+    height: 3vh;
+    margin-bottom: 2.8vh;
 }
 .searchCoach_button_change_Change{
     display: flex;

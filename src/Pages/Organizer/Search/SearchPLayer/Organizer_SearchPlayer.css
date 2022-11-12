@@ -45,7 +45,10 @@
     padding-top: 2px;
     min-width: 100px;
 }
-.Organizer_information{
+.Organizer_titleContent_searchPlayer_item+ .Organizer_titleContent_searchPlayer_item{
+    margin-top: 3vh;
+}
+.Organizer_informationPlayer{
     border: 1px;
     border-style: solid;
     border-color: #44B454;
@@ -54,7 +57,9 @@
     min-width: 500px;
     text-align: center;
 }
-
+.Organizer_informationPlayer+ .Organizer_informationPlayer{
+    margin-top: 3vh;
+}
 .Organizer_typePlayer{
     border-style: solid;
     border-radius: 10px;

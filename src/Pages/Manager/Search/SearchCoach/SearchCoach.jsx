@@ -18,11 +18,11 @@ export default function SearchCoach() {
                 <p className='Manager_titleContent_searchCoach_item'>Loại:</p>
             </div>
             <div className='Manager_content_middle_searchCoach'>
-                <p className='Manager_information'>Kiatisuk</p>
-                <p className='Manager_information'>19/08/2002</p>
-                <p className='Manager_information'>19/08/2002</p>
-                <p className='Manager_information'>Thái Lan</p>
-                <p className='Manager_information'>HLV Trưởng</p>
+                <p className='Manager_informationCoach'>Kiatisuk</p>
+                <p className='Manager_informationCoach'>19/08/2002</p>
+                <p className='Manager_informationCoach'>19/08/2002</p>
+                <p className='Manager_informationCoach'>Thái Lan</p>
+                <p className='Manager_informationCoach'>HLV Trưởng</p>
             </div>
             <div className='Manager_content_right_searchCoach'>
                 <img className='Manager_searchCoach--image' src={cp} alt='a'/>

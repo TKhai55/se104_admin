@@ -45,7 +45,10 @@
     padding-top: 2px;
     min-width: 120px;
 }
-.Manager_information{
+.Manager_titleContent_searchPlayer_item+ .Manager_titleContent_searchPlayer_item{
+    margin-top: 3vh;
+}
+.Manager_informationPlayer{
     border: 1px;
     border-style: solid;
     border-color: #44B454;
@@ -53,6 +56,9 @@
     width: fit-content;
     min-width: 500px;
     text-align: center;
+}
+.Manager_informationPlayer+ .Manager_informationPlayer{
+    margin-top: 3vh;
 }
 .Manager_searchPlayer_button_change{
     display: flex;

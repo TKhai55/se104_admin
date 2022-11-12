@@ -16,20 +16,12 @@ export default function SearchPLayer() {
                 <p className='Organizer_titleContent_searchPlayer_item'>Loại:</p>
             </div>
             <div className='Organizer_content_middle_searchPlayer'>
-                <p className='Organizer_information'>Nguyễn Công Phượng</p>
-                <p className='Organizer_information'>19/08/2002</p>
-                <p className='Organizer_information'>1.80m</p>
-                <p className='Organizer_information'>Việt Nam</p>
-                <p className='Organizer_information'>10</p>
-                <div className='Organizer_dropdown_select_object'>
-                    <p className='Organizer_typePlayer'>Loại <AiFillCaretDown className='Organizer_icon_dropdown'/></p>
-                        <div className='Organizer_typePlayer--dropList'>
-                            <div className='Organizer_typePlayer--dropList__item'>Tiền đạo</div>
-                            <div className='Organizer_typePlayer--dropList__item'>Tiền vệ</div>
-                            <div className='Organizer_typePlayer--dropList__item'>Hậu vệ</div>
-                            <div className='Organizer_typePlayer--dropList__item'>Thủ môn</div>
-                        </div>
-                </div>               
+                <p className='Organizer_informationPlayer'>Nguyễn Công Phượng</p>
+                <p className='Organizer_informationPlayer'>19/08/2002</p>
+                <p className='Organizer_informationPlayer'>1.80m</p>
+                <p className='Organizer_informationPlayer'>Việt Nam</p>
+                <p className='Organizer_informationPlayer'>10</p>
+                <p className='Organizer_informationPlayer'>Tiền đạo</p>
             </div>
             <div className='Organizer_content_right_searchPlayer'>
                 <img className='Organizer_searchPLayer--image' src={cp} alt='a'/>
