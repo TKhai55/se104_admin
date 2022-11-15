@@ -1,6 +1,7 @@
 import React from 'react'
 import "./SignIn.css"
 import Header from '../Header/Header'
+import { Link } from 'react-router-dom'
 
 const SignIn = () => {
     return (
@@ -23,7 +24,15 @@ const SignIn = () => {
                             </div>
                             <button className='signin_btn'><h3>Đăng nhập</h3></button>
                         </form>
+
                     </div>
+                </div>
+                <div className="nav">
+                    <ul>
+                        <li><Link to='/manager'>Manager</Link></li>
+                        <li><Link to='/organizer'>Organizer</Link></li>
+                        <li><Link to='/admin'>Admin</Link></li>
+                    </ul>
                 </div>
             </section>
         </div>

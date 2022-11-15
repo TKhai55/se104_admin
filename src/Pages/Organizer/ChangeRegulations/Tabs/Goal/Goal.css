@@ -28,7 +28,9 @@
     cursor: pointer;
 }
 
-.goal-main-container .left-column table tr, td, th {
+.goal-main-container .left-column > table >tr, 
+.goal-main-container .left-column > table>td, 
+.goal-main-container .left-column > table> th {
     border: 1px solid black;
     height: 4vh;
 }

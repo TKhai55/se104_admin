@@ -6,7 +6,7 @@ import search from '../images/search.png'
 import finish from '../images/finish.png'
 import deleteLeague from '../images/delete.png'
 import exit from '../images/exit.png'
-
+import { Link } from 'react-router-dom'
 
 const clubNumber = {
     currentClub: 12,
@@ -25,8 +25,10 @@ export const Home_Organizer_Tier2 = () => {
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button changePolicy">
-                            <img src={changePolicy} alt="changePolicy" />
-                            <p>ĐỔI QUY ĐỊNH</p>
+                            <Link to='/organizer/home/changePolicy'>
+                                <img src={changePolicy} alt="changePolicy" />
+                                <p>ĐỔI QUY ĐỊNH</p>
+                            </Link>
                         </div>
                         <div className="button search">
                             <img src={search} alt="search" />
@@ -47,8 +49,11 @@ export const Home_Organizer_Tier2 = () => {
 
                         </div>
                         <div className="button exit">
-                            <img src={exit} alt="exit" />
-                            <p>THOÁT</p>
+                            <Link to='/organizer'>
+
+                                <img src={exit} alt="exit" />
+                                <p>THOÁT</p>
+                            </Link>
 
                         </div>
                     </div>
