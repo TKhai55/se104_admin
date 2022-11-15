@@ -1,8 +1,4 @@
-.Organizer_Search{
-    background-color: rgba(84, 88, 97, 0.5);
-    min-height: 56.8vh;
-}
-.Manager_Search{
-    background-color: rgba(84, 88, 97, 0.5);
-    min-height: 56.8vh;
+a{
+    text-decoration: none;
+    color: #fff;
 }

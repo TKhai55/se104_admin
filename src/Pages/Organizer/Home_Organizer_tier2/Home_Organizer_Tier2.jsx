@@ -8,7 +8,6 @@ import deleteLeague from '../images/delete.png'
 import exit from '../images/exit.png'
 import { Link } from 'react-router-dom'
 
-
 const clubNumber = {
     currentClub: 12,
     maxClub: 13
@@ -26,16 +25,15 @@ export const Home_Organizer_Tier2 = () => {
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button changePolicy">
-                            <Link to='/Organizer/ChangeRegulations'>
+                            <Link to='/organizer/home/changePolicy'>
                                 <img src={changePolicy} alt="changePolicy" />
                                 <p>ĐỔI QUY ĐỊNH</p>
                             </Link>
                         </div>
                         <div className="button search">
-                            <Link to='/Organizer/Search'>
-                                <img src={search} alt="search" />
-                                <p>TRA CỨU</p>
-                            </Link>
+                            <img src={search} alt="search" />
+                            <p>TRA CỨU</p>
+
                         </div>
                         <div className="button finish">
                             <img src={finish} alt="finish" />
@@ -51,10 +49,12 @@ export const Home_Organizer_Tier2 = () => {
 
                         </div>
                         <div className="button exit">
-                            <Link to='/Organizer'>
+                            <Link to='/organizer'>
+
                                 <img src={exit} alt="exit" />
                                 <p>THOÁT</p>
                             </Link>
+
                         </div>
                     </div>
                 </div>

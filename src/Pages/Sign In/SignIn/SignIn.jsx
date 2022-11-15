@@ -26,7 +26,15 @@ const SignIn = () => {
                             </div>
                             <Link to='/Organizer'><button className='signin_btn'><h3>Đăng nhập</h3></button></Link>
                         </form>
+
                     </div>
+                </div>
+                <div className="nav">
+                    <ul>
+                        <li><Link to='/manager'>Manager</Link></li>
+                        <li><Link to='/organizer'>Organizer</Link></li>
+                        <li><Link to='/admin'>Admin</Link></li>
+                    </ul>
                 </div>
             </section>
         </div>

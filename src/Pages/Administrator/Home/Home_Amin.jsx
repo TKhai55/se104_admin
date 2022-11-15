@@ -4,6 +4,10 @@ import Header from '../Header_Administrator/Header'
 import createAccount from '../images/createAccount.png'
 import manageAccount from '../images/manageAccount.png'
 import exit from '../images/exit.png'
+import { Link } from 'react-router-dom'
+
+
+
 
 
 export const Home_Admin = () => {
@@ -14,17 +18,23 @@ export const Home_Admin = () => {
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button createAccount">
-                            <img src={createAccount} alt="createAccount" />
-                            <p>TẠO TÀI KHOẢN</p>
+                            <Link to='/admin/createAccount'>
+                                <img src={createAccount} alt="createAccount" />
+                                <p>TẠO TÀI KHOẢN</p>
+                            </Link>
                         </div>
                         <div className="button manageAccount">
-                            <img src={manageAccount} alt="manageAccount" />
-                            <p>QUẢN LÝ TÀI KHOẢN</p>
+                            <Link to='/admin/manageAccount'>
+                                <img src={manageAccount} alt="manageAccount" />
+                                <p>QUẢN LÝ TÀI KHOẢN</p>
+                            </Link>
 
                         </div>
                         <div className="button exit">
-                            <img src={exit} alt="exit" />
-                            <p>THOÁT</p>
+                            <Link to='/'>
+                                <img src={exit} alt="exit" />
+                                <p>THOÁT</p>
+                            </Link>
 
                         </div>
                     </div>
