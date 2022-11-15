@@ -118,7 +118,7 @@ const RegisterClub = () => {
                         </div>
                         <Link to='/manager/home/register_club'><button>Thêm</button></Link>
                     </div>
-                    <button className='done'>HOÀN TẤT NHẬP</button>
+                    <Link to='/manager/home'><button className='done'>HOÀN TẤT NHẬP</button></Link>
                 </div>
             </section>
         </div>

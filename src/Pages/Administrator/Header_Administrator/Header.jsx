@@ -11,11 +11,9 @@ const Header = () => {
     return (
         <header >
             <div className='header d_flex' >
-                <Link to='/admin' className='HomepageLink'>
-                    <div className="logo" >
-                        <img className='mainlogo' src={logo} alt="logo" />
-                    </div>
-                </Link>
+                <div className="logo" >
+                    <img className='mainlogo' src={logo} alt="logo" />
+                </div>
                 <div className="title">
                     <h2>QUẢN TRỊ VIÊN</h2>
                 </div>

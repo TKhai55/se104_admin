@@ -11,11 +11,9 @@ const Header = () => {
     return (
         <header >
             <div className='header d_flex' >
-                <Link to='/organizer/home' className='HomepageLink'>
-                    <div className="logo" >
-                        <img className='mainlogo' src={logo} alt="logo" />
-                    </div>
-                </Link>
+                <div className="logo" >
+                    <img className='mainlogo' src={logo} alt="logo" />
+                </div>
                 <div className="title">
                     <h2>BAN TỔ CHỨC</h2>
                 </div>

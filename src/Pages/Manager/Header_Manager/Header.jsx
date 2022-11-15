@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
 const Header = () => {
     return (
         <header >
             <div className='header d_flex' >
-                <Link to='/manager/home' className='HomepageLink'>
-                    <div className="logo" >
-                        <img className='mainlogo' src={logo} alt="logo" />
-                    </div>
-                </Link>
+                <div className="logo" >
+                    <img className='mainlogo' src={logo} alt="logo" />
+                </div>
                 <div className="title">
                     <h2>BAN QUẢN LÝ</h2>
                 </div>

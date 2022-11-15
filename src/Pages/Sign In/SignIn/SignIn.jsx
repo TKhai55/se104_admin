@@ -9,11 +9,11 @@ const SignIn = () => {
             <Header />
             <section className='SignIn'>
                 <div className="Signbox">
-                    <Link to='/Manager'>
-                        <div className="title">
+
+                    <div className="title">
                         <h3>Đăng nhập</h3>
-                        </div>
-                    </Link>
+                    </div>
+
                     <div className="content">
                         <form>
                             <div className="form_content">
@@ -24,7 +24,7 @@ const SignIn = () => {
                                 <label htmlFor="password">Mật khẩu</label>
                                 <input type="password" name="password" id="password" placeholder="Mật khẩu" />
                             </div>
-                            <Link to='/Organizer'><button className='signin_btn'><h3>Đăng nhập</h3></button></Link>
+                            <button className='signin_btn'><h3>Đăng nhập</h3></button>
                         </form>
 
                     </div>

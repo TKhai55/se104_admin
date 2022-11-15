@@ -5,9 +5,6 @@
     display: flex;
     background-color: #44B454;
 }
-.HomepageLink{
-    margin-left: 10vw;
-}
 header .logo, header .user{
     width: 25%;
     height: 100%;
