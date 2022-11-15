@@ -4,7 +4,7 @@
     border-radius: 10px;
     min-height: 60vh;
     height: fit-content;
-    max-width: 55vw;
+    max-width: 60vw;
     padding: 8vh 4vw 0 4vw;
 
     display: flex;
@@ -85,9 +85,11 @@
     border-style: solid;
     border-color: #44B454;
     border-radius: 10px;
+
     width: fit-content;
     min-width: 300px;
     text-align: center;
+    position:static;
     
     height: 3vh;
     margin-bottom: 2.8vh;

@@ -30,7 +30,7 @@ const CreateNewLeague = () => {
                             </div>
                         </div>
                     </div>
-                    <Link to='/Organizer/HomePage'><button className='createLeague'>Tạo mùa giải mới</button></Link>
+                    <Link to='/organizer'><button className='createLeague'>Tạo mùa giải mới</button></Link>
                 </div>
             </section>
         </div>

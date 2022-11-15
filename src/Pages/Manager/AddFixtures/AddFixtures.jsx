@@ -91,7 +91,7 @@ const AddFixtures = () => {
                     })
                 }
                 <div className="btn-add-wrapper">
-                    <Link to='/Manager/AddFixtures/AddFixture'>
+                    <Link to='/manager/home/addmatch'>
                         <button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button>
                     </Link>
                 </div>

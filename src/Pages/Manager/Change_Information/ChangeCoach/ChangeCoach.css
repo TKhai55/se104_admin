@@ -84,6 +84,7 @@
     width: fit-content;
     min-width: 300px;
     text-align: center;
+    position:static;
     
     height: 3vh;
     margin-bottom: 2.8vh;

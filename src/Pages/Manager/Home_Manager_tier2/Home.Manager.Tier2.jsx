@@ -41,8 +41,10 @@ export const Home_Manager_Tier2 = () => {
 
                         </div>
                         <div className="button search">
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
+                            <Link to='/manager/home/search'>
+                                <img src={search} alt="search" />
+                                <p>TRA CỨU</p>
+                            </Link>
 
                         </div>
                     </div>
