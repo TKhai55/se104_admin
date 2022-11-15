@@ -12,11 +12,6 @@ export default function SearchOrganizer() {
     <div className='Organizer_body'>
       <Header/>
       <HeaderSearch/>
-      <Routes>
-        <Route path='/SearchOrganizer/player' element={<SearchPLayer />} />    
-        <Route path='/SearchOrganizer/coach' element={<SearchCoach />} />    
-        <Route path='/SearchOrganizer/club' element={<SearchClub />} />    
-      </Routes>
     </div>
   )
 }

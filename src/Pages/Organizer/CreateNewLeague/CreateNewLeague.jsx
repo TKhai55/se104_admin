@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Header_Organizer/Header'
 import './CreateNewLeague.css'
+import { Link } from 'react-router-dom'
 
 const CreateNewLeague = () => {
     return (
@@ -29,7 +30,7 @@ const CreateNewLeague = () => {
                             </div>
                         </div>
                     </div>
-                    <button className='createLeague'>Tạo mùa giải mới</button>
+                    <Link to='/Organizer/HomePage'><button className='createLeague'>Tạo mùa giải mới</button></Link>
                 </div>
             </section>
         </div>

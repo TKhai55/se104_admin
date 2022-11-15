@@ -18,9 +18,9 @@ export default function HeaderSearch() {
         <div className='dropdown_select_object'>
           <p className='input_header_select_object'>Đối tượng <AiFillCaretDown className='input_header_select_object_icon'/></p>
           <div className='drop-list'>
-            <Link to='/SearchOrganizer/player' className='drop-list__item'>Cầu thủ</Link>
-            <Link to='/SearchOrganizer/coach' className='drop-list__item'>Huấn luyện viên</Link>
-            <Link to='/SearchOrganizer/club' className='drop-list__item'>Câu lạc bộ</Link>
+            <Link to='/Organizer/Search/Player' className='drop-list__item'>Cầu thủ</Link>
+            <Link to='/Organizer/Search/Coach' className='drop-list__item'>Huấn luyện viên</Link>
+            <Link to='/Organizer/Search/Club' className='drop-list__item'>Câu lạc bộ</Link>
           </div>
         </div>   
       </div>

@@ -46,6 +46,10 @@
     vertical-align: middle;
     font-weight: 500;
 }
+.Home_tier1 .home_container .league_table a{
+    text-decoration: none;
+    color:#fff;
+}
 .Home_tier1 .home_container .add_league{
     margin-top: 1.5vh;
     color: white;

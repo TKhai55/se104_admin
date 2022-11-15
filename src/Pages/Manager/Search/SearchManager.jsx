@@ -12,11 +12,6 @@ export default function SearchManager() {
     <div className='Manager_body'>
       <Header/>
       <HeaderSearch/>
-      <Routes>
-        <Route path='/SearchManager/player' element={<SearchPLayer />} />    
-        <Route path='/SearchManager/coach' element={<SearchCoach />} />    
-        <Route path='/SearchManager/club' element={<SearchClub />} />    
-      </Routes>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import createResult from '../images/createReasult.png'
 import createReport from '../images/createReport.png'
 import search from '../images/search.png'
 import exit from '../images/exit.png'
+import { Link } from 'react-router-dom'
 
 
 
@@ -28,35 +29,42 @@ export const Home_Manager_Tier2 = () => {
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button createClub">
-                            <img src={createClub} alt="createCLub" />
-                            <p>ĐĂNG KÍ ĐỘI BÓNG</p>
+                            <Link to='/Manager/RegisterClub'>
+                                <img src={createClub} alt="createCLub" />
+                                <p>ĐĂNG KÍ ĐỘI BÓNG</p>
+                            </Link>             
                         </div>
                         <div className="button createMatch">
-                            <img src={createMatch} alt="createMatch" />
-                            <p>TẠO TRẬN ĐẤU</p>
-
+                            <Link to='/Manager/AddFixtures'>
+                                <img src={createMatch} alt="createMatch" />
+                                <p>TẠO TRẬN ĐẤU</p>
+                            </Link>
                         </div>
                         <div className="button search">
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
-
+                            <Link to='/Manager/Search'>
+                                <img src={search} alt="search" />
+                                <p>TRA CỨU</p>
+                            </Link>
                         </div>
                     </div>
                     <div className="row2">
                         <div className="button createResult">
-                            <img src={createResult} alt="createResult" />
-                            <p>GHI NHẬN KẾT QUẢ</p>
-
+                            <Link to='/Manager/AddResult'>
+                                <img src={createResult} alt="createResult" />
+                                <p>GHI NHẬN KẾT QUẢ</p>
+                            </Link>
                         </div>
                         <div className="button createReport">
-                            <img src={createReport} alt="createReport" />
-                            <p>LẬP BÁO CÁO</p>
-
-
+                            <Link to='/Manager/CreateReport'>
+                                <img src={createReport} alt="createReport" />
+                                <p>LẬP BÁO CÁO</p>
+                            </Link>
                         </div>
                         <div className="button exit">
-                            <img src={exit} alt="exit" />
-                            <p>THOÁT</p>
+                            <Link to='/Manager'>
+                                <img src={exit} alt="exit" />
+                                <p>THOÁT</p>
+                            </Link>
 
                         </div>
                     </div>

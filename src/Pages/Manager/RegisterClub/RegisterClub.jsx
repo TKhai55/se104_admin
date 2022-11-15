@@ -1,7 +1,8 @@
 import React from 'react'
 import './RegisterClub.css'
-import Header from '../../Administrator/Header_Administrator/Header'
+import Header from '../Header_Manager/Header'
 import createClub from '../images/createClub.png'
+import { Link } from 'react-router-dom'
 
 
 const table = [
@@ -115,7 +116,7 @@ const RegisterClub = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <button>Thêm</button>
+                        <Link to='/Manager/Register_Club'><button>Thêm</button></Link>
                     </div>
                     <button className='done'>HOÀN TẤT NHẬP</button>
                 </div>

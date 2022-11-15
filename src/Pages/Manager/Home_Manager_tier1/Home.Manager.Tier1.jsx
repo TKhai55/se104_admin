@@ -42,12 +42,12 @@ const Home = () => {
                             {
                                 league.map(league => {
                                     return (
-                                        // <Link to='/club/detailclub'>
+                                        <Link to='/Manager/HomePage'>
                                         <tr className='league_infor' key={league.id}>
                                             <td className='logo'><img src={league.logo} alt={league.name} className='league_logo' /></td>
                                             <td className='league_name'>{league.name}</td>
                                         </tr>
-                                        // </Link>
+                                        </Link>
                                     )
                                 })
                             }

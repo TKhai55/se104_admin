@@ -1,5 +1,6 @@
 import React from 'react'
 import './AddFixtures.css'
+import { Link } from 'react-router-dom'
 
 const rounds = ['Vòng 1', 'Vòng 2', 'Vòng 3']
 
@@ -89,9 +90,10 @@ const AddFixtures = () => {
                         )
                     })
                 }
-
                 <div className="btn-add-wrapper">
-                    <button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button>
+                    <Link to='/Manager/AddFixtures/AddFixture'>
+                        <button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button>
+                    </Link>
                 </div>
         </div>
     </div>

@@ -4,8 +4,9 @@
     border-radius: 10px;
     min-height: 60vh;
     height: fit-content;
-    min-width: 65vw;
+    max-width: 55vw;
     padding: 8vh 4vw 0 4vw;
+
     display: flex;
     flex-direction: column;
 }
@@ -13,7 +14,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    margin:20vh 15vw;
+    margin:20vh 20vw;
 }
 .popup_inner{
     position: relative;
@@ -85,7 +86,7 @@
     border-color: #44B454;
     border-radius: 10px;
     width: fit-content;
-    min-width: 500px;
+    min-width: 300px;
     text-align: center;
     
     height: 3vh;
@@ -96,7 +97,6 @@
     display: flex;
     flex-direction:row;
     justify-content: flex-end;
-
 }
 .searchPlayer_button_exit_Change{
     background-color: #B44444;
@@ -105,7 +105,6 @@
     width: 5vw;
     height: 5vh;
     margin: 1vh 1vw;
-    justify-content: flex-end;
     color: white;
 }
 .searchPlayer_button_fix_Change{
@@ -115,7 +114,6 @@
     width: 5vw;
     height: 5vh;
     margin: 1vh 1vw;
-    justify-content: flex-end;
     color: white;
 }
 .typePlayer_Change{
@@ -126,7 +124,6 @@
     text-align: center;
     min-width: fit-content;
     width: 200px;
-
 }
 .icon_dropdown_Change{
     float: right;
