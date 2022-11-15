@@ -44,22 +44,24 @@ const Home = () => {
                             {
                                 league.map(league => {
                                     return (
-                                        // <Link to='/club/detailclub'>
-                                        <tr className='league_infor' key={league.id}>
-                                            <td className='logo'><img src={league.logo} alt={league.name} className='league_logo' /></td>
-                                            <td className='league_name'>{league.name}</td>
-                                        </tr>
-                                        // </Link>
+                                        <Link to='/organizer/home'>
+                                            <tr className='league_infor' key={league.id}>
+                                                <td className='logo'><img src={league.logo} alt={league.name} className='league_logo' /></td>
+                                                <td className='league_name'>{league.name}</td>
+                                            </tr>
+                                        </Link>
                                     )
                                 })
                             }
                         </tbody>
                     </table>
-                    <button className='add_league'>
-                        Tạo giải đấu mới
-                        <span>  </span>
-                        <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
-                    </button>
+                    <Link to='/organizer/addLeague'>
+                        <button className='add_league'>
+                            Tạo giải đấu mới
+                            <span>  </span>
+                            <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
+                        </button>
+                    </Link>
                 </div>
             </section>
         </div>

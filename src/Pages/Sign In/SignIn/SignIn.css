@@ -12,6 +12,7 @@ Header{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .SignIn .Signbox{
     width: 40%;
@@ -78,4 +79,9 @@ Header{
 .SignIn .content .signin_btn:active{
     background-color: #22b638;
 
+}
+.SignIn  >.nav{
+    position: absolute;
+    top: 10px;
+    left: 100px;
 }
