@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <header >
             <div className='header d_flex' >
-                <Link to='/Manager/HomePage' className='HomepageLink'>
+                <Link to='/manager/home' className='HomepageLink'>
                     <div className="logo" >
                         <img className='mainlogo' src={logo} alt="logo" />
                     </div>
