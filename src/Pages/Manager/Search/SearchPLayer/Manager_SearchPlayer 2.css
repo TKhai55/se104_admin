@@ -1,0 +1,87 @@
+.Manager_SearchPlayer{
+    margin: 0 12vh;
+    background: #FFFFFF;
+    border: 1px solid #44B454;
+    border-radius: 0px 0px 10px 10px;
+    min-height: 60vh;
+    height: fit-content;
+    padding: 10vh 4vw 0 4vw;
+    display: flex;
+    flex-direction: column;
+}
+.Manager_SearchPlayer-content {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10vh;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.Manager_content_right_searchPlayer{
+    flex:1;
+    position: relative;
+    width: 200px;
+}
+.Manager_content_left_searchPlayer{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+.Manager_content_middle_searchPlayer{
+    flex:3;
+    display: flex;
+    flex-direction: column;
+}
+.Manager_searchPLayer--image{
+    border-style: solid;
+    border-color: #44B454;
+    border-width: 1px;
+    width: 15vw;
+    height: 20vh;
+    max-width: 15vw;
+    max-height: 20vh;
+
+}
+.Manager_titleContent_searchPlayer_item{
+    padding-top: 2px;
+    min-width: 120px;
+}
+.Manager_titleContent_searchPlayer_item+ .Manager_titleContent_searchPlayer_item{
+    margin-top: 3vh;
+}
+.Manager_informationPlayer{
+    border: 1px;
+    border-style: solid;
+    border-color: #44B454;
+    border-radius: 10px;
+    width: fit-content;
+    min-width: 500px;
+    text-align: center;
+}
+.Manager_informationPlayer+ .Manager_informationPlayer{
+    margin-top: 3vh;
+}
+.Manager_searchPlayer_button_change{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end;
+}
+.Manager_searchPlayer_button_delete{
+    background-color: #B44444;
+    border-radius: 10px;
+    border:none;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh 1vw;
+    justify-content: flex-end;
+    color: white;
+}
+.Manager_searchPlayer_button_fix{
+    background-color: #2478C6;
+    border-radius: 10px;
+    border:none;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh 1vw;
+    justify-content: flex-end;
+    color: white;
+}

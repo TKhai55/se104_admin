@@ -2,6 +2,7 @@ import React from 'react'
 import './DetailAddResult.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDeleteLeft, faPlus, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import Header from '../Header_Manager/Header'
 
 const eventsInMatch = [
     {
@@ -64,46 +65,13 @@ const eventsInMatch = [
 
 const DetailAddResult = () => {
   return (
-    <div className='detail-add-result-main-wrapper'>
+    <>
+        <Header/>
+        <div className='detail-add-result-main-wrapper'>
         <div className="detail-add-result-header">GHI NHẬN KẾT QUẢ</div>
         <div className="detail-add-result-content">
-            <div className="detail-add-result-content-wrapper">
-                <div className="team-1">
-                    <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" style={{width: '5vw', height: '5vw'}}/>
-                    <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
-                </div>
 
-                <div className="match-result">2 - 2</div>
-
-                <div className="team-2">
-                    <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2" style={{width: '5vw', height: '5vw'}}/>
-                    <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
-                </div>
-            </div>
-
-            <div className="timeline">
-                <div className="vertical-ruler"></div>
-                {
-                    eventsInMatch.map((event, index) => {
-                        const team = event.team === '1' ? 'left' : 'right'
-                        const color = (event.type === 'Ghi ban' ? '#44b454' : (event.type === 'The vang' ? '#fbd000' : '#b44444'))
-                        
-                        return (
-                            <div key={index} className={"timeline-container " + team}>
-                                <div className="timeline-circle" style={{backgroundColor: color}}></div>
-                                <div className="timeline-content">
-                                    <div className={"arrow-"+team}></div>
-                                    <h2>{event.time+'\''}</h2>
-                                    <h3>{event.performer}</h3>
-                                    <h4>{event.type}</h4>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-
-            <div className="information-input-wrapper">
+        <div className="information-input-wrapper">
                 <div className="club-input-wrapper">
                     <label htmlFor="club-input">Câu lạc bộ</label>
                     <select name="club-input" id="club-input" style={{width: '10vw', height: '3.5vh'}}>
@@ -150,14 +118,51 @@ const DetailAddResult = () => {
                     </select>
                 </div>
             </div>
-
             <div className="btn-wrapper">
                 <button className='btn-delete-result'>Xoá <FontAwesomeIcon icon={faDeleteLeft} /></button>
                 <button className='btn-add-result'>Thêm <FontAwesomeIcon icon={faPlus}/></button>
                 <button className='btn-save-result'>Lưu <FontAwesomeIcon icon={faFloppyDisk}/></button>
             </div>
+
+
+            <div className="detail-add-result-content-wrapper">
+                <div className="team-1">
+                    <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" style={{width: '5vw', height: '5vw'}}/>
+                    <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
+                </div>
+
+                <div className="match-result">2 - 2</div>
+
+                <div className="team-2">
+                    <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2" style={{width: '5vw', height: '5vw'}}/>
+                    <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
+                </div>
+            </div>
+
+            <div className="timeline">
+                <div className="vertical-ruler"></div>
+                {
+                    eventsInMatch.map((event, index) => {
+                        const team = event.team === '1' ? 'left' : 'right'
+                        const color = (event.type === 'Ghi ban' ? '#44b454' : (event.type === 'The vang' ? '#fbd000' : '#b44444'))
+                        
+                        return (
+                            <div key={index} className={"timeline-container " + team}>
+                                <div className="timeline-circle" style={{backgroundColor: color}}></div>
+                                <div className="timeline-content">
+                                    <div className={"arrow-"+team}></div>
+                                    <h2>{event.time+'\''}</h2>
+                                    <h3>{event.performer}</h3>
+                                    <h4>{event.type}</h4>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     </div>
+    </>
   )
 }
 
