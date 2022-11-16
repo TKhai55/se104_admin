@@ -13,17 +13,17 @@ const ChangeRegulations = () => {
         <div className="change-regulations-content-wrapper">
             <div className="change-regulations-tabs">
                 <div className="tab-header-list">
-                    <div className={`tab-header h-0 ${index === 0 ? 'active' : null}`} onClick={() => {setIndex(0)}}>
+                    <div className={`tab-header ${index === 0 ? 'active' : null}`} onClick={() => {setIndex(0)}}>
                         <b></b>
                         <b></b>
                         Bàn thắng
                     </div>
-                    <div className={`tab-header h-1 ${index === 1 ? 'active' : null}`} onClick={() => {setIndex(1)}}>
+                    <div className={`tab-header ${index === 1 ? 'active' : null}`} onClick={() => {setIndex(1) }}>
                         <b></b>
                         <b></b>
                         Cầu thủ / CLB
                     </div>
-                    <div className={`tab-header h-2 ${index === 2 ? 'active' : null}`} onClick={() => {setIndex(2)}}>
+                    <div className={`tab-header ${index === 2 ? 'active' : null}`} onClick={() => {setIndex(2)}}>
                         <b></b>
                         <b></b>
                         Điểm số
