@@ -63,7 +63,11 @@
     text-align: center;
     font-size: 17px;
     position: relative;
+    background-color: #787575;
+    border-radius: 20px 20px 0 0;
     transition: .6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    margin-left: 20px;
+    color: rgb(206, 211, 206);
 }
 
 .change-regulations-tabs .tab-header-list .tab-header:hover {
@@ -117,6 +121,12 @@
     background-color: #3f4249;
     border-bottom-left-radius: 15px;
     
+}
+
+.change-regulations-tabs .tab-header-list .tab-header.active {
+    background-color: #cdc9c9;
+    z-index: 10;
+    color: black;
 }
 
 .change-regulations-tabs .tab-header-list .tab-header.active b:nth-child(1),
