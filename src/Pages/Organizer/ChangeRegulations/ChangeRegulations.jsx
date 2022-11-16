@@ -3,12 +3,15 @@ import './ChangeRegulations.css'
 import Goal from './Tabs/Goal/Goal'
 import Player from './Tabs/Player/Player'
 import Score from './Tabs/Score/Score'
+import Header from '../../Organizer/Header_Organizer/Header'
 
 const ChangeRegulations = () => {
     const [index, setIndex] = useState(0)
 
   return (
-    <div className='change-regulations-main-wrapper'>
+    <>
+        <Header/>
+        <div className='change-regulations-main-wrapper'>
         <div className="change-regulations-header">ĐỔI QUY ĐỊNH</div>
         <div className="change-regulations-content-wrapper">
             <div className="change-regulations-tabs">
@@ -36,6 +39,7 @@ const ChangeRegulations = () => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 
