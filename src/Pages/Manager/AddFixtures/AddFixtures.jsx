@@ -1,23 +1,30 @@
 import React from 'react'
 import './AddFixtures.css'
+import Header from '../Header_Manager/Header'
+import { Link } from 'react-router-dom'
 
 const rounds = ['Vòng 1', 'Vòng 2', 'Vòng 3']
 
 const AddFixtures = () => {
   return (
-    <div className='add-fixtures-main-wrapper'>
+    <>
+        <Header/>
+        <div className='add-fixtures-main-wrapper'>
         <h1 className="add-fixtures-header">LỊCH THI ĐẤU</h1>
         <div className="add-fixtures-content">
             <div className="round-chooser-wrapper">
                 <label htmlFor="rounds" id="round-select-label">Vòng đấu</label>
-                    <select name="rounds" id="round-select">
-                        <option value="0" selected>Tất cả</option>
+                <select name="rounds" id="round-select">
+                    <option value="0" selected>Tất cả</option>
                         {
-                            rounds.map((round) => {
-                                return <option value={round}>{round}</option>
-                            })
-                        }
-                    </select>
+                        rounds.map((round) => {
+                            return <option value={round}>{round}</option>
+                        })
+                    }
+                </select>
+                <div className="btn-add-wrapper">
+                    <Link to='/manager/home/createMatch/detailCreateMatch'><button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button></Link>
+                </div>
             </div>
                 {
                     rounds.map((round) => {
@@ -90,11 +97,10 @@ const AddFixtures = () => {
                     })
                 }
 
-                <div className="btn-add-wrapper">
-                    <button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button>
-                </div>
+                
         </div>
     </div>
+    </>
   )
 }
 

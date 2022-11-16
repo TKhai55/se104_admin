@@ -9,6 +9,8 @@ import HomeManagerTier2 from './Pages/Manager/Home_Manager_tier2/Home.Manager.Ti
 import AddFixtures from './Pages/Manager/AddFixtures/AddFixtures';
 import AddResult from './Pages/Manager/AddResult/AddResult';
 import Create_Report from './Pages/Manager/Create_Report/Create_Report';
+import DetailAddResult from './Pages/Manager/DetailAddResult/DetailAddResult';
+import AddFixtureDetail from './Pages/Manager/Add_Fixture/Add_Fixture'
 //Manager
 
 //Organizer
@@ -42,8 +44,9 @@ function App() {
         <Route exact path='/manager/home' element={<HomeManagerTier2 />} />
         <Route exact path='/manager/home/createCLub' element={<RegisterClub />} />
         <Route exact path='/manager/home/createMatch' element={<AddFixtures />} />
+        <Route exact path='/manager/home/createMatch/detailCreateMatch' element={<AddFixtureDetail />} />
         <Route exact path='/manager/home/createResult' element={<AddResult />} />
-        <Route exact path='/manager/home/createResult' element={<AddResult />} />
+        <Route exact path='/manager/home/createResult/detailAddResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/createReport' element={<Create_Report />} />
         {/* Manager */}
 

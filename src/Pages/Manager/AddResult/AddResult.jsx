@@ -1,12 +1,16 @@
 import React from 'react'
 import './AddResult.css'
+import Header from '../Header_Manager/Header'
+import { Link } from 'react-router-dom'
 
 const rounds = ['Vòng 1', 'Vòng 2', 'Vòng 3']
 
 
 const AddResult = () => {
   return (
-    <div className='add-fixtures-main-wrapper'>
+    <>
+        <Header/>
+        <div className='add-fixtures-main-wrapper'>
         <h1 className="add-fixtures-header">LỊCH THI ĐẤU</h1>
         <div className="add-fixtures-content">
             <div className="round-chooser-wrapper">
@@ -27,71 +31,80 @@ const AddResult = () => {
                                 <tr>
                                     <th>{round} / {rounds.length}</th>
                                 </tr>
-                                <tr className='round-info'>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
-                                        <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
-                                    </td>
-                                    <td id="time">
-                                        <h4>17:00</h4>
-                                        <h4 id="date">Th 6, 30/09/2022</h4>
-                                    </td>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
-                                        <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
-                                    </td>
-                                </tr>
+                               <Link to='/manager/home/createResult/detailAddResult'>
+                                    <tr className='round-info'>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
+                                            <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
+                                        </td>
+                                        <td id="time">
+                                            <h4>17:00</h4>
+                                            <h4 id="date">Th 6, 30/09/2022</h4>
+                                        </td>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
+                                            <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
+                                        </td>
+                                    </tr>
+                               </Link>
 
-                                <tr className='round-info'>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
-                                        <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
-                                    </td>
-                                    <td id="time">
-                                        <h4>17:00</h4>
-                                        <h4 id="date">Th 6, 30/09/2022</h4>
-                                    </td>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
-                                        <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
-                                    </td>
-                                </tr>
+                                <Link to='/manager/home/createResult/detailAddResult'>
+                                    <tr className='round-info'>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
+                                            <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
+                                        </td>
+                                        <td id="time">
+                                            <h4>17:00</h4>
+                                            <h4 id="date">Th 6, 30/09/2022</h4>
+                                        </td>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
+                                            <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
+                                        </td>
+                                    </tr>
+                                </Link>
 
-                                <tr className='round-info'>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
-                                        <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
-                                    </td>
-                                    <td id="time">
-                                        <h4>17:00</h4>
-                                        <h4 id="date">Th 6, 30/09/2022</h4>
-                                    </td>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
-                                        <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
-                                    </td>
-                                </tr>
+                                <Link to='/manager/home/createResult/detailAddResult'>
+                                    <tr className='round-info'>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
+                                            <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
+                                        </td>
+                                        <td id="time">
+                                            <h4>17:00</h4>
+                                            <h4 id="date">Th 6, 30/09/2022</h4>
+                                        </td>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
+                                            <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
+                                        </td>
+                                    </tr>
+                                </Link>
 
-                                <tr className='round-info'>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
-                                        <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
-                                    </td>
-                                    <td id="time">
-                                        <h4>17:00</h4>
-                                        <h4 id="date">Th 6, 30/09/2022</h4>
-                                    </td>
-                                    <td className='signature'>
-                                        <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
-                                        <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
-                                    </td>
-                                </tr>
+                                <Link to='/manager/home/createResult/detailAddResult'>
+                                    <tr className='round-info'>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-1" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/1200px-Hoang_Anh_Gia_Lai_FC_logo.svg.png" alt="Hoang Anh Gia Lai Logo" name="logo-1" />
+                                            <label htmlFor="logo-1" id="logo-1">Hoang Anh Gia Lai</label>
+                                        </td>
+                                        <td id="time">
+                                            <h4>17:00</h4>
+                                            <h4 id="date">Th 6, 30/09/2022</h4>
+                                        </td>
+                                        <td className='signature'>
+                                            <img className="club-logo club-logo-2" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/21/H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg/1200px-H%E1%BA%A3i_Ph%C3%B2ng_FC_2021.svg.png" alt="Hai Phong Logo" name="logo-2"/>
+                                            <label htmlFor="logo-2" id="logo-2">Hai Phong</label>
+                                        </td>
+                                    </tr>
+                                </Link>
                             </table>
                         )
                     })
                 }
         </div>
     </div>
+    </>
   )
 }
 
