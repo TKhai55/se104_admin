@@ -231,7 +231,7 @@
     position: relative;    
   }
 
-  .detail-add-result-content .information-input-wrapper select, input {
+  .detail-add-result-content .information-input-wrapper select, .detail-add-result-content .information-input-wrapper input {
     position: absolute;
     right: 4vw;
     border: none;
