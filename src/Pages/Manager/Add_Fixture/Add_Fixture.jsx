@@ -40,7 +40,7 @@ function Add_Fixture() {
                   <div className='input_col'>
                       <div className='input_cotainer'>
                           <div className='label'>Thời gian:</div>
-                          <input type='date'/>
+                          <input className='input_date' type='date'/>
                       </div>
                       <div className='input_cotainer'>
                           <div className='label'>Sân:</div>
