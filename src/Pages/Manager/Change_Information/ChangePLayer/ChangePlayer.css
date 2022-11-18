@@ -4,7 +4,7 @@
     border-radius: 10px;
     min-height: 60vh;
     height: fit-content;
-    max-width: 60vw;
+    width: 60vw;
     padding: 8vh 4vw 0 4vw;
 
     display: flex;
