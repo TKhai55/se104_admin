@@ -87,7 +87,7 @@
     position:static;
     
     height: 3vh;
-    margin-bottom: 2.8vh;
+    margin-bottom: 3.1vh;
 }
 
 .searchClub_button_change_Change{
@@ -116,4 +116,9 @@
     margin: 1vh 1vw;
     justify-content: flex-end;
     color: white;
+}
+button:hover{
+    color: black;
+    background-color: cadetblue;
+    cursor: pointer;
 }

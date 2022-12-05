@@ -67,7 +67,6 @@ export const Home_Manager_Tier2 = () => {
                         </div>
                         <div className="button exit">
                             <Link to='/manager'>
-
                                 <img src={exit} alt="exit" />
                                 <p>THOÁT</p>
                             </Link>
