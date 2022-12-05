@@ -142,3 +142,7 @@
     color: #c1c2c5;
     margin-top: 5px;
 }
+.round-table a{
+    text-decoration: none;
+    color: #fff;
+}

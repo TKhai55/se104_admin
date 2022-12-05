@@ -106,7 +106,7 @@ const DetailAddResult = () => {
 
                 <div className="time-input-wrapper">
                     <label htmlFor="time-input">Thời gian</label>
-                    <input type="text" name='time-input' id='time-input' placeholder='Nhap thoi gian' style={{width: '10vw', height: '3.5vh'}}/>
+                    <input className='input_time' type="text" name='time-input' id='time-input' placeholder='Nhap thoi gian' style={{width: '10vw', height: '3.5vh'}}/>
                 </div>
 
                 <div className="type-input-wrapper">

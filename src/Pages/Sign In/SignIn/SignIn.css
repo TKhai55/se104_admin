@@ -60,6 +60,8 @@ Header{
     border-radius: 8px;
     margin-bottom: 1vh;
     border: none;
+    position: static;
+
     /* border-color: #f8f8f8; */
 }
 .SignIn .form_content input:focus{

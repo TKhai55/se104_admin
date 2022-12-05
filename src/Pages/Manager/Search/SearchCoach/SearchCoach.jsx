@@ -1,37 +1,49 @@
 import React from 'react'
 import './Manager_SearchCoach.css'
 import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 import ChangeCoach from '../../Change_Information/ChangeCoach/ChangeCoach'
 import { useState } from 'react'
 
+const table = [
+    {
+        id: 0,
+        avt: cp,
+        name: 'Kiatisuk',
+        club: 'Hoàng Anh Gia Lai',
+        country: 'Thái Lan'
+    },
+    {
+        id: 0,
+        avt: cp,
+        name: 'Kiatisuk',
+        club: 'Hoàng Anh Gia Lai',
+        country: 'Thái Lan'
+    },
+]
 export default function SearchCoach() {
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='Manager_SearchCoach'>
-        <div className='Manager_SearchCoach-content'>
-            <div className='Manager_content_left_searchCoach'>
-                <p className='Manager_titleContent_searchCoach_item'>Họ tên:</p>
-                <p className='Manager_titleContent_searchCoach_item'>Ngày sinh:</p>
-                <p className='Manager_titleContent_searchCoach_item'>Ngày tham gia:</p>
-                <p className='Manager_titleContent_searchCoach_item'>Quốc tịch:</p>
-                <p className='Manager_titleContent_searchCoach_item'>Loại:</p>
-            </div>
-            <div className='Manager_content_middle_searchCoach'>
-                <p className='Manager_informationCoach'>Kiatisuk</p>
-                <p className='Manager_informationCoach'>19/08/2002</p>
-                <p className='Manager_informationCoach'>19/08/2002</p>
-                <p className='Manager_informationCoach'>Thái Lan</p>
-                <p className='Manager_informationCoach'>HLV Trưởng</p>
-            </div>
-            <div className='Manager_content_right_searchCoach'>
-                <img className='Manager_searchCoach--image' src={cp} alt='a'/>
-            </div>
+        <div className='Manager_header_listCoach'>
+            <p id='Manager_content--hlv'>Huấn luyện viên</p>
+            <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
+            <p id='Manager_content--quoctich'>Quốc tich</p>
         </div>
-        <div className='Manager_searchCoach_button_change'>
-            <button className='Manager_searchCoach_button_delete'>Xóa</button>
-            <button className='Manager_searchCoach_button_fix' onClick={() => setButtonPopup(true)}>Sửa</button>
-        </div>
+        {
+            table.map(table => {
+                return (
+                    <div className='a' onClick={() => setButtonPopup(true)}>
+                        <div className='Manager_list-Coach' key={table.id}>
+                            <img src={table.avt} alt='a' width={118.15} height={80}/>
+                            <p className='Manager_Coach--name'>{table.name}</p>
+                            <p className="Manager_Coach--club">{table.club}</p>
+                            <p className="Manager_Coach--country">{table.country}</p>
+                        </div>
+                        <hr size="1" color="#fff"/>
+                    </div>
+                )
+            })
+        }
         <ChangeCoach trigger={buttonPopup} setTrigger={setButtonPopup}/>
     </div>    
   )
