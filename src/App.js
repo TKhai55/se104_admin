@@ -9,19 +9,15 @@ import HomeManagerTier2 from './Pages/Manager/Home_Manager_tier2/Home.Manager.Ti
 import AddFixtures from './Pages/Manager/AddFixtures/AddFixtures';
 import AddResult from './Pages/Manager/AddResult/AddResult';
 import Create_Report from './Pages/Manager/Create_Report/Create_Report';
-<<<<<<< HEAD
 import DetailAddResult from './Pages/Manager/DetailAddResult/DetailAddResult';
 import AddFixtureDetail from './Pages/Manager/Add_Fixture/Add_Fixture'
-=======
 import Register_Club from './Pages/Manager/Register_Club/RegisterClub'
 import Add_Fixture from './Pages/Manager/Add_Fixture/Add_Fixture'
-import DetailAddResult from './Pages/Manager/DetailAddResult/DetailAddResult'
 import SearchManager from './Pages/Manager/Search/SearchManager';
 import SearchPLayer from './Pages/Manager/Search/SearchPLayer/SearchPLayer';
 import SearchClub from './Pages/Manager/Search/SearchClub/SearchClub';
 import SearchCoach from './Pages/Manager/Search/SearchCoach/SearchCoach';
 
->>>>>>> Chi
 //Manager
 
 //Organizer
@@ -58,10 +54,7 @@ function App() {
         <Route exact path='/manager/home/createMatch' element={<AddFixtures />} />
         <Route exact path='/manager/home/createMatch/detailCreateMatch' element={<AddFixtureDetail />} />
         <Route exact path='/manager/home/createResult' element={<AddResult />} />
-<<<<<<< HEAD
         <Route exact path='/manager/home/createResult/detailAddResult' element={<DetailAddResult />} />
-=======
->>>>>>> Chi
         <Route exact path='/manager/home/createReport' element={<Create_Report />} />
         <Route exact path='/manager/home/register_club' element={<Register_Club />} />
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
