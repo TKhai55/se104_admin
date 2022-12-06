@@ -37,13 +37,19 @@
     display: flex;
 }
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .input{
-    width: 70%;
+    width: 100%;
     height: 100%;
 }
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .input form{
-    width: 80%;
+    width: 100%;
     margin-top: 5vh;
+    display: flex;
     margin-left: 15vh;
+}
+.CreateNewLeague_wrapper .create_wrapper .content_wrapper .input .form_content{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .input .form_content1,
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .input .form_content2{
@@ -60,6 +66,9 @@
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .form_content1:focus-within label,
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .form_content2:focus-within label{
     color: #fe4880;
+}
+.CreateNewLeague_wrapper .create_wrapper .content_wrapper .form_content{
+    display: flex;
 }
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .form_content1{
     margin-bottom: 3vh;
@@ -79,7 +88,7 @@
 .CreateNewLeague_wrapper .create_wrapper .content_wrapper .form_content2 input{
     margin-left: 2vh;
     display: inline-block;
-    width: 25%;
+    width: 28%;
     padding: 10px 2px ;
     background-color: #f8f8f8;
     border-radius: 3px;
