@@ -78,6 +78,7 @@
     border-radius: 3px;
     margin-bottom: 1vh;
     border: none;
+    position: static;
 }
 .createAccount_wrapper .content_wrapper .content .form_combobox select{
     margin-left: 5vh;

@@ -73,6 +73,10 @@
     color: white;
     font-weight: 500;
 }
+.Home_wrapper .menuWrapper .button a{
+    text-decoration: none;
+    color: #fff;
+}
 .Home_wrapper .menuWrapper .button img{
     width: 10vw;
     height: 15vh;

@@ -2,3 +2,11 @@ a{
     text-decoration: none;
     color: #fff;
 }
+.manager_search{
+    min-height: 65vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
+.organizer_search{
+    min-height: 65vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}

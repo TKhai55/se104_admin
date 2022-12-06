@@ -41,8 +41,10 @@ export const Home_Manager_Tier2 = () => {
 
                         </div>
                         <div className="button search">
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
+                            <Link to='/manager/home/search'>
+                                <img src={search} alt="search" />
+                                <p>TRA CỨU</p>
+                            </Link>
 
                         </div>
                     </div>
@@ -65,7 +67,6 @@ export const Home_Manager_Tier2 = () => {
                         </div>
                         <div className="button exit">
                             <Link to='/manager'>
-
                                 <img src={exit} alt="exit" />
                                 <p>THOÁT</p>
                             </Link>

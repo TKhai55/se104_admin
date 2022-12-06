@@ -90,7 +90,7 @@
     object-fit: contain;
 }
 
-.add_fixture_table input{
+.add_fixture_table .input_date{
     width: 395px;
     height: 30px;
     border-radius: 10px;

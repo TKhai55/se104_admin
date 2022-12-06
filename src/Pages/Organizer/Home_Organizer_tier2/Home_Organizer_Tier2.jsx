@@ -31,14 +31,15 @@ export const Home_Organizer_Tier2 = () => {
                             </Link>
                         </div>
                         <div className="button search">
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
+                            <Link to='/organizer/home/search'>
+                                <img src={search} alt="search" />
+                                <p>TRA CỨU</p>
+                            </Link>
 
                         </div>
                         <div className="button finish">
                             <img src={finish} alt="finish" />
                             <p>KẾT THÚC MÙA GIẢI</p>
-
                         </div>
                     </div>
                     <div className="row2">
