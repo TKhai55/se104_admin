@@ -1,8 +1,66 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../Header_Organizer/Header'
 import './CreateNewLeague.css'
 
 const CreateNewLeague = () => {
+
+    const [logo, setLogo] = useState()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+        return () => {
+            logo && URL.revokeObjectURL(logo.previewLogo)
+        }
+    }, [logo])
+
+    const previewLogo = (e) => {
+        const image = e.target.files[0]
+
+        image.preview = URL.createObjectURL(image)
+
+        setLogo(image)
+    }
+
+    async function submit() {
+        const form = document.getElementById('form');
+        const formData = new FormData(form);
+
+
+        if (document.getElementById("TENMUAGIAI").value === '') {
+            alert("Vui lòng điền tên mùa giải")
+            return
+        }
+        if (document.getElementById("SL_CLB").value === '') {
+            alert("Vui lòng điền số lượng câu lạc bộ")
+            return
+        }
+        if (parseInt(document.getElementById("SL_CLB").value) < 2) {
+            alert("Số lượng câu lạc bộ phải lớn hơn 2")
+            return
+        }
+        if (!document.getElementById("LOGO").value) {
+            alert("Vui lòng cập nhật logo")
+            return
+        }
+
+        else
+            try {
+                const res = await axios.post('http://localhost:8000/v1/muagiai/taomuagiai', formData)
+                console.log(res)
+                alert("Tạo giải thành công")
+                navigate('/organizer')
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+    }
+
+
+
     return (
         <div className='CreateNewLeague'>
             <Header />
@@ -11,25 +69,32 @@ const CreateNewLeague = () => {
                     <div className="title"><p>TẠO MÙA GIẢI</p></div>
                     <div className="content_wrapper">
                         <div className="input">
-                            <form>
-                                <div className="form_content1">
-                                    <label htmlFor="account">Tên mùa giải:</label>
-                                    <input type="text" name="account" id="account" placeholder="Tên mùa giải" />
+                            <form id='form'>
+                                <div className='form_content'>
+
+                                    <div className="form_content1">
+                                        <label htmlFor="TENMUAGIAI">Tên mùa giải:</label>
+                                        <input type="text" name="TENMUAGIAI" id="TENMUAGIAI" placeholder="Tên mùa giải" />
+                                    </div>
+                                    <div className="form_content2">
+                                        <label htmlFor="SL_CLB">Số đội tham gia:</label>
+                                        <input type="number" name="SL_CLB" id="SL_CLB" placeholder="Số đội tham gia" />
+                                    </div>
                                 </div>
-                                <div className="form_content2">
-                                    <label htmlFor="password">Số đội tham gia:</label>
-                                    <input type="number" name="password" id="password" placeholder="Số đội tham gia" />
+                                <div className="logo_input">
+                                    <label htmlFor="LOGO">Thêm Logo:</label>
+                                    <input type="file" accept='image/*' onChange={previewLogo} name='LOGO' id="LOGO" />
+                                    <div className="img_layout">
+                                        {logo && (
+                                            <img src={logo.preview} alt="logo" />
+
+                                        )}
+                                    </div>
                                 </div>
                             </form>
                         </div>
-                        <div className="logo_input">
-                            <button className='addLogo'>Thêm logo</button>
-                            <div className="img_layout">
-                                <img src="https://upload.wikimedia.org/wikipedia/vi/5/59/V.League_1_%282021%29.png" alt="logo" />
-                            </div>
-                        </div>
                     </div>
-                    <button className='createLeague'>Tạo mùa giải mới</button>
+                    <button className='createLeague' onClick={submit} >Tạo mùa giải mới</button>
                 </div>
             </section>
         </div>
