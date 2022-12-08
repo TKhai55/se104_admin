@@ -75,9 +75,10 @@ const Home = () => {
                             {
                                 muagiais.sort((a, b) => a._id > b._id ? -1 : 1)
                                     .map(muagiai => {
+                                        const img_url = 'http://localhost:8000/'+muagiai.LOGO
                                         return (
                                             <tr className='league_infor' key={muagiai._id}>
-                                                <td className='logo'><img src={`http://localhost:8000/${muagiai.LOGO}`} alt={muagiai.TENMUAGIAI} className='league_logo' /></td>
+                                                <td className='logo'><img src={img_url} alt={muagiai.TENMUAGIAI} className='league_logo' /></td>
                                                 <td className='league_name'>{muagiai.TENMUAGIAI}</td>
                                             </tr>
                                             // <Link to='/organizer/home'>
