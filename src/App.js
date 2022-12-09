@@ -45,16 +45,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-<<<<<<< HEAD
-        <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>}/>
-        <Route exact path='/organizer/home/searchplayer' element={(<div><SearchOrganizer /> <SearchPLayerOr/></div>)}/>
-        <Route exact path='/organizer/home/searchcoach' element={(<div><SearchOrganizer /> <SearchCoachOr/></div>)}/>
-        <Route exact path='/organizer/home/searchclub' element={(<div><SearchOrganizer /> <SearchClubOr/></div>)}/>
-        <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>}/>
-        <Route exact path='/manager/home/searchplayer' element={(<div><SearchManager /> <SearchPLayer/></div>)}/>
-        <Route exact path='/manager/home/searchcoach' element={(<div><SearchManager /> <SearchCoach/></div>)}/>
-        <Route exact path='/manager/home/searchclub' element={(<div><SearchManager /> <SearchClub/></div>)}/>
-=======
         <Route exact path='/' element={<SignIn />} />
 
         {/* Manager */}
@@ -93,7 +83,6 @@ function App() {
         <Route exact path='/admin/createAccount' element={<CreateAccount />} />
         <Route exact path='/admin/manageAccount' element={<ManageAccount />} />
         {/* Admin */}
->>>>>>> master
       </Routes>
       <Footer />
     </div>
