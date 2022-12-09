@@ -158,3 +158,9 @@ button:hover{
     background-color: cadetblue;
     cursor: pointer;
 }
+.Coach_object{
+    margin-top: 3px;
+    border-color: #44B454;
+    border-radius: 10px;
+    height: 3.2vh;
+}

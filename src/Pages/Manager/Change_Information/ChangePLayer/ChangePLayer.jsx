@@ -21,13 +21,12 @@ export default function ChangePLayer(props) {
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
-                <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                <select name="player" className="Player_object">
+                    <option value="td">Tiền đạo</option>
+                    <option value="tv">Tiền vệ</option>
+                    <option value="hv">Hậu vệ</option>
+                    <option value="tm">Thủ môn</option>
                 </select>
-                
             </div>
             <div className='content_right_searchPlayer_Change'>
                 <img className='searchPLayer--image_Change' src={cp} alt='a'/>
