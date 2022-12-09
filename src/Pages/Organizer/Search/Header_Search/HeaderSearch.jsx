@@ -22,7 +22,7 @@ export default function HeaderSearch() {
             <Link to='/organizer/home/searchcoach' className='drop-list__item'>Huấn luyện viên</Link>
             <Link to='/organizer/home/searchclub' className='drop-list__item'>Câu lạc bộ</Link>
           </div>
-        </div>   
+        </div>  
       </div>
     </div>
   )

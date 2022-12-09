@@ -21,15 +21,12 @@ export default function ChangePLayer(props) {
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
-                <div className='dropdown_select_object_Change'>
-                    <p className='typePlayer_Change'>Loại <AiFillCaretDown className='icon_dropdown_Change'/></p>
-                    <div className='typePlayer--dropList_Change'>
-                        <div className='typePlayer--dropList__item_Change'>Tiền đạo</div>
-                        <div className='typePlayer--dropList__item_Change'>Tiền vệ</div>
-                        <div className='typePlayer--dropList__item_Change'>Hậu vệ</div>
-                        <div className='typePlayer--dropList__item_Change'>Thủ môn</div>
-                    </div>
-                </div>
+                <select name="cars" id="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
                 
             </div>
             <div className='content_right_searchPlayer_Change'>
