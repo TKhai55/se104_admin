@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+<<<<<<< HEAD
         <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>}/>
         <Route exact path='/organizer/home/searchplayer' element={(<div><SearchOrganizer /> <SearchPLayerOr/></div>)}/>
         <Route exact path='/organizer/home/searchcoach' element={(<div><SearchOrganizer /> <SearchCoachOr/></div>)}/>
@@ -53,6 +54,46 @@ function App() {
         <Route exact path='/manager/home/searchplayer' element={(<div><SearchManager /> <SearchPLayer/></div>)}/>
         <Route exact path='/manager/home/searchcoach' element={(<div><SearchManager /> <SearchCoach/></div>)}/>
         <Route exact path='/manager/home/searchclub' element={(<div><SearchManager /> <SearchClub/></div>)}/>
+=======
+        <Route exact path='/' element={<SignIn />} />
+
+        {/* Manager */}
+        <Route exact path='/manager' element={<HomeManagerTier1 />} />
+        <Route exact path='/manager/home/:muagiaiID' element={<HomeManagerTier2 />} />
+        <Route exact path='/manager/home/:muagiaiID/createCLub' element={<RegisterClub />} />
+        <Route exact path='/manager/home/createMatch' element={<AddFixtures />} />
+        <Route exact path='/manager/home/createMatch/detailCreateMatch' element={<AddFixtureDetail />} />
+        <Route exact path='/manager/home/createResult' element={<AddResult />} />
+        <Route exact path='/manager/home/createResult/detailAddResult' element={<DetailAddResult />} />
+        <Route exact path='/manager/home/createReport' element={<Create_Report />} />
+        <Route exact path='/manager/home/register_club' element={<Register_Club />} />
+        <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
+        <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
+        <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>} />
+        <Route exact path='/manager/home/searchplayer' element={(<div><SearchManager /> <SearchPLayer /></div>)} />
+        <Route exact path='/manager/home/searchcoach' element={(<div><SearchManager /> <SearchCoach /></div>)} />
+        <Route exact path='/manager/home/searchclub' element={(<div><SearchManager /> <SearchClub /></div>)} />
+        {/* Manager */}
+
+        {/* Organizer */}
+        <Route exact path='/organizer' element={<HomeOrganiozerTier1 />} />
+        <Route exact path='/organizer/home/:muagiaiID' element={<HomeOrganiozerTier2 />} />
+        <Route exact path='/organizer/home/changePolicy' element={<ChangeRegulations />} />
+        <Route exact path='/organizer/addLeague' element={<CreateNewLeague />} />
+        <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
+        <Route exact path='/organizer/home/searchplayer' element={(<div><SearchOrganizer /> <SearchPLayerOr /></div>)} />
+        <Route exact path='/organizer/home/searchcoach' element={(<div><SearchOrganizer /> <SearchCoachOr /></div>)} />
+        <Route exact path='/organizer/home/searchclub' element={(<div><SearchOrganizer /> <SearchClubOr /></div>)} />
+
+        {/* Organizer */}
+
+
+        {/* Admin */}
+        <Route exact path='/admin' element={<HomeAdmin />} />
+        <Route exact path='/admin/createAccount' element={<CreateAccount />} />
+        <Route exact path='/admin/manageAccount' element={<ManageAccount />} />
+        {/* Admin */}
+>>>>>>> master
       </Routes>
       <Footer />
     </div>

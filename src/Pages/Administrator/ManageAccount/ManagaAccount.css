@@ -14,7 +14,7 @@
 .ManagaAccount .content_wrapper{
     height: 50vh;
     width: 60%;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 }
 .ManagaAccount .content_wrapper .title{
     height: 15%;
@@ -39,7 +39,8 @@
     height: 5vh;
 }
 .ManagaAccount .content_wrapper .content{
-    height: 85%;
+    min-height: 42.5vh;
+    height: fit-content;
     width: 100%;
     background-color: #666674;
     border-radius: 0px 0px 10px 10px ;
@@ -117,6 +118,7 @@
     background-color: white;
     margin-top: 10vh;
     text-align: center;
+    margin-bottom: 5vh;
 }
 .ManagaAccount .content_wrapper  .content table, 
 .ManagaAccount .content_wrapper  .content th, 
