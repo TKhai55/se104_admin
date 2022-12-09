@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header_Administrator/Header'
 import './ManagaAccount.css'
 import icon from '../images/manageAccount.png'
+import axios from 'axios'
 
 const accNum = {
     currentAcc: 4
 }
 
-const listAcc = [
+const listAccs = [
     {
         id: 0,
         acc: 'manager1',
@@ -34,6 +35,24 @@ const listAcc = [
 const ManagaAccount = () => {
 
     let i = 1;
+
+    const [taikhoans, setTaiKhoan] = useState([])
+
+    const getTK = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/auth/gettaikhoan')
+            setTaiKhoan(res.data)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    useEffect(() => {
+        getTK()
+    }, [])
+
 
     return (
         <div>
@@ -64,12 +83,12 @@ const ManagaAccount = () => {
                             </thead>
                             <tbody>
                                 {
-                                    listAcc.map(listAcc => {
+                                    taikhoans.map(taikhoan => {
                                         return (
-                                            <tr key={listAcc.id}>
+                                            <tr key={taikhoan._id}>
                                                 <td>{i++}</td>
-                                                <td>{listAcc.acc}</td>
-                                                <td className='hidetext'>{listAcc.pass}</td>
+                                                <td>{taikhoan.TENTAIKHOAN}</td>
+                                                <td className='hidetext'>{taikhoan.MATKHAU}</td>
                                             </tr>
                                         )
                                     })

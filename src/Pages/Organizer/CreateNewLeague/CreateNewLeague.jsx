@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../Header_Organizer/Header'
 import './CreateNewLeague.css'
-import { Link } from 'react-router-dom'
 
 const CreateNewLeague = () => {
 
@@ -56,6 +55,7 @@ const CreateNewLeague = () => {
                 navigate('/organizer')
             }
             catch (error) {
+                alert(error.message)
                 console.log(error.message)
             }
     }
