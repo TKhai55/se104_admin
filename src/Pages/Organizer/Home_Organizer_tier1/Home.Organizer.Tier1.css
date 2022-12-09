@@ -1,19 +1,25 @@
 .Home_tier1{
     margin-top: 8.5vh;
+    height: fit-content;
 }
 .Home_tier1 .home_container{
-    height: 70vh;
+    min-height: 70vh;
+    height: fit-content;
     background-color: #545861;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .Home_tier1 .home_container .league_table{
+    position: relative;
     width: 60%;
-    height: 60vh;
+    min-height: 60vh;
+    height: max-content;
     margin-top: 3vh;
     color: white;
     background-color: rgb(93, 95, 98);
-
+    margin-bottom: 2vh;
 }
 .Home_tier1 .home_container .league_table thead{
     font-size: 3.5vh;
@@ -25,6 +31,7 @@
     background-color: rgb(86, 87, 90);
     border-radius: 10px;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 .Home_tier1 .home_container .league_table .league_infor:active{
     background-color: rgb(113, 115, 121);
@@ -51,15 +58,13 @@
     color:#fff;
 }
 .Home_tier1 .home_container .add_league{
-    margin-top: 1.5vh;
     color: white;
     font-size: 2vh;
     background-color: #44B454;
     border: none;
     height: 5vh;
     border-radius: 5px;
-    margin-right: 0.5vw;
-    float: right;
+    margin-bottom: 2vh;
 }
 .Home_tier1 .home_container .add_league:active{
     background-color: #26b83c;
