@@ -4,6 +4,8 @@ import cp from '../../../Administrator/images/image 10.png'
 import ChangeClub from '../../Change_Information/ChangeClub/ChangeClub'
 import axios from "axios";
 import { useState, useEffect } from 'react'
+import Header from '../../Header_Manager/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
 export default function SearchClub() {
     let [caulacbos, setCauLacBo] = useState([])
@@ -25,28 +27,32 @@ export default function SearchClub() {
 
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Manager_SearchClub'>
-        <div className='Manager_header_listClub'>
-            <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
-            <p id='Manager_content--namthanhlap'>Năm thành lập</p>
-            <p id='Manager_content--san'>Sân vận đông</p>
-        </div>
-        {
-            caulacbos.map(caulacbos => {
-                return (
-                    <div className='a' onClick={() => setButtonPopup(true)}>
-                        <div className='Organizer_list-Club' key={caulacbos.id}>
-                            <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
-                            <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
-                            <p className="Organizer_Club--year">{caulacbos.NAMTHANHLAP}</p>
-                            <p className="Organizer_Club--stadium">{caulacbos.SANVANDONG}</p>
+    <div className='ManagerCoach_body'>
+        <Header/>
+        <HeaderSearch/> 
+        <div className='Manager_SearchClub'>
+            <div className='Manager_header_listClub'>
+                <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
+                <p id='Manager_content--namthanhlap'>Năm thành lập</p>
+                <p id='Manager_content--san'>Sân vận đông</p>
+            </div>
+            {
+                caulacbos.map(caulacbos => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Organizer_list-Club' key={caulacbos.id}>
+                                <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
+                                <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
+                                <p className="Organizer_Club--year">{caulacbos.NAMTHANHLAP}</p>
+                                <p className="Organizer_Club--stadium">{caulacbos.SANVANDONG}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
                         </div>
-                        <hr size="1" color="#fff"/>
-                    </div>
-                )
-            })
-        }
-        <ChangeClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
+                    )
+                })
+            }
+            <ChangeClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
     </div>    
   )
 }

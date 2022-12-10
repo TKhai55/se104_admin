@@ -3,6 +3,8 @@ import './Manager_SearchPlayer.css'
 import ChangePlayer from '../../Change_Information/ChangePLayer/ChangePLayer'
 import axios from "axios";
 import { useState, useEffect } from 'react'
+import Header from '../../Header_Manager/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
 export default function SearchPLayer() {
     let [cauthus, setCauThu] = useState([])
@@ -24,28 +26,32 @@ export default function SearchPLayer() {
 
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Manager_SearchPlayer'>
-        <div className='Manager_header_listPlayer'>
-            <p id='Manager_content--cauthu'>Cầu thủ</p>
-            <p id='Manager_content--vitri'>Vị trí</p>
-            <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
-        </div>
-        {
-            cauthus.map(cauthus => {
-                return (
-                    <div className='a' onClick={() => setButtonPopup(true)}>
-                        <div className='Manager_list-Player' key={cauthus.id}>
-                            <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
-                            <p className='Manager_Player--name'>{cauthus.HOTEN}</p>
-                            <p className="Manager_Player--position">{cauthus.VITRI}</p>
-                            <p className="Manager_Player--club">{cauthus.MACLB}</p>
+    <div className='ManagerPlayer_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Manager_SearchPlayer'>
+            <div className='Manager_header_listPlayer'>
+                <p id='Manager_content--cauthu'>Cầu thủ</p>
+                <p id='Manager_content--vitri'>Vị trí</p>
+                <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
+            </div>
+            {
+                cauthus.map(cauthus => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Manager_list-Player' key={cauthus.id}>
+                                <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
+                                <p className='Manager_Player--name'>{cauthus.HOTEN}</p>
+                                <p className="Manager_Player--position">{cauthus.VITRI}</p>
+                                <p className="Manager_Player--club">{cauthus.MACLB}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
                         </div>
-                        <hr size="1" color="#fff"/>
-                    </div>
-                )
-            })
-        }
-        <ChangePlayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+                    )
+                })
+            }
+            <ChangePlayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
     </div>    
   )
 }

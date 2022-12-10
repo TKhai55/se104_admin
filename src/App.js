@@ -60,9 +60,9 @@ function App() {
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
         <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>} />
-        <Route exact path='/manager/home/searchplayer' element={(<div><SearchManager /> <SearchPLayer /></div>)} />
-        <Route exact path='/manager/home/searchcoach' element={(<div><SearchManager /> <SearchCoach /></div>)} />
-        <Route exact path='/manager/home/searchclub' element={(<div><SearchManager /> <SearchClub /></div>)} />
+        <Route exact path='/manager/home/searchplayer' element={<SearchPLayer />} />
+        <Route exact path='/manager/home/searchcoach' element={<SearchCoach />} />
+        <Route exact path='/manager/home/searchclub' element={<SearchClub />} />
         {/* Manager */}
 
         {/* Organizer */}
@@ -71,9 +71,9 @@ function App() {
         <Route exact path='/organizer/home/changePolicy' element={<ChangeRegulations />} />
         <Route exact path='/organizer/addLeague' element={<CreateNewLeague />} />
         <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
-        <Route exact path='/organizer/home/searchplayer' element={(<div><SearchOrganizer /> <SearchPLayerOr /></div>)} />
-        <Route exact path='/organizer/home/searchcoach' element={(<div><SearchOrganizer /> <SearchCoachOr /></div>)} />
-        <Route exact path='/organizer/home/searchclub' element={(<div><SearchOrganizer /> <SearchClubOr /></div>)} />
+        <Route exact path='/organizer/home/searchplayer' element={<SearchPLayerOr />} />
+        <Route exact path='/organizer/home/searchcoach' element={<SearchCoachOr />} />
+        <Route exact path='/organizer/home/searchclub' element={<SearchClubOr />} />
 
         {/* Organizer */}
 
