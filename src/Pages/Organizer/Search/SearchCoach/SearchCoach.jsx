@@ -1,26 +1,29 @@
 import React from 'react'
 import './Organizer_SearchCoach.css'
 import cp from '../../../Administrator/images/image 10.png'
-import { useState } from 'react'
 import DetailCoach from '../Detail/DetailCoach/DetailCoach'
+import axios from "axios";
+import { useState, useEffect } from 'react'
 
-const table = [
-    {
-        id: 0,
-        avt: cp,
-        name: 'Kiatisuk',
-        club: 'Hoàng Anh Gia Lai',
-        country: 'Thái Lan'
-    },
-    {
-        id: 0,
-        avt: cp,
-        name: 'Kiatisuk',
-        club: 'Hoàng Anh Gia Lai',
-        country: 'Thái Lan'
-    },
-]
 export default function SearchCoach() {
+    let [huanluyenviens, setHuanLuyenVien] = useState([])
+
+    const getHLV = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien')
+            setHuanLuyenVien(res.data)
+            huanluyenviens=res.data;
+            console.log(huanluyenviens)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getHLV()
+    }, [])
+
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='Organizer_SearchCoach'>
@@ -30,14 +33,14 @@ export default function SearchCoach() {
             <p id='Organizer_content--quoctich'>Quốc tich</p>
         </div>
         {
-            table.map(table => {
+            huanluyenviens.map(huanluyenviens => {
                 return (
                     <div className='a' onClick={() => setButtonPopup(true)}>
-                        <div className='Organizer_list-Coach' key={table.id}>
-                            <img src={table.avt} alt='a' width={118.15} height={80}/>
-                            <p className='Organizer_Coach--name'>{table.name}</p>
-                            <p className="Organizer_Coach--club">{table.club}</p>
-                            <p className="Organizer_Coach--country">{table.country}</p>
+                        <div className='Organizer_list-Coach' key={huanluyenviens.id}>
+                            <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={80}/>
+                            <p className='Organizer_Coach--name'>{huanluyenviens.HOTEN}</p>
+                            <p className="Organizer_Coach--club">{huanluyenviens.MACLB}</p>
+                            <p className="Organizer_Coach--country">{huanluyenviens.QUOCTICH}</p>
                         </div>
                         <hr size="1" color="#fff"/>
                     </div>

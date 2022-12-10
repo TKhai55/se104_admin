@@ -1,7 +1,6 @@
 import React from 'react'
 import './ChangePlayer.css'
 import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 
 export default function ChangePLayer(props) {
   return (props.trigger) ? (

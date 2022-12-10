@@ -1,7 +1,6 @@
 import React from 'react'
 import './ChangeCoach.css'
 import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 
 export default function ChangeCoach(props) {
   return (props.trigger) ? (

@@ -56,6 +56,7 @@
 .Organizer_Coach--name{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Organizer_Coach--club{
     flex:1

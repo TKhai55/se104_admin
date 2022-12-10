@@ -55,6 +55,7 @@
 .Manager_Player--name{
     flex:1.5;
     display: inline;
+    margin-left: 10px;
 }
 .Manager_Player--position{
     flex:1;

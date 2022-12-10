@@ -54,6 +54,7 @@
 .Manager_Club--club{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Manager_Club--year{
     flex:1

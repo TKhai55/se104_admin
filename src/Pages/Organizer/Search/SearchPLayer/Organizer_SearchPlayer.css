@@ -27,12 +27,11 @@
 }
 #Organizer_content--cauthu{
     flex:1;
-    padding-left: 30px;
+    padding-left: 80px;
 }
 #Organizer_content--vitri{
     flex:1;
     padding-left: 90px;
-
 }
 #Organizer_content--caulacbo{
     flex:1;
@@ -56,6 +55,7 @@
 .Organizer_Player--name{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Organizer_Player--position{
     flex:1
