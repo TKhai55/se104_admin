@@ -1,7 +1,6 @@
 import React from 'react'
 import './ChangePlayer.css'
 import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 
 export default function ChangePLayer(props) {
   return (props.trigger) ? (
@@ -21,16 +20,12 @@ export default function ChangePLayer(props) {
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
                 <input className='Player_information_Change'/>
-                <div className='dropdown_select_object_Change'>
-                    <p className='typePlayer_Change'>Loại <AiFillCaretDown className='icon_dropdown_Change'/></p>
-                    <div className='typePlayer--dropList_Change'>
-                        <div className='typePlayer--dropList__item_Change'>Tiền đạo</div>
-                        <div className='typePlayer--dropList__item_Change'>Tiền vệ</div>
-                        <div className='typePlayer--dropList__item_Change'>Hậu vệ</div>
-                        <div className='typePlayer--dropList__item_Change'>Thủ môn</div>
-                    </div>
-                </div>
-                
+                <select name="player" className="Player_object">
+                    <option value="td">Tiền đạo</option>
+                    <option value="tv">Tiền vệ</option>
+                    <option value="hv">Hậu vệ</option>
+                    <option value="tm">Thủ môn</option>
+                </select>
             </div>
             <div className='content_right_searchPlayer_Change'>
                 <img className='searchPLayer--image_Change' src={cp} alt='a'/>

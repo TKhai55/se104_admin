@@ -1,3 +1,7 @@
+.OrganizerClub_body{
+    padding-top: 10.5vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
 .Organizer_SearchClub{
     margin: 0 12vh;
     background-color: #848282;
@@ -27,12 +31,9 @@
 }
 #Organizer_content--caulacbo{
     flex:1;
-    padding-left: 30px;
 }
 #Organizer_content--namthanhlap{
     flex:1;
-    padding-left: 90px;
-
 }
 #Organizer_content--san{
     flex:1;
@@ -56,6 +57,7 @@
 .Organizer_Club--club{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Organizer_Club--year{
     flex:1

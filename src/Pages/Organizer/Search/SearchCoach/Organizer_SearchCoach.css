@@ -1,3 +1,7 @@
+.OrganizerCoach_body{
+    padding-top: 10.5vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
 .Organizer_SearchCoach{
     margin: 0 12vh;
     background-color: #848282;
@@ -56,6 +60,7 @@
 .Organizer_Coach--name{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Organizer_Coach--club{
     flex:1

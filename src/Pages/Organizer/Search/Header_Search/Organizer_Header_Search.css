@@ -87,3 +87,7 @@
 .Header_Search .Header_Search_filter .dropdown_select_object .drop-list a:hover{
     color: #44B454;
 }
+.Header_Search--object{
+    height: 30px;
+    border-radius: 8px;
+}

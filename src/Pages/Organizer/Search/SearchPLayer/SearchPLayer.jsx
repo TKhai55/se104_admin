@@ -1,50 +1,59 @@
 import React from 'react'
 import './Organizer_SearchPlayer.css'
-import cp from '../../../Administrator/images/image 10.png'
-import { useState } from 'react'
 import DetailPLayer from '../Detail/DetailPlayer/DetailPlayer'
+import axios from "axios";
+import { useState, useEffect,useRef } from 'react'
+import Header from '../../Header_Organizer/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
-const table = [
-    {
-        id: 0,
-        avt: cp,
-        name: 'Nguyễn Công Phượng',
-        position: 'Tiền đạo',
-        club: 'HAGL'
-    },
-    {
-        id: 1,
-        avt: cp,
-        name: 'Nguyễn Công Phượng',
-        position: 'Hậu vệ',
-        club: 'HAGL'
-    },
-]
 export default function SearchPLayer() {
+
+    let [cauthus, setCauThu] = useState([])
+
+    const getCT = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/cauthu/getcauthu')
+            setCauThu(res.data)
+            cauthus=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getCT()
+    }, [])
+    
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Organizer_SearchPlayer'>
-        <div className='Organizer_header_listPlayer'>
-            <p id='Organizer_content--cauthu'>Cầu thủ</p>
-            <p id='Organizer_content--vitri'>Vị trí</p>
-            <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
-        </div>
-        {
-            table.map(table => {
-                return (
-                    <div className='a' onClick={() => setButtonPopup(true)}>
-                        <div className='Organizer_list-Player' key={table.id}>
-                            <img src={table.avt} alt='a' width={118.15} height={80}/>
-                            <p className='Organizer_Player--name'>{table.name}</p>
-                            <p className="Organizer_Player--position">{table.position}</p>
-                            <p className="Organizer_Player--club">{table.club}</p>
+    <div className='OrganizerPlayer_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Organizer_SearchPlayer'>
+            <div className='Organizer_header_listPlayer'>
+                <p id='Organizer_content--cauthu'>Cầu thủ</p>
+                <p id='Organizer_content--vitri'>Vị trí</p>
+                <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
+            </div>
+            {
+                cauthus.map(cauthus => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Organizer_list-Player' key={cauthus.id}>
+                                <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
+                                <p className='Organizer_Player--name'>{cauthus.HOTEN}</p>
+                                <p className="Organizer_Player--position">{cauthus.VITRI}</p>
+                                <p className="Organizer_Player--club">{cauthus.MACLB}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
                         </div>
-                        <hr size="1" color="#fff"/>
-                    </div>
-                )
-            })
-        }
-        <DetailPLayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
-    </div>    
+                    )
+                })
+            }
+            <DetailPLayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
+    </div>
+    
   )
 }
