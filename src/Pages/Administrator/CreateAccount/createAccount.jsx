@@ -30,6 +30,8 @@ const createAccount = () => {
                 })
                 console.log(res.data)
                 alert("Tạo tài khoản thành công")
+                window.location.reload();
+                return false;
             }
             catch (error) {
                 alert(error.message)
