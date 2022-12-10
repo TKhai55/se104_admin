@@ -1,6 +1,5 @@
 import React from 'react'
 import './Organizer_SearchCoach.css'
-import cp from '../../../Administrator/images/image 10.png'
 import DetailCoach from '../Detail/DetailCoach/DetailCoach'
 import axios from "axios";
 import { useState, useEffect } from 'react'
@@ -14,7 +13,6 @@ export default function SearchCoach() {
             const res = await axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien')
             setHuanLuyenVien(res.data)
             huanluyenviens=res.data;
-            console.log(huanluyenviens)
         }
         catch (error) {
             console.log(error.message)
@@ -37,7 +35,7 @@ export default function SearchCoach() {
                 return (
                     <div className='a' onClick={() => setButtonPopup(true)}>
                         <div className='Organizer_list-Coach' key={huanluyenviens.id}>
-                            <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={80}/>
+                            <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={100}/>
                             <p className='Organizer_Coach--name'>{huanluyenviens.HOTEN}</p>
                             <p className="Organizer_Coach--club">{huanluyenviens.MACLB}</p>
                             <p className="Organizer_Coach--country">{huanluyenviens.QUOCTICH}</p>

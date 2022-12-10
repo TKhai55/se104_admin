@@ -14,7 +14,6 @@ export default function SearchClub() {
             const res = await axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo')
             setCauLacBo(res.data)
             caulacbos=res.data;
-            console.log(caulacbos)
         }
         catch (error) {
             console.log(error.message)
@@ -37,7 +36,7 @@ export default function SearchClub() {
                 return (
                     <div className='a' onClick={() => setButtonPopup(true)}>
                         <div className='Organizer_list-Club' key={caulacbos.id}>
-                            <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={80}/>
+                            <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
                             <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
                             <p className="Organizer_Club--year">{caulacbos.NAMTHANHLAP}</p>
                             <p className="Organizer_Club--stadium">{caulacbos.SANVANDONG}</p>

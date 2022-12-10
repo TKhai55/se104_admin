@@ -13,7 +13,6 @@ export default function SearchPLayer() {
             const res = await axios.get('http://localhost:8000/v1/cauthu/getcauthu')
             setCauThu(res.data)
             cauthus=res.data;
-            console.log(cauthus)
         }
         catch (error) {
             console.log(error.message)
@@ -22,6 +21,7 @@ export default function SearchPLayer() {
     useEffect(() => {
         getCT()
     }, [])
+    
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='Organizer_SearchPlayer'>
