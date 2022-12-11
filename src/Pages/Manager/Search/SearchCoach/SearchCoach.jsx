@@ -33,7 +33,7 @@ export default function SearchCoach() {
             <div className='Manager_header_listCoach'>
                 <p id='Manager_content--hlv'>Huấn luyện viên</p>
                 <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
-                <p id='Manager_content--quoctich'>Quốc tich</p>
+                <p id='Manager_content--quoctich'>Quốc tịch</p>
             </div>
             {
                 huanluyenviens.map(huanluyenviens => {

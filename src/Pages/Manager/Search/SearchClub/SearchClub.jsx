@@ -34,7 +34,7 @@ export default function SearchClub() {
             <div className='Manager_header_listClub'>
                 <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
                 <p id='Manager_content--namthanhlap'>Năm thành lập</p>
-                <p id='Manager_content--san'>Sân vận đông</p>
+                <p id='Manager_content--san'>Sân vận động</p>
             </div>
             {
                 caulacbos.map(caulacbos => {
