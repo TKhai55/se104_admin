@@ -1,3 +1,7 @@
+.ManagerCoach_body{
+    padding-top: 10.5vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
 .Manager_SearchCoach{
     margin: 0 12vh;
     background-color: #848282;
@@ -56,6 +60,7 @@
 .Manager_Coach--name{
     flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Manager_Coach--club{
     flex:1

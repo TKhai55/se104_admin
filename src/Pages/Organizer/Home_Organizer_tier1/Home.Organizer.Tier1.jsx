@@ -7,29 +7,6 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 
 
-let league = [
-    {
-        LOGO: 'https://upload.wikimedia.org/wikipedia/vi/c/c9/V.League_1_2022.svg',
-        TENMUAGIAI: 'V_League 2022'
-    },
-    {
-        _id: 1,
-        LOGO: 'https://upload.wikimedia.org/wikipedia/vi/5/59/V.League_1_%282021%29.png',
-        TENMUAGIAI: 'V_League 2021'
-    },
-    {
-        _id: 2,
-        LOGO: 'https://upload.wikimedia.org/wikipedia/vi/5/5f/V.League_1_%282020%29.svg',
-        TENMUAGIAI: 'V_League 2020'
-    },
-    {
-        _id: 3,
-        LOGO: 'https://vpf.vn/wp-content/uploads/2019/02/Logo-1.png',
-        TENMUAGIAI: 'V_League 2019'
-    },
-]
-
-
 
 const Home = () => {
 
@@ -39,7 +16,6 @@ const Home = () => {
 
         try {
             const res = await axios.get('http://localhost:8000/v1/muagiai/getmuagiai')
-            console.log('get from ;;;', res.data)
             setMuaGiai(res.data)
         }
         catch (error) {
@@ -51,11 +27,6 @@ const Home = () => {
     useEffect(() => {
         getMG()
     }, [])
-
-    function show() {
-        // console.log(name)
-    }
-
 
 
 
@@ -75,30 +46,31 @@ const Home = () => {
                             {
                                 muagiais.sort((a, b) => a._id > b._id ? -1 : 1)
                                     .map(muagiai => {
-                                        const img_url = 'http://localhost:8000/'+muagiai.LOGO
+                                        const img_url = 'http://localhost:8000/' + muagiai.LOGO
                                         return (
-                                            <tr className='league_infor' key={muagiai._id}>
-                                                <td className='logo'><img src={img_url} alt={muagiai.TENMUAGIAI} className='league_logo' /></td>
-                                                <td className='league_name'>{muagiai.TENMUAGIAI}</td>
-                                            </tr>
-                                            // <Link to='/organizer/home'>
+                                            <Link to={'/organizer/home/' + muagiai._id}>
+                                                <tr className='league_infor' key={muagiai._id}>
+                                                    <td className='logo'><img src={img_url} alt={muagiai.TENMUAGIAI} className='league_logo' /></td>
+                                                    <td className='league_name'>{muagiai.TENMUAGIAI}</td>
+                                                </tr>
 
-                                            // </Link>
+                                            </Link>
                                         )
                                     })
                             }
                         </tbody>
                     </table>
-                    <Link to='/organizer/addLeague'>
-                        <button className='add_league' onClick={show}>
-                            Tạo giải đấu mới
-                            <span>  </span>
-                            <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
-                        </button>
-                    </Link>
+
                 </div>
-            </section>
-        </div>
+                <Link to='/organizer/addLeague'>
+                    <button className='add_league'>
+                        Tạo giải đấu mới
+                        <span>  </span>
+                        <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
+                    </button>
+                </Link>
+            </section >
+        </div >
     )
 }
 

@@ -1,50 +1,58 @@
 import React from 'react'
 import './Organizer_SearchClub.css'
-import cp from '../../../Administrator/images/image 10.png'
-import { useState } from 'react'
 import DetailClub from '../Detail/DetailClub/SearchClub'
+import axios from "axios";
+import { useState, useEffect } from 'react'
+import Header from '../../Header_Organizer/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
-const table = [
-    {
-        id: 0,
-        logo: cp,
-        club: 'Kiatisuk',
-        year: 1975,
-        stadium: 'Hàng Đẫy'
-    },
-    {
-        id: 0,
-        logo: cp,
-        club: 'Kiatisuk',
-        year: 1975,
-        stadium: 'Hàng Đẫy'
-    },
-]
+
 export default function SearchClub() {
+    let [caulacbos, setCauLacBo] = useState([])
+
+    const getHLV = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo')
+            setCauLacBo(res.data)
+            caulacbos=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getHLV()
+    }, [])
+
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Organizer_SearchClub'>
-        <div className='Organizer_header_listClub'>
-            <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
-            <p id='Organizer_content--namthanhlap'>Năm thành lập</p>
-            <p id='Organizer_content--san'>Sân vận đông</p>
-        </div>
-        {
-            table.map(table => {
-                return (
-                    <div className='a' onClick={() => setButtonPopup(true)}>
-                        <div className='Organizer_list-Club' key={table.id}>
-                            <img src={table.logo} alt='a' width={118.15} height={80}/>
-                            <p className='Organizer_Club--club'>{table.club}</p>
-                            <p className="Organizer_Club--year">{table.year}</p>
-                            <p className="Organizer_Club--stadium">{table.stadium}</p>
+    <div className='OrganizerClub_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Organizer_SearchClub'>
+            <div className='Organizer_header_listClub'>
+                <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
+                <p id='Organizer_content--namthanhlap'>Năm thành lập</p>
+                <p id='Organizer_content--san'>Sân vận động</p>
+            </div>
+            {
+                caulacbos.map(caulacbos => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Organizer_list-Club' key={caulacbos.id}>
+                                <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
+                                <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
+                                <p className="Organizer_Club--year">{caulacbos.NAMTHANHLAP}</p>
+                                <p className="Organizer_Club--stadium">{caulacbos.SANVANDONG}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
                         </div>
-                        <hr size="1" color="#fff"/>
-                    </div>
-                )
-            })
-        }
-        <DetailClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
+                    )
+                })
+            }
+            <DetailClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
     </div>    
   )
 }

@@ -1,3 +1,7 @@
+.ManagerPlayer_body{
+    padding-top: 10.5vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
 .Manager_SearchPlayer{
     margin: 0 12vh;
     background-color: #848282;
@@ -26,12 +30,12 @@
     display: flex;
 }
 #Manager_content--cauthu{
-    flex:1.5;
-    padding-left: 30px;
+    flex:1;
+    padding-left: 90px;
 }
 #Manager_content--vitri{
     flex:1;
-    text-align: center;
+    padding-left: 90px;
 }
 #Manager_content--caulacbo{
     flex:1;
@@ -53,12 +57,12 @@
     cursor: pointer;
 }
 .Manager_Player--name{
-    flex:1.5;
+    flex:1;
     display: inline;
+    margin-left: 10px;
 }
 .Manager_Player--position{
     flex:1;
-    padding-left: 80px;
 }
 .Manager_Player--club{
     flex:1;

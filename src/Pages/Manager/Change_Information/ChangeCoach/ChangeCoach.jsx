@@ -1,7 +1,6 @@
 import React from 'react'
 import './ChangeCoach.css'
 import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 
 export default function ChangeCoach(props) {
   return (props.trigger) ? (
@@ -19,13 +18,10 @@ export default function ChangeCoach(props) {
                 <input className='Coach_information_Change'/>
                 <input className='Coach_information_Change'/>
                 <input className='Coach_information_Change'/>
-                <div className='dropdown_select_object_Change'>
-                    <p className='typeCoach_Change'>Loại <AiFillCaretDown className='icon_dropdown_Change'/></p>
-                        <div className='typeCoach--dropList_Change'>
-                            <div className='typeCoach--dropList__item_Change'>HLV Trưởng</div>
-                            <div className='typeCoach--dropList__item_Change'>Trợ lý HLV</div>
-                        </div>
-                </div>     
+                <select name="coach" className="Coach_object">
+                    <option value="td">HLV Trưởng</option>
+                    <option value="tv">Trợ lý HLV</option>
+                </select>   
             </div>
             <div className='content_right_searchCoach_Change'>
                 <img className='searchCoach--image_Change' src={cp} alt='a'/>

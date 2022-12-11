@@ -15,7 +15,7 @@ const SignIn = () => {
     const fetchApi = async (key) => {
         try {
             const res = await axios.get('http://localhost:8000/v1/auth/search/' + key);
-            data = res.data[0]
+            data = res.data[0];
         }
         catch (error) {
             console.log(error.message)

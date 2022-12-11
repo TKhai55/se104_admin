@@ -6,6 +6,8 @@
     margin-top: 8.5vh;
     min-height: 85vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     background-color: #545861;
 }
@@ -13,7 +15,6 @@
     width: 75%;
     height: fit-content;
     margin-top: 5vh;
-    margin-bottom: 25vh;
     border-radius: 10px;
     background-color: #666674;
 }
@@ -103,20 +104,17 @@
 .RegisterClub_wrapper .form_wrapper  button:active{
     background-color: #27a039;
 }
-.RegisterClub_wrapper .form_wrapper .done{
+.RegisterClub_wrapper .done{
     background-color: #44B454;
     color: white;
     width: fit-content;
     font-size: 2vh;
     padding: 10px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
     text-align: center;
     bottom: -5vh;
     border: none;
     font-weight: bold;
     border-radius: 3px;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
 }
