@@ -1,10 +1,22 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Header from '../Header_Manager/Header'
 import "./Create_Report.css"
 import create_report_img from "./img/create_report_img.png"
 import export_report_img from "./img/exel_img.png"
+import Axios from 'axios'
 
 function Create_Report() {
+    const [bangxephang , setBangXepHang] = useState()
+    const [topGhiBan , setTopGhiBan] = useState()
+    const [topThePhat,setTopThePhat] = useState()
+    const [clb , setCLB] = useState()
+    useEffect(()=>{
+        Axios.get('http://localhost:8000/v1/bangxephang/sort').then((res)=>{setBangXepHang(res.data)})
+        Axios.get('http://localhost:8000/v1/cauthu/topghiban').then((res)=>setTopGhiBan(res.data))
+        Axios.get('http://localhost:8000/v1/cauthu/topthephat').then((res) => setTopThePhat(res.data))
+        Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then((res)=>setCLB(res.data))
+    },[])
+    console.log(topThePhat)
   return (
     <div className='create_report_container'>
         <Header />
@@ -30,32 +42,22 @@ function Create_Report() {
                     <td className='td'>Bàn thắng</td>
                     <td className='td'>Bàn thua</td>
                     <td className='td'>Hiệu số</td>
-                    <td className='td'>Hiệu số</td>
+                    <td className='td'>Điểm số</td>
                 </tr>
-                <tr>
-                    <td className='td'>1</td>
-                    <td className='td'>Hoàn Anh Gia Lai</td>
-                    <td className='td'>4</td>
-                    <td className='td'>4</td>
-                    <td className='td'>0</td>
-                    <td className='td'>0</td>
-                    <td className='td'>10</td>
-                    <td className='td'>0</td>
-                    <td className='td'>10</td>
-                    <td className='td'>12</td>
-                </tr>
-                <tr>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                </tr>
+                {bangxephang?.map((bxh,key)=>{
+                    return <tr key={key}>
+                        <td className='td'>{key+1}</td>
+                        <td className='td'>{bxh.TENCLB}</td>
+                        <td className='td'>{bxh.TRANDACHOI}</td>
+                        <td className='td'>{bxh.THANG}</td>
+                        <td className='td'>{bxh.HOA}</td>
+                        <td className='td'>{bxh.THUA}</td>
+                        <td className='td'>{bxh.BANTHANG}</td>
+                        <td className='td'>{bxh.BANTHUA}</td>
+                        <td className='td'>{bxh.HIEUSO}</td>
+                        <td className='td'>{bxh.DIEM}</td>
+                    </tr>
+                })}  
             </table>
             
             <table>
@@ -72,20 +74,19 @@ function Create_Report() {
                     <td className='td'>Loại cầu thủ</td>
                     <td className='td'>Số bàn thắng</td>
                 </tr>
-                <tr>
-                    <td className='td'>1</td>
-                    <td className='td'>Nguyễn Công Phượng</td>
-                    <td className='td'>Hoàn Anh Gia Lai</td>
-                    <td className='td'>Tiền đạo</td>
-                    <td className='td'>12</td>
-                </tr>
-                <tr>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                </tr>
+                {topGhiBan?.map((tgb,key)=>{
+                    return <tr key={key}>
+                        <td className='td'>{key+1}</td>
+                        <td className='td'>{tgb.HOTEN}</td>
+                        <td className='td'>
+                            {clb?.map((value) => {
+                                return tgb.MACLB === value._id ? value.TENCLB : ''
+                            })}
+                        </td>
+                        <td className='td'>{tgb.VITRI}</td>
+                        <td className='td'>{tgb.SOBANTHANG}</td>
+                    </tr>
+                })}
             </table>
 
             <table>
@@ -103,22 +104,20 @@ function Create_Report() {
                     <td className='td'>Thẻ vàng</td>
                     <td className='td'>Thẻ đỏ</td>
                 </tr>
-                <tr>
-                    <td className='td'>1</td>
-                    <td className='td'>Nguyễn Công Phượng</td>
-                    <td className='td'>Hoàn Anh Gia Lai</td>
-                    <td className='td'>Tiền đạo</td>
-                    <td className='td'>12</td>
-                    <td className='td'>12</td>
-                </tr>
-                <tr>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                    <td className='td'>...</td>
-                </tr>
+                {topThePhat?.map((ttp, key) => {
+                    return <tr key={key}>
+                        <td className='td'>{key + 1}</td>
+                        <td className='td'>{ttp.HOTEN}</td>
+                        <td className='td'>
+                            {clb?.map((value) => {
+                                return ttp.MACLB === value._id ? value.TENCLB : ''
+                            })}
+                        </td>
+                        <td className='td'>{ttp.VITRI}</td>
+                        <td className='td'>{ttp.SOTHEVANG}</td>
+                        <td className='td'>{ttp.SOTHEDO}</td>
+                    </tr>
+                })}
             </table>
 
             <div className='export_report_btn'>Xuất báo cáo

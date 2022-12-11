@@ -2,13 +2,14 @@ import React,{useState} from 'react'
 import "./RegisterClub.css"
 import Header from '../Header_Manager/Header'
 import icon_register from "./img/icon_register.png"
-import add_logo_clb_img from "./img/logo-clb.png";
+import image11 from "./img/Group 8.png"
 import PopupAddHLV from "./popup/Add_HLV";
 import HLV_img from "./img/HLV_img.png"
 import PopupAddPL from "./popup/Add_PL"
 import PL_img from "./img/PL_img.png"
 import Dropdown from "./dropdown/DropDown";
 import dropdown_img from "./img/dropdown.png"
+import Axios from "axios"
 
 function RegisterClub() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -18,6 +19,32 @@ function RegisterClub() {
   const [isActive, setIsActive] = useState(false)
   const options1 = ['Tiền đạo', 'Tiền vệ','Hậu vệ','Thủ môn']
   const [selected1, setSelected1] = useState("Chọn loại")
+  const [showImage , setShowImage] = useState(false)
+  const [selectedFile ,setSelectedFile] = useState([]) 
+  const [tenDoiBong , setTenDoiBong] = useState()
+  const [namThanhLap , setNamThanhLap] = useState()
+  const [sanVnDong , setSanVanDong] = useState()
+  const [logo , setLogo] = useState()
+  const onSelectedFile = (e)=>{
+    const selectedFiles = e.target.files;
+    const selectedFileArrays = Array.from(selectedFiles);
+    const imageURL = selectedFileArrays.map((file)=>{
+      return URL.createObjectURL(file)
+    })
+    setShowImage(true)
+    setSelectedFile(imageURL)
+    setLogo(e.target.files[0])
+    console.log(logo)
+  }
+  const submitHandler = ()=>{
+    const fd = new FormData();
+    fd.append('MAMG','63916073637d67b20633c9b1')
+    fd.append('TENCLB',tenDoiBong)
+    fd.append('NAMTHANHLAP',namThanhLap)
+    fd.append('SANVANDONG',sanVnDong)
+    fd.append('LOGO',logo)
+    Axios.post('http://localhost:8000/v1/caulacbo/taocaulacbo',fd)
+  }
   return (
     <div className='register_club_container'>
         <Header/>
@@ -30,26 +57,36 @@ function RegisterClub() {
             <div>
               <div className='label_text'>
                 <div className='label'>Tên đội bóng:</div>
-                <input className='input_in_main_page' type='text' />
+                <input className='input_in_main_page' type='text' onChange={(e)=>setTenDoiBong(e.target.value)}/>
                 </div>
               <div className='label_text'>
                 <div className='label'>Năm thành lập:</div>
-                <input className='input_in_main_page' type='text' />
+                <input className='input_in_main_page' type='text' onChange={(e) => setNamThanhLap(e.target.value)} />
               </div>
               <div className='label_text'>
                 <div className='label'>Sân vận động:</div>
-                <input className='input_in_main_page' type='text' />
+                <input className='input_in_main_page' type='text' onChange={(e) => setSanVanDong(e.target.value)} />
               </div>
             </div>  
             <div className='add_logo_clb'>
-              <img className='add_logo_clb_img' 
-              src={add_logo_clb_img} alt='' />
-              <div className='add_logo_clb_btn'>
-                Thêm LOGO CLB <strong>+</strong>
-              </div>
+              {showImage? selectedFile.map((imageURL)=>{
+                return <img className='add_logo_clb_img'
+                  src={imageURL} alt='' />
+              }) : <img className='add_logo_clb_img'
+                src={image11} alt='' />
+              }
+              <label className='add_logo_clb_lb'>
+                Thêm LOGO CLB
+                <input
+                  className='add_logo_clb_btn'
+                  type='file'
+                  accept='image/png , image/jpg' 
+                  onChange={(e)=>onSelectedFile(e)}
+                  />
+              </label>
             </div>   
           </div>
-          <hr/>
+          {/* <hr/>
           <div className='add_list'>
             <div className='add_container'>
               <div className='title_text_and_amout_count'>
@@ -58,7 +95,6 @@ function RegisterClub() {
                 <div className='amout_count'>1</div>
               </div>
             <div className='add_btn' onClick={() => setButtonPopup(true)}>Thêm <strong>+</strong></div>
-              {/* show popup add hlv*/}
               <PopupAddHLV trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <div className='input_container1'>
                   <div>
@@ -141,7 +177,6 @@ function RegisterClub() {
               <div className='amout_count'>1</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup1(true)}>Thêm <strong>+</strong></div>
-            {/* show popup add pl*/}
             <PopupAddPL trigger={buttonPopup1} setTrigger1={setButtonPopup1}>
               <div className='input_container1'>
                 <div>
@@ -219,8 +254,8 @@ function RegisterClub() {
             </tr>
           </table>
         </div>
-        <hr/>
-        <div className='save_btn_in_main_page'>Lưu</div>
+        <hr/> */}
+        <div className='save_btn_in_main_page' onClick={submitHandler}>Lưu</div>
       </div>
     </div>
   )
