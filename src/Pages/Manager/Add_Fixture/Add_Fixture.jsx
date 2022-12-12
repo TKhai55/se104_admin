@@ -3,6 +3,7 @@ import Header from '../Header_Manager/Header'
 import "./Add_Fixture.css"
 import add_fixture_img from "./img/add_fixture_container.png"
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Add_Fixture() {
     const [vongdau , setVongDau] = useState("")
@@ -72,9 +73,11 @@ function Add_Fixture() {
                       </div>
                   </div>
             </div>
-            <div className='add_schedule_btn' onClick={()=>submitHandler()}>
-                Lên lịch thi đấu
-            </div>
+            <Link to='/manager/home/createMatch'>
+                <div className='add_schedule_btn' onClick={()=>submitHandler()}>
+                    Lên lịch thi đấu
+                </div>
+            </Link>
         </div>
     </div>
   )

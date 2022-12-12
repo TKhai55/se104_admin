@@ -77,7 +77,7 @@ const RegisterClub = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <Link to='/manager/home/register_club'><button>Thêm</button></Link>
+                        <Link to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/register_club'}><button>Thêm</button></Link>
                     </div>
                 </div>
                 <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID}><button className='done'>HOÀN TẤT NHẬP</button></Link>

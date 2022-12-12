@@ -10,6 +10,7 @@ import PL_img from "./img/PL_img.png"
 import Dropdown from "./dropdown/DropDown";
 import dropdown_img from "./img/dropdown.png"
 import Axios from "axios"
+import { Link,useParams } from 'react-router-dom'
 
 function RegisterClub() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -25,6 +26,13 @@ function RegisterClub() {
   const [namThanhLap , setNamThanhLap] = useState()
   const [sanVnDong , setSanVanDong] = useState()
   const [logo , setLogo] = useState()
+  const muagiaiID = useParams()
+  const payload = {
+    params:{
+      muagiaiID
+    }
+  }
+  console.log(payload.params.muagiaiID.muagiaiID)
   const onSelectedFile = (e)=>{
     const selectedFiles = e.target.files;
     const selectedFileArrays = Array.from(selectedFiles);
@@ -38,7 +46,7 @@ function RegisterClub() {
   }
   const submitHandler = ()=>{
     const fd = new FormData();
-    fd.append('MAMG','63916073637d67b20633c9b1')
+    fd.append('MAMG',payload.params.muagiaiID.muagiaiID)
     fd.append('TENCLB',tenDoiBong)
     fd.append('NAMTHANHLAP',namThanhLap)
     fd.append('SANVANDONG',sanVnDong)
@@ -255,7 +263,9 @@ function RegisterClub() {
           </table>
         </div>
         <hr/> */}
-        <div className='save_btn_in_main_page' onClick={submitHandler}>Lưu</div>
+        <Link to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/createCLub'}>
+          <div className='save_btn_in_main_page' onClick={submitHandler}>Lưu</div>
+        </Link>
       </div>
     </div>
   )
