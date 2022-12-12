@@ -38,6 +38,7 @@
     margin-top: 3vh;
     height: 3.5vh;
     border-radius: 10px;
+    position: static;
 }
 .dropdown_select_object{
     flex:1;
@@ -85,4 +86,8 @@
 }
 .Header_Search .Header_Search_filter .dropdown_select_object .drop-list a:hover{
     color: #44B454;
+}
+.Header_Search--object{
+    height: 30px;
+    border-radius: 8px;
 }

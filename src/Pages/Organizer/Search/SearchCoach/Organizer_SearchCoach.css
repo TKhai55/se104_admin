@@ -1,103 +1,70 @@
+.OrganizerCoach_body{
+    padding-top: 10.5vh;
+    background-color: rgba(84, 88, 97, 0.5);
+}
 .Organizer_SearchCoach{
     margin: 0 12vh;
-    background: #FFFFFF;
-    border: 1px solid #44B454;
+    background-color: #848282;
+
+    border: 1px solid #000;
     border-radius: 0px 0px 10px 10px;
     min-height: 60vh;
     height: fit-content;
-    padding: 10vh 4vw 0 4vw;
+    padding: 2vh 4vw 0 4vw;
+
     display: flex;
     flex-direction: column;
 }
-.Organizer_SearchCoach-content {
+.Organizer_header_listCoach{
+    height: 50px;
+    padding: 10px;
+
+    background: #CDC9C9;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #494747;
+
     display: flex;
-    flex-direction: row;
-    padding-bottom: 10vh;
-    font-size: 16px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.Organizer_content_right_searchCoach{
+#Organizer_content--hlv{
     flex:1;
-    position: relative;
-    width: 200px;
+    padding-left: 30px;
 }
-.Organizer_content_left_searchCoach{
+#Organizer_content--caulacbo{
     flex:1;
-    display: flex;
-    flex-direction: column;
-}
-.Organizer_content_middle_searchCoach{
-    flex:3;
-    display: flex;
-    flex-direction: column;
-}
-.Organizer_searchCoach--image{
-    border-style: solid;
-    border-color: #44B454;
-    border-width: 1px;
-    width: 15vw;
-    height: 20vh;
-    max-width: 15vw;
-    max-height: 20vh;
+    padding-left: 90px;
 
 }
-.Organizer_titleContent_searchCoach_item{
-    padding-top: 2px;
-    min-width: 100px;
-}
-.Organizer_titleContent_searchCoach_item+ .Organizer_titleContent_searchCoach_item{
-    margin-top: 3vh;
-}
-.Organizer_informationCoach{
-    border: 1px;
-    border-style: solid;
-    border-color: #44B454;
-    border-radius: 10px;
-    width: fit-content;
-    min-width: 500px;
-    text-align: center;
-}
-.Organizer_informationCoach+ .Organizer_informationCoach{
-    margin-top: 3vh;
-}
-.Organizer_typeCoach{
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 1px;
-    border-color: #44B454;
-    text-align: center;
-    min-width: fit-content;
-    width: 200px;
-}
-.Organizer_icon_dropdown{
-    float: right;
-    padding: 4px;
-}
-.Organizer_dropdown_select_object{
+#Organizer_content--quoctich{
     flex:1;
-    padding: 5px;
+}
+.Organizer_list-Coach{
+    background-color: #848282;
+    display: flex;
+    padding: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38px;
+    color: #FFFFFF;
+    align-items: center;
+}
+.Organizer_list-Coach:hover{
+    color: #494747;
     cursor: pointer;
-    position: relative;
-    width: fit-content;
 }
-.Organizer_dropdown_select_object:hover .Organizer_typeCoach--dropList{
-    opacity: 1;
-    visibility: visible;
+.Organizer_Coach--name{
+    flex:1;
+    display: inline;
+    margin-left: 10px;
 }
-.Organizer_typeCoach--dropList{
-    border-radius: 10px;
-    border-color: #44B454;
-    border-style: solid;
-    border-width: 1px;
-    width: fit-content;
-    background-color: #ffffff;
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s linear, visibility 0.2s linear;
+.Organizer_Coach--club{
+    flex:1
 }
-.Organizer_typeCoach--dropList__item{
-    padding-left: 10px;
-    font-size: 1rem;
-    width: 200px;
+.Organizer_Coach--country{
+    flex:1
 }

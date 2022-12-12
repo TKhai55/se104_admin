@@ -1,39 +1,130 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header_Administrator/Header'
 import './ManagaAccount.css'
 import icon from '../images/manageAccount.png'
+import axios from 'axios'
 
-const accNum = {
-    currentAcc: 4
-}
-
-const listAcc = [
-    {
-        id: 0,
-        acc: 'manager1',
-        pass: '12345678'
-    },
-    {
-        id: 1,
-        acc: 'organizer1',
-        pass: '12345678'
-    },
-    {
-        id: 2,
-        acc: 'manager2',
-        pass: '12345678'
-    },
-    {
-        id: 3,
-        acc: 'manager3',
-        pass: '12345678'
-    }
-]
 
 
 const ManagaAccount = () => {
 
     let i = 1;
+
+    const [taikhoans, setTaiKhoan] = useState([])
+    const [curaccnum, setCurAccNum] = useState([])
+    const [data, setDaTa] = useState([])
+    const [changetaikhoan, setChangeTaiKhoan] = useState([])
+
+
+
+    var table = document.getElementById("tableID");
+    if (table) {
+        for (let j = 1; j < table.rows.length; j++) {
+            table.rows[j].onclick = function (e) {
+                Array.from(this.parentElement.children).forEach(function (e) {
+                    e.classList.remove('slected_row')
+                })
+                this.classList.add('slected_row')
+                e = e || window.event;
+                var data1 = []
+                var target = e.srcElement || e.target;
+                while (target && target.nodeName !== "TR") {
+                    target = target.parentNode;
+                }
+                if (target) {
+
+                    var cells = target.getElementsByTagName("td");
+                    for (var i = 0; i < cells.length; i++) {
+                        data1.push(cells[i].innerHTML);
+                        setDaTa(data1)
+                        searchTK(data1)
+                    }
+                }
+
+            };
+        }
+    }
+
+
+
+
+    const getTK = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/auth/gettaikhoan')
+            setTaiKhoan(res.data)
+            setCurAccNum(res.data.length)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    const searchTK = async (data1) => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/auth/search/' + data1[1])
+            setChangeTaiKhoan(res.data[0])
+        }
+        catch (error) {
+            alert(error.message)
+            console.log(error.message)
+        }
+    }
+    const DeleteTK = async () => {
+        var answer = window.confirm("Bạn có chắc muốn xoá tài khoản ?");
+        if (answer) {
+            try {
+                await axios.delete('http://localhost:8000/v1/auth/deletetaikhoan/' + changetaikhoan._id)
+                alert("Xoá tài khoản thành công")
+                window.location.reload();
+                return false;
+            }
+            catch (error) {
+                alert(error.message)
+                console.log(error.message)
+            }
+        }
+        else {
+            return
+        }
+
+    }
+    const FixTK = async () => {
+        let string_anwser = prompt("Nhập mật khẩu muốn đổi")
+        console.log(string_anwser)
+        if (string_anwser != null) {
+            try {
+                await axios.patch('http://localhost:8000/v1/auth/updatetaikhoan/' + changetaikhoan._id, {
+                    TENTAIKHOAN: changetaikhoan.TENTAIKHOAN,
+                    MATKHAU: string_anwser,
+                    PHANQUYEN: changetaikhoan.PHANQUYEN
+                })
+                alert("Đổi mật khẩu thành công")
+                window.location.reload();
+                return false;
+            }
+            catch (error) {
+                alert('Vui lòng nhập mật khẩu muốn đổi')
+                console.log(error.message)
+            }
+        }
+        else {
+            return
+        }
+
+
+    }
+
+    useEffect(() => {
+        getTK()
+    }, [])
+    function fix() {
+        FixTK()
+    }
+
+    function deleteTK() {
+        DeleteTK()
+    }
 
     return (
         <div>
@@ -48,13 +139,12 @@ const ManagaAccount = () => {
                     </div>
                     <div className="content">
                         <div className="curAcc">
-                            Số lượng tài khoản: {accNum.currentAcc}
+                            Số lượng tài khoản: {curaccnum}
                         </div>
-                        <button className='delete'>Xoá</button>
-                        <button className='fix'>Sửa</button>
-                        <button className='pass'>Xem mật khẩu</button>
+                        <button className='delete' onClick={deleteTK}>Xoá</button>
+                        <button className='fix' onClick={fix}>Đổi mật khẩu </button>
 
-                        <table className="table_content">
+                        <table className="table_content" id='tableID'>
                             <thead>
                                 <tr>
                                     <th className='stt'>STT</th>
@@ -64,12 +154,12 @@ const ManagaAccount = () => {
                             </thead>
                             <tbody>
                                 {
-                                    listAcc.map(listAcc => {
+                                    taikhoans.map(taikhoan => {
                                         return (
-                                            <tr key={listAcc.id}>
+                                            <tr id='tablerow' key={taikhoan._id} >
                                                 <td>{i++}</td>
-                                                <td>{listAcc.acc}</td>
-                                                <td className='hidetext'>{listAcc.pass}</td>
+                                                <td>{taikhoan.TENTAIKHOAN}</td>
+                                                <td className='text'>{taikhoan.MATKHAU}</td>
                                             </tr>
                                         )
                                     })

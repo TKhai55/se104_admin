@@ -1,40 +1,57 @@
 import React from 'react'
 import './Manager_SearchPlayer.css'
-import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
 import ChangePlayer from '../../Change_Information/ChangePLayer/ChangePLayer'
-import { useState } from 'react'
+import axios from "axios";
+import { useState, useEffect } from 'react'
+import Header from '../../Header_Manager/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
 export default function SearchPLayer() {
+    let [cauthus, setCauThu] = useState([])
+
+    const getCT = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/cauthu/getcauthu')
+            setCauThu(res.data)
+            cauthus=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getCT()
+    }, [])
+
     const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Manager_SearchPlayer'>
-        <div className='Manager_SearchPlayer-content'>
-            <div className='Manager_content_left_searchPlayer'>
-                <p className='Manager_titleContent_searchPlayer_item'>Họ tên:</p>
-                <p className='Manager_titleContent_searchPlayer_item'>Ngày sinh:</p>
-                <p className='Manager_titleContent_searchPlayer_item'>Chiều cao:</p>
-                <p className='Manager_titleContent_searchPlayer_item'>Quốc tịch:</p>
-                <p className='Manager_titleContent_searchPlayer_item'>Số áo:</p>
-                <p className='Manager_titleContent_searchPlayer_item'>Loại:</p>
+    <div className='ManagerPlayer_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Manager_SearchPlayer'>
+            <div className='Manager_header_listPlayer'>
+                <p id='Manager_content--cauthu'>Cầu thủ</p>
+                <p id='Manager_content--vitri'>Vị trí</p>
+                <p id='Manager_content--caulacbo'>Câu lạc bộ</p>
             </div>
-            <div className='Manager_content_middle_searchPlayer'>
-                <p className='Manager_informationPlayer'>Nguyễn Công Phượng</p>
-                <p className='Manager_informationPlayer'>19/08/2002</p>
-                <p className='Manager_informationPlayer'>1.80m</p>
-                <p className='Manager_informationPlayer'>Việt Nam</p>
-                <p className='Manager_informationPlayer'>10</p>
-                <p className='Manager_informationPlayer'>Tiền đạo</p>
-            </div>
-            <div className='Manager_content_right_searchPlayer'>
-                <img className='Manager_searchPLayer--image' src={cp} alt='a'/>
-            </div>
-        </div>
-        <div className='Manager_searchPlayer_button_change'>
-            <button className='Manager_searchPlayer_button_delete'>Xóa</button>
-            <button className='Manager_searchPlayer_button_fix' onClick={() => setButtonPopup(true)}>Sửa</button>
-        </div>
-        <ChangePlayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+            {
+                cauthus.map(cauthus => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Manager_list-Player' key={cauthus.id}>
+                                <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
+                                <p className='Manager_Player--name'>{cauthus.HOTEN}</p>
+                                <p className="Manager_Player--position">{cauthus.VITRI}</p>
+                                <p className="Manager_Player--club">{cauthus.MACLB}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
+                        </div>
+                    )
+                })
+            }
+            <ChangePlayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
     </div>    
   )
 }

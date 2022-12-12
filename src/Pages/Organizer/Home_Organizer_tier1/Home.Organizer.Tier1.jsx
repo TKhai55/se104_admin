@@ -1,39 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.Organizer.Tier1.css'
 import Header from '../Header_Organizer/Header'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom'
+import axios from "axios";
 
-const league = [
-    {
-        id: 0,
-        logo: 'https://upload.wikimedia.org/wikipedia/vi/c/c9/V.League_1_2022.svg',
-        name: 'V_League 2022'
-    },
-    {
-        id: 1,
-        logo: 'https://upload.wikimedia.org/wikipedia/vi/5/59/V.League_1_%282021%29.png',
-        name: 'V_League 2021'
-    },
-    {
-        id: 2,
-        logo: 'https://upload.wikimedia.org/wikipedia/vi/5/5f/V.League_1_%282020%29.svg',
-        name: 'V_League 2020'
-    },
-    {
-        id: 3,
-        logo: 'https://vpf.vn/wp-content/uploads/2019/02/Logo-1.png',
-        name: 'V_League 2019'
-    },
-]
+
 
 const Home = () => {
+
+    let [muagiais, setMuaGiai] = useState([])
+
+    const getMG = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/muagiai/getmuagiai')
+            setMuaGiai(res.data)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+
+
+    useEffect(() => {
+        getMG()
+    }, [])
+
+
+
     return (
         <div className='Home_tier1'>
             <Header />
             <section className='home_container'>
                 <div className='league_table'>
+
                     <table className='league'>
                         <thead>
                             <tr><th>CHỌN MÙA GIẢI</th></tr>
@@ -42,29 +44,33 @@ const Home = () => {
                         <tbody>
 
                             {
-                                league.map(league => {
-                                    return (
-                                        <Link to='/organizer/home'>
-                                            <tr className='league_infor' key={league.id}>
-                                                <td className='logo'><img src={league.logo} alt={league.name} className='league_logo' /></td>
-                                                <td className='league_name'>{league.name}</td>
-                                            </tr>
-                                        </Link>
-                                    )
-                                })
+                                muagiais.sort((a, b) => a._id > b._id ? -1 : 1)
+                                    .map(muagiai => {
+                                        const img_url = 'http://localhost:8000/' + muagiai.LOGO
+                                        return (
+                                            <Link to={'/organizer/home/' + muagiai._id}>
+                                                <tr className='league_infor' key={muagiai._id}>
+                                                    <td className='logo'><img src={img_url} alt={muagiai.TENMUAGIAI} className='league_logo' /></td>
+                                                    <td className='league_name'>{muagiai.TENMUAGIAI}</td>
+                                                </tr>
+
+                                            </Link>
+                                        )
+                                    })
                             }
                         </tbody>
                     </table>
-                    <Link to='/organizer/addLeague'>
-                        <button className='add_league'>
-                            Tạo giải đấu mới
-                            <span>  </span>
-                            <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
-                        </button>
-                    </Link>
+
                 </div>
-            </section>
-        </div>
+                <Link to='/organizer/addLeague'>
+                    <button className='add_league'>
+                        Tạo giải đấu mới
+                        <span>  </span>
+                        <FontAwesomeIcon icon={faPlus} className='button_icon'></FontAwesomeIcon>
+                    </button>
+                </Link>
+            </section >
+        </div >
     )
 }
 

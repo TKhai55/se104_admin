@@ -1,30 +1,57 @@
 import React from 'react'
 import './Organizer_SearchCoach.css'
-import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
+import DetailCoach from '../Detail/DetailCoach/DetailCoach'
+import axios from "axios";
+import { useState, useEffect } from 'react'
+import Header from '../../Header_Organizer/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
 export default function SearchCoach() {
+    let [huanluyenviens, setHuanLuyenVien] = useState([])
+
+    const getHLV = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien')
+            setHuanLuyenVien(res.data)
+            huanluyenviens=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getHLV()
+    }, [])
+
+    const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Organizer_SearchCoach'>
-        <div className='Organizer_SearchCoach-content'>
-            <div className='Organizer_content_left_searchCoach'>
-                <p className='Organizer_titleContent_searchCoach_item'>Họ tên:</p>
-                <p className='Organizer_titleContent_searchCoach_item'>Ngày sinh:</p>
-                <p className='Organizer_titleContent_searchCoach_item'>Ngày tham gia:</p>
-                <p className='Organizer_titleContent_searchCoach_item'>Quốc tịch:</p>
-                <p className='Organizer_titleContent_searchCoach_item'>Loại:</p>
+    <div className='OrganizerCoach_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Organizer_SearchCoach'>
+            <div className='Organizer_header_listCoach'>
+                <p id='Organizer_content--hlv'>Huấn luyện viên</p>
+                <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
+                <p id='Organizer_content--quoctich'>Quốc tich</p>
             </div>
-            <div className='Organizer_content_middle_searchCoach'>
-                <p className='Organizer_informationCoach'>Kiatisuk</p>
-                <p className='Organizer_informationCoach'>19/08/2002</p>
-                <p className='Organizer_informationCoach'>19/08/2002</p>
-                <p className='Organizer_informationCoach'>Thái Lan</p>
-                <p className='Organizer_informationCoach'>HLV Trưởng</p>
-            </div>
-            <div className='Organizer_content_right_searchCoach'>
-                <img className='Organizer_searchCoach--image' src={cp} alt='a'/>
-            </div>
-        </div>
+            {
+                huanluyenviens.map(huanluyenviens => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Organizer_list-Coach' key={huanluyenviens.id}>
+                                <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={100}/>
+                                <p className='Organizer_Coach--name'>{huanluyenviens.HOTEN}</p>
+                                <p className="Organizer_Coach--club">{huanluyenviens.MACLB}</p>
+                                <p className="Organizer_Coach--country">{huanluyenviens.QUOCTICH}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
+                        </div>
+                    )
+                })
+            }
+            <DetailCoach trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
     </div>    
   )
 }

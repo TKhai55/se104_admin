@@ -1,32 +1,59 @@
 import React from 'react'
 import './Organizer_SearchPlayer.css'
-import cp from '../../../Administrator/images/image 10.png'
-import {AiFillCaretDown} from 'react-icons/ai'
+import DetailPLayer from '../Detail/DetailPlayer/DetailPlayer'
+import axios from "axios";
+import { useState, useEffect,useRef } from 'react'
+import Header from '../../Header_Organizer/Header';
+import HeaderSearch from '../Header_Search/HeaderSearch';
 
 export default function SearchPLayer() {
+
+    let [cauthus, setCauThu] = useState([])
+
+    const getCT = async () => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/cauthu/getcauthu')
+            setCauThu(res.data)
+            cauthus=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getCT()
+    }, [])
+    
+    const [buttonPopup, setButtonPopup]= useState(false);
   return (
-    <div className='Organizer_SearchPlayer'>
-        <div className='Organizer_SearchPlayer-content'>
-            <div className='Organizer_content_left_searchPlayer'>
-                <p className='Organizer_titleContent_searchPlayer_item'>Họ tên:</p>
-                <p className='Organizer_titleContent_searchPlayer_item'>Ngày sinh:</p>
-                <p className='Organizer_titleContent_searchPlayer_item'>Chiều cao:</p>
-                <p className='Organizer_titleContent_searchPlayer_item'>Quốc tịch:</p>
-                <p className='Organizer_titleContent_searchPlayer_item'>Số áo:</p>
-                <p className='Organizer_titleContent_searchPlayer_item'>Loại:</p>
+    <div className='OrganizerPlayer_body'>
+        <Header/>
+        <HeaderSearch/>
+        <div className='Organizer_SearchPlayer'>
+            <div className='Organizer_header_listPlayer'>
+                <p id='Organizer_content--cauthu'>Cầu thủ</p>
+                <p id='Organizer_content--vitri'>Vị trí</p>
+                <p id='Organizer_content--caulacbo'>Câu lạc bộ</p>
             </div>
-            <div className='Organizer_content_middle_searchPlayer'>
-                <p className='Organizer_informationPlayer'>Nguyễn Công Phượng</p>
-                <p className='Organizer_informationPlayer'>19/08/2002</p>
-                <p className='Organizer_informationPlayer'>1.80m</p>
-                <p className='Organizer_informationPlayer'>Việt Nam</p>
-                <p className='Organizer_informationPlayer'>10</p>
-                <p className='Organizer_informationPlayer'>Tiền đạo</p>
-            </div>
-            <div className='Organizer_content_right_searchPlayer'>
-                <img className='Organizer_searchPLayer--image' src={cp} alt='a'/>
-            </div>
-        </div>
-    </div>    
+            {
+                cauthus.map(cauthus => {
+                    return (
+                        <div className='a' onClick={() => setButtonPopup(true)}>
+                            <div className='Organizer_list-Player' key={cauthus.id}>
+                                <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
+                                <p className='Organizer_Player--name'>{cauthus.HOTEN}</p>
+                                <p className="Organizer_Player--position">{cauthus.VITRI}</p>
+                                <p className="Organizer_Player--club">{cauthus.MACLB}</p>
+                            </div>
+                            <hr size="1" color="#fff"/>
+                        </div>
+                    )
+                })
+            }
+            <DetailPLayer trigger={buttonPopup} setTrigger={setButtonPopup}/>
+        </div>    
+    </div>
+    
   )
 }

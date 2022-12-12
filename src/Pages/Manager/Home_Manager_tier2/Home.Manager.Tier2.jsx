@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.Manager.Tier2.css'
 import Header from '../Header_Manager/Header'
 import createClub from '../images/createClub.png'
@@ -7,28 +7,61 @@ import createResult from '../images/createReasult.png'
 import createReport from '../images/createReport.png'
 import search from '../images/search.png'
 import exit from '../images/exit.png'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 
-
-const clubNumber = {
-    currentClub: 12,
-    maxClub: 13
-}
 
 
 export const Home_Manager_Tier2 = () => {
+
+    const muagiaiID = useParams()
+    let [totalnum, setTotalNum] = useState([])
+    let [currentnum, setCurrentNum] = useState([])
+
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
+    useEffect(() => {
+        getSLTT(payload.params.muagiaiID.muagiaiID)
+        getSLCR(payload.params.muagiaiID.muagiaiID)
+    }, []);
+
+    const getSLTT = async (payload) => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/muagiai/getmuagiai/' + payload)
+            setTotalNum(res.data.SL_CLB)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    const getSLCR = async (payload) => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/searchbyMG/' + payload)
+            setCurrentNum(res.data.length)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+
     return (
         <div className='Home_tier2'>
             <Header />
             <section className='Home_wrapper'>
                 <div className="clubNum">
-                    <p>CLB: {clubNumber.currentClub}/{clubNumber.maxClub}</p>
+                    <p>CLB: {currentnum}/{totalnum}</p>
                 </div>
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button createClub">
-                            <Link to='/manager/home/createCLub'>
+                            <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/createCLub'}>
                                 <img src={createClub} alt="createCLub" />
                                 <p>ĐĂNG KÍ ĐỘI BÓNG</p>
                             </Link>
@@ -41,8 +74,10 @@ export const Home_Manager_Tier2 = () => {
 
                         </div>
                         <div className="button search">
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
+                            <Link to='/manager/home/search'>
+                                <img src={search} alt="search" />
+                                <p>TRA CỨU</p>
+                            </Link>
 
                         </div>
                     </div>
@@ -65,7 +100,6 @@ export const Home_Manager_Tier2 = () => {
                         </div>
                         <div className="button exit">
                             <Link to='/manager'>
-
                                 <img src={exit} alt="exit" />
                                 <p>THOÁT</p>
                             </Link>
