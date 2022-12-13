@@ -56,18 +56,26 @@
     height: 20vh;
     max-width: 15vw;
     max-height: 20vh;
-
 }
-.btn_imgClub_change{
+.btn_imgClub_change_lb{
     background-color: #44B454;
-    border-radius: 10px;
+    border-radius: 5px;
     border:none;
-    width: 4vw;
-    height: 4vh;
     margin-top: 5px;
+    margin-left: 4vw;
+    padding: 5px;
+    width: fit-content;
+    display: flex;
     
     color: #fff;
     font-size: 14px;
+}
+.btn_imgClub_change_lb:hover{
+    background-color: #ffcc02;
+    color: #000;
+}
+.btn_imgClub_change_btn{
+    display: none;
 }
 .titleContent_searchClub_item_Change{
     padding-top: 2px;

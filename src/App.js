@@ -17,7 +17,7 @@ import SearchManager from './Pages/Manager/Search/SearchManager';
 import SearchPLayer from './Pages/Manager/Search/SearchPLayer/SearchPLayer';
 import SearchClub from './Pages/Manager/Search/SearchClub/SearchClub';
 import SearchCoach from './Pages/Manager/Search/SearchCoach/SearchCoach';
-import AddPlayerAndCoach from './Pages/Manager/Add_Player_Coach/AddPlayerAndCoach';
+
 //Manager
 
 //Organizer
@@ -56,14 +56,13 @@ function App() {
         <Route exact path='/manager/home/createResult' element={<AddResult />} />
         <Route exact path='/manager/home/createResult/detailAddResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/createReport' element={<Create_Report />} />
-        <Route exact path='/manager/home/:muagiaiID/register_club' element={<Register_Club />} />
+        <Route exact path='/manager/home/register_club' element={<Register_Club />} />
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
         <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>} />
-        <Route exact path='/manager/home/searchplayer' element={<SearchPLayer />} />
-        <Route exact path='/manager/home/searchcoach' element={<SearchCoach />} />
-        <Route exact path='/manager/home/searchclub' element={<SearchClub />} />
-        <Route exact path='/manager/home/createCLub/addPlayerAndHLV' element={<AddPlayerAndCoach />} />
+        <Route exact path='/manager/home/searchplayer/:id' element={<SearchPLayer />} />
+        <Route exact path='/manager/home/searchcoach/:id' element={<SearchCoach />} />
+        <Route exact path='/manager/home/searchclub/:id' element={<SearchClub />} />
         {/* Manager */}
 
         {/* Organizer */}
@@ -72,9 +71,9 @@ function App() {
         <Route exact path='/organizer/home/changePolicy' element={<ChangeRegulations />} />
         <Route exact path='/organizer/addLeague' element={<CreateNewLeague />} />
         <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
-        <Route exact path='/organizer/home/searchplayer' element={<SearchPLayerOr />} />
-        <Route exact path='/organizer/home/searchcoach' element={<SearchCoachOr />} />
-        <Route exact path='/organizer/home/searchclub' element={<SearchClubOr />} />
+        <Route exact path='/organizer/home/searchplayer/:id' element={<SearchPLayerOr />} />
+        <Route exact path='/organizer/home/searchcoach/:id' element={<SearchCoachOr />} />
+        <Route exact path='/organizer/home/searchclub/:id' element={<SearchClubOr />} />
 
         {/* Organizer */}
 
