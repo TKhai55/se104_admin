@@ -36,3 +36,32 @@
     cursor: pointer;
     background-color: #10647e;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+ {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@keyframes shake-input {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(2px);}
+    75% {transform: translateX(-2px);}
+    100% {transform: translateX(0);}
+}
+
+.data-empty {
+    animation: shake-input 0.16s ease-in-out 0s 3;
+}
+
+.warning {
+    color: red;
+    margin-bottom: 35px;
+    font-size: 13px;
+    display: none;
+    position: absolute;
+    bottom: 43px;
+    right: 1vh;
+    font-weight: bold;
+}

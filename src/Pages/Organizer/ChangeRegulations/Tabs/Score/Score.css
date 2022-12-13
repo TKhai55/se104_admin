@@ -55,3 +55,34 @@
     cursor: pointer;
     background-color: #10647e;
 }
+#win-score::-webkit-outer-spin-button,
+#win-score::-webkit-inner-spin-button,
+#lose-score::-webkit-outer-spin-button,
+#lose-score::-webkit-inner-spin-button,
+#draw-score::-webkit-outer-spin-button,
+#draw-score::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@keyframes shake-box {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(8px);}
+    75% {transform: translateX(-8px);}
+    100% {transform: translateX(0);}
+}
+
+.shake {
+    animation: shake-box 0.16s ease-in-out 0s 3;
+}
+
+@keyframes shake-input {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(2px);}
+    75% {transform: translateX(-2px);}
+    100% {transform: translateX(0);}
+}
+
+.data-empty {
+    animation: shake-input 0.16s ease-in-out 0s 3;
+}
