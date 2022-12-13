@@ -1,0 +1,240 @@
+.add_player_coach_container {
+    margin-top: 85px;
+}
+
+.add_player_coach_table {
+    width: 85%;
+    margin-left: 7.5%;
+    background-color: #3f4249;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.add_player_coach_table .title_container {
+    background-color: #545861;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.add_player_coach_table .title {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.add_player_coach_table .add_logo_clb_img {
+    width: 90px;
+    height: 120px;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.add_player_coach_table .add_logo_clb_lb {
+    color: #ffffff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: large;
+    background-color: #44B454;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.add_player_coach_table .add_logo_clb_btn {
+    display: none;
+}
+
+.add_player_coach_table .add_list {
+    margin-bottom: 60px;
+}
+
+.add_player_coach_table .add_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.add_player_coach_table .title_text_and_amout_count {
+    display: flex;
+    width: 385px;
+    justify-content: space-between;
+}
+
+.add_player_coach_table .title_text {
+    background-color: #44B454;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    color: #ffffff;
+    width: 180px;
+    border-radius: 20px;
+}
+
+.add_player_coach_table .amout_count {
+    background-color: #ffffff;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+
+}
+
+.add_player_coach_table .add_btn {
+    background-color: #44B454;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.add_player_coach_table table {
+    width: 85%;
+    margin-left: 7.5%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+
+
+.add_player_coach_table .td_title {
+    border-bottom: 1px solid #0029FF;
+    border-right: 1px solid #0029FF;
+    text-align: center;
+}
+
+.add_player_coach_table .td_content {
+    border-right: 1px solid #0029FF;
+    text-align: center;
+}
+
+.add_player_coach_table .add_logo_clb_btn:hover {
+    background-color: #5ce871;
+}
+
+.add_player_coach_table .add_btn:hover {
+    background-color: #5ce871;
+}
+
+.add_player_coach_table .input_container1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_player_coach_table .input {
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.add_player_coach_table .input1 {
+    display: flex;
+    width: 295px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.add_player_coach_table .label1 {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.add_player_coach_table .input_in_popup {
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    border-color: #44B454;
+    position: static;
+}
+
+.add_player_coach_table .HLV_img {
+    width: 90px;
+    height: 120px;
+    margin-left: 15px;
+}
+
+.add_player_coach_table .label {
+    font-size: 18px;
+    margin-top: 4px;
+    color: #ffffff;
+}
+
+.add_player_coach_table .save_btn {
+    background-color: #44B454;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 35px;
+    margin-left: 34%;
+}
+
+.add_player_coach_table .save_btn:hover {
+    background-color: #5ce871;
+}
+
+.add_player_coach_table .save_btn_in_main_page {
+    background-color: #44B454;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+    width: 100px;
+    margin-top: 35px;
+    margin-left: 46%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add_player_coach_table .caulacbo_info_container{
+    display: flex;
+    padding: 20px;
+}
+
+.add_player_coach_table .caulacbo_logo{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.add_player_coach_table .caulacbo_info{
+    margin-left: 25px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.add_player_coach_table .caulacbo_info_name{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.add_player_coach_table .caulacbo_info_stadium{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}

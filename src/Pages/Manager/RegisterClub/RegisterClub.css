@@ -76,18 +76,24 @@
     height: 5vh;
 }
 .RegisterClub_wrapper .form_wrapper .content_wrapper .name{
-    width: 30%;
+    width: 25%;
     text-align: center;
 }
 .RegisterClub_wrapper .form_wrapper .content_wrapper .stadium{
-    width: 30%;
-    text-align: center;
-
-}
-.RegisterClub_wrapper .form_wrapper .content_wrapper .year{
     width: 25%;
     text-align: center;
-
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .year{
+    width: 20%;
+    text-align: center;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .sl_ct {
+    width: 7.5%;
+    text-align: center;
+}
+.RegisterClub_wrapper .form_wrapper .content_wrapper .st_hlv {
+    width: 7.5%;
+    text-align: center;
 }
 .RegisterClub_wrapper .form_wrapper .content_wrapper button{
     font-size: 2.5vh;

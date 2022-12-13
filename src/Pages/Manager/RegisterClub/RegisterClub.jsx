@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import Loading from '../Loading/Loading'
 
 
 
@@ -13,6 +14,7 @@ const RegisterClub = () => {
 
     const muagiaiID = useParams()
     let [caulacbos, setCauLacBo] = useState([])
+    const [loading , setLoading] = useState(false)
 
     const payload = {
         params: {
@@ -28,6 +30,7 @@ const RegisterClub = () => {
         try {
             const res = await axios.get('http://localhost:8000/v1/caulacbo/searchbyMG/' + payload)
             setCauLacBo(res.data)
+            setLoading(true)
         }
         catch (error) {
             console.log(error.message)
@@ -56,24 +59,39 @@ const RegisterClub = () => {
                                         <th>Câu lạc bộ</th>
                                         <th>Sân vận động</th>
                                         <th>Năm thành lập</th>
-
+                                        <th>SL_CT</th>
+                                        <th>SL_HLV</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        caulacbos.map(caulacbo => {
-                                            return (
-                                                <tr className='club_infor' key={caulacbo._id}>
+                                    {loading?caulacbos.map(caulacbo => {
+                                        const img_url = 'http://localhost:8000/' + caulacbo.LOGO
+                                        return (
+                                            <tr className='club_infor' key={caulacbo._id}>
+                                                <Link
+                                                    to='/manager/home/createCLub/addPlayerAndHLV'
+                                                    state={
+                                                        {TENCLB:caulacbo.TENCLB,
+                                                        SANVANDONG:caulacbo.SANVANDONG,
+                                                        LOGO:caulacbo.LOGO,
+                                                        ID_clb:caulacbo._id,
+                                                        ID_muagiai:payload.params.muagiaiID.muagiaiID
+                                                        }
+                                                        }
+                                                    >
                                                     <td className='logo'>
-                                                        <img src={caulacbo.LOGO} alt={caulacbo.TENCLB} className='logoClub' />
+                                                        <img src={img_url} alt={caulacbo.TENCLB} className='logoClub' />
                                                     </td>
-                                                    <td className='name'>{caulacbo.TENCLB}</td>
-                                                    <td className="stadium">{caulacbo.SANVANDONG}</td>
-                                                    <td className="year">{caulacbo.NAMTHANHLAP}</td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
+                                                </Link>
+                                                <td className='name'>{caulacbo.TENCLB}</td>
+                                                <td className="stadium">{caulacbo.SANVANDONG}</td>
+                                                <td className="year">{caulacbo.NAMTHANHLAP}</td>
+                                                <td className="sl_ct">{caulacbo.SL_CAUTHU}</td>
+                                                <td className="sl_ct">{caulacbo.SL_HLV}</td>
+                                            </tr>
+                                        )
+                                    }):<Loading/>
+                                    }       
                                 </tbody>
                             </table>
                         </div>
