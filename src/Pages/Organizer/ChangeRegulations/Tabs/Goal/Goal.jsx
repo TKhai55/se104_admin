@@ -140,7 +140,7 @@ const Goal = () => {
                         return (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{goalItem.TENBANTHANG}</td>
+                                <td>{goalItem.TEN}</td>
                                 <button className='icon-delete'><FontAwesomeIcon icon={faXmark} onClick={() => onDeleteItem(goalItem.TENBANTHANG, goalItem._id)}/></button>
                             </tr>
                         )
