@@ -5,14 +5,16 @@ import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Manager/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
+import { useLocation } from 'react-router-dom';
 
 export default function SearchCoach() {
+    const location = useLocation();
     let [huanluyenviens, setHuanLuyenVien] = useState([])
 
     const getHLV = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien')
+            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/search/'+searchkey)
             setHuanLuyenVien(res.data)
             huanluyenviens=res.data;
         }
@@ -23,8 +25,9 @@ export default function SearchCoach() {
     useEffect(() => {
         getHLV()
     }, [])
-
+    const [searchkey,] = useState(location.state.sk);
     const [buttonPopup, setButtonPopup]= useState(false);
+    
   return (
     <div className='ManagerCoach_body'>
         <Header/>

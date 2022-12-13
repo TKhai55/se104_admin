@@ -1,18 +1,17 @@
 import React from 'react'
 import './DetailClub.css'
 import { useState, useEffect } from 'react'
-import axios from "axios";
+import Axios from "axios";
 
 export default function DetailClub(props) {
-    let [caulacbos, setCaulacbo] = useState([])
+    let [caulacbos, setCaulacbo] = useState()
 
     const getCLB = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/caulacbo/search/noi')
+            const res = await Axios.get('http://localhost:8000/v1/caulacbo/getaclub/6396fd49425c26e4c186feb1')
             setCaulacbo(res.data)
             caulacbos=res.data;
-            console.log(res.data[0])
         }
         catch (error) {
             console.log(error.message)
@@ -31,12 +30,12 @@ export default function DetailClub(props) {
                 <p className='titleContent_searchClub_item_Detail'>Sân vận động:</p>
             </div>
             <div className='content_middle_searchClub_Detail'>
-                <p className='Club_information_Detail'>{caulacbos[0].TENCLB}</p>
-                <p className='Club_information_Detail'>{caulacbos[0].NAMTHANHLAP}</p>
-                <p className='Club_information_Detail'>{caulacbos[0].SANVANDONG}</p>
+                <p className='Club_information_Detail'>{caulacbos.TENCLB}</p>
+                <p className='Club_information_Detail'>{caulacbos.NAMTHANHLAP}</p>
+                <p className='Club_information_Detail'>{caulacbos.SANVANDONG}</p>
             </div>
             <div className='content_right_searchClub_Detail'>
-                <img className='searchClub--image_Detail' src={caulacbos[0].LOGO} alt='a'/>
+                <img className='searchClub--image_Detail' src={'http://localhost:8000/'+caulacbos.AVATAR} alt='a'/>
             </div>
         </div>
         <div className='Detail_exit'>
