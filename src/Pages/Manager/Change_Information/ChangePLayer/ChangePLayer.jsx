@@ -4,17 +4,14 @@ import Axios from "axios"
 
 
 export default function ChangePLayer(props) {
-    let [cauthu, setCauThu] = useState()
-    const [idcauthu,setIDCauThu] = useState(props.id)
-    // setIDCauThu(props.id)
-    console.log("cay quá chạy được đi",props.id)
+    let [cauthu, setCauThu] = useState([])
+    let [player,] = useState()
     const getCT = async () => {
         try {
-        const res = await Axios.get('http://localhost:8000/v1/cauthu/getaplayer/'+'63987873ccfa4452a73f8443');
+        const res = await Axios.get('http://localhost:8000/v1/cauthu/getcauthu/');
             setCauThu(res.data)
             cauthu=res.data;
-            console.log("cauthu",cauthu)
-            
+            console.log("cauthu",cauthu[0])
         }
         catch (error) {
             console.log(error.message)
@@ -52,7 +49,7 @@ export default function ChangePLayer(props) {
             SOAO: soao,
             LOAI: loai
         })
-        console.log("Thêm thành công");
+        alert("Sửa thành công");
     }
 
   return (props.trigger) ? (
@@ -66,12 +63,12 @@ export default function ChangePLayer(props) {
                 <p className='titleContent_searchPlayer_item_Change'>Loại:</p>
             </div>
             <div className='content_middle_searchPlayer_Change'>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.HOTEN} onChange={(e)=>setHoTen(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={cauthu[0].HOTEN} onChange={(e)=>setHoTen(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={cauthu[0].NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={cauthu[0].QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={cauthu[0].SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
                 <select type='text' name="player" className="Player_object" onClick={(e)=>setLoai(e.target.value)}>
-                    <option value="none" selected disabled hidden>{cauthu.VITRI}</option>
+                    <option value="none" selected disabled hidden>{cauthu[0].VITRI}</option>
                     <optgroup label="Tiền đạo">
                         <option value="Tiền đạo cắm">Tiền đạo cắm</option>
                         <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
@@ -99,7 +96,7 @@ export default function ChangePLayer(props) {
                         return <img className='searchClub--image_Change'
                         src={imageURL} alt='' />
                     }) : <img className='searchClub--image_Change'
-                        src={"http://localhost:8000/"+cauthu.AVATAR} alt='' />
+                        src={"http://localhost:8000/"+player.AVATAR} alt='' />
                     }
                     <label className='btn_imgPlayer_change_lb'>
                         Chỉnh sửa Avatar +
@@ -111,7 +108,7 @@ export default function ChangePLayer(props) {
                         />
                     </label>
                 </div> */}
-                <img className='searchPlayer--image_Change' src={"http://localhost:8000/"+cauthu.AVATAR} alt='' />
+                <img className='searchPlayer--image_Change' src={"http://localhost:8000/"+cauthu[0].AVATAR} alt='' />
 
             </div>
         </div>

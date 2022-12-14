@@ -50,7 +50,7 @@ export default function ChangeCoach(props) {
             QUOCTICH: quoctich,
             LOAI: loai
         })
-        console.log("Thêm thành công");
+        alert("Sửa thành công");
     }
 
   return (props.trigger) ? (

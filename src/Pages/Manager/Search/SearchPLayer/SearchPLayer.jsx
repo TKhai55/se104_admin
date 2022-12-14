@@ -24,7 +24,7 @@ export default function SearchPLayer() {
     useEffect(() => {
         getCT()
     }, [])
-    
+
     const [searchkey,] = useState(location.state.sk);
     const [buttonPopup, setButtonPopup]= useState(false);
 
@@ -64,8 +64,8 @@ export default function SearchPLayer() {
             {
                 cauthus.map(cauthus => {
                     return (
-                        <div className='a' onClick={() => {setButtonPopup(true); setIDCT(cauthus._id);  } }>
-                        { find(cauthus.MACLB) }
+                        <div className='a' onClick={() => { setButtonPopup(true); setIDCT(cauthus._id);} }>
+                        { find(cauthus.MACLB)}
                             <div className='Manager_list-Player' key={cauthus._id}>
                                 <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
                                 <p className='Manager_Player--name'>{cauthus.HOTEN}</p>
@@ -77,6 +77,7 @@ export default function SearchPLayer() {
                     )
                 })
             }
+            {/* <button onClick={()=> console.log("player", idct)}> test</button> */}
             <ChangePlayer id={idct} trigger={buttonPopup} setTrigger={setButtonPopup} />
         </div>    
     </div>    

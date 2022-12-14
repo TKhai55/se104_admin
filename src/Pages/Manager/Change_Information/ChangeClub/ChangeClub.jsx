@@ -48,7 +48,7 @@ export default function ChangeClub(props) {
             NAMTHANHLAP: namThanhLap,
             SANVANDONG: sanVanDong
         })
-        console.log("Thêm thành công");
+        alert("Sửa thành công");
     }
 
     return (props.trigger) ? (
