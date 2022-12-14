@@ -1,13 +1,13 @@
 import React from 'react'
 import './Manager_SearchClub.css'
-import ChangeClub from '../../Change_Information/ChangeClub/ChangeClub'
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Manager/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function SearchClub() {
+    const navigate= useNavigate();
     const location = useLocation();
     let [caulacbos, setCauLacBo] = useState([])
 
@@ -26,7 +26,6 @@ export default function SearchClub() {
         getHLV()
     }, [])
     const [searchkey,] = useState(location.state.sk);
-    const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='ManagerCoach_body'>
         <Header/>
@@ -40,7 +39,11 @@ export default function SearchClub() {
             {
                 caulacbos.map(caulacbos => {
                     return (
-                        <div className='a' onClick={() => setButtonPopup(true)}>
+                        <div className='a' onClick={() => {navigate(`/manager/home/club/${caulacbos._id}`,{
+                                state:{club:caulacbos},   
+                            }); 
+                                // window.location.reload();
+                            }}>
                             <div className='Organizer_list-Club' key={caulacbos.id}>
                                 <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
                                 <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
@@ -52,7 +55,6 @@ export default function SearchClub() {
                     )
                 })
             }
-            <ChangeClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
         </div>    
     </div>    
   )

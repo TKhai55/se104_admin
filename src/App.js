@@ -17,7 +17,9 @@ import SearchManager from './Pages/Manager/Search/SearchManager';
 import SearchPLayer from './Pages/Manager/Search/SearchPLayer/SearchPLayer';
 import SearchClub from './Pages/Manager/Search/SearchClub/SearchClub';
 import SearchCoach from './Pages/Manager/Search/SearchCoach/SearchCoach';
-
+import ChangePLayer from './Pages/Manager/Change_Information/ChangePLayer/ChangePLayer';
+import ChangeCoach from './Pages/Manager/Change_Information/ChangeCoach/ChangeCoach';
+import ChangeClub from './Pages/Manager/Change_Information/ChangeClub/ChangeClub';
 //Manager
 
 //Organizer
@@ -29,6 +31,9 @@ import SearchOrganizer from './Pages/Organizer/Search/SearchOrganizer';
 import SearchPLayerOr from './Pages/Organizer/Search/SearchPLayer/SearchPLayer';
 import SearchClubOr from './Pages/Organizer/Search/SearchClub/SearchClub';
 import SearchCoachOr from './Pages/Organizer/Search/SearchCoach/SearchCoach';
+import DetailPLayer from './Pages/Organizer/Search/Detail/DetailPlayer/DetailPlayer';
+import DetailCoach from './Pages/Organizer/Search/Detail/DetailCoach/DetailCoach';
+import DetailClub from './Pages/Organizer/Search/Detail/DetailClub/DetailClub';
 //Organizer
 
 //Admin
@@ -39,6 +44,8 @@ import ManageAccount from './Pages/Administrator/ManageAccount/ManagaAccount';
 //Admin
 
 import { Routes, Route } from 'react-router-dom';
+
+
 
 
 function App() {
@@ -63,6 +70,9 @@ function App() {
         <Route exact path='/manager/home/searchplayer/:id' element={<SearchPLayer />} />
         <Route exact path='/manager/home/searchcoach/:id' element={<SearchCoach />} />
         <Route exact path='/manager/home/searchclub/:id' element={<SearchClub />} />
+        <Route exact path='/manager/home/player/:id' element={<div><SearchPLayer /> <ChangePLayer/></div>  } />
+        <Route exact path='/manager/home/coach/:id' element={<div><SearchCoach /> <ChangeCoach/></div>  } />
+        <Route exact path='/manager/home/club/:id' element={<div><SearchCoach /> <ChangeClub/></div>  } />
         {/* Manager */}
 
         {/* Organizer */}
@@ -74,7 +84,9 @@ function App() {
         <Route exact path='/organizer/home/searchplayer/:id' element={<SearchPLayerOr />} />
         <Route exact path='/organizer/home/searchcoach/:id' element={<SearchCoachOr />} />
         <Route exact path='/organizer/home/searchclub/:id' element={<SearchClubOr />} />
-
+        <Route exact path='/organizer/home/player/:id' element={<div><SearchPLayerOr /> <DetailPLayer/></div>  } />
+        <Route exact path='/organizer/home/coach/:id' element={<div><SearchCoachOr /> <DetailCoach/></div>  } />
+        <Route exact path='/organizer/home/club/:id' element={<div><SearchCoachOr /> <DetailClub/></div>  } />
         {/* Organizer */}
 
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import './Manager_SearchPlayer.css'
-import ChangePlayer from '../../Change_Information/ChangePLayer/ChangePLayer'
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Manager/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation} from 'react-router-dom'
+import { useLocation, useNavigate} from 'react-router-dom'
 
 
 export default function SearchPLayer() {
+    const navigate= useNavigate();
     const location = useLocation();
     let [cauthus, setCauThus] = useState([])
     const getCT = async () => {
@@ -26,8 +26,6 @@ export default function SearchPLayer() {
     }, [])
 
     const [searchkey,] = useState(location.state.sk);
-    const [buttonPopup, setButtonPopup]= useState(false);
-
     let [caulacbos, setCauLacBo] = useState([])
     const getCLB = async () => {
         try {
@@ -49,7 +47,6 @@ export default function SearchPLayer() {
             if (e === caulacbos[i]._id) nameclub = caulacbos[i].TENCLB
         }
     }
-    const [idct, setIDCT]= useState();
     
   return (
     <div className='ManagerPlayer_body'>
@@ -64,8 +61,12 @@ export default function SearchPLayer() {
             {
                 cauthus.map(cauthus => {
                     return (
-                        <div className='a' onClick={() => { setButtonPopup(true); setIDCT(cauthus._id);} }>
-                        { find(cauthus.MACLB)}
+                        <div className='a' onClick={() => {navigate(`/manager/home/player/${cauthus._id}`,{
+                                state:{player:cauthus},   
+                            }); 
+                                // window.location.reload();
+                            }}>
+                            { find(cauthus.MACLB)}
                             <div className='Manager_list-Player' key={cauthus._id}>
                                 <img src={"http://localhost:8000/"+cauthus.AVATAR} alt={cauthus.HOTEN} width={118.15} height={100}/>
                                 <p className='Manager_Player--name'>{cauthus.HOTEN}</p>
@@ -77,8 +78,6 @@ export default function SearchPLayer() {
                     )
                 })
             }
-            {/* <button onClick={()=> console.log("player", idct)}> test</button> */}
-            <ChangePlayer id={idct} trigger={buttonPopup} setTrigger={setButtonPopup} />
         </div>    
     </div>    
   )
