@@ -10,7 +10,7 @@ export default function ChangePLayer(props) {
     console.log("cay quá chạy được đi",props.id)
     const getCT = async () => {
         try {
-        const res = await Axios.get('http://localhost:8000/v1/cauthu/getaplayer/'+'6397cb755cd5df5b102ea8b9');
+        const res = await Axios.get('http://localhost:8000/v1/cauthu/getaplayer/'+'63987873ccfa4452a73f8443');
             setCauThu(res.data)
             cauthu=res.data;
             console.log("cauthu",cauthu)
@@ -45,7 +45,7 @@ export default function ChangePLayer(props) {
     console.log(avt)
     }
     const submitHandler = ()=>{
-    Axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'+'6397cb755cd5df5b102ea8b9',{
+    Axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'+'63987873ccfa4452a73f8443',{
             HOTEN : hoten,
             NGAYSINH: ngaysinh,
             QUOCTICH: quoctich,
@@ -70,12 +70,27 @@ export default function ChangePLayer(props) {
                 <input className='Player_information_Change' type='text' placeholder={cauthu.NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
                 <input className='Player_information_Change' type='text' placeholder={cauthu.QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
                 <input className='Player_information_Change' type='text' placeholder={cauthu.SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
-                <select type='text' name="player" className="Player_object" onChange={(e)=>setLoai(e.target.value)}>
-                    <option value={cauthu.VITRI}>{cauthu.VITRI}</option>
-                    <option value="Tiền đạo">Tiền đạo</option>
-                    <option value="Tiền vệ">Tiền vệ</option>
-                    <option value="Hậu vệ">Hậu vệ</option>
+                <select type='text' name="player" className="Player_object" onClick={(e)=>setLoai(e.target.value)}>
+                    <option value="none" selected disabled hidden>{cauthu.VITRI}</option>
+                    <optgroup label="Tiền đạo">
+                        <option value="Tiền đạo cắm">Tiền đạo cắm</option>
+                        <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
+                        <option value="Tiền đạo cánh phải">Tiền đạo cánh phải</option>
+                    </optgroup>
+                    <optgroup label="Tiền vệ">
+                        <option value="Tiền vệ trung tâm">Tiền vệ trung tâm</option>
+                        <option value="Tiền vệ phòng ngự">Tiền vệ phòng ngự</option>
+                        <option value="Tiền vệ cánh trái">Tiền vệ cánh trái</option>
+                        <option value="Tiền vệ cánh phải">Tiền vệ cánh phải</option>
+                    </optgroup>
+                    <optgroup label="Hậu vệ">
+                        <option value="Hậu vệ trái">Hậu vệ trái</option>
+                        <option value="Hậu vệ phải">Hậu vệ phải</option>
+                        <option value="Trung vệ">Trung vệ</option>
+                    </optgroup>
+                    <optgroup label="Thủ môn">
                     <option value="Thủ môn">Thủ môn</option>
+                    </optgroup>
                 </select>
             </div>
             <div className='content_right_searchPlayer_Change'>
