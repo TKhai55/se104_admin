@@ -4,6 +4,7 @@ import "./Create_Report.css"
 import create_report_img from "./img/create_report_img.png"
 import export_report_img from "./img/exel_img.png"
 import Axios from 'axios'
+import CommonUtils from '../utils/CommonUtils'
 
 function Create_Report() {
     const [bangxephang , setBangXepHang] = useState()
@@ -17,6 +18,15 @@ function Create_Report() {
         Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then((res)=>setCLB(res.data))
     },[])
     console.log(topThePhat)
+    const handleOnClickExport = async() =>{
+        await CommonUtils.exportExcel(bangxephang,"Bảng Xếp Hạng","charts")
+    }
+    const handleOnClickExport1 = async() =>{
+        await CommonUtils.exportExcel(topGhiBan, "Top Ghi Bàn", "Top Goal Scorer")
+    }
+    const handleOnClickExport2 = async() =>{
+        await CommonUtils.exportExcel(topThePhat, "Top Thẻ Phạt", "penalty card rating")
+    }
   return (
     <div className='create_report_container'>
         <Header />
@@ -59,6 +69,10 @@ function Create_Report() {
                     </tr>
                 })}  
             </table>
+            <div className='export_report_btn' onClick={handleOnClickExport}>Xuất báo cáo
+                <img src={export_report_img} alt='' />
+            </div>
+            <hr/>
             
             <table>
                 <tr>
@@ -88,7 +102,10 @@ function Create_Report() {
                     </tr>
                 })}
             </table>
-
+            <div className='export_report_btn' onClick={handleOnClickExport1}>Xuất báo cáo
+                <img src={export_report_img} alt='' />
+            </div>
+            <hr />
             <table>
                 <tr>
                     <td className='td_title' colSpan='6'>Danh sách cầu thủ nhận thẻ</td>
@@ -120,7 +137,7 @@ function Create_Report() {
                 })}
             </table>
 
-            <div className='export_report_btn'>Xuất báo cáo
+            <div className='export_report_btn' onClick={handleOnClickExport2}>Xuất báo cáo
                 <img src={export_report_img} alt=''/>
             </div>
         </div>
