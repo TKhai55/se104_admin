@@ -21,7 +21,6 @@ function AddPlayerAndCoach() {
   var countCT = 0;
   var countHLV = 0;
   var yearNow = new Date()
-  var countCtNgoaiQuoc = 0;
   const {TENCLB} = useLocation().state;
   const { SANVANDONG } = useLocation().state;
   const { LOGO } = useLocation().state;
@@ -75,7 +74,10 @@ function AddPlayerAndCoach() {
   console.log(ID_clb);
   useEffect(()=>{
     Axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien').then(res=>setHlvList(res.data))
-    Axios.get('http://localhost:8000/v1/cauthu/getcauthu').then(res=>setCtList(res.data))
+    Axios.get('http://localhost:8000/v1/cauthu/getcauthu').then(
+      res=>{
+        setCtList(res.data)
+      })
     Axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
       res.data.map((value) => {
         if (value._id === '63956b5260bc683901eabb6c')
@@ -109,6 +111,7 @@ function AddPlayerAndCoach() {
   }
   const submitCTHandler = ()=>{
     var nsinhCT;
+    var countCtNgoaiQuoc = 0;
     const fd = new FormData();
     fd.append('MACLB',ID_clb)
     fd.append('HOTEN', hotenCT)
@@ -120,8 +123,8 @@ function AddPlayerAndCoach() {
     if(typeof ngasinhCT !== 'undefined'){
       nsinhCT = ngasinhCT.split('/')[2]
     }
-    ctList.map((ct)=>{
-      if(ct.QUOCTICH !== 'Việt Nam')
+    ctList.map((ct) => {
+      if (ct.QUOCTICH !== 'Việt Nam' && ct.MACLB === ID_clb)
         ++countCtNgoaiQuoc
     })
     if(countCT > thamSoCtToiDa){
@@ -133,7 +136,7 @@ function AddPlayerAndCoach() {
     else if((yearNow.getFullYear() - nsinhCT) > thamSOTuoiToiDa){
       alert('TUỔI CỦA CẦU THỦ TỐI ĐA BẰNG '+thamSOTuoiToiDa)
     }
-    else if(countCtNgoaiQuoc > thamSoCtNgoaiQuoc){
+    else if(countCtNgoaiQuoc >= thamSoCtNgoaiQuoc){
       alert('SỐ CẦU THỦ NGOẠI QUỐC TỐI ĐA BẰNG '+thamSoCtNgoaiQuoc)
     }
     else{
@@ -146,7 +149,6 @@ function AddPlayerAndCoach() {
     }
   }
   console.log(thamSoCtToiDa+' '+thamSoTuoiToiThieu + ' ' + thamSOTuoiToiDa + ' ' + thamSoCtNgoaiQuoc);
-  console.log(countCtNgoaiQuoc);
   return (
     <div className='add_player_coach_container'>
       <Header/>
