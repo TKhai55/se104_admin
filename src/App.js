@@ -17,6 +17,7 @@ import SearchManager from './Pages/Manager/Search/SearchManager';
 import SearchPLayer from './Pages/Manager/Search/SearchPLayer/SearchPLayer';
 import SearchClub from './Pages/Manager/Search/SearchClub/SearchClub';
 import SearchCoach from './Pages/Manager/Search/SearchCoach/SearchCoach';
+import AddPlayerAndCoach from './Pages/Manager/Add_Player_Coach/AddPlayerAndCoach';
 
 //Manager
 
@@ -63,6 +64,7 @@ function App() {
         <Route exact path='/manager/home/searchplayer/:id' element={<SearchPLayer />} />
         <Route exact path='/manager/home/searchcoach/:id' element={<SearchCoach />} />
         <Route exact path='/manager/home/searchclub/:id' element={<SearchClub />} />
+        <Route exact path='/manager/home/createCLub/addPlayerAndHLV' element={<AddPlayerAndCoach />} />
         {/* Manager */}
 
         {/* Organizer */}
