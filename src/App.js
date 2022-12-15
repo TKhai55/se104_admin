@@ -56,7 +56,7 @@ function App() {
         <Route exact path='/manager/home/createResult' element={<AddResult />} />
         <Route exact path='/manager/home/createResult/detailAddResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/createReport' element={<Create_Report />} />
-        <Route exact path='/manager/home/register_club' element={<Register_Club />} />
+        <Route exact path='/manager/home/:muagiaiID/register_club' element={<Register_Club />} />
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
         <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>} />
