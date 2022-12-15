@@ -59,6 +59,47 @@
     position: static;
 }
 
+.register_club_table .add_logo_clb_img {
+    width: 90px;
+    height: 120px;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.register_club_table .add_logo_clb_lb {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: large;
+    background-color: #44B454;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.register_club_table .add_logo_clb_btn {
+    display: none;
+}
+
+.register_club_table .save_btn_in_main_page {
+    background-color: #44B454;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+    width: 100px;
+    margin-top: 35px;
+    margin-left: 46%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 
 
