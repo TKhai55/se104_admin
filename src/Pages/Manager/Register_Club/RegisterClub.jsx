@@ -6,6 +6,7 @@ import image11 from "./img/Group 8.png"
 import Axios from "axios"
 import { Link,useParams } from 'react-router-dom'
 
+
 function RegisterClub() {
   const [showImage , setShowImage] = useState(false)
   const [selectedFile ,setSelectedFile] = useState([]) 

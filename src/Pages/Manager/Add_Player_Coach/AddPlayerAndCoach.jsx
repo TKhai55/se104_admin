@@ -2,7 +2,6 @@ import React,{useState , useEffect} from 'react'
 import "./AddPlayerAndCoach.css"
 import PopupAddHLV from "./popup/Add_HLV";
 import PopupAddPL from "./popup/Add_PL"
-import PL_img from "./img/PL_img.png"
 import Dropdown from "./dropdown/DropDown";
 import dropdown_img from "./img/dropdown.png"
 import Header from '../Header_Manager/Header';
@@ -19,15 +18,20 @@ function AddPlayerAndCoach() {
   const [isActive, setIsActive] = useState(false)
   const options1 = ['Tiền đạo', 'Tiền vệ', 'Hậu vệ trái', 'Hậu vệ phải' , 'Trung vệ' , 'Thủ môn']
   const [selected1, setSelected1] = useState("Chọn loại")
+  var countCT = 0;
+  var countHLV = 0;
+  var yearNow = new Date()
+  var countCtNgoaiQuoc = 0;
   const {TENCLB} = useLocation().state;
   const { SANVANDONG } = useLocation().state;
   const { LOGO } = useLocation().state;
   const { ID_muagiai } = useLocation().state;
   const {ID_clb} = useLocation().state;
+  const {SL_HLV} = useLocation().state;
+  const { SL_CAUTHU } = useLocation().state;
   const logo_url = 'http://localhost:8000/'+LOGO;
   const [hlvList , setHlvList] = useState()
   const [ctList , setCtList] = useState()
-  const [countHLV , setCountHLV] = useState(0)
   const [showImage , setShowImage] = useState(false)
   const [showImage1, setShowImage1] = useState(false)
   const [selectedFile , setSelectedFile] = useState([])
@@ -44,6 +48,10 @@ function AddPlayerAndCoach() {
   const [quoctichCT, setQuoctichCT] = useState()
   const [soao, setSoao] = useState()
   const [avatarCT, setAvatarCT] = useState()
+  const [thamSoCtToiDa , setThamSoCtToiDa] = useState()
+  const [thamSoTuoiToiThieu , setThamSoTuoiToiThieu] = useState()
+  const [thamSOTuoiToiDa , setThamSoTuoiToiDa] = useState()
+  const [thamSoCtNgoaiQuoc , setThamSoCtNgoaiQuoc] = useState()
   const onSelectedFile = (e) =>{
     const selectedFiles = e.target.files;
     const selectedFileArrays = Array.from(selectedFiles);
@@ -68,7 +76,21 @@ function AddPlayerAndCoach() {
   useEffect(()=>{
     Axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien').then(res=>setHlvList(res.data))
     Axios.get('http://localhost:8000/v1/cauthu/getcauthu').then(res=>setCtList(res.data))
+    Axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
+      res.data.map((value) => {
+        if (value._id === '63956b5260bc683901eabb6c')
+          setThamSoCtToiDa(value.GIATRITHAMSO)
+        else if (value._id === '63956b5260bc683901eabb6f')
+          setThamSoTuoiToiThieu(value.GIATRITHAMSO)
+        else if (value._id === '63956b5360bc683901eabb72')
+          setThamSoTuoiToiDa(value.GIATRITHAMSO)
+        else if (value._id === '63956b5360bc683901eabb75')
+          setThamSoCtNgoaiQuoc(value.GIATRITHAMSO) 
+      })
+    })
   },[])
+
+  
   const submitHLVHandler = ()=>{
     const fd = new FormData()
     fd.append('MACLB',ID_clb)
@@ -79,10 +101,14 @@ function AddPlayerAndCoach() {
     fd.append('LOAI', selected)
     fd.append('AVATAR', avatarHLV)
     Axios.post('http://localhost:8000/v1/huanluyenvien/taohuanluyenvien',fd)
+    Axios.post('http://localhost:8000/v1/caulacbo/themhlv',{
+      "_id" : ID_clb
+    })
     setButtonPopup(false)
     window.location.reload()
   }
   const submitCTHandler = ()=>{
+    var nsinhCT;
     const fd = new FormData();
     fd.append('MACLB',ID_clb)
     fd.append('HOTEN', hotenCT)
@@ -91,10 +117,36 @@ function AddPlayerAndCoach() {
     fd.append('SOAO', soao)
     fd.append('VITRI', selected1)
     fd.append('AVATAR', avatarCT)
-    Axios.post('http://localhost:8000/v1/cauthu/taocauthu',fd)
-    setButtonPopup1(false)
-    window.location.reload()
+    if(typeof ngasinhCT !== 'undefined'){
+      nsinhCT = ngasinhCT.split('/')[2]
+    }
+    ctList.map((ct)=>{
+      if(ct.QUOCTICH !== 'Việt Nam')
+        ++countCtNgoaiQuoc
+    })
+    if(countCT > thamSoCtToiDa){
+      alert('SỐ CẦU THỦ TỐI ĐA CỦA MỖI CÂU LẠC BỘ LÀ'+thamSoCtToiDa)
+    }
+    else if((yearNow.getFullYear() - nsinhCT) < thamSoTuoiToiThieu){
+      alert('Tuổi CỦA CẦU THỦ TỐI THIỂU BẰNG '+thamSoTuoiToiThieu)
+    }
+    else if((yearNow.getFullYear() - nsinhCT) > thamSOTuoiToiDa){
+      alert('TUỔI CỦA CẦU THỦ TỐI ĐA BẰNG '+thamSOTuoiToiDa)
+    }
+    else if(countCtNgoaiQuoc > thamSoCtNgoaiQuoc){
+      alert('SỐ CẦU THỦ NGOẠI QUỐC TỐI ĐA BẰNG '+thamSoCtNgoaiQuoc)
+    }
+    else{
+      Axios.post('http://localhost:8000/v1/cauthu/taocauthu', fd)
+      Axios.post('http://localhost:8000/v1/caulacbo/themcauthu', {
+        "_id": ID_clb
+      })
+      setButtonPopup1(false)
+      window.location.reload()
+    }
   }
+  console.log(thamSoCtToiDa+' '+thamSoTuoiToiThieu + ' ' + thamSOTuoiToiDa + ' ' + thamSoCtNgoaiQuoc);
+  console.log(countCtNgoaiQuoc);
   return (
     <div className='add_player_coach_container'>
       <Header/>
@@ -118,7 +170,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Huấn luyện viên</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>{countHLV}</div>
+              <div className='amout_count'>{SL_HLV}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup(true)}>Thêm <strong>+</strong></div>
             <PopupAddHLV trigger={buttonPopup} setTrigger={setButtonPopup}>
@@ -189,7 +241,7 @@ function AddPlayerAndCoach() {
             </tr>
             {hlvList?.map((hlv,key)=>{
               return hlv.MACLB === ID_clb ? (<tr key={key}>
-                <td className='td_content'>{key+1}</td>
+                <td className='td_content'>{++countHLV}</td>
                 <td className='td_content'>{hlv.HOTEN}</td>
                 <td className='td_content'>{hlv.NGAYSINH}</td>
                 <td className='td_content'>{hlv.QUOCTICH}</td>
@@ -205,7 +257,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Cầu thủ</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>1</div>
+              <div className='amout_count'>{SL_CAUTHU}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup1(true)}>Thêm <strong>+</strong></div>
             <PopupAddPL trigger={buttonPopup1} setTrigger1={setButtonPopup1}>
@@ -276,7 +328,7 @@ function AddPlayerAndCoach() {
             </tr>
             {ctList?.map((ct,key)=>{
               return ct.MACLB === ID_clb ? (<tr key={key}>
-                <td className='td_content'>{key+1}</td>
+                <td className='td_content'>{++countCT}</td>
                 <td className='td_content'>{ct.HOTEN}</td>
                 <td className='td_content'>{ct.NGAYSINH}</td>
                 <td className='td_content'>{ct.QUOCTICH}</td>

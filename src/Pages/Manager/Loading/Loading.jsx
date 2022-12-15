@@ -3,7 +3,7 @@ import "./Loading.css"
 
 function Loading() {
   return (
-    <div class="lds-facebook"><div></div><div></div><div></div></div>
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
   )
 }
 

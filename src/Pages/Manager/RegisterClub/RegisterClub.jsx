@@ -2,7 +2,7 @@ import React from 'react'
 import './RegisterClub.css'
 import Header from '../Header_Manager/Header'
 import createClub from '../images/createClub.png'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams , useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
@@ -15,6 +15,8 @@ const RegisterClub = () => {
     const muagiaiID = useParams()
     let [caulacbos, setCauLacBo] = useState([])
     const [loading , setLoading] = useState(false)
+    const [thamSoCtToiThieu , setThamSoCtToiThieu] = useState()
+    const navigate = useNavigate()
 
     const payload = {
         params: {
@@ -23,7 +25,17 @@ const RegisterClub = () => {
     };
     useEffect(() => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
+        axios.get('http://localhost:8000/v1/thamso/getlist').then(res=>{
+            res.data.map((value)=>{
+                if (value._id === '63956b5060bc683901eabb69')
+                    setThamSoCtToiThieu(value.GIATRITHAMSO)
+            })
+        })
     }, []);
+
+    console.log(thamSoCtToiThieu)
+
+    
 
     const getSLCR = async (payload) => {
 
@@ -36,7 +48,17 @@ const RegisterClub = () => {
             console.log(error.message)
         }
     }
-
+    const CheckSL_CAUTHU = () => {
+        let count = 0;
+        caulacbos.map((caulacbo)=>{
+            if(caulacbo.SL_CAUTHU < thamSoCtToiThieu)
+                ++count;
+        })
+        if (count !== 0 )
+            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG 20')
+        else
+            navigate('/manager/home/' + payload.params.muagiaiID.muagiaiID);
+    }
     return (
         <div className='RegisterClub'>
             <Header />
@@ -75,6 +97,8 @@ const RegisterClub = () => {
                                                         SANVANDONG:caulacbo.SANVANDONG,
                                                         LOGO:caulacbo.LOGO,
                                                         ID_clb:caulacbo._id,
+                                                        SL_HLV:caulacbo.SL_HLV,
+                                                        SL_CAUTHU:caulacbo.SL_CAUTHU,
                                                         ID_muagiai:payload.params.muagiaiID.muagiaiID
                                                         }
                                                         }
@@ -98,7 +122,7 @@ const RegisterClub = () => {
                         <Link to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/register_club'}><button>Thêm</button></Link>
                     </div>
                 </div>
-                <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID}><button className='done'>HOÀN TẤT NHẬP</button></Link>
+                <button className='done' onClick={()=>CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>
             </section>
         </div>
     )
