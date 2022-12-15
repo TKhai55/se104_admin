@@ -55,7 +55,7 @@ const RegisterClub = () => {
                 ++count;
         })
         if (count !== 0 )
-            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG 20')
+            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG '+thamSoCtToiThieu)
         else
             navigate('/manager/home/' + payload.params.muagiaiID.muagiaiID);
     }
