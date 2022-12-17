@@ -109,6 +109,10 @@
     background-color: #3cbe50;
 
 }
+.CreateNewLeague_wrapper .create_wrapper button:hover{
+    border: 1px solid #ffffff;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
 .CreateNewLeague_wrapper .create_wrapper .addLogo{
     width: fit-content;
     padding: 5px 10px;

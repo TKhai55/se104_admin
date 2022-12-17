@@ -27,7 +27,7 @@ const Home = () => {
 
 
     return (
-        <div className='Home_tier1'>
+        <div className='Home_Manager_tier1'>
             <Header />
             <section className='home_container'>
                 <div className='league_table'>

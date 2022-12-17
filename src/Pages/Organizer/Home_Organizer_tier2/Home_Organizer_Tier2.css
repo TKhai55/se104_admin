@@ -4,7 +4,7 @@
 }
 .Home_Organizer_wrapper{
     margin-top: 8.5vh;
-    height: 80vh;
+    height: 60vh;
     background-color: #545861;
     position: relative;
     display: flex;
@@ -23,59 +23,35 @@
     margin: 0;
     padding: 2px 5px;
 }
-.Home_Organizer_wrapper .menuWrapper{
-    margin-top: 8vh;
-    width: 60%;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-}
-.Home_Organizer_wrapper .menuWrapper .row1,
-.Home_Organizer_wrapper .menuWrapper .row2{
+.Home_Organizer_wrapper .menuWrapper {
     width: 100%;
-    height: 50%;
+    height: 100%;
     margin: 0;
-}
-.Home_Organizer_wrapper .menuWrapper .row1{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 5vh;
 }
-.Home_Organizer_wrapper .menuWrapper .row1 .changePolicy,
-.Home_Organizer_wrapper .menuWrapper .row1 .search,
-.Home_Organizer_wrapper .menuWrapper .row1 .finish{
-    width: 21.5%;
-    height: 90%;
+.Home_Organizer_wrapper .menuWrapper .changePolicy,
+.Home_Organizer_wrapper .menuWrapper .search,
+.Home_Organizer_wrapper .menuWrapper .exit{
+    width: fit-content;
+    height: fit-content;
+    padding: 3vh;
 }
-.Home_Organizer_wrapper .menuWrapper .row1 .changePolicy,
-.Home_Organizer_wrapper .menuWrapper .row1 .finish{
+.Home_Organizer_wrapper .menuWrapper .changePolicy,
+.Home_Organizer_wrapper .menuWrapper .exit{
     margin-left: 11vh;
     margin-right: 10vh;
 }
-.Home_Organizer_wrapper .menuWrapper .row2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.Home_Organizer_wrapper .menuWrapper .row2 .deleteLeague,
-.Home_Organizer_wrapper .menuWrapper .row2 .exit{
-    width: 21.5%;
-    height: 95%;
-}
-.Home_Organizer_wrapper .menuWrapper .row2 .deleteLeague{
-    margin-left: 3vh;
-    margin-right: 5vh;
-}
-.Home_Organizer_wrapper .menuWrapper .row2 .exit{
-    margin-left: 5.5vh;
-    margin-right: 5vh;
-}
+
 .Home_Organizer_wrapper .menuWrapper .button{
-    background-color: #666674;
-    border-radius: 30px;
+    background-color: #63636d;
+    border-radius: 15px;
     text-align: center;
     color: white;
     font-weight: 500;
+
 }
 .Home_Organizer_wrapper .menuWrapper .button a{
     text-decoration: none;
@@ -88,5 +64,9 @@
     margin-bottom: 1.5vh;
 }
 .Home_Organizer_wrapper .menuWrapper .button:active{
-    background-color: #292b2f;
+    background-color: #3e4043;
+}
+.Home_Organizer_wrapper .menuWrapper .button:hover{
+    border: 3px solid #939496;
+    box-shadow: rgba(244, 244, 244, 0.35) 0px 5px 15px;
 }
