@@ -100,7 +100,7 @@ const RegisterClub = () => {
                                         return (
                                             <tr className='club_infor' key={caulacbo._id}>
                                                 <Link
-                                                    to='/manager/home/createCLub/addPlayerAndHLV'
+                                                    to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/createCLub/addPlayerAndHLV'}
                                                     state={
                                                         {
                                                             TENCLB: caulacbo.TENCLB,

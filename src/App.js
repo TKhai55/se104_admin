@@ -19,6 +19,7 @@ import SearchCoach from "./Pages/Manager/Search/SearchCoach/SearchCoach";
 import ChangePLayer from "./Pages/Manager/Change_Information/ChangePLayer/ChangePLayer";
 import ChangeCoach from "./Pages/Manager/Change_Information/ChangeCoach/ChangeCoach";
 import ChangeClub from "./Pages/Manager/Change_Information/ChangeClub/ChangeClub";
+import AddPlayerAndCoach from "./Pages/Manager/Add_Player_Coach/AddPlayerAndCoach";
 //Manager
 
 //Organizer
@@ -75,7 +76,7 @@ function App() {
         <Route exact path='/manager/home/:muagiaiID' element={<HomeManagerTier2 />} />
         <Route exact path='/manager/home/:muagiaiID/createCLub' element={<RegisterClub />} />
         <Route exact path='/manager/home/:muagiaiID/createReport' element={<Create_Report />} />
-        <Route exact path='/manager/home/register_club' element={<Register_Club />} />
+        <Route exact path='/manager/home/:muagiaiID/register_club' element={<Register_Club />} />
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
         <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
         <Route exact path='/manager/home/:muagiaiID/search' element={<div className='manager_search'><SearchManager /></div>} />
@@ -85,6 +86,7 @@ function App() {
         <Route exact path='/manager/home/:muagiaiID/player/:id' element={<div><SearchPLayer /> <ChangePLayer/></div>  } />
         <Route exact path='/manager/home/:muagiaiID/coach/:id' element={<div><SearchCoach /> <ChangeCoach/></div>  } />
         <Route exact path='/manager/home/:muagiaiID/club/:id' element={<div><SearchCoach /> <ChangeClub/></div>  } />
+        <Route exact path='/manager/home/:muagiaiID/createCLub/addPlayerAndHLV' element={<AddPlayerAndCoach />} />
         {/* Manager */}
 
         {/* Organizer */}
