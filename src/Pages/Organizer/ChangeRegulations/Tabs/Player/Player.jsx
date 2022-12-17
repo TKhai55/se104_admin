@@ -42,6 +42,7 @@ const Player = () => {
   async function postData() {
     axios.defaults.baseURL = 'http://localhost:8000/'
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu toi thieu",
       GIATRITHAMSO: minPlayer
     }).then(respond => {
@@ -49,6 +50,7 @@ const Player = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu toi da",
       GIATRITHAMSO: maxPlayer
     }).then(respond => {
@@ -56,6 +58,7 @@ const Player = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So tuoi toi thieu",
       GIATRITHAMSO: minAge
     }).then(respond => {
@@ -63,6 +66,7 @@ const Player = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So tuoi toi da",
       GIATRITHAMSO: maxAge
     }).then(respond => {
@@ -70,6 +74,7 @@ const Player = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu ngoai quoc toi da",
       GIATRITHAMSO: maxForeignPlayer
     }).then(respond => {
