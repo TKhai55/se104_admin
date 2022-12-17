@@ -75,25 +75,14 @@ export const Home_Organizer_Tier2 = () => {
                 </div>
                 <div className='menuWrapper'>
 
-                    <div className="row1">
+                    
                         <div className="button changePolicy">
                             <Link to={`/organizer/home/${MGID}/changePolicy`}>
                                 <img src={changePolicy} alt="changePolicy" />
                                 <p>ĐỔI QUY ĐỊNH</p>
                             </Link>
                         </div>
-                        <div className="button search">
-                            <Link to='/organizer/home/search'>
-                                <img src={search} alt="search" />
-                                <p>TRA CỨU</p>
-                            </Link>
-
-                        </div>
-                        <div className="button finish">
-                            <img src={finish} alt="finish" />
-                            <p>KẾT THÚC MÙA GIẢI</p>
-                        </div>
-                    </div>
+                    
                     <div className="button search">
                         {
                             currentnum === totalnum ?

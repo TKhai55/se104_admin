@@ -5,6 +5,7 @@ import './Goal.css'
 import axios from 'axios'
 import { useState } from 'react'
 import ConfirmDelete from './ConfirmDelete/ConfirmDelete'
+import { useParams } from 'react-router-dom'
 
 const Goal = () => {
     let [goal, setGoal] = useState([])
@@ -13,10 +14,11 @@ const Goal = () => {
     let [openConfirmDelete, setOpenConfirmDelete] = useState(false)
     let [nameGoal, setNameGoal] = useState('')
     let [idGoal, setIdGoal] = useState('')
+    const MGID = useParams()
 
     const getGoalTime = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/v1/thamso/getlist')
+            const res = await axios.get(`http://localhost:8000/v1/thamso/getlist/${MGID.muagiaiID}`)
             for (var i = 0; i < res.data.length; i++) {
                 if (res.data[i].TENTHAMSO === 'Thoi diem ghi ban toi da') {
                     setGoalTime(res.data[i].GIATRITHAMSO)
@@ -53,7 +55,8 @@ const Goal = () => {
         } else {
             try {
                 axios.defaults.baseURL = 'http://localhost:8000/'
-                await axios.post('/v1/thamso/create', {
+                await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+                MAMG: MGID.muagiaiID,
                 TENTHAMSO: "Thoi diem ghi ban toi da",
                 GIATRITHAMSO: goalTime
               }).then(respond => {

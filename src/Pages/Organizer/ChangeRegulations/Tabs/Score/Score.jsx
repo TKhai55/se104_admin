@@ -35,6 +35,7 @@ const Score = () => {
   async function postData() {
     axios.defaults.baseURL = 'http://localhost:8000/'
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran thang",
       GIATRITHAMSO: winScore
     }).then(respond => {
@@ -42,6 +43,7 @@ const Score = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran hoa",
       GIATRITHAMSO: drawScore
     }).then(respond => {
@@ -49,6 +51,7 @@ const Score = () => {
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran thua",
       GIATRITHAMSO: loseScore
     }).then(respond => {
