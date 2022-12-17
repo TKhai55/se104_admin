@@ -1,13 +1,13 @@
 import React from 'react'
 import './Organizer_SearchCoach.css'
-import DetailCoach from '../Detail/DetailCoach/DetailCoach'
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Organizer/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function SearchCoach() {
+    const navigate= useNavigate();
     const location = useLocation();
     let [huanluyenviens, setHuanLuyenVien] = useState([])
 
@@ -26,7 +26,6 @@ export default function SearchCoach() {
         getHLV()
     }, [])
     const [searchkey,] = useState(location.state.sk);
-    const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='OrganizerCoach_body'>
         <Header/>
@@ -40,7 +39,11 @@ export default function SearchCoach() {
             {
                 huanluyenviens.map(huanluyenviens => {
                     return (
-                        <div className='a' onClick={() => setButtonPopup(true)}>
+                        <div className='a' onClick={() => {navigate(`/organizer/home/coach/${huanluyenviens._id}`,{
+                                state:{coach:huanluyenviens},   
+                            }); 
+                                // window.location.reload();
+                            }}>
                             <div className='Organizer_list-Coach' key={huanluyenviens.id}>
                                 <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={100}/>
                                 <p className='Organizer_Coach--name'>{huanluyenviens.HOTEN}</p>
@@ -52,7 +55,6 @@ export default function SearchCoach() {
                     )
                 })
             }
-            <DetailCoach trigger={buttonPopup} setTrigger={setButtonPopup}/>
         </div>    
     </div>    
   )

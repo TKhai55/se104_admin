@@ -1,28 +1,13 @@
 import React from 'react'
 import './DetailPlayer.css'
-import { useState, useEffect } from 'react'
-import Axios from "axios";
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function DetailPLayer(props) {
-    let [cauthus, setCauThu] = useState()
-
-    const getCT = async () => {
-
-        try {
-            const res = await Axios.get('http://localhost:8000/v1/cauthu/getaplayer/'+'6397cb755cd5df5b102ea8b9')
-            setCauThu(res.data)
-            cauthus=res.data;
-            console.log("cauthus",cauthus)
-
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-    }
-    useEffect(() => {
-        getCT()
-    }, [])
-  return (props.trigger) ? (
+export default function DetailPLayer() {
+    const navigate= useNavigate();
+    const location = useLocation();
+    const [player,] = useState(location.state.player);
+  return (
     <div className='SearchPlayer_Detail popup'>
         <div className='SearchPlayer-content_Detail popup_inner'>
             <div className='content_left_searchPlayer_Detail'>
@@ -33,20 +18,19 @@ export default function DetailPLayer(props) {
                 <p className='titleContent_searchPlayer_item_Detail'>Loại:</p>
             </div>
             <div className='content_middle_searchPlayer_Detail'>
-                <p className='Player_information_Detail'>{cauthus.HOTEN}</p>
-                <p className='Player_information_Detail'>{cauthus.NGAYSINH}</p>
-                <p className='Player_information_Detail'>{cauthus.QUOCTICH}</p>
-                <p className='Player_information_Detail'>{cauthus.SOAO}</p>
-                <p className='Player_information_Detail'>{cauthus.VITRI}</p>
+                <p className='Player_information_Detail'>{player.HOTEN}</p>
+                <p className='Player_information_Detail'>{player.NGAYSINH}</p>
+                <p className='Player_information_Detail'>{player.QUOCTICH}</p>
+                <p className='Player_information_Detail'>{player.SOAO}</p>
+                <p className='Player_information_Detail'>{player.VITRI}</p>
             </div>
             <div className='content_right_searchPlayer_Detail'>
-                <img className='searchPLayer--image_Detail' src={'http://localhost:8000/'+cauthus.AVATAR} alt='a'/>
+                <img className='searchPLayer--image_Detail' src={'http://localhost:8000/'+player.AVATAR} alt='a'/>
             </div>
         </div>
         <div className='Detail_exit'>
-            <button className='searchPlayer_button_exit_Detail' onClick={() => props.setTrigger(false)}>Thoát</button>
-            {props.children}
+            <button className='searchPlayer_button_exit_Detail' onClick={() => {navigate(`/organizer/home/search`)}}>Thoát</button>
         </div>
     </div>    
-  ): "";
+  )
 }

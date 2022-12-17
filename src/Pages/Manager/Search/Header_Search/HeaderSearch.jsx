@@ -10,7 +10,7 @@ export default function HeaderSearch() {
   return (
     <div className='Manager_Header_Search'>
       <div className='Manager_Header_Search_title'>
-        <FcSearch className='Manager_Header_title_icon' size={40}/>
+        <FcSearch className='Manager_Header_title_icon' size={60}/>
         <p className='Manager_Header_title_text'>TRA CỨU</p>
       </div>
       <div className='Manager_Header_Search_filter'>
