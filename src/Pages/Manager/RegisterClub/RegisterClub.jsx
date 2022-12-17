@@ -4,7 +4,7 @@ import Header from '../Header_Manager/Header'
 import createClub from '../images/createClub.png'
 import { Link, useParams , useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 import { useState } from 'react'
 import Loading from '../Loading/Loading'
 
@@ -57,7 +57,17 @@ const RegisterClub = () => {
         if (count !== 0 )
             alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG '+thamSoCtToiThieu)
         else
+        {
+            caulacbos.map((caulacbo) => {
+                axios.post('http://localhost:8000/v1/bangxephang/add', {
+                    MACLB: caulacbo._id,
+                    MAMG: payload.params.muagiaiID.muagiaiID,
+                    TENCLB: caulacbo.TENCLB
+                })
+            })
             navigate('/manager/home/' + payload.params.muagiaiID.muagiaiID);
+        }
+            
     }
     return (
         <div className='RegisterClub'>
