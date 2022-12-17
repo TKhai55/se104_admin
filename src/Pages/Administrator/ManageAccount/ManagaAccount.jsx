@@ -12,7 +12,6 @@ const ManagaAccount = () => {
 
     const [taikhoans, setTaiKhoan] = useState([])
     const [curaccnum, setCurAccNum] = useState([])
-    const [data, setDaTa] = useState([])
     const [changetaikhoan, setChangeTaiKhoan] = useState([])
 
 
@@ -36,7 +35,6 @@ const ManagaAccount = () => {
                     var cells = target.getElementsByTagName("td");
                     for (var i = 0; i < cells.length; i++) {
                         data1.push(cells[i].innerHTML);
-                        setDaTa(data1)
                         searchTK(data1)
                     }
                 }

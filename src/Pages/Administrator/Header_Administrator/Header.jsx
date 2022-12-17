@@ -3,16 +3,24 @@ import logo from "../images/logo.svg";
 import "./Header.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-regular-svg-icons"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 
 const Header = () => {
+
+    const navigate = useNavigate()
+
+
+    const returnHome = () => {
+        navigate('/admin')
+    }
+
     return (
         <header >
             <div className='header d_flex' >
                 <div className="logo" >
-                    <img className='mainlogo' src={logo} alt="logo" />
+                    <img className='mainlogo' src={logo} alt="logo" onClick={returnHome} />
                 </div>
                 <div className="title">
                     <h2>QUẢN TRỊ VIÊN</h2>

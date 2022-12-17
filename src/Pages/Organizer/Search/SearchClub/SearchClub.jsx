@@ -1,21 +1,27 @@
 import React from 'react'
 import './Organizer_SearchClub.css'
-import DetailClub from '../Detail/DetailClub/SearchClub'
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Organizer/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 
 export default function SearchClub() {
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
+    const navigate= useNavigate();
     const location = useLocation();
     let [caulacbos, setCauLacBo] = useState([])
 
     const getHLV = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/caulacbo/search/'+searchkey)
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/searchbyMG_key/'+payload.params.muagiaiID.muagiaiID+'/'+searchkey)
             setCauLacBo(res.data)
             caulacbos=res.data;
         }
@@ -27,7 +33,6 @@ export default function SearchClub() {
         getHLV()
     }, [])
     const [searchkey,] = useState(location.state.sk);
-    const [buttonPopup, setButtonPopup]= useState(false);
   return (
     <div className='OrganizerClub_body'>
         <Header/>
@@ -41,7 +46,11 @@ export default function SearchClub() {
             {
                 caulacbos.map(caulacbos => {
                     return (
-                        <div className='a' onClick={() => setButtonPopup(true)}>
+                        <div className='a' onClick={() => {navigate(`/organizer/home/${payload.params.muagiaiID.muagiaiID}/club/${caulacbos._id}`,{
+                                state:{club:caulacbos},   
+                            }); 
+                                // window.location.reload();
+                            }}>
                             <div className='Organizer_list-Club' key={caulacbos.id}>
                                 <img src={"http://localhost:8000/"+caulacbos.LOGO} alt={caulacbos.TENCLB} width={118.15} height={100}/>
                                 <p className='Organizer_Club--club'>{caulacbos.TENCLB}</p>
@@ -53,7 +62,6 @@ export default function SearchClub() {
                     )
                 })
             }
-            <DetailClub trigger={buttonPopup} setTrigger={setButtonPopup}/>
         </div>    
     </div>    
   )
