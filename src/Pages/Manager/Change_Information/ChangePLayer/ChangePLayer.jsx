@@ -1,14 +1,21 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, } from 'react'
 import './ChangePlayer.css'
 import Axios from "axios"
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate, useParams} from 'react-router-dom'
 
 
 export default function ChangePLayer() {
+    const muagiaiID = useParams()
+    const id = useParams()
+    const payload = {
+        params: {
+            muagiaiID,
+        }
+    };
     const navigate= useNavigate();
     const location = useLocation();
     const [player,] = useState(location.state.player);
-    
+    // console.log("payload",payload)
     const [showImage , setShowImage] = useState(false)
     const [selectedFile ,setSelectedFile] = useState([]) 
     const [hoten , setHoTen] = useState()
@@ -38,6 +45,7 @@ export default function ChangePLayer() {
             LOAI: loai
         })
         alert("Sửa thành công");
+        navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)
     }
 
   return (
@@ -102,7 +110,7 @@ export default function ChangePLayer() {
         </div>
         <div className='searchPLayer_button_change_Change'>
             <button className='searchPlayer_button_fix_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Sửa</button>
-            <button className='searchPlayer_button_exit_Change' onClick={() => {navigate(`/manager/home/search`)}}>Thoát</button>
+            <button className='searchPlayer_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)}}>Thoát</button>
         </div>
     </div>    
   );

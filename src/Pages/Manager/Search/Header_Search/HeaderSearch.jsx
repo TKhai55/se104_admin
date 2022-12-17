@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import {useNavigate } from 'react-router-dom'
+import {useNavigate, useParams } from 'react-router-dom'
 import './Manager_Header_Search.css'
 import {FcSearch} from 'react-icons/fc'
 import {AiFillCaretDown} from 'react-icons/ai'
 
 export default function HeaderSearch() {
+  const muagiaiID = useParams()
+  const payload = {
+    params: {
+        muagiaiID
+    }
+  };
   const [searchkey, setSearchKey]= useState()
   const navigate= useNavigate();
   return (
@@ -20,21 +26,21 @@ export default function HeaderSearch() {
         <div className='Manager_dropdown_select_object'>
           <p className='Manager_input_header_select_object'>Đối tượng <AiFillCaretDown className='Manager_input_header_select_object_icon'/></p>
           <div className='Manager_drop-list'>
-            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/searchplayer/${searchkey}`,{
+            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/searchplayer/${searchkey}`,{
               state:{sk:searchkey},
             }); 
               window.location.reload();
             }}>
               Cầu thủ
             </div>
-            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/searchcoach/${searchkey}`,{
+            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/searchcoach/${searchkey}`,{
               state:{sk:searchkey},
             }); 
               window.location.reload();
             }}>
               Huấn luyện viên
             </div>
-            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/searchclub/${searchkey}`,{
+            <div className='Manager_drop-list__item' onClick={()=> {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/searchclub/${searchkey}`,{
               state:{sk:searchkey},
             }); 
               window.location.reload();

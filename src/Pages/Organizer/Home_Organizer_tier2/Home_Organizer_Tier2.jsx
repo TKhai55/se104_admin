@@ -25,12 +25,12 @@ export const Home_Organizer_Tier2 = () => {
     let [totalnum, setTotalNum] = useState([])
     let [currentnum, setCurrentNum] = useState([])
 
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
     useEffect(() => {
-        const payload = {
-            params: {
-                muagiaiID
-            }
-        };
         getSLTT(payload.params.muagiaiID.muagiaiID)
         getSLCR(payload.params.muagiaiID.muagiaiID)
     }, []);
@@ -73,7 +73,7 @@ export const Home_Organizer_Tier2 = () => {
                             </Link>
                         </div>
                         <div className="button search">
-                            <Link to='/organizer/home/search'>
+                            <Link to={'/organizer/home/' + payload.params.muagiaiID.muagiaiID + '/search'}>
                                 <img src={search} alt="search" />
                                 <p>TRA CỨU</p>
                             </Link>

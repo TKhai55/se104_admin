@@ -66,13 +66,13 @@ function App() {
         <Route exact path='/manager/home/register_club' element={<Register_Club />} />
         <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
         <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
-        <Route exact path='/manager/home/search' element={<div className='manager_search'><SearchManager /></div>} />
-        <Route exact path='/manager/home/searchplayer/:id' element={<SearchPLayer />} />
-        <Route exact path='/manager/home/searchcoach/:id' element={<SearchCoach />} />
-        <Route exact path='/manager/home/searchclub/:id' element={<SearchClub />} />
-        <Route exact path='/manager/home/player/:id' element={<div><SearchPLayer /> <ChangePLayer/></div>  } />
-        <Route exact path='/manager/home/coach/:id' element={<div><SearchCoach /> <ChangeCoach/></div>  } />
-        <Route exact path='/manager/home/club/:id' element={<div><SearchCoach /> <ChangeClub/></div>  } />
+        <Route exact path='/manager/home/:muagiaiID/search' element={<div className='manager_search'><SearchManager /></div>} />
+        <Route exact path='/manager/home/:muagiaiID/searchplayer/:id' element={<SearchPLayer />} />
+        <Route exact path='/manager/home/:muagiaiID/searchcoach/:id' element={<SearchCoach />} />
+        <Route exact path='/manager/home/:muagiaiID/searchclub/:id' element={<SearchClub />} />
+        <Route exact path='/manager/home/:muagiaiID/player/:id' element={<div><SearchPLayer /> <ChangePLayer/></div>  } />
+        <Route exact path='/manager/home/:muagiaiID/coach/:id' element={<div><SearchCoach /> <ChangeCoach/></div>  } />
+        <Route exact path='/manager/home/:muagiaiID/club/:id' element={<div><SearchCoach /> <ChangeClub/></div>  } />
         {/* Manager */}
 
         {/* Organizer */}
@@ -80,13 +80,13 @@ function App() {
         <Route exact path='/organizer/home/:muagiaiID' element={<HomeOrganiozerTier2 />} />
         <Route exact path='/organizer/home/changePolicy' element={<ChangeRegulations />} />
         <Route exact path='/organizer/addLeague' element={<CreateNewLeague />} />
-        <Route exact path='/organizer/home/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
-        <Route exact path='/organizer/home/searchplayer/:id' element={<SearchPLayerOr />} />
-        <Route exact path='/organizer/home/searchcoach/:id' element={<SearchCoachOr />} />
-        <Route exact path='/organizer/home/searchclub/:id' element={<SearchClubOr />} />
-        <Route exact path='/organizer/home/player/:id' element={<div><SearchPLayerOr /> <DetailPLayer/></div>  } />
-        <Route exact path='/organizer/home/coach/:id' element={<div><SearchCoachOr /> <DetailCoach/></div>  } />
-        <Route exact path='/organizer/home/club/:id' element={<div><SearchCoachOr /> <DetailClub/></div>  } />
+        <Route exact path='/organizer/home/:muagiaiID/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
+        <Route exact path='/organizer/home/:muagiaiID/searchplayer/:id' element={<SearchPLayerOr />} />
+        <Route exact path='/organizer/home/:muagiaiID/searchcoach/:id' element={<SearchCoachOr />} />
+        <Route exact path='/organizer/home/:muagiaiID/searchclub/:id' element={<SearchClubOr />} />
+        <Route exact path='/organizer/home/:muagiaiID/player/:id' element={<div><SearchPLayerOr /> <DetailPLayer/></div>  } />
+        <Route exact path='/organizer/home/:muagiaiID/coach/:id' element={<div><SearchCoachOr /> <DetailCoach/></div>  } />
+        <Route exact path='/organizer/home/:muagiaiID/club/:id' element={<div><SearchCoachOr /> <DetailClub/></div>  } />
         {/* Organizer */}
 
 

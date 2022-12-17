@@ -1,9 +1,15 @@
 import React from 'react'
 import './DetailClub.css'
 import { useState, } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function DetailClub() {
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
     const navigate= useNavigate();
     const location = useLocation();
     const [club,] = useState(location.state.club);
@@ -26,7 +32,7 @@ export default function DetailClub() {
             </div>
         </div>
         <div className='Detail_exit'>
-            <button className='searchClub_button_exit_Detail' onClick={() =>{navigate(`/organizer/home/search`)}}>Thoát</button>
+            <button className='searchClub_button_exit_Detail' onClick={() =>{navigate(`/organizer/home/${payload.params.muagiaiID.muagiaiID}/search`)}}>Thoát</button>
         </div>
     </div>    
   )

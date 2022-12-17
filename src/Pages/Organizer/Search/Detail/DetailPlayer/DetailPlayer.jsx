@@ -1,9 +1,15 @@
 import React from 'react'
 import './DetailPlayer.css'
 import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function DetailPLayer() {
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
     const navigate= useNavigate();
     const location = useLocation();
     const [player,] = useState(location.state.player);
@@ -29,7 +35,7 @@ export default function DetailPLayer() {
             </div>
         </div>
         <div className='Detail_exit'>
-            <button className='searchPlayer_button_exit_Detail' onClick={() => {navigate(`/organizer/home/search`)}}>Thoát</button>
+            <button className='searchPlayer_button_exit_Detail' onClick={() => {navigate(`/organizer/home/${payload.params.muagiaiID.muagiaiID}/search`)}}>Thoát</button>
         </div>
     </div>    
   )

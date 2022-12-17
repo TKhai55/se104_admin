@@ -1,11 +1,16 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState,} from 'react'
 import './ChangeClub.css'
-import cp from '../../../Administrator/images/image 10.png'
 import Axios from "axios"
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 
 export default function ChangeClub(props) {
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
     const navigate= useNavigate();
     const location = useLocation();
     const [club,] = useState(location.state.club);
@@ -35,6 +40,7 @@ export default function ChangeClub(props) {
             SANVANDONG: sanVanDong
         })
         alert("Sửa thành công");
+        navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search`)
     }
 
     return (
@@ -73,7 +79,7 @@ export default function ChangeClub(props) {
         </div>
         <div className='searchClub_button_change_Change'>
             <button className='searchClub_button_fix_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Sửa</button>
-            <button className='searchClub_button_exit_Change' onClick={() => {navigate(`/manager/home/search`)}}>Thoát</button>
+            <button className='searchClub_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search`)}}>Thoát</button>
             {props.children}
         </div>
     </div>    

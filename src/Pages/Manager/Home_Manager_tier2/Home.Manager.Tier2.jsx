@@ -74,7 +74,7 @@ export const Home_Manager_Tier2 = () => {
 
                         </div>
                         <div className="button search">
-                            <Link to='/manager/home/search'>
+                            <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/search'}>
                                 <img src={search} alt="search" />
                                 <p>TRA CỨU</p>
                             </Link>
