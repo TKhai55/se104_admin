@@ -16,7 +16,7 @@ import SearchManager from "./Pages/Manager/Search/SearchManager";
 import SearchPLayer from "./Pages/Manager/Search/SearchPLayer/SearchPLayer";
 import SearchClub from "./Pages/Manager/Search/SearchClub/SearchClub";
 import SearchCoach from "./Pages/Manager/Search/SearchCoach/SearchCoach";
-
+import AddPlayerAndCoach from "./Pages/Manager/Add_Player_Coach/AddPlayerAndCoach";
 //Manager
 
 //Organizer
@@ -46,6 +46,27 @@ function App() {
         <Route exact path="/" element={<SignIn />} />
 
         {/* Manager */}
+        <Route exact path="/manager/home/searchclub" element={<SearchClub />} />
+        <Route
+          exact
+          path="/manager/home/searchcoach"
+          element={<SearchCoach />}
+        />
+        <Route
+          exact
+          path="/manager/home/searchplayer"
+          element={<SearchPLayer />}
+        />
+        <Route
+          exact
+          path="/manager/home/createResult/detailAddResult/:id"
+          element={<DetailAddResult />}
+        />
+        <Route
+          exact
+          path="/manager/home/register_club"
+          element={<Register_Club />}
+        />
         <Route exact path="/manager" element={<HomeManagerTier1 />} />
         <Route
           exact
@@ -84,13 +105,13 @@ function App() {
         />
         <Route
           exact
-          path="/manager/home/register_club"
+          path="/manager/home/:muagiaiID/register_club"
           element={<Register_Club />}
         />
         <Route exact path="/manager/home/addmatch" element={<Add_Fixture />} />
         <Route
           exact
-          path="/manager/home/createResult/detailAddResult/:id"
+          path="/manager/home/addResult"
           element={<DetailAddResult />}
         />
         <Route
@@ -104,18 +125,42 @@ function App() {
         />
         <Route
           exact
-          path="/manager/home/searchplayer"
+          path="/manager/home/searchplayer/:id"
           element={<SearchPLayer />}
         />
         <Route
           exact
-          path="/manager/home/searchcoach"
+          path="/manager/home/searchcoach/:id"
           element={<SearchCoach />}
         />
-        <Route exact path="/manager/home/searchclub" element={<SearchClub />} />
+        <Route
+          exact
+          path="/manager/home/searchclub/:id"
+          element={<SearchClub />}
+        />
+        <Route
+          exact
+          path="/manager/home/createCLub/addPlayerAndHLV"
+          element={<AddPlayerAndCoach />}
+        />
         {/* Manager */}
 
         {/* Organizer */}
+        <Route
+          exact
+          path="/organizer/home/searchclub"
+          element={<SearchClubOr />}
+        />
+        <Route
+          exact
+          path="/organizer/home/searchcoach"
+          element={<SearchCoachOr />}
+        />
+        <Route
+          exact
+          path="/organizer/home/searchplayer"
+          element={<SearchPLayerOr />}
+        />
         <Route exact path="/organizer" element={<HomeOrganiozerTier1 />} />
         <Route
           exact
@@ -143,17 +188,17 @@ function App() {
         />
         <Route
           exact
-          path="/organizer/home/searchplayer"
+          path="/organizer/home/searchplayer/:id"
           element={<SearchPLayerOr />}
         />
         <Route
           exact
-          path="/organizer/home/searchcoach"
+          path="/organizer/home/searchcoach/:id"
           element={<SearchCoachOr />}
         />
         <Route
           exact
-          path="/organizer/home/searchclub"
+          path="/organizer/home/searchclub/:id"
           element={<SearchClubOr />}
         />
 

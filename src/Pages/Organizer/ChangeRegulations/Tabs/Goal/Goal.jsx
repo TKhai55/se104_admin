@@ -142,6 +142,7 @@ const Goal = () => {
                                 <td>{index + 1}</td>
                                 <td>{goalItem.TEN}</td>
                                 <button className='icon-delete'><FontAwesomeIcon icon={faXmark} onClick={() => onDeleteItem(goalItem.TEN, goalItem._id)}/></button>
+
                             </tr>
                         )
                     })

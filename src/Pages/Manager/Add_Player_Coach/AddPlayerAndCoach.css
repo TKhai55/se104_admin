@@ -1,7 +1,8 @@
-.register_club_container {
+.add_player_coach_container {
     margin-top: 85px;
 }
-.register_club_table{
+
+.add_player_coach_table {
     width: 85%;
     margin-left: 7.5%;
     background-color: #3f4249;
@@ -10,84 +11,61 @@
     padding-bottom: 20px;
 }
 
-.register_club_table .title_container{
-    display: flex;
+.add_player_coach_table .title_container {
     background-color: #545861;
     border-radius: 10px 10px 0px 0px;
     padding-top: 5px;
     padding-bottom: 5px;
+    text-align: center;
 }
 
-.register_club_table img{
-    margin-left: 15px;
-}
-
-.register_club_table .title{
+.add_player_coach_table .title {
     font-size: 32px;
     color: #ffffff;
-    margin-left: 490px;
-    margin-top: 7px;
 }
 
-.register_club_table .input_container{
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-bottom: 20px;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-}
-
-.register_club_table .label_text{
-    display: flex;
-    width: 650px;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.register_club_table .label{
-    font-size: 18px;
-    margin-top: 4px;
-    color: #ffffff;
-}
-
-.register_club_table .input_in_main_page{
-    height: 30px;
-    width: 500px;
-    border-radius: 20px;
-    border-color: transparent;
-}
-
-.register_club_table .add_logo_clb_img{
+.add_player_coach_table .add_logo_clb_img {
     width: 90px;
     height: 120px;
     margin-top: 5px;
     margin-left: 30px;
 }
 
-.register_club_table .add_logo_clb_btn{
+.add_player_coach_table .add_logo_clb_lb {
+    color: #ffffff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: large;
     background-color: #44B454;
     padding: 10px;
     border-radius: 5px;
 }
 
-.register_club_table .add_list{
+.add_player_coach_table .add_logo_clb_btn {
+    display: none;
+}
+
+.add_player_coach_table .add_list {
     margin-bottom: 60px;
 }
 
-.register_club_table .add_container{
+.add_player_coach_table .add_container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.register_club_table .title_text_and_amout_count{
+.add_player_coach_table .title_text_and_amout_count {
     display: flex;
     width: 385px;
     justify-content: space-between;
 }
 
-.register_club_table .title_text{
+.add_player_coach_table .title_text {
     background-color: #44B454;
     text-align: center;
     padding-left: 20px;
@@ -96,11 +74,11 @@
     padding-bottom: 5px;
     margin-left: 20px;
     color: #ffffff;
-    width: 120px;
+    width: 180px;
     border-radius: 20px;
 }
 
-.register_club_table .amout_count{
+.add_player_coach_table .amout_count {
     background-color: #ffffff;
     text-align: center;
     padding-left: 20px;
@@ -111,7 +89,7 @@
 
 }
 
-.register_club_table .add_btn{
+.add_player_coach_table .add_btn {
     background-color: #44B454;
     text-align: center;
     padding-left: 20px;
@@ -121,9 +99,10 @@
     color: #ffffff;
     margin-right: 20px;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
-.register_club_table table{
+.add_player_coach_table table {
     width: 85%;
     margin-left: 7.5%;
     background-color: #ffffff;
@@ -132,63 +111,70 @@
 }
 
 
-.register_club_table .td_title{
+.add_player_coach_table .td_title {
     border-bottom: 1px solid #0029FF;
     border-right: 1px solid #0029FF;
     text-align: center;
 }
 
-.register_club_table .td_content {
+.add_player_coach_table .td_content {
     border-right: 1px solid #0029FF;
     text-align: center;
 }
 
-.register_club_table .add_logo_clb_btn:hover{
+.add_player_coach_table .add_logo_clb_btn:hover {
     background-color: #5ce871;
 }
 
-.register_club_table .add_btn:hover {
+.add_player_coach_table .add_btn:hover {
     background-color: #5ce871;
 }
 
-.register_club_table .input_container1{
+.add_player_coach_table .input_container1 {
     display: flex;
     justify-content: space-between;
 }
 
-.register_club_table .input{
+.add_player_coach_table .input {
     display: flex;
     width: 450px;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.register_club_table .input1 {
+.add_player_coach_table .input1 {
     display: flex;
     width: 295px;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.register_club_table .label1{
+.add_player_coach_table .label1 {
     font-size: 18px;
     margin-top: 5px;
 }
 
-.register_club_table .input_in_popup{
+.add_player_coach_table .input_in_popup {
     width: 300px;
     height: 30px;
     border-radius: 20px;
     border-color: #44B454;
+    position: static;
 }
 
-.register_club_table .HLV_img{
+.add_player_coach_table .HLV_img {
     width: 90px;
     height: 120px;
-    margin-right: 35px;
+    margin-left: 15px;
 }
 
-.register_club_table .save_btn{
+.add_player_coach_table .label {
+    font-size: 18px;
+    margin-top: 4px;
+    color: #ffffff;
+}
+
+.add_player_coach_table .save_btn {
     background-color: #44B454;
     text-align: center;
     padding-left: 20px;
@@ -203,11 +189,11 @@
     margin-left: 34%;
 }
 
-.register_club_table .save_btn:hover{
+.add_player_coach_table .save_btn:hover {
     background-color: #5ce871;
 }
 
-.register_club_table .save_btn_in_main_page{
+.add_player_coach_table .save_btn_in_main_page {
     background-color: #44B454;
     text-align: center;
     padding-left: 20px;
@@ -221,9 +207,34 @@
     margin-top: 35px;
     margin-left: 46%;
     font-weight: bold;
+    cursor: pointer;
 }
 
+.add_player_coach_table .caulacbo_info_container{
+    display: flex;
+    padding: 20px;
+}
 
+.add_player_coach_table .caulacbo_logo{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
 
+.add_player_coach_table .caulacbo_info{
+    margin-left: 25px;
+    margin-top: 10px;
+    color: #ffffff;
+}
 
+.add_player_coach_table .caulacbo_info_name{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
+.add_player_coach_table .caulacbo_info_stadium{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}

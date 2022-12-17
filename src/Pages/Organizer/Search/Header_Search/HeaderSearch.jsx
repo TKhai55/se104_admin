@@ -1,45 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Organizer_Header_Search.css'
 import {FcSearch} from 'react-icons/fc'
 import {AiFillCaretDown} from 'react-icons/ai'
-import axios from "axios";
-import { useState, useEffect,useRef } from 'react'
+import { useState } from 'react'
 
 export default function HeaderSearch() {
-  const valuesearch = useRef("");
-  const submitHandler = async () => {
-    try {
-      const valueSearch = {
-        ten: valuesearch.current.value,
-      };
-      console.log("valueSearch", valueSearch);
-    } catch (e) {
-      console.log(e.message)
-    }
-  };
-
-  const orderHandler = async () => {
-      submitHandler();   
-  };
-
-  let [cauthus, setCauThu] = useState([])
-
-    const getCT = async () => {
-
-        try {
-            const res = await axios.get('http://localhost:8000/v1/cauthu/search/')
-            setCauThu(res.data)
-            cauthus=res.data;
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-    }
-    useEffect(() => {
-        getCT()
-  }, [])
-    
+  const [searchkey, setSearchKey]= useState()
+  const navigate= useNavigate();
   return (
     <div className='Header_Search'>
       <div className='Header_Search_title'>
@@ -48,20 +16,32 @@ export default function HeaderSearch() {
       </div>
       <div className='Header_Search_filter'>
         <p className='txt_header_filter'>Tên cần tìm:</p>
-        <input className='input_header_filter1' ref={valuesearch} ></input>
+        <input className='input_header_filter1' onChange={(e)=>setSearchKey(e.target.value)}></input>
         <p className='txt_header_filter'>Đối tượng:</p>
         <div className='dropdown_select_object'>
           <p className='input_header_select_object'>Đối tượng <AiFillCaretDown className='input_header_select_object_icon'/></p>
           <div className='drop-list'>
-            <Link to='/organizer/home/searchplayer' className='drop-list__item' 
-              // onClick={() => {
-              //       props.handleFilter(resource.filter(product => product.Name.toLocaleLowerCase('VN').includes(stringToSearch.toLocaleLowerCase('VN'))))
-              //       setString('')
-              //   }}
-              >Cầu thủ
-              </Link>
-            <Link to='/organizer/home/searchcoach' className='drop-list__item'>Huấn luyện viên</Link>
-            <Link to='/organizer/home/searchclub' className='drop-list__item'>Câu lạc bộ</Link>
+          <div className='Organizer_drop-list__item' onClick={()=> {navigate(`/organizer/home/searchplayer/${searchkey}`,{
+              state:{sk:searchkey},
+            }); 
+              window.location.reload();
+            }}>
+              Cầu thủ
+            </div>
+            <div className='Organizer_drop-list__item' onClick={()=> {navigate(`/organizer/home/searchcoach/${searchkey}`,{
+              state:{sk:searchkey},
+            }); 
+              window.location.reload();
+            }}>
+              Huấn luyện viên
+            </div>
+            <div className='Organizer_drop-list__item' onClick={()=> {navigate(`/organizer/home/searchclub/${searchkey}`,{
+              state:{sk:searchkey},
+            }); 
+              window.location.reload();
+            }}>
+              Câu lạc bộ
+            </div>
           </div>
         </div>  
       </div>

@@ -59,158 +59,31 @@
     position: static;
 }
 
-.register_club_table .add_logo_clb_img{
+.register_club_table .add_logo_clb_img {
     width: 90px;
     height: 120px;
     margin-top: 5px;
     margin-left: 30px;
 }
 
-.register_club_table .add_logo_clb_btn{
+.register_club_table .add_logo_clb_lb {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: large;
     background-color: #44B454;
     padding: 10px;
     border-radius: 5px;
 }
 
-.register_club_table .add_list{
-    margin-bottom: 60px;
+.register_club_table .add_logo_clb_btn {
+    display: none;
 }
 
-.register_club_table .add_container{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.register_club_table .title_text_and_amout_count{
-    display: flex;
-    width: 385px;
-    justify-content: space-between;
-}
-
-.register_club_table .title_text{
-    background-color: #44B454;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 20px;
-    color: #ffffff;
-    width: 180px;
-    border-radius: 20px;
-}
-
-.register_club_table .amout_count{
-    background-color: #ffffff;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 10px;
-
-}
-
-.register_club_table .add_btn{
-    background-color: #44B454;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #ffffff;
-    margin-right: 20px;
-    border-radius: 5px;
-    margin-top: 5px;
-}
-
-.register_club_table table{
-    width: 85%;
-    margin-left: 7.5%;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border-collapse: collapse;
-}
-
-
-.register_club_table .td_title{
-    border-bottom: 1px solid #0029FF;
-    border-right: 1px solid #0029FF;
-    text-align: center;
-}
-
-.register_club_table .td_content {
-    border-right: 1px solid #0029FF;
-    text-align: center;
-}
-
-.register_club_table .add_logo_clb_btn:hover{
-    background-color: #5ce871;
-}
-
-.register_club_table .add_btn:hover {
-    background-color: #5ce871;
-}
-
-.register_club_table .input_container1{
-    display: flex;
-    justify-content: space-between;
-}
-
-.register_club_table .input{
-    display: flex;
-    width: 450px;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.register_club_table .input1 {
-    display: flex;
-    width: 295px;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.register_club_table .label1{
-    font-size: 18px;
-    margin-top: 5px;
-}
-
-.register_club_table .input_in_popup{
-    width: 300px;
-    height: 30px;
-    border-radius: 20px;
-    border-color: #44B454;
-    position: static;
-}
-
-.register_club_table .HLV_img{
-    width: 90px;
-    height: 120px;
-    margin-right: 35px;
-}
-
-.register_club_table .save_btn{
-    background-color: #44B454;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #ffffff;
-    margin-right: 20px;
-    border-radius: 5px;
-    width: 200px;
-    margin-top: 35px;
-    margin-left: 34%;
-}
-
-.register_club_table .save_btn:hover{
-    background-color: #5ce871;
-}
-
-.register_club_table .save_btn_in_main_page{
+.register_club_table .save_btn_in_main_page {
     background-color: #44B454;
     text-align: center;
     padding-left: 20px;
@@ -224,7 +97,10 @@
     margin-top: 35px;
     margin-left: 46%;
     font-weight: bold;
+    cursor: pointer;
 }
+
+
 
 
 

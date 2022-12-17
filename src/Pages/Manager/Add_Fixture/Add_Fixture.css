@@ -34,28 +34,22 @@
     margin-top: 20px;
     margin-left: 15%;
     color: #ffffff;
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .add_fixture_table .label{
     font-size: 18px;
     color: #ffffff;
-    width: 80px;
+    width: 120px;
 }
 
-.add_fixture_table .dropdown_round {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    padding: 10px;
-    background-color: #4f525d;
-    width: 88px;
-}
 
-.add_fixture_table .dropdown_img{
-    height: 16px;
-    width: 16px;
-    object-fit: contain;
+.add_fixture_table .input_vongdau{
+    border-radius: 10px;
+    border-color: transparent;
+    text-align: center;
 }
 
 .add_fixture_table .input_flex{
@@ -70,24 +64,17 @@
     margin-bottom: 20px;
 }
 
-.add_fixture_table .input{
+.add_fixture_table .round_container_flex{
     display: flex;
+}
+
+.add_fixture_table .input_doibong{
     width: 400px;
     height: 30px;
-    background-color: #ffffff;
     border-radius: 10px;
     margin-left: 20px;
-    align-items: center;
-}
-
-.add_fixture_table .input_text {
-    width: 360px;
-}
-
-.add_fixture_table .dropdown_img1 {
-    height: 16px;
-    width: 16px;
-    object-fit: contain;
+    border-color: transparent;
+    text-align: center;
 }
 
 .add_fixture_table .input_date{
@@ -96,6 +83,7 @@
     border-radius: 10px;
     border-color: transparent;
     margin-left: 20px;
+    text-align: center;
 }
 
 .add_fixture_table .add_schedule_btn{
