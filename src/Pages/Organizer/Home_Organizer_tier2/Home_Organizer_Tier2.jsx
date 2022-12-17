@@ -72,10 +72,18 @@ export const Home_Organizer_Tier2 = () => {
                         </Link>
                     </div>
                     <div className="button search">
-                        <Link to='/organizer/home/search'>
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
-                        </Link>
+                        {
+                            currentnum === totalnum ?
+                                <Link to='/organizer/home/search'>
+                                    <img src={search} alt="search" />
+                                    <p>TRA CỨU</p>
+                                </Link> :
+                                <Link to='#!'>
+                                    <img src={search} alt="search" />
+                                    <p>TRA CỨU</p>
+                                </Link>
+                        }
+
 
                     </div>
                     <div className="button exit">

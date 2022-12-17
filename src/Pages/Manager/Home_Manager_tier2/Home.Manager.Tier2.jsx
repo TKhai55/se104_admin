@@ -67,34 +67,67 @@ export const Home_Manager_Tier2 = () => {
                             </Link>
                         </div>
                         <div className="button createMatch">
-                            <Link to='/manager/home/createMatch'>
-                                <img src={createMatch} alt="createMatch" />
-                                <p>TẠO TRẬN ĐẤU</p>
-                            </Link>
+                            {
+                                currentnum === totalnum ?
+                                    <Link to='/manager/home/createMatch'>
+                                        <img src={createMatch} alt="createMatch" />
+                                        <p>TẠO TRẬN ĐẤU</p>
+                                    </Link> :
+                                    <Link to='#!'>
+                                        <img src={createMatch} alt="createMatch" />
+                                        <p>TẠO TRẬN ĐẤU</p>
+                                    </Link>
+                            }
+
 
                         </div>
                         <div className="button search">
-                            <Link to='/manager/home/search'>
-                                <img src={search} alt="search" />
-                                <p>TRA CỨU</p>
-                            </Link>
+                            {
+                                currentnum === totalnum ?
+                                    <Link to='/manager/home/search'>
+                                        <img src={search} alt="search" />
+                                        <p>TRA CỨU</p>
+                                    </Link> :
+                                    <Link to='#!'>
+                                        <img src={search} alt="search" />
+                                        <p>TRA CỨU</p>
+                                    </Link>
+                            }
+
 
                         </div>
                     </div>
                     <div className="row2">
                         <div className="button createResult">
-                            <Link to='/manager/home/createResult'>
-                                <img src={createResult} alt="createResult" />
-                                <p>GHI NHẬN KẾT QUẢ</p>
-                            </Link>
+                            {
+                                currentnum === totalnum ?
+                                    <Link to='/manager/home/createResult'>
+                                        <img src={createResult} alt="createResult" />
+                                        <p>GHI NHẬN KẾT QUẢ</p>
+                                    </Link> :
+                                    <Link to='#!'>
+                                        <img src={createResult} alt="createResult" />
+                                        <p>GHI NHẬN KẾT QUẢ</p>
+                                    </Link>
+                            }
+
 
                         </div>
                         <div className="button createReport">
-                            <Link to='/manager/home/createReport'>
+                            {
+                                currentnum === totalnum ?
+                                    <Link to='/manager/home/createReport'>
 
-                                <img src={createReport} alt="createReport" />
-                                <p>LẬP BÁO CÁO</p>
-                            </Link>
+                                        <img src={createReport} alt="createReport" />
+                                        <p>LẬP BÁO CÁO</p>
+                                    </Link> :
+                                    <Link to='#!'>
+
+                                        <img src={createReport} alt="createReport" />
+                                        <p>LẬP BÁO CÁO</p>
+                                    </Link>
+                            }
+
 
 
                         </div>
