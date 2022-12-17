@@ -69,7 +69,7 @@ export const Home_Manager_Tier2 = () => {
                         <div className="button createMatch">
                             {
                                 currentnum === totalnum ?
-                                    <Link to='/manager/home/createMatch'>
+                                    <Link to={`/manager/home/${muagiaiID.muagiaiID}/createMatch`}>
                                         <img src={createMatch} alt="createMatch" />
                                         <p>TẠO TRẬN ĐẤU</p>
                                     </Link> :
@@ -100,7 +100,7 @@ export const Home_Manager_Tier2 = () => {
                         <div className="button createResult">
                             {
                                 currentnum === totalnum ?
-                                    <Link to='/manager/home/createResult'>
+                                    <Link to={`/manager/home/${muagiaiID.muagiaiID}/createResult`}>
                                         <img src={createResult} alt="createResult" />
                                         <p>GHI NHẬN KẾT QUẢ</p>
                                     </Link> :

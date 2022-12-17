@@ -43,12 +43,12 @@ const DetailAddResult = () => {
     const params = useParams()
     const getResults = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/v1/ct_trandau/get/${params.id}`)
+            const res = await axios.get(`http://localhost:8000/v1/ct_trandau/get/${params.idResult}`)
             if (res.data.length === 0) {
                 eventsInTranDau.length = 0
                 eventsInTranDauOffical.length = 0
 
-                const respondFixture = await axios.get(`http://localhost:8000/v1/trandau/getTranDauById/${params.id}`)
+                const respondFixture = await axios.get(`http://localhost:8000/v1/trandau/getTranDauById/${params.idResult}`)
                 setNameClub1(respondFixture.data[0].DOI1.TENCLB)
                 setNameClub2(respondFixture.data[0].DOI2.TENCLB)
                 setLogoClub1(`http://localhost:8000/${respondFixture.data[0].DOI1.LOGO}`)
@@ -240,7 +240,7 @@ const DetailAddResult = () => {
         try {
             axios.defaults.baseURL = 'http://localhost:8000/'
             axios.post(`/v1/ct_trandau/create`, {
-                MATD: params.id,
+                MATD: params.idResult,
                 SCORE_1: result1,
                 SCORE_2: result2,
                 CARD_1: amountOfError1,
@@ -330,6 +330,7 @@ const DetailAddResult = () => {
         //     console.log(e)
         // })
         // console.log(selectedPlayer)
+        console.log(results[0])
         console.log(eventsInTranDauOffical)
     }
 
@@ -400,9 +401,18 @@ const DetailAddResult = () => {
                     if (res) {
                         console.log(`Xoa ban thang ${idItemTimeline}  thanh cong`)
                         eventsInTranDauOffical.splice(indexItemTimeline, 1)
-                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") result1--
-                        else result2--
+                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") {
+                            let a = result1--;
+                            setResult1(a)
+                        }
+                        else {
+                            let a = result2--;
+                            setResult2(a)
+                        }
                     }
+                })
+                axios.patch(`/v1/cauthu/decreaseBanThangCauThu/${eventsInTranDauOffical[indexItemTimeline].idPerformer}`).then(res => {
+                    console.log(`Giam so ban thang cua cau thu ${eventsInTranDauOffical[indexItemTimeline].idPerformer} thanh cong`)
                 })
             } else if (eventsInTranDauOffical[indexItemTimeline].eventType === "Phạm lỗi") {
                 axios.defaults.baseURL = 'http://localhost:8000/'
