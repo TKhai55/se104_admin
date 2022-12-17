@@ -22,6 +22,7 @@ import { useState } from 'react'
 export const Home_Organizer_Tier2 = () => {
 
     const muagiaiID = useParams()
+    const [MGID, setMGID] = useState('')
     let [totalnum, setTotalNum] = useState([])
     let [currentnum, setCurrentNum] = useState([])
 
@@ -31,10 +32,12 @@ export const Home_Organizer_Tier2 = () => {
                 muagiaiID
             }
         };
+        setMGID(muagiaiID.muagiaiID)
         getSLTT(payload.params.muagiaiID.muagiaiID)
         getSLCR(payload.params.muagiaiID.muagiaiID)
     }, []);
 
+    
     const getSLTT = async (payload) => {
 
         try {
@@ -67,7 +70,7 @@ export const Home_Organizer_Tier2 = () => {
                 <div className='menuWrapper'>
                     <div className="row1">
                         <div className="button changePolicy">
-                            <Link to='/organizer/home/changePolicy'>
+                            <Link to={`/organizer/home/${MGID}/changePolicy`}>
                                 <img src={changePolicy} alt="changePolicy" />
                                 <p>ĐỔI QUY ĐỊNH</p>
                             </Link>

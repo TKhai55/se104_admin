@@ -169,7 +169,7 @@ function App() {
         />
         <Route
           exact
-          path="/organizer/home/changePolicy"
+          path="/organizer/home/:muagiaiID/changePolicy"
           element={<ChangeRegulations />}
         />
         <Route
