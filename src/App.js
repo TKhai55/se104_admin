@@ -76,9 +76,13 @@ function App() {
         {/* Manager */}
 
         {/* Organizer */}
+        <Route
+          exact
+          path="/organizer/home/:muagiaiID/changePolicy"
+          element={<ChangeRegulations />}
+        />
         <Route exact path='/organizer' element={<HomeOrganiozerTier1 />} />
         <Route exact path='/organizer/home/:muagiaiID' element={<HomeOrganiozerTier2 />} />
-        <Route exact path='/organizer/home/changePolicy' element={<ChangeRegulations />} />
         <Route exact path='/organizer/addLeague' element={<CreateNewLeague />} />
         <Route exact path='/organizer/home/:muagiaiID/search' element={<div className='organizer_search'><SearchOrganizer /></div>} />
         <Route exact path='/organizer/home/:muagiaiID/searchplayer/:id' element={<SearchPLayerOr />} />
