@@ -20,6 +20,10 @@ const SignIn = () => {
         catch (error) {
             console.log(error.message)
         }
+        if (data === undefined) {
+            alert('Tài khoản hoặc mật khẩu không chính xác')
+            return
+        }
         if (document.getElementById('account').value === data.TENTAIKHOAN &&
             document.getElementById('password').value === data.MATKHAU &&
             data.PHANQUYEN === 'admin') {
