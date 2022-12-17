@@ -50,13 +50,15 @@
     opacity: 1;
     visibility: visible;
 }
-.Manager_input_header_select_object{
+#Manager_input_header_select_object{
+    size:20px;
     padding: 5px;
     background-color: #ffffff;
     border-radius: 10px;
     text-align: center;
     min-width: fit-content;
     width: 200px;
+
 }
 .Manager_input_header_select_object_icon{
    float: right;

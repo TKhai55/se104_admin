@@ -105,6 +105,17 @@
 
 }
 .searchClub_button_exit_Change{
+    background-color: #19bc2a;
+    border-radius: 10px;
+    border:none;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh 1vw;
+    justify-content: flex-end;
+    color: white;
+    font-size: 14px;
+}
+.searchClub_button_delete_Change{
     background-color: #B44444;
     border-radius: 10px;
     border:none;

@@ -103,6 +103,15 @@
     justify-content: flex-end;
 }
 .searchCoach_button_exit_Change{
+    background-color: #19bc2a;
+    border-radius: 10px;
+    border:none;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh 1vw;
+    color: white;
+}
+.searchCoach_button_delete_Change{
     background-color: #B44444;
     border-radius: 10px;
     border:none;

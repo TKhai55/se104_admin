@@ -4,7 +4,7 @@ import Axios from "axios"
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 
-export default function ChangeClub(props) {
+export default function ChangeClub() {
     const muagiaiID = useParams()
     const payload = {
         params: {
@@ -14,7 +14,6 @@ export default function ChangeClub(props) {
     const navigate= useNavigate();
     const location = useLocation();
     const [club,] = useState(location.state.club);
-
     const [showImage , setShowImage] = useState(false)
     const [selectedFile ,setSelectedFile] = useState([]) 
     const [tenDoiBong , setTenDoiBong] = useState()
@@ -74,13 +73,13 @@ export default function ChangeClub(props) {
                         />
                     </label>
                 </div>    */}
-                <img className='searchClub--image_Change' src={club.LOGO} alt='' />
+                <img className='searchClub--image_Change' src={'http://localhost:8000/'+club.LOGO} alt='' />
             </div>
         </div>
         <div className='searchClub_button_change_Change'>
             <button className='searchClub_button_fix_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Sửa</button>
+            <button className='searchClub_button_delete_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Xóa</button>
             <button className='searchClub_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search`)}}>Thoát</button>
-            {props.children}
         </div>
     </div>    
   )

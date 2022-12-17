@@ -28,7 +28,7 @@ export default function DetailClub() {
                 <p className='Club_information_Detail'>{club.SANVANDONG}</p>
             </div>
             <div className='content_right_searchClub_Detail'>
-                <img className='searchClub--image_Detail' src={'http://localhost:8000/'+club.AVATAR} alt='a'/>
+                <img className='searchClub--image_Detail' src={'http://localhost:8000/'+club.LOGO} alt='a'/>
             </div>
         </div>
         <div className='Detail_exit'>

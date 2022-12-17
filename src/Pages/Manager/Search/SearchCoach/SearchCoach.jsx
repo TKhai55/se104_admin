@@ -8,11 +8,12 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function SearchCoach() {
     const muagiaiID = useParams()
-  const payload = {
-    params: {
-        muagiaiID
-    }
-  };
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
+    console.log("a",payload.params.muagiaiID.muagiaiID)
     const navigate= useNavigate();
     const location = useLocation();
     let [huanluyenviens, setHuanLuyenVien] = useState([])

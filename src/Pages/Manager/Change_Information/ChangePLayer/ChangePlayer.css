@@ -108,8 +108,17 @@
     flex-direction:row;
     justify-content: flex-end;
 }
-.searchPlayer_button_exit_Change{
+.searchPlayer_button_delete_Change{
     background-color: #B44444;
+    border-radius: 10px;
+    border:none;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh 1vw;
+    color: white;
+}
+.searchPlayer_button_exit_Change{
+    background-color: #19bc2a;
     border-radius: 10px;
     border:none;
     width: 5vw;
@@ -131,7 +140,7 @@ button:hover{
     background-color: cadetblue;
     cursor: pointer;
 }
-.Player_object{
+#Player_object{
     margin-top: 3px;
     border-color: #44B454;
     border-radius: 10px;

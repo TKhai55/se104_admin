@@ -6,7 +6,6 @@ import { useLocation, useNavigate, useParams} from 'react-router-dom'
 
 export default function ChangePLayer() {
     const muagiaiID = useParams()
-    const id = useParams()
     const payload = {
         params: {
             muagiaiID,
@@ -22,7 +21,7 @@ export default function ChangePLayer() {
     const [ngaysinh , setNgaySinh] = useState()
     const [quoctich , setQuocTich] = useState()
     const [soao , setSoAo] = useState()
-    const [loai , setLoai] = useState()
+    const [vitri , setViTri] = useState()
     const [avt , setAVT] = useState()
     const [idct , setidCT] = useState()
     const onSelectedFile = (e)=>{
@@ -37,17 +36,30 @@ export default function ChangePLayer() {
     console.log(avt)
     }
     const submitHandler = ()=>{
+        
     Axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'+player._id,{
             HOTEN : hoten,
             NGAYSINH: ngaysinh,
             QUOCTICH: quoctich,
             SOAO: soao,
-            LOAI: loai
+            VITRI: vitri,
         })
         alert("Sửa thành công");
         navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)
+        console.log("loai", vitri)
+        console.log("hoten", hoten)
     }
 
+    const submitHandler1 = ()=>{
+        const answer= window.confirm("Bạn có chắc chắn xóa",);
+        if (answer) {
+            Axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/'+player._id)
+            Axios.post('http://localhost:8000/v1/caulacbo/xoacauthu',{
+            "_id" : player.MACLB
+            })
+            navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/${hoten}`)
+        }
+    }
   return (
     <div className='SearchPlayer_Change popup'>
         <div className='SearchPlayer-content_Change popup_inner'>
@@ -63,8 +75,8 @@ export default function ChangePLayer() {
                 <input className='Player_information_Change' type='text' placeholder={player.NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
                 <input className='Player_information_Change' type='text' placeholder={player.QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
                 <input className='Player_information_Change' type='text' placeholder={player.SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
-                <select type='text' name="player" className="Player_object" onClick={(e)=>setLoai(e.target.value)}>
-                    <option value="none" selected disabled hidden>{player.VITRI}</option>
+                <select type='text' name="player" id="Player_object" onChange={(e)=> setViTri(e.target.value)}>
+                    <option value={player.VITRI} selected disabled hidden>{player.VITRI}</option>
                     <optgroup label="Tiền đạo">
                         <option value="Tiền đạo cắm">Tiền đạo cắm</option>
                         <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
@@ -110,7 +122,9 @@ export default function ChangePLayer() {
         </div>
         <div className='searchPLayer_button_change_Change'>
             <button className='searchPlayer_button_fix_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Sửa</button>
-            <button className='searchPlayer_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)}}>Thoát</button>
+            <button className='searchPlayer_button_delete_Change' onClick={()=>{submitHandler1(); window.location.reload()}}>Xóa</button>
+            <button className='searchPlayer_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search`)
+}}>Thoát</button>
         </div>
     </div>    
   );
