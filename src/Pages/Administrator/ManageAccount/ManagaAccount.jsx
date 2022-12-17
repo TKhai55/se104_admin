@@ -89,8 +89,12 @@ const ManagaAccount = () => {
     }
     const FixTK = async () => {
         let string_anwser = prompt("Nhập mật khẩu muốn đổi")
-        console.log(string_anwser)
-        if (string_anwser != null) {
+        if (string_anwser.length === 0) {
+            console.log("1")
+            alert('Vui lòng nhập mật khẩu muốn đổi')
+            return
+        }
+        else if (string_anwser.length > 8) {
             try {
                 await axios.patch('http://localhost:8000/v1/auth/updatetaikhoan/' + changetaikhoan._id, {
                     TENTAIKHOAN: changetaikhoan.TENTAIKHOAN,
@@ -102,15 +106,13 @@ const ManagaAccount = () => {
                 return false;
             }
             catch (error) {
-                alert('Vui lòng nhập mật khẩu muốn đổi')
                 console.log(error.message)
             }
         }
         else {
+            alert('Mật khẩu phải dài hơn 8 chữ số')
             return
         }
-
-
     }
 
     useEffect(() => {

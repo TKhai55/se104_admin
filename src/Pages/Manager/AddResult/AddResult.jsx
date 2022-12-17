@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './AddResult.css'
 import Header from '../Header_Manager/Header'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const rounds = ['Vòng 1', 'Vòng 2', 'Vòng 3']
 
 
 const AddResult = () => {
+    const MGID = useParams()
+    console.log(MGID)
 
     let [fixtures, setFixtures] = useState([])
     const getFixtures = async () => {
@@ -52,7 +54,7 @@ const AddResult = () => {
                                         const imageUrl1 = 'http://localhost:8000/' + fixtureItem.DOI1.LOGO
                                         const imageUrl2 = 'http://localhost:8000/' + fixtureItem.DOI2.LOGO
                                         return (
-                                            <Link to={`/manager/home/createResult/detailAddResult/${fixtureItem._id}`}>
+                                            <Link to={`/manager/home/${MGID.muagiaiID}/createResult/detailAddResult/${fixtureItem._id}`}>
                                                 <tr className='round-info' key={index}>
                                                     <td className='signature'>
                                                         <img className="club-logo club-logo-1" src={imageUrl1} alt={`${fixtureItem.DOI1.TENCLB} logo`} name="logo-1" />

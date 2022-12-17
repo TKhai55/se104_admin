@@ -22,20 +22,28 @@ import { useState } from 'react'
 export const Home_Organizer_Tier2 = () => {
 
     const muagiaiID = useParams()
+    const [MGID, setMGID] = useState('')
     let [totalnum, setTotalNum] = useState([])
     let [currentnum, setCurrentNum] = useState([])
 
-    
     const payload = {
         params: {
             muagiaiID
         }
     };
+
     useEffect(() => {
+        const payload = {
+            params: {
+                muagiaiID
+            }
+        };
+        setMGID(muagiaiID.muagiaiID)
         getSLTT(payload.params.muagiaiID.muagiaiID)
         getSLCR(payload.params.muagiaiID.muagiaiID)
     }, []);
 
+    
     const getSLTT = async (payload) => {
 
         try {
@@ -66,17 +74,28 @@ export const Home_Organizer_Tier2 = () => {
                     <p>CLB: {currentnum}/{totalnum}</p>
                 </div>
                 <div className='menuWrapper'>
-                    <div className="button changePolicy">
-                        <Link to='/organizer/home/changePolicy'>
-                            <img src={changePolicy} alt="changePolicy" />
-                            <p>ĐỔI QUY ĐỊNH</p>
-                        </Link>
-                    </div>
+
+                    
+                        <div className="button changePolicy">
+                            <Link to={`/organizer/home/${MGID}/changePolicy`}>
+                                <img src={changePolicy} alt="changePolicy" />
+                                <p>ĐỔI QUY ĐỊNH</p>
+                            </Link>
+                        </div>
+                    
                     <div className="button search">
-                        <Link to={'/organizer/home/'+payload.params.muagiaiID.muagiaiID+'/search'}>
-                            <img src={search} alt="search" />
-                            <p>TRA CỨU</p>
-                        </Link>
+                        {
+                            currentnum === totalnum ?
+                                <Link to={'/organizer/home/' + payload.params.muagiaiID.muagiaiID + '/search'}>
+                                    <img src={search} alt="search" />
+                                    <p>TRA CỨU</p>
+                                </Link> :
+                                <Link to='#!'>
+                                    <img src={search} alt="search" />
+                                    <p>TRA CỨU</p>
+                                </Link>
+                        }
+
 
                     </div>
                     <div className="button exit">

@@ -36,19 +36,23 @@ const DetailAddResult = () => {
     let [eventTypeSelected, setEventTypeSelected] = useState('')
     let [timeChange, setTimeChange] = useState(0)
     let [openConfirmDelete, setOpenConfirmDelete] = useState(false)
+    let [indexItemTimeline, setIndexItemTimeline] = useState(0)
+    let [idItemTimeline, setIdItemTimeline] = useState("")
     let forceUpdate = useForceUpdate();
 
     const params = useParams()
     const getResults = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/v1/ct_trandau/get/${params.id}`)
+            const res = await axios.get(`http://localhost:8000/v1/ct_trandau/get/${params.idResult}`)
             if (res.data.length === 0) {
                 eventsInTranDau.length = 0
                 eventsInTranDauOffical.length = 0
 
-                const respondFixture = await axios.get(`http://localhost:8000/v1/trandau/getTranDauById/${params.id}`)
+                const respondFixture = await axios.get(`http://localhost:8000/v1/trandau/getTranDauById/${params.idResult}`)
                 setNameClub1(respondFixture.data[0].DOI1.TENCLB)
                 setNameClub2(respondFixture.data[0].DOI2.TENCLB)
+                setLogoClub1(`http://localhost:8000/${respondFixture.data[0].DOI1.LOGO}`)
+                setLogoClub2(`http://localhost:8000/${respondFixture.data[0].DOI2.LOGO}`)
                 setResults(respondFixture.data)
                 results = respondFixture.data
                 setCheck(false)
@@ -86,6 +90,7 @@ const DetailAddResult = () => {
                     let loaithe = theMatchItem.LOAITHE === 1 ? "vàng" : "đỏ"
                     let teamName = theMatchItem.MACLB === results[0].MATD.DOI1._id ? '1' : '2'
                     let theObject = {
+                        idSuKien: theMatchItem._id,
                         idPerformer: theMatchItem.MACT._id,
                         type: `Thẻ ${loaithe}`,
                         performer: theMatchItem.MACT.HOTEN,
@@ -108,6 +113,7 @@ const DetailAddResult = () => {
                 goalMatch.map(goalMatchItem => {
                     let teamName = goalMatchItem.MACLB === results[0].MATD.DOI1._id ? '1' : '2'
                     let goalObject = {
+                        idSuKien: goalMatchItem._id,
                         idPerformer: goalMatchItem.MACT._id,
                         type: goalMatchItem.LOAIBANTHANG,
                         performer: goalMatchItem.MACT.HOTEN,
@@ -178,6 +184,7 @@ const DetailAddResult = () => {
         else {
 
             let eventAdded = {
+                idSuKien: "",
                 idPerformer: selectedPlayer,
                 type: eventTypeSelected,
                 performer: np,
@@ -233,7 +240,7 @@ const DetailAddResult = () => {
         try {
             axios.defaults.baseURL = 'http://localhost:8000/'
             axios.post(`/v1/ct_trandau/create`, {
-                MATD: params.id,
+                MATD: params.idResult,
                 SCORE_1: result1,
                 SCORE_2: result2,
                 CARD_1: amountOfError1,
@@ -253,12 +260,17 @@ const DetailAddResult = () => {
                                     PHUTNHANTHE: e.time,
                                     LOAITHE: e.type === "Thẻ vàng" ? 1 : 2
                                 }).then((res) => {
-                                    if (res) console.log("Post thanh cong the")
+                                    if (res) {
+                                        e.idSuKien = res.data._id;
+                                        console.log("Post thanh cong the")
+                                    }
                                     if (e.type === "Thẻ vàng") {
                                         try {
                                             axios.patch(`http://localhost:8000/v1/cauthu/updateTheVangCauThu/${e.idPerformer}`)
                                             .then(res => {
-                                                if (res) console.log("Cap nhat the vang cho cau thu thanh cong")
+                                                if (res) {
+                                                    console.log("Cap nhat the vang cho cau thu thanh cong")
+                                                }
                                             })
                                         } catch (error) {
                                             console.log(error)
@@ -287,7 +299,10 @@ const DetailAddResult = () => {
                                     PHUTGHIBAN: e.time,
                                     LOAIBANTHANG: e.type
                                 }).then(res => {
-                                    if (res) console.log("Post thanh cong ban thang")
+                                    if (res) {
+                                        e.idSuKien = res.data._id;
+                                        console.log("Post thanh cong ban thang")
+                                    }
                                     try {
                                         axios.patch(`http://localhost:8000/v1/cauthu/updateBanThangCauThu/${e.idPerformer}`)
                                         .then(res => {
@@ -311,16 +326,20 @@ const DetailAddResult = () => {
 
     function handleDeleteButton() {
         // console.log(np)
-        eventsInTranDauOffical.forEach(e => {
-            console.log(e)
-        })
+        // eventsInTranDauOffical.forEach(e => {
+        //     console.log(e)
+        // })
         // console.log(selectedPlayer)
+        console.log(results[0])
+        console.log(eventsInTranDauOffical)
     }
 
-    function handleClickDelete(event) {
+    function handleClickDelete(event, index) {
         // alert(`Cau thu ${event.performer} da thuc hien su kien ${event.eventType} vao thoi diem ${event.time}'`)
         // console.log(event)
+        setIdItemTimeline(event.idSuKien)
         setOpenConfirmDelete(true)
+        setIndexItemTimeline(index)
     }
 
     function renderTimeLine() {
@@ -333,17 +352,19 @@ const DetailAddResult = () => {
                     const color = event.eventType === "Ghi bàn" ? "#44b454" : event.type === "Thẻ vàng" ? "#fbd000" : "#b44444"
                     
                     return (
-                        <div key={index} className={"timeline-container " + team}>
+                       <>
+                         <div key={index} className={"timeline-container " + team}>
                             <div className="timeline-circle" style={{backgroundColor: color}}></div>
                             <div className="timeline-content">
-                                <FontAwesomeIcon icon={faXmark} className='icon-delete' onClick={() => handleClickDelete(event)}/>
+                                <FontAwesomeIcon icon={faXmark} className='icon-delete' onClick={() => handleClickDelete(event, index)}/>
                                 <div className={"arrow-"+team}></div>
                                 <p style={{color: "grey"}}>{event.time+'\''}</p>
                                 <p style={{fontWeight: "500"}}>{event.performer}</p>
                                 <p style={{color: color, fontWeight: "bold"}}>{event.type}</p>
                             </div>
-                            <ConfirmDeleteResult openModal={openConfirmDelete} onClose={() => setOpenConfirmDelete(false)} onConfirm={() => handleConfirmDelete(index)}/>
                         </div>
+                        <ConfirmDeleteResult openModal={openConfirmDelete} onClose={() => setOpenConfirmDelete(false)} onConfirm={() => handleConfirmDelete()}/>
+                       </>
                     )
                 })
             }
@@ -360,10 +381,46 @@ const DetailAddResult = () => {
         setNp(event.nativeEvent.target[index].text)
     }
 
-    function handleConfirmDelete(index) {
-        console.log(index)
-        eventsInTranDauOffical.splice(index, 1)
+    function handleConfirmDelete() {
+        console.log(indexItemTimeline)
+        console.log(idItemTimeline)
+        if (idItemTimeline === "") {
+            if (eventsInTranDauOffical[indexItemTimeline].eventType === "Ghi bàn" && eventsInTranDauOffical[indexItemTimeline].team === "1") {
+                let newResult = result1 - 1;
+                setResult1(newResult)
+            }
+            else if (eventsInTranDauOffical[indexItemTimeline].eventType === "Ghi bàn" && eventsInTranDauOffical[indexItemTimeline].team === "2") {
+                let newResult = result2 - 1;
+                setResult2(newResult)
+            }
+            eventsInTranDauOffical.splice(indexItemTimeline, 1)
+        } else {
+            if (eventsInTranDauOffical[indexItemTimeline].eventType === "Ghi bàn") {
+                axios.defaults.baseURL = 'http://localhost:8000/'
+                axios.delete(`/v1/banthang/deletebanthang/${idItemTimeline}`).then(res => {
+                    if (res) {
+                        console.log(`Xoa ban thang ${idItemTimeline}  thanh cong`)
+                        eventsInTranDauOffical.splice(indexItemTimeline, 1)
+                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") {
+                            let a = result1--;
+                            setResult1(a)
+                        }
+                        else {
+                            let a = result2--;
+                            setResult2(a)
+                        }
+                    }
+                })
+                axios.patch(`/v1/cauthu/decreaseBanThangCauThu/${eventsInTranDauOffical[indexItemTimeline].idPerformer}`).then(res => {
+                    console.log(`Giam so ban thang cua cau thu ${eventsInTranDauOffical[indexItemTimeline].idPerformer} thanh cong`)
+                })
+            } else if (eventsInTranDauOffical[indexItemTimeline].eventType === "Phạm lỗi") {
+                axios.defaults.baseURL = 'http://localhost:8000/'
+                axios.delete(`/v1/the/delete/${idItemTimeline}`).then(res => console.log(`Xoa the ${idItemTimeline} thanh cong`))
+            }
+        }
         console.log(eventsInTranDauOffical)
+        forceUpdate()
         setOpenConfirmDelete(false)
     }
     

@@ -5,21 +5,49 @@ import create_report_img from "./img/create_report_img.png"
 import export_report_img from "./img/exel_img.png"
 import Axios from 'axios'
 import CommonUtils from '../utils/CommonUtils'
+import {useParams} from 'react-router-dom'
 
 function Create_Report() {
-    const [bangxephang , setBangXepHang] = useState()
+    const [bangxephang, setBangXepHang] = useState([])
     const [topGhiBan , setTopGhiBan] = useState()
     const [topThePhat,setTopThePhat] = useState()
     const [clb , setCLB] = useState()
+    var countBXH =0
+    var bxh = []
+    var tgb = []
+    var ttp = []
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
+    
     useEffect(()=>{
-        Axios.get('http://localhost:8000/v1/bangxephang/sort').then((res)=>{setBangXepHang(res.data)})
+        Axios.get('http://localhost:8000/v1/bangxephang/sort')
+        .then((res)=>setBangXepHang(res.data))
         Axios.get('http://localhost:8000/v1/cauthu/topghiban').then((res)=>setTopGhiBan(res.data))
         Axios.get('http://localhost:8000/v1/cauthu/topthephat').then((res) => setTopThePhat(res.data))
         Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then((res)=>setCLB(res.data))
     },[])
-    console.log(topThePhat)
+    bangxephang.map((value)=>{
+        if(value.MAMG === payload.params.muagiaiID.muagiaiID){
+            bxh.push({TENCLB : value.TENCLB,
+                TRANDACHOI:value.TRANDACHOI,
+                THANG:value.THANG,
+                HOA: value.HOA,
+                THUA:value.THUA,
+                BANTHANG:value.BANTHANG,
+                BANTHUA:value.BANTHUA,
+                HIEUSO:value.HIEUSO,
+                DIEM:value.DIEM
+            })
+        }
+    })
+    console.log(bxh)
+    console.log(payload.params.muagiaiID.muagiaiID)
     const handleOnClickExport = async() =>{
-        await CommonUtils.exportExcel(bangxephang,"Bảng Xếp Hạng","charts")
+        await CommonUtils.exportExcel(bxh,"Bảng Xếp Hạng","charts")
     }
     const handleOnClickExport1 = async() =>{
         await CommonUtils.exportExcel(topGhiBan, "Top Ghi Bàn", "Top Goal Scorer")
@@ -55,8 +83,8 @@ function Create_Report() {
                     <td className='td'>Điểm số</td>
                 </tr>
                 {bangxephang?.map((bxh,key)=>{
-                    return <tr key={key}>
-                        <td className='td'>{key+1}</td>
+                    return (bxh.MAMG === payload.params.muagiaiID.muagiaiID) ? (<tr key={key}>
+                        <td className='td'>{++countBXH}</td>
                         <td className='td'>{bxh.TENCLB}</td>
                         <td className='td'>{bxh.TRANDACHOI}</td>
                         <td className='td'>{bxh.THANG}</td>
@@ -66,7 +94,7 @@ function Create_Report() {
                         <td className='td'>{bxh.BANTHUA}</td>
                         <td className='td'>{bxh.HIEUSO}</td>
                         <td className='td'>{bxh.DIEM}</td>
-                    </tr>
+                    </tr>) : ""
                 })}  
             </table>
             <div className='export_report_btn' onClick={handleOnClickExport}>Xuất báo cáo
@@ -94,7 +122,7 @@ function Create_Report() {
                         <td className='td'>{tgb.HOTEN}</td>
                         <td className='td'>
                             {clb?.map((value) => {
-                                return tgb.MACLB === value._id ? value.TENCLB : ''
+                                return (tgb.MACLB === value._id && value.MAMG === payload.params.muagiaiID.muagiaiID) ? value.TENCLB : ''
                             })}
                         </td>
                         <td className='td'>{tgb.VITRI}</td>
@@ -127,7 +155,7 @@ function Create_Report() {
                         <td className='td'>{ttp.HOTEN}</td>
                         <td className='td'>
                             {clb?.map((value) => {
-                                return ttp.MACLB === value._id ? value.TENCLB : ''
+                                return (ttp.MACLB === value._id && value.MAMG === payload.params.muagiaiID.muagiaiID) ? value.TENCLB : ''
                             })}
                         </td>
                         <td className='td'>{ttp.VITRI}</td>

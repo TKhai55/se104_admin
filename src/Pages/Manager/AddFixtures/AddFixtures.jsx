@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './AddFixtures.css'
 import Header from '../Header_Manager/Header'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 
 const AddFixtures = () => {
+    const muagiaiID = useParams()
     const rounds = ['Vòng 1', 'Vòng 2', 'Vòng 3']
     let [fixtures, setFixtures] = useState([])
     const getFixtures = async () => {
@@ -40,7 +41,7 @@ const AddFixtures = () => {
                             }
                         </select>
                         <div className="btn-add-wrapper">
-                            <Link to='/manager/home/createMatch/detailCreateMatch'><button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button></Link>
+                            <Link to={`/manager/home/${muagiaiID.muagiaiID}/createMatch/detailCreateMatch`}><button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button></Link>
                         </div>
                     </div>
                     {
@@ -77,9 +78,6 @@ const AddFixtures = () => {
                             )
                         })
                     }
-                <div className="btn-add-wrapper">
-                    <Link to='/manager/home/createMatch/detailCreateMatch'><button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button></Link>
-                </div>
             </div>
                 {
                     rounds.map((round) => {

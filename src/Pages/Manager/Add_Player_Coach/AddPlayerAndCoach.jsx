@@ -5,7 +5,7 @@ import PopupAddPL from "./popup/Add_PL"
 import Dropdown from "./dropdown/DropDown";
 import dropdown_img from "./img/dropdown.png"
 import Header from '../Header_Manager/Header';
-import { Link , useLocation } from 'react-router-dom';
+import { Link , useLocation ,useParams } from 'react-router-dom';
 import soccer_field from "./img/soccer-field-seen-from-above (1).png"
 import Axios from 'axios';
 import icon_add_logo from "./img/Group 8.png"
@@ -18,6 +18,12 @@ function AddPlayerAndCoach() {
   const [isActive, setIsActive] = useState(false)
   const options1 = ['Tiền đạo', 'Tiền vệ', 'Hậu vệ trái', 'Hậu vệ phải' , 'Trung vệ' , 'Thủ môn']
   const [selected1, setSelected1] = useState("Chọn loại")
+  const muagiaiID = useParams()
+  const payload = {
+    params: {
+      muagiaiID
+    }
+  };
   var countCT = 0;
   var countHLV = 0;
   var yearNow = new Date()
@@ -95,6 +101,7 @@ function AddPlayerAndCoach() {
   
   const submitHLVHandler = ()=>{
     const fd = new FormData()
+    fd.append('MAMG',payload.params.muagiaiID.muagiaiID)
     fd.append('MACLB',ID_clb)
     fd.append('HOTEN',hotenHLV)
     fd.append('NGAYSINH',ngaysinhHLV)
@@ -113,6 +120,7 @@ function AddPlayerAndCoach() {
     var nsinhCT;
     var countCtNgoaiQuoc = 0;
     const fd = new FormData();
+    fd.append('MAMG', payload.params.muagiaiID.muagiaiID)
     fd.append('MACLB',ID_clb)
     fd.append('HOTEN', hotenCT)
     fd.append('NGAYSINH', ngasinhCT)

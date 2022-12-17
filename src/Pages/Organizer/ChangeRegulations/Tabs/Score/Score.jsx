@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './Score.css'
 
 const Score = () => {
@@ -8,6 +9,7 @@ const Score = () => {
   const [winScore, setWinScore] = useState(3)
   const [drawScore, setDrawScore] = useState(2)
   const [loseScore, setLoseScore] = useState(1)
+  const MGID = useParams()
   function handleSubmit() {
     if (winScore === '') document.querySelector("#win-score").classList.add("data-empty")
     else if (loseScore === '') document.querySelector("#lose-score").classList.add("data-empty")
@@ -32,21 +34,24 @@ const Score = () => {
 
   async function postData() {
     axios.defaults.baseURL = 'http://localhost:8000/'
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran thang",
       GIATRITHAMSO: winScore
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran hoa",
       GIATRITHAMSO: drawScore
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "Hieu so tran thua",
       GIATRITHAMSO: loseScore
     }).then(respond => {
@@ -57,7 +62,7 @@ const Score = () => {
   const getScore = async () => {
 
     try {
-        const res = await axios.get('http://localhost:8000/v1/thamso/getlist')
+        const res = await axios.get(`http://localhost:8000/v1/thamso/getlist/${MGID.muagiaiID}`)
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].TENTHAMSO === 'Hieu so tran thang') {
             setWinScore(res.data[i].GIATRITHAMSO)

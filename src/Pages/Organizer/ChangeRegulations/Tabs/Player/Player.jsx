@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './Player.css'
 
 const Player = () => {
@@ -9,6 +10,7 @@ const Player = () => {
   const [minAge, setMinAge] = useState(16)
   const [maxAge, setMaxAge] = useState(30)
   const [maxForeignPlayer, setMaxForeignPlayer] = useState(3)
+  const MGID = useParams()
 
   function handleSubmit() {
     if (minPlayer === "") {
@@ -39,35 +41,40 @@ const Player = () => {
 
   async function postData() {
     axios.defaults.baseURL = 'http://localhost:8000/'
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu toi thieu",
       GIATRITHAMSO: minPlayer
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu toi da",
       GIATRITHAMSO: maxPlayer
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So tuoi toi thieu",
       GIATRITHAMSO: minAge
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So tuoi toi da",
       GIATRITHAMSO: maxAge
     }).then(respond => {
         console.log(respond);
     })
 
-    await axios.post('/v1/thamso/create', {
+    await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
+      MAMG: MGID.muagiaiID,
       TENTHAMSO: "So cau thu ngoai quoc toi da",
       GIATRITHAMSO: maxForeignPlayer
     }).then(respond => {
@@ -78,7 +85,7 @@ const Player = () => {
     const getGoal = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/thamso/getlist')
+            const res = await axios.get(`http://localhost:8000/v1/thamso/getlist/${MGID.muagiaiID}`)
             for (var i = 0; i < res.data.length; i++) {
               if (res.data[i].TENTHAMSO === 'So cau thu toi thieu') {
                 setMinPlayer(res.data[i].GIATRITHAMSO)
