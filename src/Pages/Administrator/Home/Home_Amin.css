@@ -38,8 +38,8 @@
 }
 
 .Home_Admin_wrapper .menuWrapper .button{
-    background-color: #666674;
-    border-radius: 30px;
+    background-color: #63636d;
+    border-radius: 15px;
     text-align: center;
     color: white;
     font-weight: 500;
@@ -51,5 +51,9 @@
     margin-bottom: 1.5vh;
 }
 .Home_Admin_wrapper .menuWrapper .button:active{
-    background-color: #292b2f;
+    background-color: #3e4043;
+}
+.Home_Admin_wrapper .menuWrapper .button:hover{
+    border: 3px solid #939496;
+    box-shadow: rgba(244, 244, 244, 0.35) 0px 5px 15px;
 }
