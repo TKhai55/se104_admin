@@ -2,7 +2,7 @@ import React from 'react'
 import './RegisterClub.css'
 import Header from '../Header_Manager/Header'
 import createClub from '../images/createClub.png'
-import { Link, useParams , useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import axios, { Axios } from 'axios'
 import { useState } from 'react'
@@ -14,8 +14,8 @@ const RegisterClub = () => {
 
     const muagiaiID = useParams()
     let [caulacbos, setCauLacBo] = useState([])
-    const [loading , setLoading] = useState(false)
-    const [thamSoCtToiThieu , setThamSoCtToiThieu] = useState()
+    const [loading, setLoading] = useState(false)
+    const [thamSoCtToiThieu, setThamSoCtToiThieu] = useState()
     const navigate = useNavigate()
 
     const payload = {
@@ -25,8 +25,8 @@ const RegisterClub = () => {
     };
     useEffect(() => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
-        axios.get('http://localhost:8000/v1/thamso/getlist').then(res=>{
-            res.data.map((value)=>{
+        axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
+            res.data.map((value) => {
                 if (value._id === '63956b5060bc683901eabb69')
                     setThamSoCtToiThieu(value.GIATRITHAMSO)
             })
@@ -35,7 +35,7 @@ const RegisterClub = () => {
 
     console.log(thamSoCtToiThieu)
 
-    
+
 
     const getSLCR = async (payload) => {
 
@@ -50,14 +50,13 @@ const RegisterClub = () => {
     }
     const CheckSL_CAUTHU = () => {
         let count = 0;
-        caulacbos.map((caulacbo)=>{
-            if(caulacbo.SL_CAUTHU < thamSoCtToiThieu)
+        caulacbos.map((caulacbo) => {
+            if (caulacbo.SL_CAUTHU < thamSoCtToiThieu)
                 ++count;
         })
-        if (count !== 0 )
-            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG '+thamSoCtToiThieu)
-        else
-        {
+        if (count !== 0)
+            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG ' + thamSoCtToiThieu)
+        else {
             caulacbos.map((caulacbo) => {
                 axios.post('http://localhost:8000/v1/bangxephang/add', {
                     MACLB: caulacbo._id,
@@ -67,7 +66,7 @@ const RegisterClub = () => {
             })
             navigate('/manager/home/' + payload.params.muagiaiID.muagiaiID);
         }
-            
+
     }
     return (
         <div className='RegisterClub'>
@@ -96,23 +95,24 @@ const RegisterClub = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {loading?caulacbos.map(caulacbo => {
+                                    {loading ? caulacbos.map(caulacbo => {
                                         const img_url = 'http://localhost:8000/' + caulacbo.LOGO
                                         return (
                                             <tr className='club_infor' key={caulacbo._id}>
                                                 <Link
                                                     to='/manager/home/createCLub/addPlayerAndHLV'
                                                     state={
-                                                        {TENCLB:caulacbo.TENCLB,
-                                                        SANVANDONG:caulacbo.SANVANDONG,
-                                                        LOGO:caulacbo.LOGO,
-                                                        ID_clb:caulacbo._id,
-                                                        SL_HLV:caulacbo.SL_HLV,
-                                                        SL_CAUTHU:caulacbo.SL_CAUTHU,
-                                                        ID_muagiai:payload.params.muagiaiID.muagiaiID
+                                                        {
+                                                            TENCLB: caulacbo.TENCLB,
+                                                            SANVANDONG: caulacbo.SANVANDONG,
+                                                            LOGO: caulacbo.LOGO,
+                                                            ID_clb: caulacbo._id,
+                                                            SL_HLV: caulacbo.SL_HLV,
+                                                            SL_CAUTHU: caulacbo.SL_CAUTHU,
+                                                            ID_muagiai: payload.params.muagiaiID.muagiaiID
                                                         }
-                                                        }
-                                                    >
+                                                    }
+                                                >
                                                     <td className='logo'>
                                                         <img src={img_url} alt={caulacbo.TENCLB} className='logoClub' />
                                                     </td>
@@ -124,15 +124,15 @@ const RegisterClub = () => {
                                                 <td className="sl_ct">{caulacbo.SL_HLV}</td>
                                             </tr>
                                         )
-                                    }):<Loading/>
-                                    }       
+                                    }) : <Loading />
+                                    }
                                 </tbody>
                             </table>
                         </div>
-                        <Link to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/register_club'}><button>Thêm</button></Link>
+                        <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/register_club'}><button>Thêm</button></Link>
                     </div>
                 </div>
-                <button className='done' onClick={()=>CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>
+                <button className='done' onClick={() => CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>
             </section>
         </div>
     )

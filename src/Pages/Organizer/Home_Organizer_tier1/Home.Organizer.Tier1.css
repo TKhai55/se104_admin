@@ -15,11 +15,15 @@
     position: relative;
     width: 60%;
     min-height: 60vh;
-    height: max-content;
+    height: fit-content;
     margin-top: 3vh;
     color: white;
     background-color: rgb(93, 95, 98);
     margin-bottom: 2vh;
+}
+.Home_tier1 .home_container .league_table table{
+    padding: 10px 100px;
+    width: 100%;
 }
 .Home_tier1 .home_container .league_table thead{
     font-size: 3.5vh;
@@ -38,26 +42,30 @@
 
 }
 .Home_tier1 .home_container .league_table .logo{
-    width: 43%;
+    
+    width: 39%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Home_tier1 .home_container .league_table .league_logo{
+.Home_tier1 .home_container .league_table .logo img{
     width: 35%;
+    padding: 5px 0;
 }
 .Home_tier1 .home_container .league_table .league_name{
-    width: 57%;
+    width: 61%;
     text-align: left;
     font-size: 3vh;
-    vertical-align: middle;
     font-weight: 500;
+    padding: 15px 0;
 }
 .Home_tier1 .home_container .league_table a{
     text-decoration: none;
     color:#fff;
 }
+
 .Home_tier1 .home_container .add_league{
+    padding: 5px;
     color: white;
     font-size: 2vh;
     background-color: #44B454;
@@ -68,4 +76,8 @@
 }
 .Home_tier1 .home_container .add_league:active{
     background-color: #26b83c;
+}
+.Home_tier1 .home_container .add_league:hover{
+    border: 1px solid #ffffff;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 }
