@@ -46,9 +46,9 @@ export default function ChangePLayer() {
         })
         alert("Sửa thành công");
         navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)
-        console.log("loai", vitri)
         console.log("hoten", hoten)
     }
+    console.log("maclb", player.MACLB)
 
     const submitHandler1 = ()=>{
         const answer= window.confirm("Bạn có chắc chắn xóa",);
@@ -57,7 +57,7 @@ export default function ChangePLayer() {
             Axios.post('http://localhost:8000/v1/caulacbo/xoacauthu',{
             "_id" : player.MACLB
             })
-            navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/${hoten}`)
+            navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)
         }
     }
   return (
