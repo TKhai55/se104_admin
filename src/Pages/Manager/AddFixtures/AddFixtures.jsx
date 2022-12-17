@@ -21,7 +21,7 @@ const AddFixtures = () => {
     }
     useEffect(() => {
         getFixtures()
-    }, [fixtures])
+    }, [])
 
     return (
         <>
@@ -77,12 +77,49 @@ const AddFixtures = () => {
                             )
                         })
                     }
-
-
+                <div className="btn-add-wrapper">
+                    <Link to='/manager/home/createMatch/detailCreateMatch'><button className='btn-add-fixtures'>THÊM LỊCH THI ĐẤU</button></Link>
                 </div>
             </div>
-        </>
-    )
+                {
+                    rounds.map((round) => {
+                        return (
+                            <table className="round-table">
+                                <tr>
+                                    <th>{round} / {rounds.length}</th>
+                                </tr>
+                                {
+                                     fixtures.map((fixtureItem, index) => {
+                                        const imageUrl1 = 'http://localhost:8000/' + fixtureItem.DOI1.LOGO
+                                        const imageUrl2 = 'http://localhost:8000/' + fixtureItem.DOI2.LOGO
+                                        return (
+                                            <tr className='round-info' key={index}>
+                                                <td className='signature'>
+                                                    <img className="club-logo club-logo-1" src={imageUrl1} alt={`${fixtureItem.DOI1.TENCLB} logo`} name="logo-1" />
+                                                    <label htmlFor="logo-1" id="logo-1">{fixtureItem.DOI1.TENCLB}</label>
+                                                </td>
+                                                <td id="time">
+                                                    <h4>{fixtureItem.THOIGIANDIENRA}</h4>
+                                                    <h4 id="date">{fixtureItem.NGAYDIENRA}</h4>
+                                                </td>
+                                                <td className='signature'>
+                                                    <img className="club-logo club-logo-2" src={imageUrl2} alt={`${fixtureItem.DOI2.TENCLB} logo`} name="logo-2"/>
+                                                    <label htmlFor="logo-2" id="logo-2">{fixtureItem.DOI2.TENCLB}</label>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+                            </table>
+                        )
+                    })
+                }
+
+                
+        </div>
+    </>
+  )
 }
 
 export default AddFixtures

@@ -1,20 +1,26 @@
 import React from 'react'
 import './Manager_SearchCoach.css'
-import ChangeCoach from '../../Change_Information/ChangeCoach/ChangeCoach'
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Manager/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function SearchCoach() {
+    const muagiaiID = useParams()
+  const payload = {
+    params: {
+        muagiaiID
+    }
+  };
+    const navigate= useNavigate();
     const location = useLocation();
     let [huanluyenviens, setHuanLuyenVien] = useState([])
 
     const getHLV = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/search/'+searchkey)
+            const res = await axios.get('http://localhost:8000/v1/huanluyenvien/searchbyMG_key/'+payload.params.muagiaiID.muagiaiID+'/'+searchkey)
             setHuanLuyenVien(res.data)
             huanluyenviens=res.data;
         }
@@ -26,8 +32,27 @@ export default function SearchCoach() {
         getHLV()
     }, [])
     const [searchkey,] = useState(location.state.sk);
-    const [buttonPopup, setButtonPopup]= useState(false);
-    
+    let [caulacbos, setCauLacBo] = useState([])
+    const getCLB = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo/')
+            setCauLacBo(res.data)
+            caulacbos=res.data;
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        getCLB()
+    }, [])
+    let [nameclub,] = useState()
+    const find = (e) =>{
+        for (let i = 0; i < caulacbos.length; i++) {
+            if (e === caulacbos[i]._id) nameclub = caulacbos[i].TENCLB
+        }
+    }
+
   return (
     <div className='ManagerCoach_body'>
         <Header/>
@@ -41,11 +66,16 @@ export default function SearchCoach() {
             {
                 huanluyenviens.map(huanluyenviens => {
                     return (
-                        <div className='a' onClick={() => setButtonPopup(true)}>
+                        <div className='a' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/coach/${huanluyenviens._id}`,{
+                                state:{coach:huanluyenviens},   
+                            }); 
+                                // window.location.reload();
+                            }}>
+                            { find(huanluyenviens.MACLB)}
                             <div className='Manager_list-Coach' key={huanluyenviens.id}>
                                 <img src={"http://localhost:8000/"+huanluyenviens.AVATAR} alt={huanluyenviens.HOTEN} width={118.15} height={100}/>
                                 <p className='Manager_Coach--name'>{huanluyenviens.HOTEN}</p>
-                                <p className="Manager_Coach--club">{huanluyenviens.MACLB}</p>
+                                <p className="Manager_Coach--club">{nameclub}</p>
                                 <p className="Manager_Coach--country">{huanluyenviens.QUOCTICH}</p>
                             </div>
                             <hr size="1" color="#fff"/>
@@ -53,7 +83,6 @@ export default function SearchCoach() {
                     )
                 })
             }
-            <ChangeCoach trigger={buttonPopup} setTrigger={setButtonPopup}/>
         </div>    
     </div>    
   )

@@ -82,19 +82,18 @@ export const Home_Manager_Tier2 = () => {
 
                         </div>
                         <div className="button search">
+
                             {
                                 currentnum === totalnum ?
-                                    <Link to='/manager/home/search'>
+                                    <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/search'}>
                                         <img src={search} alt="search" />
-                                        <p>TRA CỨU</p>
+                                         <p>TRA CỨU</p>
                                     </Link> :
                                     <Link to='#!'>
                                         <img src={search} alt="search" />
                                         <p>TRA CỨU</p>
                                     </Link>
                             }
-
-
                         </div>
                     </div>
                     <div className="row2">

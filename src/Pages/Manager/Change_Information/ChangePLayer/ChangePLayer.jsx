@@ -1,29 +1,21 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, } from 'react'
 import './ChangePlayer.css'
 import Axios from "axios"
+import { useLocation, useNavigate, useParams} from 'react-router-dom'
 
 
-export default function ChangePLayer(props) {
-    let [cauthu, setCauThu] = useState()
-    const [idcauthu,setIDCauThu] = useState(props.id)
-    // setIDCauThu(props.id)
-    console.log("cay quá chạy được đi",props.id)
-    const getCT = async () => {
-        try {
-        const res = await Axios.get('http://localhost:8000/v1/cauthu/getaplayer/'+'6397cb755cd5df5b102ea8b9');
-            setCauThu(res.data)
-            cauthu=res.data;
-            console.log("cauthu",cauthu)
-            
+export default function ChangePLayer() {
+    const muagiaiID = useParams()
+    const id = useParams()
+    const payload = {
+        params: {
+            muagiaiID,
         }
-        catch (error) {
-            console.log(error.message)
-        }
-    }
-    useEffect(() => {
-        getCT()
-    }, [])
-
+    };
+    const navigate= useNavigate();
+    const location = useLocation();
+    const [player,] = useState(location.state.player);
+    // console.log("payload",payload)
     const [showImage , setShowImage] = useState(false)
     const [selectedFile ,setSelectedFile] = useState([]) 
     const [hoten , setHoTen] = useState()
@@ -45,17 +37,18 @@ export default function ChangePLayer(props) {
     console.log(avt)
     }
     const submitHandler = ()=>{
-    Axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'+'6397cb755cd5df5b102ea8b9',{
+    Axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'+player._id,{
             HOTEN : hoten,
             NGAYSINH: ngaysinh,
             QUOCTICH: quoctich,
             SOAO: soao,
             LOAI: loai
         })
-        console.log("Thêm thành công");
+        alert("Sửa thành công");
+        navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)
     }
 
-  return (props.trigger) ? (
+  return (
     <div className='SearchPlayer_Change popup'>
         <div className='SearchPlayer-content_Change popup_inner'>
             <div className='content_left_searchPlayer_Change'>
@@ -66,16 +59,31 @@ export default function ChangePLayer(props) {
                 <p className='titleContent_searchPlayer_item_Change'>Loại:</p>
             </div>
             <div className='content_middle_searchPlayer_Change'>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.HOTEN} onChange={(e)=>setHoTen(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
-                <input className='Player_information_Change' type='text' placeholder={cauthu.SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
-                <select type='text' name="player" className="Player_object" onChange={(e)=>setLoai(e.target.value)}>
-                    <option value={cauthu.VITRI}>{cauthu.VITRI}</option>
-                    <option value="Tiền đạo">Tiền đạo</option>
-                    <option value="Tiền vệ">Tiền vệ</option>
-                    <option value="Hậu vệ">Hậu vệ</option>
+                <input className='Player_information_Change' type='text' placeholder={player.HOTEN} onChange={(e)=>setHoTen(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={player.NGAYSINH} onChange={(e)=>setNgaySinh(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={player.QUOCTICH} onChange={(e)=>setQuocTich(e.target.value)}/>
+                <input className='Player_information_Change' type='text' placeholder={player.SOAO} onChange={(e)=>setSoAo(e.target.value)}/>
+                <select type='text' name="player" className="Player_object" onClick={(e)=>setLoai(e.target.value)}>
+                    <option value="none" selected disabled hidden>{player.VITRI}</option>
+                    <optgroup label="Tiền đạo">
+                        <option value="Tiền đạo cắm">Tiền đạo cắm</option>
+                        <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
+                        <option value="Tiền đạo cánh phải">Tiền đạo cánh phải</option>
+                    </optgroup>
+                    <optgroup label="Tiền vệ">
+                        <option value="Tiền vệ trung tâm">Tiền vệ trung tâm</option>
+                        <option value="Tiền vệ phòng ngự">Tiền vệ phòng ngự</option>
+                        <option value="Tiền vệ cánh trái">Tiền vệ cánh trái</option>
+                        <option value="Tiền vệ cánh phải">Tiền vệ cánh phải</option>
+                    </optgroup>
+                    <optgroup label="Hậu vệ">
+                        <option value="Hậu vệ trái">Hậu vệ trái</option>
+                        <option value="Hậu vệ phải">Hậu vệ phải</option>
+                        <option value="Trung vệ">Trung vệ</option>
+                    </optgroup>
+                    <optgroup label="Thủ môn">
                     <option value="Thủ môn">Thủ môn</option>
+                    </optgroup>
                 </select>
             </div>
             <div className='content_right_searchPlayer_Change'>
@@ -84,7 +92,7 @@ export default function ChangePLayer(props) {
                         return <img className='searchClub--image_Change'
                         src={imageURL} alt='' />
                     }) : <img className='searchClub--image_Change'
-                        src={"http://localhost:8000/"+cauthu.AVATAR} alt='' />
+                        src={"http://localhost:8000/"+player.AVATAR} alt='' />
                     }
                     <label className='btn_imgPlayer_change_lb'>
                         Chỉnh sửa Avatar +
@@ -96,16 +104,14 @@ export default function ChangePLayer(props) {
                         />
                     </label>
                 </div> */}
-                <img className='searchPlayer--image_Change' src={"http://localhost:8000/"+cauthu.AVATAR} alt='' />
+                <img className='searchPlayer--image_Change' src={"http://localhost:8000/"+player.AVATAR} alt='' />
 
             </div>
         </div>
         <div className='searchPLayer_button_change_Change'>
             <button className='searchPlayer_button_fix_Change' onClick={()=>{submitHandler(); window.location.reload()}}>Sửa</button>
-            <button className='searchPlayer_button_exit_Change' onClick={() => props.setTrigger(false)}>Thoát</button>
-            <button className='searchPlayer_button_exit_Change' onClick={() => console.log("testid",props.id)}>test</button>
-            {props.children}
+            <button className='searchPlayer_button_exit_Change' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/search/`)}}>Thoát</button>
         </div>
     </div>    
-  ): "";
+  );
 }

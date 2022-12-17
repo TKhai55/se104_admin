@@ -72,7 +72,7 @@ const Goal = () => {
         } else {
             let flag = false
             goal.map(goalItem => {
-                flag = goalInput.includes(goalItem.TENBANTHANG)
+                flag = goalInput.includes(goalItem.TEN)
                 if (flag) {
                     notification(".notification-text-goal", '#ed4337', `${goalInput} đã được nhập trước đó!`)
                 }
@@ -82,7 +82,7 @@ const Goal = () => {
                 try {
                     axios.defaults.baseURL = 'http://localhost:8000/'
                     await axios.post('/v1/loaibanthang/add', {
-                    TENBANTHANG: goalInput,
+                    TEN: goalInput,
                   }).then(respond => {
                       goal.push(respond.data)
                       document.querySelector('.goal-input').value = ''
@@ -141,7 +141,8 @@ const Goal = () => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{goalItem.TEN}</td>
-                                <button className='icon-delete'><FontAwesomeIcon icon={faXmark} onClick={() => onDeleteItem(goalItem.TENBANTHANG, goalItem._id)}/></button>
+                                <button className='icon-delete'><FontAwesomeIcon icon={faXmark} onClick={() => onDeleteItem(goalItem.TEN, goalItem._id)}/></button>
+
                             </tr>
                         )
                     })
