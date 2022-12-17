@@ -4,9 +4,15 @@ import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Manager/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function SearchClub() {
+    const muagiaiID = useParams()
+  const payload = {
+    params: {
+        muagiaiID
+    }
+  };
     const navigate= useNavigate();
     const location = useLocation();
     let [caulacbos, setCauLacBo] = useState([])
@@ -14,7 +20,7 @@ export default function SearchClub() {
     const getHLV = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8000/v1/caulacbo/search/'+searchkey)
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/searchbyMG_key/'+payload.params.muagiaiID.muagiaiID+'/'+searchkey)
             setCauLacBo(res.data)
             caulacbos=res.data;
         }
@@ -39,7 +45,7 @@ export default function SearchClub() {
             {
                 caulacbos.map(caulacbos => {
                     return (
-                        <div className='a' onClick={() => {navigate(`/manager/home/club/${caulacbos._id}`,{
+                        <div className='a' onClick={() => {navigate(`/manager/home/${payload.params.muagiaiID.muagiaiID}/club/${caulacbos._id}`,{
                                 state:{club:caulacbos},   
                             }); 
                                 // window.location.reload();

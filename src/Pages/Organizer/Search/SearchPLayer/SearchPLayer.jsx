@@ -4,16 +4,22 @@ import axios from "axios";
 import { useState, useEffect } from 'react'
 import Header from '../../Header_Organizer/Header';
 import HeaderSearch from '../Header_Search/HeaderSearch';
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate, useParams} from 'react-router-dom'
 
 
 export default function SearchPLayer() {
+    const muagiaiID = useParams()
+    const payload = {
+        params: {
+            muagiaiID
+        }
+    };
     const navigate= useNavigate();
     const location = useLocation();
     let [cauthus, setCauThus] = useState([])
     const getCT = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/v1/cauthu/search/'+searchkey)
+            const res = await axios.get('http://localhost:8000/v1/cauthu/searchbyMG_key/'+payload.params.muagiaiID.muagiaiID+'/'+searchkey)
             setCauThus(res.data)
             cauthus=res.data;
         }
@@ -61,7 +67,7 @@ export default function SearchPLayer() {
             {
                 cauthus.map(cauthus => {
                     return (
-                        <div className='a' onClick={() => {navigate(`/organizer/home/player/${cauthus._id}`,{
+                        <div className='a' onClick={() => {navigate(`/organizer/home/${payload.params.muagiaiID.muagiaiID}/player/${cauthus._id}`,{
                                 state:{player:cauthus},   
                             }); 
                                 // window.location.reload();
