@@ -115,7 +115,7 @@ export const Home_Manager_Tier2 = () => {
                         <div className="button createReport">
                             {
                                 currentnum === totalnum ?
-                                    <Link to='/manager/home/createReport'>
+                                    <Link to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/createReport'}>
 
                                         <img src={createReport} alt="createReport" />
                                         <p>LẬP BÁO CÁO</p>
