@@ -397,7 +397,7 @@ const Index = () => {
                         <label className="Mn_key">Họ tên</label>
                         <input type='text' className="Mn_value" id='namehlv' defaultValue={hlvchitiet.HOTEN}></input>
                         <label className="Mn_key">Loại</label>
-                        <select type='text' className="Mn_value" id='loaihlv' onChange={(e)=>setLoaiHLV(e.target.value)}>
+                        <select type='text' className="" id='vitrict' onChange={(e)=>setLoaiHLV(e.target.value)}>
                             <option value={hlvchitiet.LOAI} selected disabled hidden>{hlvchitiet.LOAI}</option>
                             <option value="HLV Trưởng">HLV Trưởng</option>
                             <option value="Trợ lý HLV">Trợ lý HLV</option>
