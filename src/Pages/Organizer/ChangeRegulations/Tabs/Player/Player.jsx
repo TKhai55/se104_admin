@@ -5,27 +5,51 @@ import './Player.css'
 
 const Player = () => {
 
-  const [minPlayer, setMinPlayer] = useState(18)
-  const [maxPlayer, setMaxPlayer] = useState(35)
+  const [minPlayer, setMinPlayer] = useState(15)
+  const [maxPlayer, setMaxPlayer] = useState(22)
   const [minAge, setMinAge] = useState(16)
-  const [maxAge, setMaxAge] = useState(30)
+  const [maxAge, setMaxAge] = useState(40)
   const [maxForeignPlayer, setMaxForeignPlayer] = useState(3)
   const MGID = useParams()
 
   function handleSubmit() {
-    if (minPlayer === "") {
+
+
+
+    if (minPlayer >= maxPlayer) {
+      alert('Số cầu thủ tối thiểu < số cầu thủ tối đa!')
+      return
+    } else
+      if (minPlayer < 15) {
+        alert('Số cầu thủ tối thiểu > 15!')
+        return
+      }
+
+    if (minAge >= maxAge) {
+      alert('Số tuổi tối thiểu < số tuổi tối đa!')
+      return
+    } else
+      if (minAge < 16) {
+        alert('Số tuổi tối thiểu > 16!')
+        return
+      }
+    if (maxForeignPlayer < 3) {
+      alert('Số cầu thủ ngoại tối thiểu > 3!')
+      return
+    }
+    if (minPlayer === "" || minPlayer === undefined) {
       document.querySelector('#min-player').classList.add('data-empty')
       document.querySelector('.warning').style.display = "block"
     } else if (maxPlayer === "") {
       document.querySelector('#max-player').classList.add('data-empty')
       document.querySelector('.warning').style.display = "block"
-    } else if (minAge === "") {
+    } else if (minAge === "" || minAge === undefined) {
       document.querySelector('#min-age').classList.add('data-empty')
       document.querySelector('.warning').style.display = "block"
-    } else if (maxAge === "") {
+    } else if (maxAge === "" || maxAge === undefined) {
       document.querySelector('#max-age').classList.add('data-empty')
       document.querySelector('.warning').style.display = "block"
-    } else if (maxForeignPlayer === "") {
+    } else if (maxForeignPlayer === "" || maxForeignPlayer === undefined) {
       document.querySelector('#min-foreigner').classList.add('data-empty')
       document.querySelector('.warning').style.display = "block"
     } else {
@@ -46,7 +70,7 @@ const Player = () => {
       TENTHAMSO: "So cau thu toi thieu",
       GIATRITHAMSO: minPlayer
     }).then(respond => {
-        console.log(respond);
+      console.log(respond);
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
@@ -54,7 +78,7 @@ const Player = () => {
       TENTHAMSO: "So cau thu toi da",
       GIATRITHAMSO: maxPlayer
     }).then(respond => {
-        console.log(respond);
+      console.log(respond);
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
@@ -62,7 +86,7 @@ const Player = () => {
       TENTHAMSO: "So tuoi toi thieu",
       GIATRITHAMSO: minAge
     }).then(respond => {
-        console.log(respond);
+      console.log(respond);
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
@@ -70,7 +94,7 @@ const Player = () => {
       TENTHAMSO: "So tuoi toi da",
       GIATRITHAMSO: maxAge
     }).then(respond => {
-        console.log(respond);
+      console.log(respond);
     })
 
     await axios.post(`/v1/thamso/create/${MGID.muagiaiID}`, {
@@ -78,35 +102,35 @@ const Player = () => {
       TENTHAMSO: "So cau thu ngoai quoc toi da",
       GIATRITHAMSO: maxForeignPlayer
     }).then(respond => {
-        console.log(respond);
+      console.log(respond);
     })
   }
 
-    const getGoal = async () => {
+  const getGoal = async () => {
 
-        try {
-            const res = await axios.get(`http://localhost:8000/v1/thamso/getlist/${MGID.muagiaiID}`)
-            for (var i = 0; i < res.data.length; i++) {
-              if (res.data[i].TENTHAMSO === 'So cau thu toi thieu') {
-                setMinPlayer(res.data[i].GIATRITHAMSO)
-              } else if (res.data[i].TENTHAMSO === 'So cau thu toi da') {
-                setMaxPlayer(res.data[i].GIATRITHAMSO)
-              } else if (res.data[i].TENTHAMSO === 'So tuoi toi thieu') {
-                setMinAge(res.data[i].GIATRITHAMSO)
-              } else if (res.data[i].TENTHAMSO === 'So tuoi toi da') {
-                setMaxAge(res.data[i].GIATRITHAMSO)
-              } else if (res.data[i].TENTHAMSO === 'So cau thu ngoai quoc toi da') {
-                setMaxForeignPlayer(res.data[i].GIATRITHAMSO)
-              }
-            }
+    try {
+      const res = await axios.get(`http://localhost:8000/v1/thamso/getlist/${MGID.muagiaiID}`)
+      for (var i = 0; i < res.data.length; i++) {
+        if (res.data[i].TENTHAMSO === 'So cau thu toi thieu') {
+          setMinPlayer(res.data[i].GIATRITHAMSO)
+        } else if (res.data[i].TENTHAMSO === 'So cau thu toi da') {
+          setMaxPlayer(res.data[i].GIATRITHAMSO)
+        } else if (res.data[i].TENTHAMSO === 'So tuoi toi thieu') {
+          setMinAge(res.data[i].GIATRITHAMSO)
+        } else if (res.data[i].TENTHAMSO === 'So tuoi toi da') {
+          setMaxAge(res.data[i].GIATRITHAMSO)
+        } else if (res.data[i].TENTHAMSO === 'So cau thu ngoai quoc toi da') {
+          setMaxForeignPlayer(res.data[i].GIATRITHAMSO)
         }
-        catch (error) {
-            console.log(error.message)
-        }
+      }
     }
-    useEffect(() => {
-        getGoal()
-    }, [])
+    catch (error) {
+      console.log(error.message)
+    }
+  }
+  useEffect(() => {
+    getGoal()
+  }, [])
 
   return (
     <div className="main-player-wrapper">
@@ -131,7 +155,7 @@ const Player = () => {
         <input type="number" id='min-age' value={minAge} onChange={(e) => {
           removeWarningClass('#min-age')
           setMinAge(e.target.value)
-        }}/>
+        }} />
       </div>
 
       <div className="max-age-wrapper">

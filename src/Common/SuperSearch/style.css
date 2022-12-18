@@ -59,6 +59,50 @@
 }
 .SPsearch_container .SPsearch_table{
     min-height: 30vh;
-    background-color: brown;
+    background-color: #777b83;
     border-radius: 0px 0px 8px 8px;
+}
+.SPsearch_container .SPsearch_table table{
+    width: 100%;
+}
+.SPsearch_container .SPsearch_table thead{
+    background-color: #CDC9C9;
+    color: #5b5b5c;
+}
+.SPsearch_container .SPsearch_table tbody{
+    color: white;
+}
+.SPsearch_container .SPsearch_table .name {
+    width: 35%;
+    padding: 0 5vh;
+}
+.SPsearch_container .SPsearch_table .clb {
+    width: 20%;
+    padding: 0 5vh;
+}
+.SPsearch_container .SPsearch_table .clb img{
+    width: 20%;
+    height: 30%;
+    padding: 1vh 2vh;
+    vertical-align: middle;
+}
+.SPsearch_container .SPsearch_table .name img{
+    width: 30%;
+    height: 40%;
+    padding: 1vh 2vh;
+    vertical-align: middle;
+}
+.SPsearch_container .SPsearch_table .club{
+    width: 16%;
+    text-align: center;
+}
+.SPsearch_container .SPsearch_table .position{
+    width: 16%;
+    text-align: center;
+}
+.SPsearch_container .SPsearch_table .sbt,
+.SPsearch_container .SPsearch_table .stv,
+.SPsearch_container .SPsearch_table .std{
+    width: 11%;
+    text-align: center;
 }

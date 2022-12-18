@@ -3,8 +3,6 @@ import './Home_Organizer_Tier2.css'
 import Header from '../Header_Organizer/Header'
 import changePolicy from '../images/changePolicy.png'
 import search from '../images/search.png'
-import finish from '../images/finish.png'
-import deleteLeague from '../images/delete.png'
 import exit from '../images/exit.png'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -43,7 +41,7 @@ export const Home_Organizer_Tier2 = () => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
     }, []);
 
-    
+
     const getSLTT = async (payload) => {
 
         try {
@@ -75,14 +73,14 @@ export const Home_Organizer_Tier2 = () => {
                 </div>
                 <div className='menuWrapper'>
 
-                    
-                        <div className="button changePolicy">
-                            <Link to={`/organizer/home/${MGID}/changePolicy`}>
-                                <img src={changePolicy} alt="changePolicy" />
-                                <p>ĐỔI QUY ĐỊNH</p>
-                            </Link>
-                        </div>
-                    
+
+                    <div className="button changePolicy">
+                        <Link to={`/organizer/home/${MGID}/changePolicy`}>
+                            <img src={changePolicy} alt="changePolicy" />
+                            <p>ĐỔI QUY ĐỊNH</p>
+                        </Link>
+                    </div>
+
                     <div className="button search">
                         {
                             currentnum === totalnum ?
