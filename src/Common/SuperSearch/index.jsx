@@ -4,6 +4,8 @@ import { FcSearch } from 'react-icons/fc'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect } from 'react'
+import ModalCT from '../../Pages/Organizer/components/modalCT'
+
 
 
 const Index = () => {
@@ -14,6 +16,12 @@ const Index = () => {
     const [doibong, setDoiBong] = useState([])
     const [query, setQuery] = useState('')
     const [selected, setSelected] = useState('')
+    const [ctchitiet, setCTchitiet] = useState(null)
+    const [ctchitietmodal, setCTchitietModal] = useState(false)
+    const [hlvchitiet, setHLVchitiet] = useState(null)
+    const [hlvchitietmodal, setHLVchitietModal] = useState(false)
+    const [clbchitiet, setCLBchitiet] = useState(null)
+    const [clbchitietmodal, setCLBchitietModal] = useState(false)
 
     const getCT = async (payload) => {
 
@@ -95,7 +103,8 @@ const Index = () => {
                             .map(cauthu => {
                                 const img_url = 'http://localhost:8000/' + cauthu.AVATAR
                                 return (
-                                    <tr className='cauthu_infor' key={cauthu._id}>
+                                    <tr className='cauthu_infor' key={cauthu._id}
+                                        onClick={() => showCTModal(cauthu)}>
                                         {find(cauthu.MACLB)}
                                         <td className='name'>
                                             <img src={img_url} alt={cauthu.HOTEN} className='avatarCT' />
@@ -136,7 +145,9 @@ const Index = () => {
                             .map(huanluyenvien => {
                                 const img_url = 'http://localhost:8000/' + huanluyenvien.AVATAR
                                 return (
-                                    <tr className='cauthu_infor' key={huanluyenvien._id}>
+                                    <tr className='cauthu_infor'
+                                        key={huanluyenvien._id}
+                                        onClick={() => showHLVModal(huanluyenvien)}>
                                         {find(huanluyenvien.MACLB)}
                                         <td className='name'>
                                             <img src={img_url} alt={huanluyenvien.HOTEN} className='avatarCT' />
@@ -174,7 +185,9 @@ const Index = () => {
                             .map(doibong => {
                                 const img_url = 'http://localhost:8000/' + doibong.LOGO
                                 return (
-                                    <tr className='cauthu_infor' key={doibong._id}>
+                                    <tr className='cauthu_infor'
+                                        key={doibong._id}
+                                        onClick={() => showCLBModal(doibong)}>
                                         <td className='clb'>
                                             <img src={img_url} alt={doibong.TENCLB} className='avatarCT' />
 
@@ -190,6 +203,154 @@ const Index = () => {
             </table>
         )
     }
+
+    const showCTModal = (cauthu) => {
+        setCTchitiet(cauthu);
+        setCTchitietModal(true);
+    };
+
+    const handleCloseCTModal = () => {
+        setCTchitietModal(false);
+    };
+    const showHLVModal = (huanluyenvien) => {
+        setHLVchitiet(huanluyenvien);
+        setHLVchitietModal(true);
+    };
+
+    const handleCloseHLVModal = () => {
+        setHLVchitietModal(false);
+    };
+    const showCLBModal = (doibong) => {
+        setCLBchitiet(doibong);
+        setCLBchitietModal(true);
+    };
+
+    const handleCloseCLBModal = () => {
+        setCLBchitietModal(false);
+    };
+
+    const renderclbModal = () => {
+        if (!clbchitiet) {
+            return null;
+        }
+        const img_url = 'http://localhost:8000/' + clbchitiet.LOGO
+        return (
+            <ModalCT
+                show={clbchitietmodal}
+                handleClose={handleCloseCLBModal}
+                modalTitle={"Chi tiết câu lạc bộ"}
+                size="lg"
+            >
+                <div className='parent_div'>
+                    <div className="modal_row1">
+                        <label className="key">Tên </label>
+                        <p className="value">{clbchitiet.TENCLB}</p>
+                        <label className="key">Năm thành lập</label>
+                        <p className="value">{clbchitiet.NAMTHANHLAP}</p>
+                    </div>
+                    <div className="modal_row2">
+                        <label className="key">Sân vận động</label>
+                        <p className="value">{clbchitiet.SANVANDONG}</p>
+                        <label className="key">SL cầu thủ</label>
+                        <p className="value">{clbchitiet.SL_CAUTHU}</p>
+                    </div>
+                    <div className="modal_row3">
+                        <label className="key1">SL HLV</label>
+                        <p className="value">{clbchitiet.SL_HLV}</p>
+                    </div>
+                    <div className="modal_row4">
+                        <label className="key2">Logo</label>
+                        <div className="productImgContainer">
+                            <img src={img_url} alt={clbchitiet.TENCLB} />
+                        </div>
+                    </div>
+
+                </div>
+            </ModalCT>
+        );
+    };
+
+    const renderhlvModal = () => {
+        if (!hlvchitiet) {
+            return null;
+        }
+        const img_url = 'http://localhost:8000/' + hlvchitiet.AVATAR
+        return (
+            <ModalCT
+                show={hlvchitietmodal}
+                handleClose={handleCloseHLVModal}
+                modalTitle={"Chi tiết huấn luyện viên"}
+                size="lg"
+            >
+                <div className='parent_div'>
+                    <div className="modal_row1">
+                        <label className="key">Họ tên</label>
+                        <p className="value">{hlvchitiet.HOTEN}</p>
+                        <label className="key">Loại</label>
+                        <p className="value">{hlvchitiet.LOAI}</p>
+                    </div>
+                    <div className="modal_row2">
+                        <label className="key">Ngày sinh</label>
+                        <p className="value">{hlvchitiet.NGAYSINH}</p>
+                        <label className="key">Ngày tham gia</label>
+                        <p className="value">{hlvchitiet.NGAYTHAMGIA}</p>
+                    </div>
+                    <div className="modal_row3">
+                        <label className="key1">Quốc tịch</label>
+                        <p className="value">{hlvchitiet.QUOCTICH}</p>
+                    </div>
+                    <div className="modal_row4">
+                        <label className="key2">Avatar</label>
+                        <div className="productImgContainer">
+                            <img src={img_url} alt={hlvchitiet.HOTEN} />
+                        </div>
+                    </div>
+
+                </div>
+            </ModalCT>
+        );
+    };
+
+    const renderctModal = () => {
+        if (!ctchitiet) {
+            return null;
+        }
+        const img_url = 'http://localhost:8000/' + ctchitiet.AVATAR
+        return (
+            <ModalCT
+                show={ctchitietmodal}
+                handleClose={handleCloseCTModal}
+                modalTitle={"Chi tiết cầu thủ"}
+                size="lg"
+            >
+                <div className='parent_div'>
+                    <div className="modal_row1">
+                        <label className="key">Họ tên</label>
+                        <p className="value">{ctchitiet.HOTEN}</p>
+                        <label className="key">Vị trí</label>
+                        <p className="value">{ctchitiet.VITRI}</p>
+                    </div>
+                    <div className="modal_row2">
+                        <label className="key">Số áo</label>
+                        <p className="value">{ctchitiet.SOAO}</p>
+                        <label className="key">Ngày sinh</label>
+                        <p className="value">{ctchitiet.NGAYSINH}</p>
+                    </div>
+                    <div className="modal_row3">
+                        <label className="key1">Quốc tịch</label>
+                        <p className="value">{ctchitiet.QUOCTICH}</p>
+                    </div>
+                    <div className="modal_row4">
+                        <label className="key2">Avatar</label>
+                        <div className="productImgContainer">
+                            <img src={img_url} alt={ctchitiet.HOTEN} />
+                        </div>
+                    </div>
+
+                </div>
+            </ModalCT>
+        );
+    };
 
     return (
         <div className='SPsearch_container'>
@@ -219,6 +380,9 @@ const Index = () => {
                     <option >Câu lạc bộ</option>
                 </select>
             </div>
+            {renderctModal()}
+            {renderhlvModal()}
+            {renderclbModal()}
             <div className="SPsearch_table">
                 {
                     selected === '' || selected === 'Cầu thủ' ?
