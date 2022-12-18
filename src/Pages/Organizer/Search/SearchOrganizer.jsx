@@ -5,11 +5,12 @@ import Header from '../Header_Organizer/Header'
 import SuperSearch from '../../../Common/SuperSearch'
 
 
-export default function SearchOrganizer() {
+const SearchOrganizer = () => {
   return (
     <div className='Organizer_body'>
       <Header />
-      <HeaderSearch />
+      <SuperSearch />
     </div>
   )
 }
+export default SearchOrganizer
