@@ -38,6 +38,8 @@ const DetailAddResult = () => {
     let [openConfirmDelete, setOpenConfirmDelete] = useState(false)
     let [indexItemTimeline, setIndexItemTimeline] = useState(0)
     let [idItemTimeline, setIdItemTimeline] = useState("")
+    let [amountERR1, setAmountERR1] = useState(0)
+    let [amountERR2, setAmountERR2] = useState(0)
     let forceUpdate = useForceUpdate();
 
     const params = useParams()
@@ -67,6 +69,7 @@ const DetailAddResult = () => {
             } else {
                 setResults(res.data)
                 results = res.data
+                console.log(results[0])
                 results.map(result => {
                     setResult1(result.SCORE_1)
                     setResult2(result.SCORE_2)
@@ -237,6 +240,9 @@ const DetailAddResult = () => {
             else if (e.team === "2" && e.eventType.includes("Phạm lỗi"))  amountOfError2++
         })
 
+        setAmountERR1(amountOfError1)
+        setAmountERR2(amountOfError2)
+
         try {
             axios.defaults.baseURL = 'http://localhost:8000/'
             axios.post(`/v1/ct_trandau/create`, {
@@ -250,7 +256,7 @@ const DetailAddResult = () => {
                     console.log("Post chi tiet tran dau thanh cong")
 
                     eventsInTranDauOffical.forEach(e => {
-                        if (e.eventType === "Phạm lỗi") {
+                        if (e.eventType === "Phạm lỗi" && e.idSuKien === "") {
                             try {
                                 axios.defaults.baseURL = 'http://localhost:8000/'
                                 axios.post(`/v1/the/create`, {
@@ -289,7 +295,7 @@ const DetailAddResult = () => {
                             } catch (error) {
                                 console.log(error);
                             }
-                        } else {
+                        } else if (e.eventType === "Ghi bàn" && e.idSuKien === "") {
                             try {
                                 axios.defaults.baseURL = 'http://localhost:8000/'
                                 axios.post(`/v1/banthang/taobanthang`, {
@@ -319,24 +325,13 @@ const DetailAddResult = () => {
                     })
                 }
             })
+            notification('.notification', '#44b454', 'Lưu thông tin thành công!')
         } catch (error) {
             console.log(error);
         }
     }
 
-    function handleDeleteButton() {
-        // console.log(np)
-        // eventsInTranDauOffical.forEach(e => {
-        //     console.log(e)
-        // })
-        // console.log(selectedPlayer)
-        console.log(results[0])
-        console.log(eventsInTranDauOffical)
-    }
-
     function handleClickDelete(event, index) {
-        // alert(`Cau thu ${event.performer} da thuc hien su kien ${event.eventType} vao thoi diem ${event.time}'`)
-        // console.log(event)
         setIdItemTimeline(event.idSuKien)
         setOpenConfirmDelete(true)
         setIndexItemTimeline(index)
@@ -382,8 +377,6 @@ const DetailAddResult = () => {
     }
 
     function handleConfirmDelete() {
-        console.log(indexItemTimeline)
-        console.log(idItemTimeline)
         if (idItemTimeline === "") {
             if (eventsInTranDauOffical[indexItemTimeline].eventType === "Ghi bàn" && eventsInTranDauOffical[indexItemTimeline].team === "1") {
                 let newResult = result1 - 1;
@@ -397,30 +390,70 @@ const DetailAddResult = () => {
         } else {
             if (eventsInTranDauOffical[indexItemTimeline].eventType === "Ghi bàn") {
                 axios.defaults.baseURL = 'http://localhost:8000/'
-                axios.delete(`/v1/banthang/deletebanthang/${idItemTimeline}`).then(res => {
-                    if (res) {
-                        console.log(`Xoa ban thang ${idItemTimeline}  thanh cong`)
-                        eventsInTranDauOffical.splice(indexItemTimeline, 1)
-                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") {
-                            let a = result1--;
-                            setResult1(a)
-                        }
-                        else {
-                            let a = result2--;
-                            setResult2(a)
-                        }
-                    }
-                })
                 axios.patch(`/v1/cauthu/decreaseBanThangCauThu/${eventsInTranDauOffical[indexItemTimeline].idPerformer}`).then(res => {
                     console.log(`Giam so ban thang cua cau thu ${eventsInTranDauOffical[indexItemTimeline].idPerformer} thanh cong`)
                 })
+                axios.delete(`/v1/banthang/deletebanthang/${idItemTimeline}`).then(res => {
+                    if (res) {
+                        console.log(`Xoa ban thang ${idItemTimeline}  thanh cong`)
+                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") {
+                            let a = result1--;
+                            setResult1(a - 1)
+
+                            axios.patch(`/v1/ct_trandau/update/${results[0]._id}`, { SCORE_1 : a - 1 })
+                            .then(res => {
+                                if (res) console.log(`Cap nhat SCORE_1 cua chi tiet tran dau ${results[0]._id} thanh cong`)
+                            })
+                        }
+                        else {
+                            let a = result2--;
+                            setResult2(a - 1)
+
+                            axios.patch(`/v1/ct_trandau/update/${results[0]._id}`, { SCORE_2 : a - 1 })
+                            .then(res => {
+                                if (res) console.log(`Cap nhat SCORE_2 cua chi tiet tran dau ${results[0]._id} thanh cong`)
+                            })
+                        }
+                    }
+                    eventsInTranDauOffical.splice(indexItemTimeline, 1)
+                    forceUpdate()
+                })
+                
+                
             } else if (eventsInTranDauOffical[indexItemTimeline].eventType === "Phạm lỗi") {
                 axios.defaults.baseURL = 'http://localhost:8000/'
-                axios.delete(`/v1/the/delete/${idItemTimeline}`).then(res => console.log(`Xoa the ${idItemTimeline} thanh cong`))
+                if (eventsInTranDauOffical[indexItemTimeline].type === "Thẻ vàng") {
+                    axios.patch(`/v1/cauthu/decreaseTheVangCauThu/${eventsInTranDauOffical[indexItemTimeline].idPerformer}`).then(res => {
+                        console.log(`Giam so the vang cua cau thu ${eventsInTranDauOffical[indexItemTimeline].idPerformer} thanh cong`)
+                    })
+                } else if (eventsInTranDauOffical[indexItemTimeline].type === "Thẻ vàng") {
+                    axios.patch(`/v1/cauthu/decreaseTheVangCauThu/${eventsInTranDauOffical[indexItemTimeline].idPerformer}`).then(res => {
+                        console.log(`Giam so the vang cua cau thu ${eventsInTranDauOffical[indexItemTimeline].idPerformer} thanh cong`)
+                    }) 
+                }
+                axios.delete(`/v1/the/delete/${idItemTimeline}`).then(res => {
+                    if (res) {
+                        if (eventsInTranDauOffical[indexItemTimeline].team === "1") {
+                            axios.patch(`/v1/ct_trandau/update/${results[0]._id}`, { CARD_1 : amountERR1 })
+                            .then(res => {
+                                if (res) console.log(`Cap nhat CARD_1 cua chi tiet tran dau ${results[0]._id} thanh cong`)
+                            })
+                        }
+                        else {
+                            axios.patch(`/v1/ct_trandau/update/${results[0]._id}`, { CARD_2 : amountERR2 })
+                            .then(res => {
+                                if (res) console.log(`Cap nhat CARD_2 cua chi tiet tran dau ${results[0]._id} thanh cong`)
+                            })
+                        }
+                    }
+                    
+                    eventsInTranDauOffical.splice(indexItemTimeline, 1)
+                    forceUpdate()
+
+                    
+                })
             }
         }
-        console.log(eventsInTranDauOffical)
-        forceUpdate()
         setOpenConfirmDelete(false)
     }
     
@@ -502,7 +535,6 @@ const DetailAddResult = () => {
             </div>
 
             <div className="btn-wrapper">
-                <button className='btn-delete-result' onClick={handleDeleteButton}>Xoá <FontAwesomeIcon icon={faTrashCan} /></button>
                 <button className='btn-add-result' onClick={handleAddButton}>Thêm <FontAwesomeIcon icon={faPlus}/></button>
                 <button className='btn-save-result' onClick={handleSaveButton}>Lưu <FontAwesomeIcon icon={faFloppyDisk}/></button>
             </div>

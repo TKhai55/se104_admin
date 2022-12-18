@@ -41,6 +41,11 @@
     border-radius: 8px;
     color: white;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
 }
 
 .modal-container .button-container .confirm-button {
