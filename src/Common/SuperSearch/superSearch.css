@@ -1,0 +1,169 @@
+.SPsearch_container{    
+    min-height: 60vh;
+    height: fit-content;
+    padding: 3vh 10vw;
+    background-color: #545861;
+    display: flex;
+    flex-direction: column;
+}
+.SPsearch_container .SPsearch_title{
+    height: 8vh;
+    background-color: #8f9297;
+    border-radius: 8px 8px 0px 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.SPsearch_container .SPsearch_title_icon{
+    top: 0;
+    left: 3vw;
+    width: 3vw;
+    position: absolute;
+}
+.SPsearch_container .SPsearch_bar{
+    height: 10vh;
+    background-color: #636365;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 8vw;
+}
+.SPsearch_container .combobox_label,
+.SPsearch_container .label{
+    padding-right: 1.5vw;
+}
+.SPsearch_container .combobox_label{
+    margin-left: 15vw;
+}
+.SPsearch_container .search_bar{
+    font-size: 14px;
+    padding: 0 1vw;
+    width: 25%;
+    height: 40%;
+    border-radius: 5px;
+}
+
+.SPsearch_container .combobox{
+    font-size: 14px;
+    padding: 0 1vw;
+    width: 18%;
+    height: 40%;
+    border-radius: 5px;
+    text-align: center;
+}
+.SPsearch_container .combobox:focus,
+.SPsearch_container .search_bar:focus{
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px 0px;
+}
+.SPsearch_container .SPsearch_table{
+    min-height: 30vh;
+    background-color: #777b83;
+    border-radius: 0px 0px 8px 8px;
+}
+.SPsearch_container .SPsearch_table table{
+    width: 100%;
+}
+.SPsearch_container .SPsearch_table thead{
+    background-color: #CDC9C9;
+    color: #5b5b5c;
+}
+.SPsearch_container .SPsearch_table tbody{
+    color: white;
+}
+.SPsearch_container .SPsearch_table .name {
+    width: 35%;
+    padding: 0 5vh;
+}
+.SPsearch_container .SPsearch_table .clb {
+    width: 20%;
+    padding: 0 5vh;
+}
+.SPsearch_container .SPsearch_table .clb img{
+    width: 20%;
+    height: 30%;
+    padding: 1vh 2vh;
+    vertical-align: middle;
+}
+.SPsearch_container .SPsearch_table .name img{
+    width: 30%;
+    height: 40%;
+    padding: 1vh 2vh;
+    vertical-align: middle;
+}
+.SPsearch_container .SPsearch_table .club{
+    width: 16%;
+    text-align: center;
+}
+.SPsearch_container .SPsearch_table .position{
+    width: 16%;
+    text-align: center;
+}
+.SPsearch_container .SPsearch_table .sbt,
+.SPsearch_container .SPsearch_table .stv,
+.SPsearch_container .SPsearch_table .std{
+    width: 11%;
+    text-align: center;
+}
+.Mn_key {
+    width: 15%;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+}
+.Mn_key1{
+    width: 15%;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+}
+.Mn_key2{
+    width: 10%;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+}
+.Mn_value {
+    margin-right: 35px;
+    padding: 10px;
+    width: 30%;
+    height: 80%;
+    font-size: 16px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    border: 0.5px solid black;
+}
+
+.Mn_productImgContainer {
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.Mn_productImgContainer img {
+    width: 20vh;
+    height: 100%;
+    object-fit: contain;
+}
+.Mn_parent_div{
+    padding: 2vh 3vh;
+    display: flex;
+    height: 30vh;
+    flex-direction: column;
+}
+.Mn_parent_div .modal_row1,
+.Mn_parent_div .modal_row2,
+.Mn_parent_div .modal_row3{
+    height: 15%;
+    display: flex;
+}
+.Mn_parent_div .modal_row4{
+    height: 55%;
+    display: flex;
+}

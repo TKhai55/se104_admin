@@ -1,0 +1,66 @@
+.modal {
+    width: 50%;
+    height: fit-content;
+    background-color: white;
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 25%;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.74) 0px 7px 29px 0px;
+  }
+  .modal_header{
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px 20px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    background-color: rgb(92, 213, 128);
+    position: relative;
+  }
+  .modal_header .close_btn{
+    right: 10px;
+    position: absolute;
+    background-color: rgb(92, 213, 128);
+    border: none;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+  }
+  .modal_header .close_btn:active{
+    border: 2px solid rgb(7, 173, 173); 
+    box-shadow: rgb(255, 255, 255) 2px;
+  }
+  .modal_footer{
+    border-radius: 0px 0px 5px 5px;
+    padding: 5px 20px;
+    font-size: 20px;
+    display: flex;
+    background-color: rgb(92, 213, 128);
+    justify-content: flex-end;
+  }
+  .modal_footer .delete_btn,
+  .modal_footer  .edit_btn{
+    font-size: 16px;
+    padding: 5px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+  }
+  .modal_footer .delete_btn{
+    background-color: rgb(248, 39, 39);
+
+  }
+  .modal_footer  .edit_btn{
+    background-color: rgb(4, 58, 255);
+  }
+  .modal_footer .delete_btn:hover{
+    background-color: rgb(224, 87, 87);
+
+  }
+  .modal_footer  .edit_btn:hover{
+    background-color: rgb(23, 170, 243);
+  }
