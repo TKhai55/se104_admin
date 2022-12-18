@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect } from 'react'
 import ModalCT from '../../Pages/Organizer/components/modalCT'
-import ModalUpdate from '../../Pages/Manager/components/ModalUpdate'
+import ModalUpdateCLB from '../../Pages/Manager/components/ModalUpdateCLB'
+import ModalUpdateHLV from '../../Pages/Manager/components/ModalUpdateHLV'
+import ModalUpdateCT from '../../Pages/Manager/components/ModalUpdateCT'
 
 
 const Index = () => {
@@ -16,6 +18,8 @@ const Index = () => {
     const [doibong, setDoiBong] = useState([])
     const [query, setQuery] = useState('')
     const [selected, setSelected] = useState('')
+    const [loaihlv, setLoaiHLV] = useState()
+    const [vitrict, setViTriCT] = useState()
     const [ctchitiet, setCTchitiet] = useState(null)
     const [ctchitietmodal, setCTchitietModal] = useState(false)
     const [hlvchitiet, setHLVchitiet] = useState(null)
@@ -252,14 +256,83 @@ const Index = () => {
             console.log(error.message)
         }
     }
-
+    const handleEditCtModal = async () => {
+        if (document.getElementById('namect').value === ''
+            || document.getElementById('soaoct').value === ''
+            || document.getElementById('ngaysinhct').value === ''
+            || document.getElementById('quoctichct').value === '') {
+            alert('Vui lòng nhập thông tin chỉnh sửa')
+            return
+        }
+        try {
+            await axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'
+                + ctchitiet._id, {
+                HOTEN: document.getElementById('namect').value,
+                VITRI: vitrict,
+                SOAO: document.getElementById('soaoct').value,
+                NGAYSINH: document.getElementById('ngaysinhct').value,
+                QUOCTICH: document.getElementById('quoctichct').value
+            })
+            alert("Sửa thành công")
+            window.location.reload()
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    const handleEditHlvModal = async () => {
+        if (document.getElementById('namehlv').value === ''
+            || document.getElementById('ngaysinhhlv').value === ''
+            || document.getElementById('ngaythamgiahlv').value === ''
+            || document.getElementById('quoctichhlv').value === '') {
+            alert('Vui lòng nhập thông tin chỉnh sửa')
+            return
+        }
+        try {
+            await axios.patch('http://localhost:8000/v1/huanluyenvien/updatehuanluyenvien/'
+                + hlvchitiet._id, {
+                HOTEN: document.getElementById('namehlv').value,
+                LOAI: loaihlv,
+                NGAYSINH: document.getElementById('ngaysinhhlv').value,
+                NGAYTHAMGIA: document.getElementById('ngaythamgiahlv').value,
+                QUOCTICH: document.getElementById('quoctichhlv').value
+            })
+            alert("Sửa thành công")
+            window.location.reload()
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    const handleDeleteHlvModal = async () => {
+        const answer= window.confirm("Bạn có chắc chắn xóa",);
+        if (answer) {
+            axios.delete('http://localhost:8000/v1/caulacbo/deletecaulacbo/'+hlvchitiet._id)
+            axios.post('http://localhost:8000/v1/caulacbo/xoahlv',{
+            "_id" : hlvchitiet.MACLB
+            })
+            alert("Xóa thành công")
+            window.location.reload()
+        }
+    }
+    const handleDeleteCtModal = async () => {
+        const answer= window.confirm("Bạn có chắc chắn xóa",);
+        if (answer) {
+            axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/'+ctchitiet._id)
+            axios.post('http://localhost:8000/v1/caulacbo/xoact',{
+            "_id" : ctchitiet.MACLB
+            })
+            alert("Xóa thành công")
+            window.location.reload()
+        }
+    }
     const renderclbModal = () => {
         if (!clbchitiet) {
             return null;
         }
         const img_url = 'http://localhost:8000/' + clbchitiet.LOGO
         return (
-            <ModalUpdate
+            <ModalUpdateCLB
                 show={clbchitietmodal}
                 handleClose={handleCloseCLBModal}
                 modalTitle={"Chi tiết câu lạc bộ"}
@@ -277,11 +350,11 @@ const Index = () => {
                         <label className="Mn_key">Sân vận động</label>
                         <input type='text' className="Mn_value" id='stadiumclb' defaultValue={clbchitiet.SANVANDONG}></input>
                         <label className="Mn_key">SL cầu thủ</label>
-                        <input type='number' className="Mn_value" id='slctclb' value={clbchitiet.SL_CAUTHU}></input>
+                        <p className="value" id='slctclb'>{clbchitiet.SL_CAUTHU}</p>
                     </div>
                     <div className="modal_row3">
-                        <label className="Mn_key1">SL HLV</label>
-                        <input type='number' className="Mn_value" id='slhlvclb' value={clbchitiet.SL_HLV}></input>
+                        <label className="key1">SL HLV</label>
+                        <p className="value" id='slhlvclb'>{clbchitiet.SL_HLV}</p>
                     </div>
                     <div className="modal_row4">
                         <label className="Mn_key2">Logo</label>
@@ -291,7 +364,7 @@ const Index = () => {
                     </div>
 
                 </div>
-            </ModalUpdate>
+            </ModalUpdateCLB>
         );
     };
 
@@ -301,38 +374,46 @@ const Index = () => {
         }
         const img_url = 'http://localhost:8000/' + hlvchitiet.AVATAR
         return (
-            <ModalCT
+            <ModalUpdateHLV
                 show={hlvchitietmodal}
                 handleClose={handleCloseHLVModal}
                 modalTitle={"Chi tiết huấn luyện viên"}
+                handleEditHlvModal={handleEditHlvModal}
+                handleDeleteHlvModal={handleDeleteHlvModal}
                 size="lg"
             >
                 <div className='parent_div'>
                     <div className="modal_row1">
-                        <label className="key">Họ tên</label>
-                        <p className="value">{hlvchitiet.HOTEN}</p>
-                        <label className="key">Loại</label>
-                        <p className="value">{hlvchitiet.LOAI}</p>
+                        <label className="Mn_key">Họ tên</label>
+                        <input type='text' className="Mn_value" id='namehlv' defaultValue={hlvchitiet.HOTEN}></input>
+                        <label className="Mn_key">Loại</label>
+                        <select type='text' className="Mn_value" id='loaihlv' onChange={(e)=>setLoaiHLV(e.target.value)}>
+                            <option value={hlvchitiet.LOAI} selected disabled hidden>{hlvchitiet.LOAI}</option>
+                            <option value="HLV Trưởng">HLV Trưởng</option>
+                            <option value="Trợ lý HLV">Trợ lý HLV</option>
+                            <option value="HLV Thủ môn">HLV Thủ môn</option>
+                            <option value="HLV Thể lực">HLV Thể lực</option>
+                        </select> 
                     </div>
                     <div className="modal_row2">
-                        <label className="key">Ngày sinh</label>
-                        <p className="value">{hlvchitiet.NGAYSINH}</p>
-                        <label className="key">Ngày tham gia</label>
-                        <p className="value">{hlvchitiet.NGAYTHAMGIA}</p>
+                        <label className="Mn_key">Ngày sinh</label>
+                        <input type='text' className="Mn_value" id='ngaysinhhlv' defaultValue={hlvchitiet.NGAYSINH}></input>
+                        <label className="Mn_key">Ngày tham gia</label>
+                        <input type='text' className="Mn_value" id='ngaythamgiahlv' defaultValue={hlvchitiet.NGAYTHAMGIA}></input>
                     </div>
                     <div className="modal_row3">
-                        <label className="key1">Quốc tịch</label>
-                        <p className="value">{hlvchitiet.QUOCTICH}</p>
+                        <label className="Mn_key1">Quốc tịch</label>
+                        <input type='text' className="Mn_value" id='quoctichhlv' defaultValue={hlvchitiet.QUOCTICH}></input>
                     </div>
                     <div className="modal_row4">
-                        <label className="key2">Avatar</label>
+                        <label className="Mn_key2">Avatar</label>
                         <div className="productImgContainer">
                             <img src={img_url} alt={hlvchitiet.HOTEN} />
                         </div>
                     </div>
 
                 </div>
-            </ModalCT>
+            </ModalUpdateHLV>
         );
     };
 
@@ -342,38 +423,61 @@ const Index = () => {
         }
         const img_url = 'http://localhost:8000/' + ctchitiet.AVATAR
         return (
-            <ModalCT
+            <ModalUpdateCT
                 show={ctchitietmodal}
                 handleClose={handleCloseCTModal}
                 modalTitle={"Chi tiết cầu thủ"}
+                handleEditCtModal={handleEditCtModal}
+                handleDeleteCtModal={handleDeleteCtModal}
                 size="lg"
             >
                 <div className='parent_div'>
                     <div className="modal_row1">
-                        <label className="key">Họ tên</label>
-                        <p className="value">{ctchitiet.HOTEN}</p>
-                        <label className="key">Vị trí</label>
-                        <p className="value">{ctchitiet.VITRI}</p>
+                        <label className="Mn_key">Họ tên</label>
+                        <input type='text' className="Mn_value" id='namect' defaultValue={ctchitiet.HOTEN}></input>
+                        <label className="Mn_key">Vị trí</label>
+                        <select type='text' className="" id='vitrict' onChange={(e)=> setViTriCT(e.target.value)}>
+                            <option value={ctchitiet.VITRI} selected disabled hidden>{ctchitiet.VITRI}</option>
+                            <optgroup label="Tiền đạo">
+                                <option value="Tiền đạo cắm">Tiền đạo cắm</option>
+                                <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
+                                <option value="Tiền đạo cánh phải">Tiền đạo cánh phải</option>
+                            </optgroup>
+                            <optgroup label="Tiền vệ">
+                                <option value="Tiền vệ trung tâm">Tiền vệ trung tâm</option>
+                                <option value="Tiền vệ phòng ngự">Tiền vệ phòng ngự</option>
+                                <option value="Tiền vệ cánh trái">Tiền vệ cánh trái</option>
+                                <option value="Tiền vệ cánh phải">Tiền vệ cánh phải</option>
+                            </optgroup>
+                            <optgroup label="Hậu vệ">
+                                <option value="Hậu vệ trái">Hậu vệ trái</option>
+                                <option value="Hậu vệ phải">Hậu vệ phải</option>
+                                <option value="Trung vệ">Trung vệ</option>
+                            </optgroup>
+                            <optgroup label="Thủ môn">
+                            <option value="Thủ môn">Thủ môn</option>
+                            </optgroup>
+                        </select>
                     </div>
                     <div className="modal_row2">
-                        <label className="key">Số áo</label>
-                        <p className="value">{ctchitiet.SOAO}</p>
-                        <label className="key">Ngày sinh</label>
-                        <p className="value">{ctchitiet.NGAYSINH}</p>
+                        <label className="Mn_key">Số áo</label>
+                        <input type='text' className="Mn_value" id='soaoct' defaultValue={ctchitiet.SOAO}></input>
+                        <label className="Mn_key">Ngày sinh</label>
+                        <input type='text' className="Mn_value" id='ngaysinhct' defaultValue={ctchitiet.NGAYSINH}></input>
                     </div>
                     <div className="modal_row3">
-                        <label className="key1">Quốc tịch</label>
-                        <p className="value">{ctchitiet.QUOCTICH}</p>
+                        <label className="Mn_key1">Quốc tịch</label>
+                        <input type='text' className="Mn_value" id='quoctichct' defaultValue={ctchitiet.QUOCTICH}></input>
                     </div>
                     <div className="modal_row4">
-                        <label className="key2">Avatar</label>
+                        <label className="Mn_key2">Avatar</label>
                         <div className="productImgContainer">
                             <img src={img_url} alt={ctchitiet.HOTEN} />
                         </div>
                     </div>
 
                 </div>
-            </ModalCT>
+            </ModalUpdateCT>
         );
     };
 
