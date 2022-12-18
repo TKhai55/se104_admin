@@ -240,20 +240,23 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        try {
-            await axios.patch('http://localhost:8000/v1/caulacbo/updatecaulacbo/'
-                + clbchitiet._id, {
-                TENCLB: document.getElementById('nameclb').value,
-                NAMTHANHLAP: document.getElementById('yearclb').value,
-                SANVANDONG: document.getElementById('stadiumclb').value,
-                SL_CAUTHU: clbchitiet.SL_CAUTHU,
-                SL_HLV: clbchitiet.SL_HLV
-            })
-            alert("Sửa thành công")
-            window.location.reload()
-        }
-        catch (error) {
-            console.log(error.message)
+        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        if (answer) {
+            try {
+                await axios.patch('http://localhost:8000/v1/caulacbo/updatecaulacbo/'
+                    + clbchitiet._id, {
+                    TENCLB: document.getElementById('nameclb').value,
+                    NAMTHANHLAP: document.getElementById('yearclb').value,
+                    SANVANDONG: document.getElementById('stadiumclb').value,
+                    SL_CAUTHU: clbchitiet.SL_CAUTHU,
+                    SL_HLV: clbchitiet.SL_HLV
+                })
+                alert("Sửa thành công")
+                window.location.reload()
+            }
+            catch (error) {
+                console.log(error.message)
+            }
         }
     }
     const handleEditCtModal = async () => {
@@ -264,21 +267,25 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        try {
-            await axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'
-                + ctchitiet._id, {
-                HOTEN: document.getElementById('namect').value,
-                VITRI: vitrict,
-                SOAO: document.getElementById('soaoct').value,
-                NGAYSINH: document.getElementById('ngaysinhct').value,
-                QUOCTICH: document.getElementById('quoctichct').value
-            })
-            alert("Sửa thành công")
-            window.location.reload()
+        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        if (answer) {
+            try {
+                await axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'
+                    + ctchitiet._id, {
+                    HOTEN: document.getElementById('namect').value,
+                    VITRI: vitrict,
+                    SOAO: document.getElementById('soaoct').value,
+                    NGAYSINH: document.getElementById('ngaysinhct').value,
+                    QUOCTICH: document.getElementById('quoctichct').value
+                })
+                alert("Sửa thành công")
+                window.location.reload()
+            }
+            catch (error) {
+                console.log(error.message)
+            }
         }
-        catch (error) {
-            console.log(error.message)
-        }
+
     }
     const handleEditHlvModal = async () => {
         if (document.getElementById('namehlv').value === ''
@@ -288,20 +295,23 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        try {
-            await axios.patch('http://localhost:8000/v1/huanluyenvien/updatehuanluyenvien/'
-                + hlvchitiet._id, {
-                HOTEN: document.getElementById('namehlv').value,
-                LOAI: loaihlv,
-                NGAYSINH: document.getElementById('ngaysinhhlv').value,
-                NGAYTHAMGIA: document.getElementById('ngaythamgiahlv').value,
-                QUOCTICH: document.getElementById('quoctichhlv').value
-            })
-            alert("Sửa thành công")
-            window.location.reload()
-        }
-        catch (error) {
-            console.log(error.message)
+        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        if (answer) {
+            try {
+                await axios.patch('http://localhost:8000/v1/huanluyenvien/updatehuanluyenvien/'
+                    + hlvchitiet._id, {
+                    HOTEN: document.getElementById('namehlv').value,
+                    LOAI: loaihlv,
+                    NGAYSINH: document.getElementById('ngaysinhhlv').value,
+                    NGAYTHAMGIA: document.getElementById('ngaythamgiahlv').value,
+                    QUOCTICH: document.getElementById('quoctichhlv').value
+                })
+                alert("Sửa thành công")
+                window.location.reload()
+            }
+            catch (error) {
+                console.log(error.message)
+            }
         }
     }
     const handleDeleteHlvModal = async () => {
