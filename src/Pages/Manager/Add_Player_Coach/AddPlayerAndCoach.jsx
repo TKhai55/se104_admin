@@ -84,15 +84,15 @@ function AddPlayerAndCoach() {
       res=>{
         setCtList(res.data)
       })
-    Axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
+    Axios.get('http://localhost:8000/v1/thamso/getlist/'+payload.params.muagiaiID.muagiaiID).then(res => {
       res.data.map((value) => {
-        if (value._id === '63956b5260bc683901eabb6c')
+        if (value._id === '639d8d8bcc6c7d2bf4e21720')
           setThamSoCtToiDa(value.GIATRITHAMSO)
-        else if (value._id === '63956b5260bc683901eabb6f')
+        else if (value._id === '639d8d8bcc6c7d2bf4e21725')
           setThamSoTuoiToiThieu(value.GIATRITHAMSO)
-        else if (value._id === '63956b5360bc683901eabb72')
+        else if (value._id === '639d8db2cc6c7d2bf4e21841')
           setThamSoTuoiToiDa(value.GIATRITHAMSO)
-        else if (value._id === '63956b5360bc683901eabb75')
+        else if (value._id === '639d8db2cc6c7d2bf4e21846')
           setThamSoCtNgoaiQuoc(value.GIATRITHAMSO) 
       })
     })
