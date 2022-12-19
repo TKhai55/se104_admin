@@ -31,9 +31,9 @@ const RegisterClub = () => {
 
         getSLTT(payload.params.muagiaiID.muagiaiID)
         getSLCR1(payload.params.muagiaiID.muagiaiID)
-        axios.get('http://localhost:8000/v1/thamso/getlist/'+payload.params.muagiaiID.muagiaiID).then(res => {
+        axios.get('http://localhost:8000/v1/thamso/getlist/' + payload.params.muagiaiID.muagiaiID).then(res => {
             res.data.map((value) => {
-                if (value._id === '639d8d8acc6c7d2bf4e2171c')
+                if (value.TENTHAMSO === 'So cau thu toi thieu')
                     setThamSoCtToiThieu(value.GIATRITHAMSO)
             })
         })
@@ -74,6 +74,10 @@ const RegisterClub = () => {
         }
     }
     const CheckSL_CAUTHU = () => {
+        if (caulacbos.length < totalnum) {
+            alert('Chưa đủ số lượng câu lạc bộ')
+            return
+        }
         let count = 0;
         caulacbos.map((caulacbo) => {
             if (caulacbo.SL_CAUTHU < thamSoCtToiThieu)
