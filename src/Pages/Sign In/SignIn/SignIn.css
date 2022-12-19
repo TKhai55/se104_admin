@@ -62,7 +62,7 @@ Header{
     margin-bottom: 1vh;
     border: none;
     position: static;
-
+    padding: 10px 10px;
     /* border-color: #f8f8f8; */
 }
 .SignIn .form_content input:focus{
