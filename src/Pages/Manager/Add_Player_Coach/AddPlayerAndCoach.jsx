@@ -31,13 +31,13 @@ function AddPlayerAndCoach() {
   const { SANVANDONG } = useLocation().state;
   const { LOGO } = useLocation().state;
   const { ID_muagiai } = useLocation().state;
-  const { ID_clb } = useLocation().state;
-  const { SL_HLV } = useLocation().state;
-  const { SL_CAUTHU } = useLocation().state;
-  const logo_url = 'http://localhost:8000/' + LOGO;
-  const [hlvList, setHlvList] = useState()
-  const [ctList, setCtList] = useState()
-  const [showImage, setShowImage] = useState(false)
+  const {ID_clb} = useLocation().state;
+  const [slCauThu , setSlCauThu] = useState()
+  const [slHLV , setSlHLV] = useState()
+  const logo_url = 'http://localhost:8000/'+LOGO;
+  const [hlvList , setHlvList] = useState()
+  const [ctList , setCtList] = useState()
+  const [showImage , setShowImage] = useState(false)
   const [showImage1, setShowImage1] = useState(false)
   const [selectedFile, setSelectedFile] = useState([])
   const [selectedFile1, setSelectedFile1] = useState([])
@@ -96,10 +96,21 @@ function AddPlayerAndCoach() {
           setThamSoCtNgoaiQuoc(value.GIATRITHAMSO)
       })
     })
-  }, [])
 
+    Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then(res=>{
+      res.data.map((value)=>{
+        if(value._id === ID_clb)
+        {
+          setSlCauThu(value.SL_CAUTHU)
+          setSlHLV(value.SL_HLV)
+        }
+      })
+    })
+  },[])
 
-  const submitHLVHandler = () => {
+  console.log(slCauThu)
+  const submitHLVHandler = ()=>{
+
     const fd = new FormData()
     fd.append('MAMG', payload.params.muagiaiID.muagiaiID)
     fd.append('MACLB', ID_clb)
@@ -135,8 +146,9 @@ function AddPlayerAndCoach() {
       if (ct.QUOCTICH !== 'Việt Nam' && ct.MACLB === ID_clb)
         ++countCtNgoaiQuoc
     })
-    if (countCT > thamSoCtToiDa) {
-      alert('SỐ CẦU THỦ TỐI ĐA CỦA MỖI CÂU LẠC BỘ LÀ' + thamSoCtToiDa)
+
+    if(slCauThu > thamSoCtToiDa){
+      alert('SỐ CẦU THỦ TỐI ĐA CỦA MỖI CÂU LẠC BỘ LÀ'+thamSoCtToiDa)
     }
     else if ((yearNow.getFullYear() - nsinhCT) < thamSoTuoiToiThieu) {
       alert('Tuổi CỦA CẦU THỦ TỐI THIỂU BẰNG ' + thamSoTuoiToiThieu)
@@ -180,7 +192,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Huấn luyện viên</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>{SL_HLV}</div>
+              <div className='amout_count'>{slHLV}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup(true)}>Thêm <strong>+</strong></div>
             <PopupAddHLV trigger={buttonPopup} setTrigger={setButtonPopup}>
@@ -273,7 +285,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Cầu thủ</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>{SL_CAUTHU}</div>
+              <div className='amout_count'>{slCauThu}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup1(true)}>Thêm <strong>+</strong></div>
             <PopupAddPL trigger={buttonPopup1} setTrigger1={setButtonPopup1}>

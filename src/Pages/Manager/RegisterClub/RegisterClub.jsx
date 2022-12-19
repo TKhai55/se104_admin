@@ -106,8 +106,6 @@ const RegisterClub = () => {
                     SANVANDONG: caulacbo.SANVANDONG,
                     LOGO: caulacbo.LOGO,
                     ID_clb: caulacbo._id,
-                    SL_HLV: caulacbo.SL_HLV,
-                    SL_CAUTHU: caulacbo.SL_CAUTHU,
                     ID_muagiai: payload.params.muagiaiID.muagiaiID
                 }
             })
