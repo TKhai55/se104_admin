@@ -32,8 +32,8 @@ function AddPlayerAndCoach() {
   const { LOGO } = useLocation().state;
   const { ID_muagiai } = useLocation().state;
   const {ID_clb} = useLocation().state;
-  const {SL_HLV} = useLocation().state;
-  const { SL_CAUTHU } = useLocation().state;
+  const [slCauThu , setSlCauThu] = useState()
+  const [slHLV , setSlHLV] = useState()
   const logo_url = 'http://localhost:8000/'+LOGO;
   const [hlvList , setHlvList] = useState()
   const [ctList , setCtList] = useState()
@@ -96,9 +96,18 @@ function AddPlayerAndCoach() {
           setThamSoCtNgoaiQuoc(value.GIATRITHAMSO) 
       })
     })
+    Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then(res=>{
+      res.data.map((value)=>{
+        if(value._id === ID_clb)
+        {
+          setSlCauThu(value.SL_CAUTHU)
+          setSlHLV(value.SL_HLV)
+        }
+      })
+    })
   },[])
 
-  
+  console.log(slCauThu)
   const submitHLVHandler = ()=>{
     const fd = new FormData()
     fd.append('MAMG',payload.params.muagiaiID.muagiaiID)
@@ -180,7 +189,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Huấn luyện viên</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>{SL_HLV}</div>
+              <div className='amout_count'>{slHLV}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup(true)}>Thêm <strong>+</strong></div>
             <PopupAddHLV trigger={buttonPopup} setTrigger={setButtonPopup}>
@@ -267,7 +276,7 @@ function AddPlayerAndCoach() {
             <div className='title_text_and_amout_count'>
               <div className='title_text'>Cầu thủ</div>
               <div className='label'>Số lượng:</div>
-              <div className='amout_count'>{SL_CAUTHU}</div>
+              <div className='amout_count'>{slCauThu}</div>
             </div>
             <div className='add_btn' onClick={() => setButtonPopup1(true)}>Thêm <strong>+</strong></div>
             <PopupAddPL trigger={buttonPopup1} setTrigger1={setButtonPopup1}>
