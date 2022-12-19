@@ -20,6 +20,7 @@ const Index = () => {
     const [selected, setSelected] = useState('')
     const [loaihlv, setLoaiHLV] = useState()
     const [vitrict, setViTriCT] = useState()
+    const [cauthutoithieu, setThamSoCauThuToiThieu] = useState()
     const [ctchitiet, setCTchitiet] = useState(null)
     const [ctchitietmodal, setCTchitietModal] = useState(false)
     const [hlvchitiet, setHLVchitiet] = useState(null)
@@ -76,6 +77,11 @@ const Index = () => {
         getHLV(muagiaiID.muagiaiID)
         getDB(muagiaiID.muagiaiID)
         getCLB()
+        axios.get('http://localhost:8000/v1/thamso/getlist/' + payload.params.muagiaiID.muagiaiID).then(res => {
+      res.data.map((value) => {
+        if (value.TENTHAMSO === 'So cau thu toi thieu')
+          setThamSoCauThuToiThieu(value.GIATRITHAMSO)
+      })
     }, [])
 
     let [nameclub] = useState()
@@ -327,13 +333,17 @@ const Index = () => {
     }
     const handleDeleteCtModal = async () => {
         const answer = window.confirm("Bạn có chắc chắn xóa",);
-        if (answer) {
+        if (answer && caulacbos.SL_CAUTHU>cauthutoithieu) {
             axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/' + ctchitiet._id)
             axios.post('http://localhost:8000/v1/caulacbo/xoacauthu', {
                 "_id": ctchitiet.MACLB
             })
             alert("Xóa thành công")
             window.location.reload()
+        }
+        else if(caulacbos.SL_CAUTHU<=cauthutoithieu)
+        {
+            alert("Không thể xóa cầu thủ do số lượng cầu thủ đang ở mức tối thiểu")
         }
     }
     const renderclbModal = () => {
