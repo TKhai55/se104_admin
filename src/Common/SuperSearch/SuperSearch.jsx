@@ -317,7 +317,7 @@ const Index = () => {
     const handleDeleteHlvModal = async () => {
         const answer = window.confirm("Bạn có chắc chắn xóa",);
         if (answer) {
-            axios.delete('http://localhost:8000/v1/caulacbo/deletecaulacbo/' + hlvchitiet._id)
+            axios.delete('http://localhost:8000/v1/huanluyenvien/deletehuanluyenvien/' + hlvchitiet._id)
             axios.post('http://localhost:8000/v1/caulacbo/xoahlv', {
                 "_id": hlvchitiet.MACLB
             })
