@@ -10,8 +10,8 @@ function ConfirmDeleteResult({openModal, onClose, onConfirm}) {
         <div className='modal-container'>
             <p>{`Bạn có chắc chắn muốn xoá sự kiện này?`}</p>
             <div className='button-container'>
-                <button className='confirm-button' onClick={onConfirm}>Có <FontAwesomeIcon icon={faCheck}/></button>
-                <button className='cancle-button' onClick={onClose}>Huỷ <FontAwesomeIcon icon={faXmark}/></button>
+                <button className='confirm-button' onClick={onConfirm}>Có<FontAwesomeIcon icon={faCheck}/></button>
+                <button className='cancle-button' onClick={onClose}>Huỷ<FontAwesomeIcon icon={faXmark}/></button>
             </div>
         </div>
     </div>

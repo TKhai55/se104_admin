@@ -21,8 +21,8 @@ const NewModal = (props) => {
             </Modal.Header>
             <Modal.Body>{props.children}</Modal.Body>
             <Modal.Footer className="modal_footer">
-                <button className="edit_btn" onClick={props.handleEditClbModal}>Sửa</button>
-                <button className="delete_btn" onClick={props.handleClose}>Thoát</button>
+                <button className="edit_btn" onClick={props.handleEditHlvModal}>Sửa</button>
+                <button className="delete_btn" onClick={props.handleDeleteHlvModal}>Xóa</button> 
             </Modal.Footer>
         </Modal >
     );

@@ -28,11 +28,12 @@ const RegisterClub = () => {
     };
     useEffect(() => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
+
         getSLTT(payload.params.muagiaiID.muagiaiID)
         getSLCR1(payload.params.muagiaiID.muagiaiID)
-        axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
+        axios.get('http://localhost:8000/v1/thamso/getlist/'+payload.params.muagiaiID.muagiaiID).then(res => {
             res.data.map((value) => {
-                if (value._id === '63956b5060bc683901eabb69')
+                if (value._id === '639d8d8acc6c7d2bf4e2171c')
                     setThamSoCtToiThieu(value.GIATRITHAMSO)
             })
         })
