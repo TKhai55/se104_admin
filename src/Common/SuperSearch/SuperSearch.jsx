@@ -329,7 +329,7 @@ const Index = () => {
         const answer = window.confirm("Bạn có chắc chắn xóa",);
         if (answer) {
             axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/' + ctchitiet._id)
-            axios.post('http://localhost:8000/v1/caulacbo/xoact', {
+            axios.post('http://localhost:8000/v1/caulacbo/xoacauthu', {
                 "_id": ctchitiet.MACLB
             })
             alert("Xóa thành công")
