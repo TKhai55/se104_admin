@@ -156,7 +156,7 @@ function AddPlayerAndCoach() {
     else if ((yearNow.getFullYear() - nsinhCT) > thamSOTuoiToiDa) {
       alert('TUỔI CỦA CẦU THỦ TỐI ĐA BẰNG ' + thamSOTuoiToiDa)
     }
-    else if (countCtNgoaiQuoc >= thamSoCtNgoaiQuoc) {
+    else if (countCtNgoaiQuoc >= thamSoCtNgoaiQuoc && quoctichCT !== "Việt Nam") {
       alert('SỐ CẦU THỦ NGOẠI QUỐC TỐI ĐA BẰNG ' + thamSoCtNgoaiQuoc)
     }
     else {
