@@ -144,7 +144,7 @@ function AddPlayerAndCoach() {
       if (ct.QUOCTICH !== 'Việt Nam' && ct.MACLB === ID_clb)
         ++countCtNgoaiQuoc
     })
-    if(countCT > thamSoCtToiDa){
+    if(slCauThu > thamSoCtToiDa){
       alert('SỐ CẦU THỦ TỐI ĐA CỦA MỖI CÂU LẠC BỘ LÀ'+thamSoCtToiDa)
     }
     else if((yearNow.getFullYear() - nsinhCT) < thamSoTuoiToiThieu){
