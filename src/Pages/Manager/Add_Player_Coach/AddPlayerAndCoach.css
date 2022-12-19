@@ -1,5 +1,6 @@
 .add_player_coach_container {
-    margin-top: 85px;
+    margin-top: 8.5vh;
+    background-color: #3f4249;
 }
 
 .add_player_coach_table {
@@ -7,9 +8,17 @@
     margin-left: 7.5%;
     background-color: #3f4249;
     border-radius: 10px 10px 0px 0px;
-    margin-bottom: 40px;
     padding-bottom: 20px;
+    padding: 5vh 10vh;
 }
+
+.add_player_coach_table .caulacbo_info_container,
+.add_player_coach_table .add_list{
+    background-color: #636674;
+    padding: 3vh;
+}
+
+
 
 .add_player_coach_table .title_container {
     background-color: #545861;
@@ -49,10 +58,6 @@
     display: none;
 }
 
-.add_player_coach_table .add_list {
-    margin-bottom: 60px;
-}
-
 .add_player_coach_table .add_container {
     display: flex;
     justify-content: space-between;
@@ -68,14 +73,11 @@
 .add_player_coach_table .title_text {
     background-color: #44B454;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px;
     margin-left: 20px;
     color: #ffffff;
-    width: 180px;
-    border-radius: 20px;
+    width: 10vw;
+    border-radius: 5px;
 }
 
 .add_player_coach_table .amout_count {
@@ -85,7 +87,7 @@
     padding-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
 
 }
 
@@ -106,7 +108,7 @@
     width: 85%;
     margin-left: 7.5%;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 3px;
     border-collapse: collapse;
 }
 

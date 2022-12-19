@@ -18,6 +18,9 @@ const RegisterClub = () => {
     const [thamSoCtToiThieu, setThamSoCtToiThieu] = useState()
     const navigate = useNavigate()
 
+    let [totalnum, setTotalNum] = useState([])
+    let [currentnum, setCurrentNum] = useState([])
+
     const payload = {
         params: {
             muagiaiID
@@ -25,6 +28,8 @@ const RegisterClub = () => {
     };
     useEffect(() => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
+        getSLTT(payload.params.muagiaiID.muagiaiID)
+        getSLCR1(payload.params.muagiaiID.muagiaiID)
         axios.get('http://localhost:8000/v1/thamso/getlist').then(res => {
             res.data.map((value) => {
                 if (value._id === '63956b5060bc683901eabb69')
@@ -35,7 +40,26 @@ const RegisterClub = () => {
 
     console.log(thamSoCtToiThieu)
 
+    const getSLTT = async (payload) => {
 
+        try {
+            const res = await axios.get('http://localhost:8000/v1/muagiai/getmuagiai/' + payload)
+            setTotalNum(res.data.SL_CLB)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
+    const getSLCR1 = async (payload) => {
+
+        try {
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/searchbyMG/' + payload)
+            setCurrentNum(res.data.length)
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
 
     const getSLCR = async (payload) => {
 
@@ -64,9 +88,32 @@ const RegisterClub = () => {
                     TENCLB: caulacbo.TENCLB
                 })
             })
-            navigate('/manager/home/' + payload.params.muagiaiID.muagiaiID);
+            navigate('/manager/home/' + muagiaiID.muagiaiID);
         }
 
+    }
+    const toImport = (caulacbo) => {
+        console.log(caulacbo)
+        navigate(`/manager/home/${muagiaiID.muagiaiID}/createCLub/addPlayerAndHLV`,
+            {
+                state: {
+                    TENCLB: caulacbo.TENCLB,
+                    SANVANDONG: caulacbo.SANVANDONG,
+                    LOGO: caulacbo.LOGO,
+                    ID_clb: caulacbo._id,
+                    SL_HLV: caulacbo.SL_HLV,
+                    SL_CAUTHU: caulacbo.SL_CAUTHU,
+                    ID_muagiai: payload.params.muagiaiID.muagiaiID
+                }
+            })
+
+    }
+    const AddClub = () => {
+        if (currentnum === totalnum) {
+            alert('Đã đủ số lượng câu lạc bộ')
+            return
+        }
+        navigate(`/manager/home/${muagiaiID.muagiaiID}/register_club`)
     }
     return (
         <div className='RegisterClub'>
@@ -98,9 +145,9 @@ const RegisterClub = () => {
                                     {loading ? caulacbos.map(caulacbo => {
                                         const img_url = 'http://localhost:8000/' + caulacbo.LOGO
                                         return (
-                                            <tr className='club_infor' key={caulacbo._id}>
-                                                <Link
-                                                    to={'/manager/home/'+payload.params.muagiaiID.muagiaiID+'/createCLub/addPlayerAndHLV'}
+                                            <tr className='club_infor' key={caulacbo._id} onClick={() => toImport(caulacbo)}>
+                                                {/* <Link
+                                                    to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/createCLub/addPlayerAndHLV'}
                                                     state={
                                                         {
                                                             TENCLB: caulacbo.TENCLB,
@@ -112,11 +159,11 @@ const RegisterClub = () => {
                                                             ID_muagiai: payload.params.muagiaiID.muagiaiID
                                                         }
                                                     }
-                                                >
-                                                    <td className='logo'>
-                                                        <img src={img_url} alt={caulacbo.TENCLB} className='logoClub' />
-                                                    </td>
-                                                </Link>
+                                                > */}
+                                                <td className='logo'>
+                                                    <img src={img_url} alt={caulacbo.TENCLB} className='logoClub' />
+                                                </td>
+                                                {/* </Link> */}
                                                 <td className='name'>{caulacbo.TENCLB}</td>
                                                 <td className="stadium">{caulacbo.SANVANDONG}</td>
                                                 <td className="year">{caulacbo.NAMTHANHLAP}</td>
@@ -129,7 +176,7 @@ const RegisterClub = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <Link to={'/manager/home/' + payload.params.muagiaiID.muagiaiID + '/register_club'}><button>Thêm</button></Link>
+                        <button onClick={AddClub}>Thêm</button>
                     </div>
                 </div>
                 <button className='done' onClick={() => CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>

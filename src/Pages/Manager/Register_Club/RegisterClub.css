@@ -1,35 +1,44 @@
 .register_club_container {
-    margin-top: 85px;
+    margin-top: 8.5vh;
+    background-color: #44474c;
+    padding: 5vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10vh;
 }
 .register_club_table{
-    width: 85%;
-    margin-left: 7.5%;
+    width: 80%;
     background-color: #3f4249;
     border-radius: 10px 10px 0px 0px;
-    margin-bottom: 40px;
     padding-bottom: 20px;
+
 }
 
 .register_club_table .title_container{
+    height: 8vh;
     display: flex;
     background-color: #545861;
     border-radius: 10px 10px 0px 0px;
     padding-top: 5px;
     padding-bottom: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
-.register_club_table img{
-    margin-left: 15px;
+.register_club_table .title_container img{
+    position: absolute;
+    width: 3%;
+    top: 1.5vh;
+    left: 5vh;
 }
 
-.register_club_table .title{
-    font-size: 32px;
-    color: #ffffff;
-    margin-left: 490px;
-    margin-top: 7px;
-}
 
 .register_club_table .input_container{
+    margin-top: 5vh;
     padding-left: 150px;
     padding-right: 150px;
     padding-bottom: 20px;
@@ -54,16 +63,18 @@
 .register_club_table .input_in_main_page{
     height: 30px;
     width: 500px;
-    border-radius: 20px;
+    border-radius: 5px;
     border-color: transparent;
     position: static;
+    padding: 10px 20px;
 }
 
 .register_club_table .add_logo_clb_img {
-    width: 90px;
+    width: 120px;
     height: 120px;
     margin-top: 5px;
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .register_club_table .add_logo_clb_lb {
