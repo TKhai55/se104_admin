@@ -85,7 +85,7 @@ const Index = () => {
     })
     }, [])
 
-    let [nameclub] = useState()
+    let [nameclub,] = useState()
     let [clubid,] = useState()
     const find = (e) => {
         for (let i = 0; i < caulacbos.length; i++) {
@@ -323,6 +323,8 @@ const Index = () => {
         }
     }
     const handleDeleteHlvModal = async () => {
+        find(hlvchitiet.MACLB)
+        // console.log("a",clubid)
         const answer = window.confirm("Bạn có chắc chắn xóa",);
         if (answer && clubid.SL_HLV>1) {
             axios.delete('http://localhost:8000/v1/huanluyenvien/deletehuanluyenvien/' + hlvchitiet._id)
@@ -332,13 +334,16 @@ const Index = () => {
             alert("Xóa thành công")
             window.location.reload()
         }
-        else if(clubid.SL_HLV<=1)
+        else if(answer && clubid.SL_HLV<=1)
         {
             alert("Không thể xóa cầu thủ do số lượng huấn luyện viên đang ở mức tối thiểu")
         }
     }
     const handleDeleteCtModal = async () => {
+        find(ctchitiet.MACLB)
+        // console.log("a",clubid)
         const answer = window.confirm("Bạn có chắc chắn xóa",);
+        console.log("cauthu",clubid)
         if (answer && clubid.SL_CAUTHU>cauthutoithieu) {
             axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/' + ctchitiet._id)
             axios.post('http://localhost:8000/v1/caulacbo/xoacauthu', {
@@ -347,7 +352,7 @@ const Index = () => {
             alert("Xóa thành công")
             window.location.reload()
         }
-        else if(clubid.SL_CAUTHU<=cauthutoithieu)
+        else if(answer && clubid.SL_CAUTHU<=cauthutoithieu)
         {
             alert("Không thể xóa cầu thủ do số lượng cầu thủ đang ở mức tối thiểu")
         }
