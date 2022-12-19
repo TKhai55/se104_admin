@@ -147,9 +147,16 @@
 .add_player_coach_table .input1 {
     display: flex;
     width: 295px;
-    justify-content: space-between;
     margin-bottom: 10px;
+    position: relative;
 }
+
+.add_player_coach_table #loai{
+    position: absolute;
+    top: 0.2vh;
+    left: 10.1vw;
+}
+
 
 .add_player_coach_table .label1 {
     font-size: 18px;
@@ -159,15 +166,17 @@
 .add_player_coach_table .input_in_popup {
     width: 300px;
     height: 30px;
-    border-radius: 20px;
+    border-radius: 5px;
     border-color: #44B454;
     position: static;
+    padding: 5px 10px;
 }
 
 .add_player_coach_table .HLV_img {
-    width: 90px;
+    width: 120px;
     height: 120px;
     margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .add_player_coach_table .label {

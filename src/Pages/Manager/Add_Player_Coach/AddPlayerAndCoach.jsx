@@ -1,11 +1,11 @@
-import React,{useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import "./AddPlayerAndCoach.css"
 import PopupAddHLV from "./popup/Add_HLV";
 import PopupAddPL from "./popup/Add_PL"
 import Dropdown from "./dropdown/DropDown";
 import dropdown_img from "./img/dropdown.png"
 import Header from '../Header_Manager/Header';
-import { Link , useLocation ,useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import soccer_field from "./img/soccer-field-seen-from-above (1).png"
 import Axios from 'axios';
 import icon_add_logo from "./img/Group 8.png"
@@ -16,7 +16,7 @@ function AddPlayerAndCoach() {
   const [selected, setSelected] = useState("Chọn loại")
   const options = ['HLV Trưởng', 'Trợ lý']
   const [isActive, setIsActive] = useState(false)
-  const options1 = ['Tiền đạo', 'Tiền vệ', 'Hậu vệ trái', 'Hậu vệ phải' , 'Trung vệ' , 'Thủ môn']
+  const options1 = ['Tiền đạo', 'Tiền vệ', 'Hậu vệ trái', 'Hậu vệ phải', 'Trung vệ', 'Thủ môn']
   const [selected1, setSelected1] = useState("Chọn loại")
   const muagiaiID = useParams()
   const payload = {
@@ -27,7 +27,7 @@ function AddPlayerAndCoach() {
   var countCT = 0;
   var countHLV = 0;
   var yearNow = new Date()
-  const {TENCLB} = useLocation().state;
+  const { TENCLB } = useLocation().state;
   const { SANVANDONG } = useLocation().state;
   const { LOGO } = useLocation().state;
   const { ID_muagiai } = useLocation().state;
@@ -39,25 +39,25 @@ function AddPlayerAndCoach() {
   const [ctList , setCtList] = useState()
   const [showImage , setShowImage] = useState(false)
   const [showImage1, setShowImage1] = useState(false)
-  const [selectedFile , setSelectedFile] = useState([])
+  const [selectedFile, setSelectedFile] = useState([])
   const [selectedFile1, setSelectedFile1] = useState([])
   //hlv
-  const [hotenHLV , setHotenHLV] = useState()
+  const [hotenHLV, setHotenHLV] = useState()
   const [ngaysinhHLV, setNgaysinhHLV] = useState()
   const [ngaythamgia, setNgaythamgiaHLV] = useState()
   const [quoctichHLV, setQuoctichHLV] = useState()
   const [avatarHLV, setAvatarHLV] = useState()
   //ct
-  const [hotenCT , setHotenCT] = useState()
+  const [hotenCT, setHotenCT] = useState()
   const [ngasinhCT, setNgaySinhCT] = useState()
   const [quoctichCT, setQuoctichCT] = useState()
   const [soao, setSoao] = useState()
   const [avatarCT, setAvatarCT] = useState()
-  const [thamSoCtToiDa , setThamSoCtToiDa] = useState()
-  const [thamSoTuoiToiThieu , setThamSoTuoiToiThieu] = useState()
-  const [thamSOTuoiToiDa , setThamSoTuoiToiDa] = useState()
-  const [thamSoCtNgoaiQuoc , setThamSoCtNgoaiQuoc] = useState()
-  const onSelectedFile = (e) =>{
+  const [thamSoCtToiDa, setThamSoCtToiDa] = useState()
+  const [thamSoTuoiToiThieu, setThamSoTuoiToiThieu] = useState()
+  const [thamSOTuoiToiDa, setThamSoTuoiToiDa] = useState()
+  const [thamSoCtNgoaiQuoc, setThamSoCtNgoaiQuoc] = useState()
+  const onSelectedFile = (e) => {
     const selectedFiles = e.target.files;
     const selectedFileArrays = Array.from(selectedFiles);
     const imageURL = selectedFileArrays.map((file) => {
@@ -78,24 +78,25 @@ function AddPlayerAndCoach() {
     setAvatarCT(e.target.files[0])
   }
   console.log(ID_clb);
-  useEffect(()=>{
-    Axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien').then(res=>setHlvList(res.data))
+  useEffect(() => {
+    Axios.get('http://localhost:8000/v1/huanluyenvien/gethuanluyenvien').then(res => setHlvList(res.data))
     Axios.get('http://localhost:8000/v1/cauthu/getcauthu').then(
-      res=>{
+      res => {
         setCtList(res.data)
       })
-    Axios.get('http://localhost:8000/v1/thamso/getlist/'+payload.params.muagiaiID.muagiaiID).then(res => {
+    Axios.get('http://localhost:8000/v1/thamso/getlist/' + payload.params.muagiaiID.muagiaiID).then(res => {
       res.data.map((value) => {
-        if (value._id === '639d8d8bcc6c7d2bf4e21720')
+        if (value.TENTHAMSO === 'So cau thu toi da')
           setThamSoCtToiDa(value.GIATRITHAMSO)
-        else if (value._id === '639d8d8bcc6c7d2bf4e21725')
+        else if (value.TENTHAMSO === 'So tuoi toi thieu')
           setThamSoTuoiToiThieu(value.GIATRITHAMSO)
-        else if (value._id === '639d8db2cc6c7d2bf4e21841')
+        else if (value.TENTHAMSO === 'So tuoi toi da')
           setThamSoTuoiToiDa(value.GIATRITHAMSO)
-        else if (value._id === '639d8db2cc6c7d2bf4e21846')
-          setThamSoCtNgoaiQuoc(value.GIATRITHAMSO) 
+        else if (value.TENTHAMSO === 'So cau thu ngoai quoc toi da')
+          setThamSoCtNgoaiQuoc(value.GIATRITHAMSO)
       })
     })
+
     Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then(res=>{
       res.data.map((value)=>{
         if(value._id === ID_clb)
@@ -109,54 +110,56 @@ function AddPlayerAndCoach() {
 
   console.log(slCauThu)
   const submitHLVHandler = ()=>{
+
     const fd = new FormData()
-    fd.append('MAMG',payload.params.muagiaiID.muagiaiID)
-    fd.append('MACLB',ID_clb)
-    fd.append('HOTEN',hotenHLV)
-    fd.append('NGAYSINH',ngaysinhHLV)
+    fd.append('MAMG', payload.params.muagiaiID.muagiaiID)
+    fd.append('MACLB', ID_clb)
+    fd.append('HOTEN', hotenHLV)
+    fd.append('NGAYSINH', ngaysinhHLV)
     fd.append('NGAYTHAMGIA', ngaythamgia)
     fd.append('QUOCTICH', quoctichHLV)
     fd.append('LOAI', selected)
     fd.append('AVATAR', avatarHLV)
-    Axios.post('http://localhost:8000/v1/huanluyenvien/taohuanluyenvien',fd)
-    Axios.post('http://localhost:8000/v1/caulacbo/themhlv',{
-      "_id" : ID_clb
+    Axios.post('http://localhost:8000/v1/huanluyenvien/taohuanluyenvien', fd)
+    Axios.post('http://localhost:8000/v1/caulacbo/themhlv', {
+      "_id": ID_clb
     })
     setButtonPopup(false)
     window.location.reload()
   }
-  const submitCTHandler = ()=>{
+  const submitCTHandler = () => {
     var nsinhCT;
     var countCtNgoaiQuoc = 0;
     const fd = new FormData();
     fd.append('MAMG', payload.params.muagiaiID.muagiaiID)
-    fd.append('MACLB',ID_clb)
+    fd.append('MACLB', ID_clb)
     fd.append('HOTEN', hotenCT)
     fd.append('NGAYSINH', ngasinhCT)
     fd.append('QUOCTICH', quoctichCT)
     fd.append('SOAO', soao)
     fd.append('VITRI', selected1)
     fd.append('AVATAR', avatarCT)
-    if(typeof ngasinhCT !== 'undefined'){
+    if (typeof ngasinhCT !== 'undefined') {
       nsinhCT = ngasinhCT.split('/')[2]
     }
     ctList.map((ct) => {
       if (ct.QUOCTICH !== 'Việt Nam' && ct.MACLB === ID_clb)
         ++countCtNgoaiQuoc
     })
+
     if(slCauThu > thamSoCtToiDa){
       alert('SỐ CẦU THỦ TỐI ĐA CỦA MỖI CÂU LẠC BỘ LÀ'+thamSoCtToiDa)
     }
-    else if((yearNow.getFullYear() - nsinhCT) < thamSoTuoiToiThieu){
-      alert('Tuổi CỦA CẦU THỦ TỐI THIỂU BẰNG '+thamSoTuoiToiThieu)
+    else if ((yearNow.getFullYear() - nsinhCT) < thamSoTuoiToiThieu) {
+      alert('Tuổi CỦA CẦU THỦ TỐI THIỂU BẰNG ' + thamSoTuoiToiThieu)
     }
-    else if((yearNow.getFullYear() - nsinhCT) > thamSOTuoiToiDa){
-      alert('TUỔI CỦA CẦU THỦ TỐI ĐA BẰNG '+thamSOTuoiToiDa)
+    else if ((yearNow.getFullYear() - nsinhCT) > thamSOTuoiToiDa) {
+      alert('TUỔI CỦA CẦU THỦ TỐI ĐA BẰNG ' + thamSOTuoiToiDa)
     }
-    else if(countCtNgoaiQuoc >= thamSoCtNgoaiQuoc){
-      alert('SỐ CẦU THỦ NGOẠI QUỐC TỐI ĐA BẰNG '+thamSoCtNgoaiQuoc)
+    else if (countCtNgoaiQuoc >= thamSoCtNgoaiQuoc) {
+      alert('SỐ CẦU THỦ NGOẠI QUỐC TỐI ĐA BẰNG ' + thamSoCtNgoaiQuoc)
     }
-    else{
+    else {
       Axios.post('http://localhost:8000/v1/cauthu/taocauthu', fd)
       Axios.post('http://localhost:8000/v1/caulacbo/themcauthu', {
         "_id": ID_clb
@@ -165,20 +168,20 @@ function AddPlayerAndCoach() {
       window.location.reload()
     }
   }
-  console.log(thamSoCtToiDa+' '+thamSoTuoiToiThieu + ' ' + thamSOTuoiToiDa + ' ' + thamSoCtNgoaiQuoc);
+  console.log(thamSoCtToiDa + ' ' + thamSoTuoiToiThieu + ' ' + thamSOTuoiToiDa + ' ' + thamSoCtNgoaiQuoc);
   return (
     <div className='add_player_coach_container'>
-      <Header/>
+      <Header />
       <div className='add_player_coach_table'>
         <div className='title_container'>
           <div className='title'>Câu lạc bộ</div>
         </div>
         <div className='caulacbo_info_container'>
-          <img src={logo_url} className='caulacbo_logo' alt=''/>
+          <img src={logo_url} className='caulacbo_logo' alt='' />
           <div className='caulacbo_info'>
             <div className='caulacbo_info_name'>{TENCLB}</div>
             <div className='caulacbo_info_stadium'>
-              <img src={soccer_field} alt/>
+              <img src={soccer_field} alt />
               <div>SVD : {SANVANDONG}</div>
             </div>
           </div>
@@ -197,7 +200,7 @@ function AddPlayerAndCoach() {
                 <div>
                   <div className='input'>
                     <div className='label1'>Họ tên:</div>
-                    <input className='input_in_popup' type='text' onChange={e=>setHotenHLV(e.target.value)}/>
+                    <input className='input_in_popup' type='text' onChange={e => setHotenHLV(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
@@ -213,10 +216,16 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input1'>
                     <div className='label1'>Loại:</div>
-                    <Dropdown>
-                      <div className='dropdown_btn'>
+                    <select type='text' className='input_in_popup' id='loai' onChange={(e) => setSelected(e.target.value)}>
+                      <option value="HLV Trưởng">HLV Trưởng</option>
+                      <option value="Trợ lý HLV">Trợ lý HLV</option>
+                      <option value="HLV Thủ môn">HLV Thủ môn</option>
+                      <option value="HLV Thể lực">HLV Thể lực</option>
+                    </select>
+                    {/* <Dropdown>
+                      <div className='dropdown_btn' onClick={() => setIsActive(!isActive)}>
                         {selected}
-                        <img src={dropdown_img} alt='' onClick={() => setIsActive(!isActive)} />
+                        <img src={dropdown_img} alt='' />
                       </div>
                       {isActive &&
                         <div className='dropdown_content'>
@@ -231,7 +240,7 @@ function AddPlayerAndCoach() {
                             </div>
                           ))}
                         </div>}
-                    </Dropdown>
+                    </Dropdown> */}
                   </div>
                 </div>
                 <div>
@@ -258,7 +267,7 @@ function AddPlayerAndCoach() {
               <td className='td_title'>Quốc tịch</td>
               <td className='td_title'>Loại</td>
             </tr>
-            {hlvList?.map((hlv,key)=>{
+            {hlvList?.map((hlv, key) => {
               return hlv.MACLB === ID_clb ? (<tr key={key}>
                 <td className='td_content'>{++countHLV}</td>
                 <td className='td_content'>{hlv.HOTEN}</td>
@@ -284,7 +293,7 @@ function AddPlayerAndCoach() {
                 <div>
                   <div className='input'>
                     <div className='label1'>Họ tên:</div>
-                    <input className='input_in_popup' type='text' onChange={e=>setHotenCT(e.target.value)}/>
+                    <input className='input_in_popup' type='text' onChange={e => setHotenCT(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
@@ -300,10 +309,31 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input1'>
                     <div className='label1'>Loại:</div>
-                    <Dropdown>
-                      <div className='dropdown_btn'>
+                    <select type='text' className="input_in_popup" id='loai' onChange={(e) => setSelected1(e.target.value)}>
+                      <optgroup label="Tiền đạo">
+                        <option value="Tiền đạo cắm">Tiền đạo cắm</option>
+                        <option value="Tiền đạo cánh trái">Tiền đạo cánh trái</option>
+                        <option value="Tiền đạo cánh phải">Tiền đạo cánh phải</option>
+                      </optgroup>
+                      <optgroup label="Tiền vệ">
+                        <option value="Tiền vệ trung tâm">Tiền vệ trung tâm</option>
+                        <option value="Tiền vệ phòng ngự">Tiền vệ phòng ngự</option>
+                        <option value="Tiền vệ cánh trái">Tiền vệ cánh trái</option>
+                        <option value="Tiền vệ cánh phải">Tiền vệ cánh phải</option>
+                      </optgroup>
+                      <optgroup label="Hậu vệ">
+                        <option value="Hậu vệ trái">Hậu vệ trái</option>
+                        <option value="Hậu vệ phải">Hậu vệ phải</option>
+                        <option value="Trung vệ">Trung vệ</option>
+                      </optgroup>
+                      <optgroup label="Thủ môn">
+                        <option value="Thủ môn">Thủ môn</option>
+                      </optgroup>
+                    </select>
+                    {/* <Dropdown>
+                      <div className='dropdown_btn' onClick={() => setIsActive(!isActive)}>
                         {selected1}
-                        <img src={dropdown_img} alt='' onClick={() => setIsActive(!isActive)} />
+                        <img src={dropdown_img} alt='' />
                       </div>
                       {isActive &&
                         <div className='dropdown_content'>
@@ -318,7 +348,7 @@ function AddPlayerAndCoach() {
                             </div>
                           ))}
                         </div>}
-                    </Dropdown>
+                    </Dropdown> */}
                   </div>
                 </div>
                 <div>
@@ -345,19 +375,19 @@ function AddPlayerAndCoach() {
               <td className='td_title'>Quốc tịch</td>
               <td className='td_title'>Loại</td>
             </tr>
-            {ctList?.map((ct,key)=>{
+            {ctList?.map((ct, key) => {
               return ct.MACLB === ID_clb ? (<tr key={key}>
                 <td className='td_content'>{++countCT}</td>
                 <td className='td_content'>{ct.HOTEN}</td>
                 <td className='td_content'>{ct.NGAYSINH}</td>
                 <td className='td_content'>{ct.QUOCTICH}</td>
                 <td className='td_content'>{ct.VITRI}</td>
-              </tr>):""
+              </tr>) : ""
             })}
           </table>
         </div>
         <hr />
-        <Link to={'/manager/home/'+ID_muagiai+'/createCLub'}>
+        <Link to={'/manager/home/' + ID_muagiai + '/createCLub'}>
           <div className='save_btn_in_main_page' >Lưu</div>
         </Link>
       </div>

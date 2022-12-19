@@ -103,7 +103,7 @@ const Index = () => {
                         cauthu.filter((cauthu) => query !== '' ?
                             cauthu.HOTEN.toLowerCase().includes(query)
                             || cauthu.VITRI.toLowerCase().includes(query)
-                            : cauthu)
+                            : cauthu).sort((a, b) => a._id > b._id ? -1 : 1)
                             .map(cauthu => {
                                 const img_url = 'http://localhost:8000/' + cauthu.AVATAR
                                 return (
@@ -145,7 +145,7 @@ const Index = () => {
                         huanluyenvien.filter((huanluyenvien) => query !== '' ?
                             huanluyenvien.HOTEN.toLowerCase().includes(query)
                             || huanluyenvien.LOAI.toLowerCase().includes(query)
-                            : huanluyenvien)
+                            : huanluyenvien).sort((a, b) => a._id > b._id ? -1 : 1)
                             .map(huanluyenvien => {
                                 const img_url = 'http://localhost:8000/' + huanluyenvien.AVATAR
                                 return (
@@ -185,7 +185,7 @@ const Index = () => {
                         doibong.filter((doibong) => query !== '' ?
                             doibong.TENCLB.toLowerCase().includes(query)
                             || doibong.SANVANDONG.toLowerCase().includes(query)
-                            : doibong)
+                            : doibong).sort((a, b) => a._id > b._id ? -1 : 1)
                             .map(doibong => {
                                 const img_url = 'http://localhost:8000/' + doibong.LOGO
                                 return (
@@ -240,7 +240,7 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        const answer = window.confirm("Bạn có chắc chắn sửa",);
         if (answer) {
             try {
                 await axios.patch('http://localhost:8000/v1/caulacbo/updatecaulacbo/'
@@ -267,7 +267,7 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        const answer = window.confirm("Bạn có chắc chắn sửa",);
         if (answer) {
             try {
                 await axios.patch('http://localhost:8000/v1/cauthu/updatecauthu/'
@@ -295,7 +295,7 @@ const Index = () => {
             alert('Vui lòng nhập thông tin chỉnh sửa')
             return
         }
-        const answer= window.confirm("Bạn có chắc chắn sửa",);
+        const answer = window.confirm("Bạn có chắc chắn sửa",);
         if (answer) {
             try {
                 await axios.patch('http://localhost:8000/v1/huanluyenvien/updatehuanluyenvien/'
@@ -315,22 +315,22 @@ const Index = () => {
         }
     }
     const handleDeleteHlvModal = async () => {
-        const answer= window.confirm("Bạn có chắc chắn xóa",);
+        const answer = window.confirm("Bạn có chắc chắn xóa",);
         if (answer) {
-            axios.delete('http://localhost:8000/v1/caulacbo/deletecaulacbo/'+hlvchitiet._id)
-            axios.post('http://localhost:8000/v1/caulacbo/xoahlv',{
-            "_id" : hlvchitiet.MACLB
+            axios.delete('http://localhost:8000/v1/caulacbo/deletecaulacbo/' + hlvchitiet._id)
+            axios.post('http://localhost:8000/v1/caulacbo/xoahlv', {
+                "_id": hlvchitiet.MACLB
             })
             alert("Xóa thành công")
             window.location.reload()
         }
     }
     const handleDeleteCtModal = async () => {
-        const answer= window.confirm("Bạn có chắc chắn xóa",);
+        const answer = window.confirm("Bạn có chắc chắn xóa",);
         if (answer) {
-            axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/'+ctchitiet._id)
-            axios.post('http://localhost:8000/v1/caulacbo/xoact',{
-            "_id" : ctchitiet.MACLB
+            axios.delete('http://localhost:8000/v1/cauthu/deletecauthu/' + ctchitiet._id)
+            axios.post('http://localhost:8000/v1/caulacbo/xoact', {
+                "_id": ctchitiet.MACLB
             })
             alert("Xóa thành công")
             window.location.reload()
@@ -397,13 +397,13 @@ const Index = () => {
                         <label className="Mn_key">Họ tên</label>
                         <input type='text' className="Mn_value" id='namehlv' defaultValue={hlvchitiet.HOTEN}></input>
                         <label className="Mn_key">Loại</label>
-                        <select type='text' className="" id='vitrict' onChange={(e)=>setLoaiHLV(e.target.value)}>
+                        <select type='text' className="" id='vitrict' onChange={(e) => setLoaiHLV(e.target.value)}>
                             <option value={hlvchitiet.LOAI} selected disabled hidden>{hlvchitiet.LOAI}</option>
                             <option value="HLV Trưởng">HLV Trưởng</option>
                             <option value="Trợ lý HLV">Trợ lý HLV</option>
                             <option value="HLV Thủ môn">HLV Thủ môn</option>
                             <option value="HLV Thể lực">HLV Thể lực</option>
-                        </select> 
+                        </select>
                     </div>
                     <div className="modal_row2">
                         <label className="Mn_key">Ngày sinh</label>
@@ -446,7 +446,7 @@ const Index = () => {
                         <label className="Mn_key">Họ tên</label>
                         <input type='text' className="Mn_value" id='namect' defaultValue={ctchitiet.HOTEN}></input>
                         <label className="Mn_key">Vị trí</label>
-                        <select type='text' className="" id='vitrict' onChange={(e)=> setViTriCT(e.target.value)}>
+                        <select type='text' className="" id='vitrict' onChange={(e) => setViTriCT(e.target.value)}>
                             <option value={ctchitiet.VITRI} selected disabled hidden>{ctchitiet.VITRI}</option>
                             <optgroup label="Tiền đạo">
                                 <option value="Tiền đạo cắm">Tiền đạo cắm</option>
@@ -465,7 +465,7 @@ const Index = () => {
                                 <option value="Trung vệ">Trung vệ</option>
                             </optgroup>
                             <optgroup label="Thủ môn">
-                            <option value="Thủ môn">Thủ môn</option>
+                                <option value="Thủ môn">Thủ môn</option>
                             </optgroup>
                         </select>
                     </div>
