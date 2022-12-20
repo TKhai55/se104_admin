@@ -41,6 +41,7 @@ function Add_Fixture() {
 
     const submitHandler = ()=>{
         axios.post('http://localhost:8000/v1/trandau/add',{
+            MAMG: muagiaiID.muagiaiID,
             NGAYDIENRA : ngayDienRa,
             THOIGIANDIENRA: thoiGianDienRa,
             MAMG: muagiaiID.muagiaiID,
