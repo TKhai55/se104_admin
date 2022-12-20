@@ -205,11 +205,11 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
-                    <input className='input_in_popup' type='date' onChange={e => setNgaysinhHLV(e.target.value)} />
+                    <input className='input_in_popup' type='text' onChange={e => setNgaysinhHLV(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày tham gia:</div>
-                    <input className='input_in_popup' type='date' onChange={e => setNgaythamgiaHLV(e.target.value)} />
+                    <input className='input_in_popup' type='text' onChange={e => setNgaythamgiaHLV(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Quốc tịch:</div>
@@ -279,7 +279,7 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
-                    <input className='input_in_popup' type='date' onChange={e => setNgaySinhCT(e.target.value)} />
+                    <input className='input_in_popup' type='text' onChange={e => setNgaySinhCT(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Quốc tịch:</div>
