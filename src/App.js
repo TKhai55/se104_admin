@@ -72,21 +72,93 @@ function App() {
           path="/manager/home/:muagiaiID/createMatch"
           element={<AddFixtures />}
         />
-        <Route exact path='/manager' element={<HomeManagerTier1 />} />
-        <Route exact path='/manager/home/:muagiaiID' element={<HomeManagerTier2 />} />
-        <Route exact path='/manager/home/:muagiaiID/createCLub' element={<RegisterClub />} />
-        <Route exact path='/manager/home/:muagiaiID/createReport' element={<Create_Report />} />
-        <Route exact path='/manager/home/:muagiaiID/register_club' element={<Register_Club />} />
-        <Route exact path='/manager/home/addmatch' element={<Add_Fixture />} />
-        <Route exact path='/manager/home/addResult' element={<DetailAddResult />} />
-        <Route exact path='/manager/home/:muagiaiID/search' element={<div className='manager_search'><SearchManager /></div>} />
-        <Route exact path='/manager/home/:muagiaiID/searchplayer/:id' element={<SearchPLayer />} />
-        <Route exact path='/manager/home/:muagiaiID/searchcoach/:id' element={<SearchCoach />} />
-        <Route exact path='/manager/home/:muagiaiID/searchclub/:id' element={<SearchClub />} />
-        <Route exact path='/manager/home/:muagiaiID/player/:id' element={<div><SearchPLayer /> <ChangePLayer/></div>  } />
-        <Route exact path='/manager/home/:muagiaiID/coach/:id' element={<div><SearchCoach /> <ChangeCoach/></div>  } />
-        <Route exact path='/manager/home/:muagiaiID/club/:id' element={<div><SearchCoach /> <ChangeClub/></div>  } />
-        <Route exact path='/manager/home/:muagiaiID/createCLub/addPlayerAndHLV' element={<AddPlayerAndCoach />} />
+        <Route exact path="/manager" element={<HomeManagerTier1 />} />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID"
+          element={<HomeManagerTier2 />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/createCLub"
+          element={<RegisterClub />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/createReport"
+          element={<Create_Report />}
+        />
+        <Route
+          exact
+          path="/manager/home/register_club"
+          element={<Register_Club />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/createCLub/addPlayerAndHLV"
+          element={<AddPlayerAndCoach />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/addmatch"
+          element={<Add_Fixture />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/addResult"
+          element={<DetailAddResult />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/search"
+          element={
+            <div className="manager_search">
+              <SearchManager />
+            </div>
+          }
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/searchplayer/:id"
+          element={<SearchPLayer />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/searchcoach/:id"
+          element={<SearchCoach />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/searchclub/:id"
+          element={<SearchClub />}
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/player/:id"
+          element={
+            <div>
+              <SearchPLayer /> <ChangePLayer />
+            </div>
+          }
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/coach/:id"
+          element={
+            <div>
+              <SearchCoach /> <ChangeCoach />
+            </div>
+          }
+        />
+        <Route
+          exact
+          path="/manager/home/:muagiaiID/club/:id"
+          element={
+            <div>
+              <SearchCoach /> <ChangeClub />
+            </div>
+          }
+        />
         {/* Manager */}
 
         {/* Organizer */}

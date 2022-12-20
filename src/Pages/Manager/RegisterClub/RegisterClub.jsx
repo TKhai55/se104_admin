@@ -16,6 +16,7 @@ const RegisterClub = () => {
     let [caulacbos, setCauLacBo] = useState([])
     const [loading, setLoading] = useState(false)
     const [thamSoCtToiThieu, setThamSoCtToiThieu] = useState()
+    let [BXHlength, setBXHlength] = useState(0)
     const navigate = useNavigate()
 
     let [totalnum, setTotalNum] = useState([])
@@ -26,6 +27,13 @@ const RegisterClub = () => {
             muagiaiID
         }
     };
+
+    async function getBXH() {
+        const res = await axios.get(`http://localhost:8000/v1/bangxephang/read/${muagiaiID.muagiaiID}`)
+        setBXHlength(res.data.length)
+
+        
+    }
     useEffect(() => {
         getSLCR(payload.params.muagiaiID.muagiaiID)
 
@@ -37,9 +45,9 @@ const RegisterClub = () => {
                     setThamSoCtToiThieu(value.GIATRITHAMSO)
             })
         })
+        getBXH()
     }, []);
 
-    console.log(thamSoCtToiThieu)
 
     const getSLTT = async (payload) => {
 
@@ -74,28 +82,32 @@ const RegisterClub = () => {
         }
     }
     const CheckSL_CAUTHU = () => {
-        if (caulacbos.length < totalnum) {
-            alert('Chưa đủ số lượng câu lạc bộ')
-            return
-        }
-        let count = 0;
-        caulacbos.map((caulacbo) => {
-            if (caulacbo.SL_CAUTHU < thamSoCtToiThieu)
-                ++count;
-        })
-        if (count !== 0)
-            alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG ' + thamSoCtToiThieu)
-        else {
+        if (BXHlength > 0) {
+            document.getElementById("btn-done").disabled = true
+            document.getElementById("btn-done").style.cursor = "not-allowed"
+        } else {
+            if (caulacbos.length < totalnum) {
+                alert('Chưa đủ số lượng câu lạc bộ')
+                return
+            }
+            let count = 0;
             caulacbos.map((caulacbo) => {
-                axios.post('http://localhost:8000/v1/bangxephang/add', {
-                    MACLB: caulacbo._id,
-                    MAMG: payload.params.muagiaiID.muagiaiID,
-                    TENCLB: caulacbo.TENCLB
-                })
+                if (caulacbo.SL_CAUTHU < thamSoCtToiThieu)
+                    ++count;
             })
-            navigate('/manager/home/' + muagiaiID.muagiaiID);
+            if (count !== 0)
+                alert('SỐ LƯỢNG CẦU THỦ MỖI ĐỘI PHẢI LỚN HƠN HOẶC BẰNG ' + thamSoCtToiThieu)
+            else {
+                caulacbos.map((caulacbo) => {
+                    axios.post('http://localhost:8000/v1/bangxephang/add', {
+                        MACLB: caulacbo._id,
+                        MAMG: payload.params.muagiaiID.muagiaiID,
+                        TENCLB: caulacbo.TENCLB
+                    })
+                })
+                navigate('/manager/home/' + muagiaiID.muagiaiID);
+            }
         }
-
     }
     const toImport = (caulacbo) => {
         console.log(caulacbo)
@@ -182,7 +194,7 @@ const RegisterClub = () => {
                         <button onClick={AddClub}>Thêm</button>
                     </div>
                 </div>
-                <button className='done' onClick={() => CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>
+                <button className='done' id='btn-done' onClick={() => CheckSL_CAUTHU()}>HOÀN TẤT NHẬP</button>
             </section>
         </div>
     )
