@@ -3,9 +3,10 @@ import Header from '../Header_Manager/Header'
 import "./Add_Fixture.css"
 import add_fixture_img from "./img/add_fixture_container.png"
 import Axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link , useParams } from 'react-router-dom'
 
 function Add_Fixture() {
+    const muagiaiID = useParams()
     const [vongdau , setVongDau] = useState("")
     const [luotDau , setLuotDau] = useState("")
     const [doi1 , setDoi1] = useState("")
@@ -15,6 +16,7 @@ function Add_Fixture() {
     const [thoiGianDienRa , setThoiGianDienRa] = useState("")
     const submitHandler = ()=>{
         Axios.post('http://localhost:8000/v1/trandau/add',{
+            MAMG: muagiaiID.muagiaiID,
             NGAYDIENRA : ngayDienRa,
             THOIGIANDIENRA: thoiGianDienRa,
             DOI1: doi1,
@@ -73,7 +75,7 @@ function Add_Fixture() {
                       </div>
                   </div>
             </div>
-            <Link to='/manager/home/createMatch'>
+            <Link to={'/manager/home/'+muagiaiID.muagiaiID+'createMatch'}>
                 <div className='add_schedule_btn' onClick={()=>submitHandler()}>
                     Lên lịch thi đấu
                 </div>
