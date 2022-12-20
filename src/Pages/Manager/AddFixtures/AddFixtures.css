@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #2a2c30;
+    min-height: 57vh;
 }
 
 .add-fixtures-main-wrapper .add-fixtures-header {
@@ -95,35 +96,36 @@
     color: white;
     margin-bottom: 5vh;
     box-shadow: 5px 10px 10px 5px #383A3F;
+    border-radius: 10px;
 }
 
-.round-table th {
-    width: 60vw;
-    height: 4vh;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    background-color: #37393f;
-    line-height: 4vh;
-    user-select: none;
-}
 
-.round-table .round-info{
+.round-table .round-info-fixture{
     background-color: #4d5058;
+    width: 60vw;
 }
 
-.round-table .round-info:hover{
+.round-table tr:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.round-table tr:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+/* .round-table .round-info:hover{
     cursor: pointer;
     transform: scaleX(1.01);
     border-left: 2px solid #44b454;
     border-right: 2px solid #44b454;
-}
+} */
 
-.round-info .signature .club-logo {
+.round-info-fixture .signature .club-logo {
     width: 5vw;
     height: 5vw;
 }
 
-.round-info .signature img {
+.round-info-fixture .signature img {
     object-fit: contain;
 }
 
@@ -133,7 +135,7 @@
     margin-bottom: 2px;
 }
 
-.round-table .round-info:last-child {
+.round-table .round-info-fixture:last-child {
     border-bottom: none;
 }
 

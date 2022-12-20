@@ -204,11 +204,11 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
-                    <input className='input_in_popup' type='text' onChange={e => setNgaysinhHLV(e.target.value)} />
+                    <input className='input_in_popup' type='date' onChange={e => setNgaysinhHLV(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày tham gia:</div>
-                    <input className='input_in_popup' type='text' onChange={e => setNgaythamgiaHLV(e.target.value)} />
+                    <input className='input_in_popup' type='date' onChange={e => setNgaythamgiaHLV(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Quốc tịch:</div>
@@ -222,25 +222,6 @@ function AddPlayerAndCoach() {
                       <option value="HLV Thủ môn">HLV Thủ môn</option>
                       <option value="HLV Thể lực">HLV Thể lực</option>
                     </select>
-                    {/* <Dropdown>
-                      <div className='dropdown_btn' onClick={() => setIsActive(!isActive)}>
-                        {selected}
-                        <img src={dropdown_img} alt='' />
-                      </div>
-                      {isActive &&
-                        <div className='dropdown_content'>
-                          {options.map(optoin => (
-                            <div
-                              className='dropdown_item'
-                              onClick={(e) => {
-                                setSelected(optoin);
-                                setIsActive(!isActive)
-                              }}>
-                              {optoin}
-                            </div>
-                          ))}
-                        </div>}
-                    </Dropdown> */}
                   </div>
                 </div>
                 <div>
@@ -297,7 +278,7 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input'>
                     <div className='label1'>Ngày sinh:</div>
-                    <input className='input_in_popup' type='text' onChange={e => setNgaySinhCT(e.target.value)} />
+                    <input className='input_in_popup' type='date' onChange={e => setNgaySinhCT(e.target.value)} />
                   </div>
                   <div className='input'>
                     <div className='label1'>Quốc tịch:</div>
@@ -305,7 +286,7 @@ function AddPlayerAndCoach() {
                   </div>
                   <div className='input'>
                     <div className='label1'>Số áo:</div>
-                    <input className='input_in_popup' type='text' onChange={e => setSoao(e.target.value)} />
+                    <input className='input_in_popup' type='number' onChange={e => setSoao(e.target.value)} />
                   </div>
                   <div className='input1'>
                     <div className='label1'>Loại:</div>
@@ -330,25 +311,6 @@ function AddPlayerAndCoach() {
                         <option value="Thủ môn">Thủ môn</option>
                       </optgroup>
                     </select>
-                    {/* <Dropdown>
-                      <div className='dropdown_btn' onClick={() => setIsActive(!isActive)}>
-                        {selected1}
-                        <img src={dropdown_img} alt='' />
-                      </div>
-                      {isActive &&
-                        <div className='dropdown_content'>
-                          {options1.map(optoin => (
-                            <div
-                              className='dropdown_item'
-                              onClick={(e) => {
-                                setSelected1(optoin);
-                                setIsActive(!isActive)
-                              }}>
-                              {optoin}
-                            </div>
-                          ))}
-                        </div>}
-                    </Dropdown> */}
                   </div>
                 </div>
                 <div>

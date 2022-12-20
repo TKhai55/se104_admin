@@ -65,7 +65,7 @@
 
 }
 
-.round-table {
+.round-table-result {
     text-align: center;
     margin-left: 20vw;
     margin-right: 20vw;
@@ -75,47 +75,39 @@
     box-shadow: 5px 10px 10px 5px #383A3F;
 }
 
-.round-table th {
-    width: 60vw;
-    height: 4vh;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    background-color: #37393f;
-    line-height: 4vh;
-    user-select: none;
-}
 
-.round-table .round-info{
+.round-table-result .round-info-result{
     background-color: #4d5058;
+    width: 60vw;
 }
 
-.round-table .round-info:hover{
+.round-table-result .round-info-result:hover{
     cursor: pointer;
     transform: scaleX(1.01);
     border-left: 2px solid #44b454;
     border-right: 2px solid #44b454;
 }
 
-.round-info .signature .club-logo {
+.round-info-result .signature .club-logo {
     width: 5vw;
     height: 5vw;
 }
 
-.round-info .signature img {
+.round-info-result .signature img {
     object-fit: contain;
 }
 
-.round-table tr {
+.round-table-result tr {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 2px;
 }
 
-.round-table .round-info:last-child {
+.round-table-result .round-info-result:last-child {
     border-bottom: none;
 }
 
-.round-table .signature {
+.round-table-result .signature {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,23 +118,23 @@
     padding-top: 2vh;
 }
 
-.round-table #time {
+.round-table-result #time {
     display: flex;
     flex-direction: column;
     justify-content: center;
     
 } 
 
-.round-table #time h4 {
+.round-table-result #time h4 {
     font-weight: 700;
 }
 
-.round-table #time #date {
+.round-table-result #time #date {
     font-weight: 300;
     color: #c1c2c5;
     margin-top: 5px;
 }
-.round-table a{
+.round-table-result a{
     text-decoration: none;
     color: #fff;
 }

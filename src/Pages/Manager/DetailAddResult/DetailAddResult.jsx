@@ -41,8 +41,47 @@ const DetailAddResult = () => {
     let [amountERR1, setAmountERR1] = useState(0)
     let [amountERR2, setAmountERR2] = useState(0)
     let forceUpdate = useForceUpdate();
+    let [hsThang, setHsThang] = useState(0)
+    let [hsThua, setHsThua] = useState(0)
+    let [hsHoa, setHsHoa] = useState(0)
+    let [id1, setID1] = useState("")
+    let [id2, setID2] = useState("")
+    let [bxh1, setBXH1] = useState([])
+    let [bxh2, setBXH2] = useState([])
+    let [dadau, setdadau] = useState(false)
 
     const params = useParams()
+
+    const getThamSo = async () => {
+        try {
+            axios.get(`http://localhost:8000/v1/thamso/getlist/${params.muagiaiID}`).then(res => {
+                res.data.forEach(ts => {
+                    if (ts.TENTHAMSO === "Hieu so tran thang") setHsThang(ts.GIATRITHAMSO)
+                    if (ts.TENTHAMSO === "Hieu so tran hoa") setHsHoa(ts.GIATRITHAMSO)
+                    if (ts.TENTHAMSO === "Hieu so tran thua") setHsThua(ts.GIATRITHAMSO)
+                })
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getBXH = async () => {
+        try {
+            await axios.get(`http://localhost:8000/v1/bangxephang/read/${id1}/${params.muagiaiID}`).then(res => setBXH1(res.data))
+            await axios.get(`http://localhost:8000/v1/bangxephang/read/${id2}/${params.muagiaiID}`).then(res => setBXH2(res.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getBXH()
+    }, [id1])
+
+    console.log({bxh1})
+
     const getResults = async () => {
         try {
             const res = await axios.get(`http://localhost:8000/v1/ct_trandau/get/${params.idResult}`)
@@ -55,6 +94,8 @@ const DetailAddResult = () => {
                 setNameClub2(respondFixture.data[0].DOI2.TENCLB)
                 setLogoClub1(`http://localhost:8000/${respondFixture.data[0].DOI1.LOGO}`)
                 setLogoClub2(`http://localhost:8000/${respondFixture.data[0].DOI2.LOGO}`)
+                setID1(respondFixture.data[0].DOI1._id)
+                setID2(respondFixture.data[0].DOI2._id)
                 setResults(respondFixture.data)
                 results = respondFixture.data
                 setCheck(false)
@@ -77,7 +118,10 @@ const DetailAddResult = () => {
                     setNameClub2(result.MATD.DOI2.TENCLB)
                     setLogoClub1(`http://localhost:8000/${result.MATD.DOI1.LOGO}`)
                     setLogoClub2(`http://localhost:8000/${result.MATD.DOI2.LOGO}`)
+                    setID1(result.MATD.DOI1._id)
+                    setID2(result.MATD.DOI2._id)
                 })
+                setdadau(true)
 
                 const resPlayer1 = await axios.get(`http://localhost:8000/v1/cauthu/searchByClub/${results[0].MATD.DOI1._id}`)
                 const resPlayer2 = await axios.get(`http://localhost:8000/v1/cauthu/searchByClub/${results[0].MATD.DOI2._id}`)
@@ -143,6 +187,7 @@ const DetailAddResult = () => {
                 const resGoal = await axios.get(`http://localhost:8000/v1/loaibanthang/read`)
                 setGoal(resGoal.data)
                 goal = resGoal.data
+                
         }
         catch (error) {
             console.log(error.message)
@@ -150,7 +195,11 @@ const DetailAddResult = () => {
     }
     useEffect(() => {
         getResults();
+        getThamSo()
+        
     }, [])
+
+
 
     let [club, setClub] = useState([])
     const handleChangeSelect = (event) => {
@@ -182,7 +231,10 @@ const DetailAddResult = () => {
     }
     
     function handleAddButton() {
-        let idTeam1 = results[0].MATD ? results[0].MATD.DOI1._id : results[0].DOI1._id
+        if(dadau === true) {
+            return null
+        } else {
+            let idTeam1 = results[0].MATD ? results[0].MATD.DOI1._id : results[0].DOI1._id
         if (selected === '' || np === '' || event === '' || eventTypeSelected === '' || timeChange <= 0) notification('.notification', '#ed4337', 'Vui lòng nhập đầy đủ thông tin!')
         else {
 
@@ -207,6 +259,7 @@ const DetailAddResult = () => {
             eventsInTranDauOffical.push(eventAdded)
             eventsInTranDauOffical.sort((a, b) => a.time - b.time)
             forceUpdate()
+        }
         }
     }
 
@@ -233,6 +286,10 @@ const DetailAddResult = () => {
     }, []);
 
     function handleSaveButton() {
+        if (dadau === true) {
+            return null
+        } else {
+
         let amountOfError1 = 0
         let amountOfError2 = 0
         eventsInTranDauOffical.forEach(e => {
@@ -242,6 +299,68 @@ const DetailAddResult = () => {
 
         setAmountERR1(amountOfError1)
         setAmountERR2(amountOfError2)
+
+        if (result1 > result2) {
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id1}`, {
+                TRANDACHOI: bxh1[0].TRANDACHOI + 1,
+                BANTHANG: bxh1[0].BANTHANG + result1,
+                BANTHUA: bxh1[0].BANTHANG + result2,
+                THANG: bxh1[0].THANG + 1,
+                HIEUSO: (bxh1[0].BANTHANG + result1) - (bxh1[0].BANTHANG + result2),
+                DIEM: bxh1[0].DIEM + hsThang
+            }).then(d1 => console.log({d1}))
+
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id2}`, {
+                TRANDACHOI: bxh2[0].TRANDACHOI + 1,
+                BANTHANG: bxh2[0].BANTHANG + result2,
+                BANTHUA: bxh2[0].BANTHANG + result1,
+                THUA: bxh2[0].THUA + 1,
+                HIEUSO: (bxh2[0].BANTHANG + result2) - (bxh2[0].BANTHANG + result1),
+                DIEM: bxh2[0].DIEM + hsThua
+            }).then(d1 => console.log({d1}))
+        } else if(result1 === result2) {
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id1}`, {
+                TRANDACHOI: bxh1[0].TRANDACHOI + 1,
+                BANTHANG: bxh1[0].BANTHANG + result1,
+                BANTHUA: bxh1[0].BANTHANG + result2,
+                HOA: bxh1[0].HOA + 1,
+                HIEUSO: (bxh1[0].BANTHANG + result1) - (bxh1[0].BANTHANG + result2),
+                DIEM: bxh1[0].DIEM + hsHoa
+            }).then(d1 => console.log({d1}))
+
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id2}`, {
+                TRANDACHOI: bxh2[0].TRANDACHOI + 1,
+                BANTHANG: bxh2[0].BANTHANG + result2,
+                BANTHUA: bxh2[0].BANTHANG + result1,
+                HOA: bxh2[0].HOA + 1,
+                HIEUSO: (bxh2[0].BANTHANG + result2) - (bxh2[0].BANTHANG + result1),
+                DIEM: bxh2[0].DIEM + hsHoa
+            }).then(d1 => console.log({d1}))
+        } else {
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id1}`, {
+                TRANDACHOI: bxh1[0].TRANDACHOI + 1,
+                BANTHANG: bxh1[0].BANTHANG + result1,
+                BANTHUA: bxh1[0].BANTHANG + result2,
+                THUA: bxh1[0].THUA + 1,
+                HIEUSO: (bxh1[0].BANTHANG + result1) - (bxh1[0].BANTHANG + result2),
+                DIEM: bxh1[0].DIEM + hsThua
+            }).then(d1 => console.log({d1}))
+
+            axios.defaults.baseURL = 'http://localhost:8000/'
+            axios.patch(`/v1/bangxephang/update/${id2}`, {
+                TRANDACHOI: bxh2[0].TRANDACHOI + 1,
+                BANTHANG: bxh2[0].BANTHANG + result2,
+                BANTHUA: bxh2[0].BANTHANG + result1,
+                THANG: bxh2[0].THUA + 1,
+                HIEUSO: (bxh2[0].BANTHANG + result2) - (bxh2[0].BANTHANG + result1),
+                DIEM: bxh2[0].DIEM + hsThang
+            }).then(d1 => console.log({d1}))
+        }
 
         try {
             axios.defaults.baseURL = 'http://localhost:8000/'
@@ -254,6 +373,9 @@ const DetailAddResult = () => {
             }).then(res => {
                 if (res) {
                     console.log("Post chi tiet tran dau thanh cong")
+
+                    axios.defaults.baseURL = 'http://localhost:8000/'
+                    axios.patch(`/v1/trandau/updateTranDau/${params.idResult}`, { DADAU: true })
 
                     eventsInTranDauOffical.forEach(e => {
                         if (e.eventType === "Phạm lỗi" && e.idSuKien === "") {
@@ -317,7 +439,12 @@ const DetailAddResult = () => {
                                     } catch (error) {
                                         console.log(error)
                                     }
+
+                                    axios.defaults.baseURL = 'http://localhost:8000/'
+                                
                                 })
+
+                                
                             } catch (error) {
                                 console.log(error);
                             }
@@ -328,6 +455,7 @@ const DetailAddResult = () => {
             notification('.notification', '#44b454', 'Lưu thông tin thành công!')
         } catch (error) {
             console.log(error);
+        }
         }
     }
 
@@ -418,8 +546,6 @@ const DetailAddResult = () => {
                     eventsInTranDauOffical.splice(indexItemTimeline, 1)
                     forceUpdate()
                 })
-                
-                
             } else if (eventsInTranDauOffical[indexItemTimeline].eventType === "Phạm lỗi") {
                 axios.defaults.baseURL = 'http://localhost:8000/'
                 if (eventsInTranDauOffical[indexItemTimeline].type === "Thẻ vàng") {
@@ -449,14 +575,11 @@ const DetailAddResult = () => {
                     
                     eventsInTranDauOffical.splice(indexItemTimeline, 1)
                     forceUpdate()
-
-                    
                 })
             }
         }
         setOpenConfirmDelete(false)
     }
-    
   return (
     <>
         <Header/>
@@ -489,6 +612,7 @@ const DetailAddResult = () => {
                     <label htmlFor="player-input">Cầu thủ</label>
                     <select onChange={(e) => {
                         handleOnChangeCauThu(e)
+                        // getBXH()
                     }} name="player-input" id="player-input" style={{width: '10vw', height: '3.5vh'}}>
                         <option default hidden>Chọn cầu thủ</option>
                         {
@@ -534,10 +658,19 @@ const DetailAddResult = () => {
 
             </div>
 
-            <div className="btn-wrapper">
-                <button className='btn-add-result' onClick={handleAddButton}>Thêm <FontAwesomeIcon icon={faPlus}/></button>
-                <button className='btn-save-result' onClick={handleSaveButton}>Lưu <FontAwesomeIcon icon={faFloppyDisk}/></button>
-            </div>
+            {
+                dadau === false ? (
+                    <div className="btn-wrapper">
+                        <button className='btn-add-result' onClick={handleAddButton}>Thêm <FontAwesomeIcon icon={faPlus}/></button>
+                        <button className='btn-save-result' onClick={handleSaveButton}>Lưu <FontAwesomeIcon icon={faFloppyDisk}/></button>
+                    </div>
+                ) : (
+                    <div className="btn-wrapper">
+                        <button className='btn-add-result' style={{cursor: "not-allowed"}} onClick={handleAddButton}>Thêm <FontAwesomeIcon icon={faPlus}/></button>
+                        <button className='btn-save-result' style={{cursor: "not-allowed"}} onClick={handleSaveButton}>Lưu <FontAwesomeIcon icon={faFloppyDisk}/></button>
+                    </div>
+                )
+            }
 
             <div className="detail-add-result-content-wrapper">
                 <div className="team-1">
