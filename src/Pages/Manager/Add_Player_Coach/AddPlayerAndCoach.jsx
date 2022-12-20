@@ -97,7 +97,7 @@ function AddPlayerAndCoach() {
       })
     })
 
-    Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo').then(res=>{
+    Axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo1').then(res=>{
       res.data.map((value)=>{
         if(value._id === ID_clb)
         {

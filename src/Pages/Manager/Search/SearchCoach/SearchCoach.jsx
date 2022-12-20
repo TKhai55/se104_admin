@@ -36,7 +36,7 @@ export default function SearchCoach() {
     let [caulacbos, setCauLacBo] = useState([])
     const getCLB = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo/')
+            const res = await axios.get('http://localhost:8000/v1/caulacbo/getcaulacbo1/')
             setCauLacBo(res.data)
             caulacbos=res.data;
         }
