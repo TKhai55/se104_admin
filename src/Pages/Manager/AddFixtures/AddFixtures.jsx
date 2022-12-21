@@ -72,7 +72,7 @@ const AddFixtures = () => {
                                 <table className="round-table">
                                     {
                                         fixtures.filter(fixture => selected.toString() === "0" ? fixture :
-                                            fixture.VONGDAU.toString().includes(selected.toString()))
+                                            fixture.VONGDAU.toString()===(selected.toString()))
                                         .map((fixtureItem, index) => {
                                             const imageUrl1 = 'http://localhost:8000/' + fixtureItem.DOI1.LOGO
                                             const imageUrl2 = 'http://localhost:8000/' + fixtureItem.DOI2.LOGO
