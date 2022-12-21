@@ -90,7 +90,7 @@ function App() {
         />
         <Route
           exact
-          path="/manager/home/register_club"
+          path="/manager/home/:muagiaiID/register_club"
           element={<Register_Club />}
         />
         <Route
