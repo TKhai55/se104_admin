@@ -65,7 +65,7 @@ const AddResult = () => {
                     </div>
                     <table className="round-table-result">
                         {
-                            fixtures.filter(fixture => selected.toString() === "0" ? fixture :
+                            fixtures.sort((a, b) => a.VONGDAU - b.VONGDAU).filter(fixture => selected.toString() === "0" ? fixture :
                                 fixture.VONGDAU.toString() === (selected.toString()))
                                 .map((fixtureItem, index) => {
                                     const imageUrl1 = 'http://localhost:8000/' + fixtureItem.DOI1.LOGO
