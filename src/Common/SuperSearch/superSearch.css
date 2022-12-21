@@ -179,3 +179,7 @@
     border-radius: 5px;
     border: 0.5px solid black;
 }
+.cauthu_infor:hover{
+    background-color: #27a039;
+    cursor: pointer;
+}

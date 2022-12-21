@@ -124,3 +124,7 @@
     margin-top: 5vh;
     margin-bottom: 10vh;
 }
+.club_infor:hover{
+    background-color: #27a039;
+    cursor: pointer;
+}
