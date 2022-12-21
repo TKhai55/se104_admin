@@ -57,7 +57,7 @@ function RegisterClub() {
             </div>
             <div className='label_text'>
               <div className='label'>Năm thành lập:</div>
-              <input className='input_in_main_page' type='text' onChange={(e) => setNamThanhLap(e.target.value)} />
+              <input className='input_in_main_page' type='number' onChange={(e) => setNamThanhLap(e.target.value)} />
             </div>
             <div className='label_text'>
               <div className='label'>Sân vận động:</div>
