@@ -44,6 +44,7 @@ const DetailAddResult = () => {
     let [hsThang, setHsThang] = useState(0)
     let [hsThua, setHsThua] = useState(0)
     let [hsHoa, setHsHoa] = useState(0)
+    let [maxGhiBan, setMaxGhiBan] = useState(0)
     let [id1, setID1] = useState("")
     let [id2, setID2] = useState("")
     let [bxh1, setBXH1] = useState([])
@@ -59,6 +60,7 @@ const DetailAddResult = () => {
                     if (ts.TENTHAMSO === "Hieu so tran thang") setHsThang(ts.GIATRITHAMSO)
                     if (ts.TENTHAMSO === "Hieu so tran hoa") setHsHoa(ts.GIATRITHAMSO)
                     if (ts.TENTHAMSO === "Hieu so tran thua") setHsThua(ts.GIATRITHAMSO)
+                    if (ts.TENTHAMSO === "Thoi diem ghi ban toi da") setMaxGhiBan(ts.GIATRITHAMSO)
                 })
             })
 
@@ -235,7 +237,7 @@ const DetailAddResult = () => {
             return null
         } else {
             let idTeam1 = results[0].MATD ? results[0].MATD.DOI1._id : results[0].DOI1._id
-        if (selected === '' || np === '' || event === '' || eventTypeSelected === '' || timeChange <= 0) notification('.notification', '#ed4337', 'Vui lòng nhập đầy đủ thông tin!')
+        if (selected === '' || np === '' || event === '' || eventTypeSelected === '' || timeChange <= 0 || timeChange > maxGhiBan) notification('.notification', '#ed4337', 'Vui lòng nhập đúng và đầy đủ thông tin!')
         else {
 
             let eventAdded = {
