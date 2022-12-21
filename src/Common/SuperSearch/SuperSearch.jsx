@@ -491,7 +491,7 @@ const Index = () => {
                     </div>
                     <div className="modal_row2">
                         <label className="Mn_key">Số áo</label>
-                        <input type='text' className="Mn_value" id='soaoct' defaultValue={ctchitiet.SOAO}></input>
+                        <input type='number' className="Mn_value" id='soaoct' defaultValue={ctchitiet.SOAO}></input>
                         <label className="Mn_key">Ngày sinh</label>
                         <input type='text' className="Mn_value" id='ngaysinhct' defaultValue={ctchitiet.NGAYSINH}></input>
                     </div>
